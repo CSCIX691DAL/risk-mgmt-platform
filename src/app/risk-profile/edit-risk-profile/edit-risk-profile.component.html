@@ -1,0 +1,67 @@
+<ng-template #editRiskProfileContent let-modal>
+
+  <form (ngSubmit)="OnEditRiskProfile()">
+
+    <!-- Modal Header -->
+    <div class="modal-header justify-content-center">
+      <h2 class="mt-1">Edit Risk Profile</h2>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body row pl-4 pr-4">
+
+      <!-- Title -->
+      <label for="editTitle" class="labelAndInput">Title</label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" id="editTitle" name="editTitle" value="{{ editModalRiskProfileTitle }}" ngModel [(ngModel)]="riskProfile.title">
+      </div>
+
+      <!-- Risk Profile Likelihood -->
+      <label for="editLikelihood" class="labelAndInput">Likelihood</label>
+      <div class="input-group mb-3">
+        <input class="form-control" id="editLikelihood" name="editLikelihood" type="range" min="0" max="10" ngModel [(ngModel)]="riskProfile.likelihood">
+      </div>
+
+      <!-- Risk Profile Impact -->
+      <label for="editImpact" class="labelAndInput">Impact</label>
+      <div class="input-group mb-3">
+        <input class="form-control" id="editImpact" name="editImpact" type="range" min="0" max="10" ngModel [(ngModel)]="riskProfile.impact">
+      </div>
+
+      <!-- Risk Profile Category -->
+      <label for="editCategory" class="labelAndInput">Risk Category</label>
+      <div class="input-group mb-3">
+        <select class="form-control" id="editCategory" name="editCategory" ngModel [(ngModel)]="editRiskProfile.category">
+          <option>Select a Category</option>
+          <option *ngFor="let item of categoryService.categories" [ngValue]=item>
+            {{item.name}}
+          </option>
+        </select>
+      </div>
+
+      <!-- Description -->
+      <label for="editDescription" class="labelAndInput">Description</label>
+      <div class="input-group mb-1">
+        <textarea class="form-control" id="editDescription" name="editDescription" ngModel [(ngModel)]="riskProfile.description">{{ editModalRiskProfileDescription }}</textarea>
+      </div>
+
+      <!-- Source of Risk -->
+      <label for="editSourceOfRisk" class="labelAndInput">Source of Risk</label>
+      <div class="input-group mb-1">
+        <textarea class="form-control" id="editSourceOfRisk" name="editSourceOfRisk" ngModel [(ngModel)]="riskProfile.sourceOfRisk"></textarea>
+      </div>
+
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="modal-footer">
+      <!-- Buttons: Cancel & Save -->
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
+      <button type="submit" class="btn btn-outline-primary">Save Changes</button>
+    </div>
+
+  </form>
+
+</ng-template>
+
+<a class="float-right" (click)="open(editRiskProfileContent)">{{ editTextName }}</a>

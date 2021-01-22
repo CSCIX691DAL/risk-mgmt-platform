@@ -1,0 +1,42 @@
+<ng-template #editCategoryContent let-modal>
+
+  <form (ngSubmit)="OnSubmit()">
+
+    <div class="modal-header justify-content-center">
+      <h2 class="mt-1">Edit Category</h2>
+    </div>
+
+    <div class="modal-body row pl-4 pr-4">
+
+      <label for="editName" class="labelAndInput">Title</label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" id="editName" name="editName" value="{{ editModalName }}" [(ngModel)]="category.name">
+      </div>
+
+      <label for="editParentCategory" class="labelAndInput">Parent Category</label>
+      <div class="input-group mb-3">
+        <select class="form-control" id="editParentCategory" name="editParentCategory" [(ngModel)]="category.parentCategory">
+          <option>Select a Parent Category</option>
+          <option [ngValue]="this.categoryService.categories[0]">Financial</option>
+          <option [ngValue]="this.categoryService.categories[1]" [defaultSelected]="true">Strategic</option>
+          <option [ngValue]="this.categoryService.categories[2]">Hazard</option>
+          <option [ngValue]="this.categoryService.categories[3]">Operational</option>
+        </select>
+      </div>
+
+      <label for="editDescription" class="labelAndInput">Description</label>
+      <div class="input-group mb-1">
+        <textarea class="form-control" id="editDescription" name="editDescription" ngModel [(ngModel)]="category.description">{{ editModalDescription }}</textarea>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="modal.close('')">Cancel</button>
+      <button type="submit" class="btn btn-outline-primary">Save Changes</button>
+    </div>
+
+  </form>
+
+</ng-template>
+
+<a class="float-right" (click)="open(editCategoryContent)">{{ editTextName }}</a>

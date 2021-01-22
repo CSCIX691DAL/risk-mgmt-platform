@@ -1,0 +1,7 @@
+h5:hover {
+  font-weight: bolder;
+  cursor: pointer;
+}
+.taskListContainer {
+  margin-bottom: 15px;
+}

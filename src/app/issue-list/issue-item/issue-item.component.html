@@ -1,0 +1,63 @@
+<!-- Listed Issues -->
+<div *ngIf="issueItem.parentIssue === 0" id="issueContainer" class="container">
+
+  <!-- Top Row -->
+  <div class="row">
+
+    <!-- Title Column -->
+    <div class="col-md-10">
+      <h4 class="float-left">{{issueItem.title}}</h4>
+    </div>
+
+
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <p class="float-left mr-20">Category: {{issueItem.riskCategory}}</p>
+    </div>
+  </div>
+
+  <!-- Bottom Row -->
+  <div class="row">
+
+    <!-- Description Column -->
+    <div class="col-md-10">
+      <p class="">{{issueItem.description}}</p>
+    </div>
+
+    <!-- Delete / Edit Column -->
+    <div class="col-md-2">
+      <!-- Edit issue modal component -->
+      <app-edit-issue
+        editTextName="Edit"
+        [editIssue]='issueItem'
+        editModalID="{{issueItem.id}}"
+        editModalTitle="{{ issueItem.title }}"
+        editModalRiskCategory="{{ issueItem.riskCategory }}"
+        editModalAssignee="{{ issueItem.assignee }}"
+        editModalDescription="{{ issueItem.description }}"
+        class="float-right">
+      </app-edit-issue>
+
+      <!--
+      Delete issue modal asking if you really want to delete the issue you have chosen.
+      Will only let you delete the item after you edit and save it (you dont have to change anything, just has to save)
+      -->
+      <!-- Delete issue modal component
+      <app-delete-issue
+        deleteTextName="Delete"
+        [deleteIssue]='issueItem'
+        deleteModalID="{{issueItem.id}}"
+        deleteModalTitle="{{ issueItem.title }}"
+        class="float-right mr-4">
+      </app-delete-issue>
+      -->
+      <!-- Delete Link -->
+      <a class="float-right mr-4" (click)="onDeleteIssue()">Delete</a>
+
+    </div>
+
+  </div>
+
+</div>

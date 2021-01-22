@@ -1,0 +1,20 @@
+.addRiskProfileMarginAndBorder {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #cccccc;
+}
+#riskProfileContainer {
+  min-height: 750px;
+}
+#addriskProfileContainer {
+  margin-top: 15px;
+  margin-bottom: 7px;
+}
+#addNewRiskProfileContainer {
+  padding-top: 12px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #cccccc;
+  background-color: #fefefe;
+  position: relative;
+}

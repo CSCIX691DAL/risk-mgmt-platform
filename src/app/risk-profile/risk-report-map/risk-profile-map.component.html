@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Risk Map Report</h2>
+  <div>
+    <div style=" bdisplay: block">
+      <canvas baseChart
+              [datasets]="bubbleChartData"
+              [options]="bubbleChartOptions"
+              [colors]="bubbleChartColors"
+              [legend]="bubbleChartLegend"
+              [chartType]="bubbleChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+  </div>
+</div>

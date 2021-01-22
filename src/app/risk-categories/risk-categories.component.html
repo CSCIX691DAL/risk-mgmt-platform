@@ -1,0 +1,39 @@
+<!-- Content Container -->
+<div id="categoryListContainer" class="container-fluid">
+
+  <!-- Body Header Container -->
+  <div class="row justify-content-center addCategoryMarginAndBorder">
+    <div id="addCategoryContainer" class="container">
+
+      <!-- Title / Add new Issue Container -->
+      <div class="row">
+
+        <!-- Page Title -->
+        <div class="col-md-7">
+          <h2>Risk Categories</h2>
+        </div>
+
+        <!-- Search Issue List Container -->
+        <div class="col-md-5">
+          <form class="form-inline float-right">
+            <input class="form-control" type="text" placeholder="Search categories" name="categoryList" [(ngModel)]="SearchText" value="Search">
+          </form>
+          <!-- Add issue modal component -->
+          <app-add-category
+            addTextName="+ category"
+            [addCategory]="categoryItem"
+            class="float-right">
+          </app-add-category>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Sort Container -->
+  <app-sort-category></app-sort-category>
+
+  <!-- Print out all issue items -->
+  <app-category-item *ngFor="let item of categoryService.categories | filter: SearchText"[categoryItem]="item"></app-category-item>
+</div>

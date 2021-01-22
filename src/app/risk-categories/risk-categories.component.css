@@ -1,0 +1,22 @@
+.button {
+  background-color: green;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+}
+.addCategoryMarginAndBorder {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #cccccc;
+}
+#categoryListContainer {
+  min-height: 750px;
+}
+#addCategoryContainer {
+  margin-top: 15px;
+  margin-bottom: 7px;
+}
+.cat-group-item{
+  padding-right: 0px;
+}

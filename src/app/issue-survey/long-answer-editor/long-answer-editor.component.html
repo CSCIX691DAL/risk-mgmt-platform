@@ -1,0 +1,22 @@
+<form [formGroup]="longAnswerForm" (ngSubmit)="onSubmit()">
+
+  <div formArrayName="longqs">
+    <h3>Long Answer Question Editor</h3> <button (click)="addLongqs()">Add Long Answer Question</button>
+
+    <div *ngFor="let longq of longqs.controls; let i=index">
+      <!-- The repeated alias template -->
+      <label>
+        Long Answer:
+        <textarea id="w3review" name="w3review" rows="4" cols="50" [formControlName]="i"></textarea>
+      </label>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="!longAnswerForm.valid">Submit</button>
+</form>
+
+<hr>
+
+<p>
+  <button (click)="updateProfile()" type="submit" class="btn btn-primary">Update Survey</button>
+</p>

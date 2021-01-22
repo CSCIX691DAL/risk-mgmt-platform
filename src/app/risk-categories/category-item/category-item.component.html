@@ -1,0 +1,45 @@
+<!-- Listed Issues -->
+<div id="categoryContainer" class="container">
+
+  <!-- Top Row -->
+  <div class="row">
+
+    <!-- Title Column -->
+    <div class="col-md-10">
+      <h4 class="float-left">{{categoryItem.name}}</h4>
+    </div>
+
+    <!-- Status Column -->
+    <div class="col-md-2">
+      <p class="float-right">Parent Category: {{categoryItem.getParentName()}}</p>
+    </div>
+  </div>
+
+  <!-- Bottom Row -->
+  <div class="row">
+
+    <!-- Description Column -->
+    <div class="col-md-10">
+      <p class="">{{categoryItem.description}}</p>
+    </div>
+
+    <!-- Delete / Edit Column -->
+    <div class="col-md-2">
+      <!-- Edit issue modal component -->
+      <app-edit-category
+        editTextName="Edit"
+        [editCategory]='categoryItem'
+        editModalID="{{categoryItem.id}}"
+        editModalName="{{ categoryItem.name }}"
+        editParentCategory="{{ categoryItem.parentCategory }}"
+        editModalDescription="{{ categoryItem.description }}"
+        class="float-right">
+      </app-edit-category>
+
+      <!-- Delete Link -->
+      <a class="float-right mr-4" (click)="onDeleteCategory()">Delete</a>
+    </div>
+
+  </div>
+
+</div>

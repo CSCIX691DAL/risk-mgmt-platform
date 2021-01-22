@@ -1,0 +1,21 @@
+.sortMenuMarginAndBorder {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #cccccc;
+}
+.categorySelect {
+  width: calc(100% - 25px);
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid #000000;
+  color: #2d3246;
+  margin-top: -3px;
+  margin-bottom: 11px;
+}
+p a {
+  color: #0275d8;
+}
+p a:hover{
+  color: #0275d8;
+  cursor: pointer;
+  text-decoration: underline;
+}

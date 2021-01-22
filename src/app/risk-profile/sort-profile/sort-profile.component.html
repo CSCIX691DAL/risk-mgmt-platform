@@ -1,0 +1,47 @@
+<div class="row sortMenuMarginAndBorder" style="padding-bottom: 15px;">
+  <!-- Sort Inner Container -->
+  <div class="container">
+
+    <!-- Title -->
+    <h4>Sort by:</h4>
+
+    <div class="row pl-3 pr-3 mt-3">
+      <!-- Sorting Options 1/4 -->
+      <div class="col-3">
+        <p>Alphabetically: <a (click)="onSortAlphabetically(1)">A-Z</a> / <a (click)="onSortAlphabetically(2)">Z-A</a></p>
+        <p>Likelihood: <a (click)="onSortLikelihood(1)">Highest</a> / <a (click)="onSortLikelihood(2)">Lowest</a></p>
+      </div>
+
+      <!-- Sorting Options 2/4 -->
+      <div class="col-3">
+        <p>Date Created: <a href="">Earliest</a> / <a href="">Latest</a></p>
+        <p>Impact: <a (click)="onSortImpact(1)">Highest</a> / <a (click)="onSortImpact(2)">Lowest</a></p>
+      </div>
+
+      <!-- Sorting Options 3/4 -->
+      <div class="col-3">
+        <p>Date Modified: <a href="">Earliest</a> / <a href="">Latest</a></p>
+        <!-- Category -->
+        <select
+          class="categorySelect"
+          #selectedCategor
+          (change)="emitSelectedCategory($event.target.value)"
+        >
+          <option selected value="">Category</option>
+
+          <option *ngFor="let item of categoryService.categories" [value]=item.name>
+            {{ item.name }}
+          </option>
+
+        </select>
+      </div>
+
+      <!-- Sorting Options 4/4 -->
+      <div class="col-3">
+        <p>Category Type: <a >Internal</a> / <a >External</a></p>
+        <p>Level of Risk: <a (click)="onSortLeveLofRisk(1)">High-Low</a>/<a (click)="onSortLeveLofRisk(2)">Low-High</a></p>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="w-100" class="container-fluid">
+  <div class="taskListContainer">
+    <div class="container">
+
+      <!-- Task Container -->
+      <div class="">
+
+        <!-- Title, Task search & Add new task Container -->
+        <div class="row border-bottom mb-1 pb-2 mt-md-3">
+          <!-- Page title -->
+          <div class="col-md-6">
+            <h2>Task List</h2>
+          </div>
+
+          <!-- Search and Add New Task -->
+          <div class="col-md-6">
+            <div class="row justify-content-end">
+
+              <!-- Add new Task -->
+              <div>
+                <button routerLink="/create-task" class="btn btn-outline-success float-right mr-md-3">+ New Task</button>
+              </div>
+
+              <!-- Search Tasks -->
+              <div class="pr-md-3">
+                <input class="form-control float-right" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="taskSearchText">
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Task Titles -->
+        <div class="row border-bottom mt-2">
+          <div class="col-2">
+            <h5 class="text-center w-auto" (click)="taskService.setSortedCategory('title')">Title</h5>
+          </div>
+          <div class="col-2">
+            <h5 class="text-center" (click)="taskService.setSortedCategory('source')">Created By</h5>
+          </div>
+          <div class="col-2">
+            <h5 class="text-center" (click)="taskService.setSortedCategory('status')">Status</h5>
+          </div>
+          <div class="col-2">
+            <h5 class="text-center" (click)="taskService.setSortedCategory('dueDate')">Date Created</h5>
+          </div>
+          <div class="col-2">
+            <h5 class="text-center" (click)="taskService.setSortedCategory('dueDate')">Due Date</h5>
+          </div>
+          <div class="col-2">
+            <h5 class="text-center">Actions</h5>
+          </div>
+        </div>
+
+        <!-- Task Items -->
+        <app-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem"></app-task-item>
+
+      </div>
+
+    </div>
+  </div>
+</div>

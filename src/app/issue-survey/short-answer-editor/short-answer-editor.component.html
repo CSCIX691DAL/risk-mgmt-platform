@@ -1,0 +1,22 @@
+<form [formGroup]="shortAnswerForm" (ngSubmit)="onSubmit()">
+
+  <div formArrayName="shortqs">
+    <h3>Short Answer Question Editor</h3> <button (click)="addShortQ()">Add Short Answer Question</button>
+
+    <div *ngFor="let shortq of shortqs.controls; let i=index">
+      <!-- The repeated shortq template -->
+      <label>
+        Short Answer:
+        <input type="text" [formControlName]="i">
+      </label>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="!shortAnswerForm.valid">Submit</button>
+</form>
+
+<hr>
+
+<p>
+  <button (click)="updateProfile()" type="submit" class="btn btn-primary">Update Survey</button>
+</p>

@@ -1,0 +1,22 @@
+.paddingSolution {
+  padding-left:15px;
+  padding-right: 15px;
+}
+
+#categoryContainer {
+  padding-top: 12px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #cccccc;
+  background-color: #fefefe;
+  position: relative;
+}
+
+div a {
+  color: #0275DA;
+}
+div a:hover {
+  color: #0275D8;
+  underline: #0275D8;
+  cursor: pointer;
+}

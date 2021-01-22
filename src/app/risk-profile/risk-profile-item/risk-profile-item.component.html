@@ -1,0 +1,72 @@
+<!-- Listed Risk Profiles -->
+<div id="issueContainer" class="container">
+
+  <!-- Top Row -->
+  <div class="row">
+
+    <!-- Title Column -->
+    <div class="col-md-9">
+      <h4 class="float-left">{{riskProfileItem.title}}</h4>
+    </div>
+
+    <!-- Likelihood Column -->
+    <div class="col-md-3">
+      <p class="float-right">Level of Risk:
+        <span class="badge badge-{{riskProfileItem.getLevelOfRiskBadge().css}}">
+          {{riskProfileItem.getLevelOfRiskBadge().level}}
+        </span>
+      </p>
+      <p class="float-right">Category: {{riskProfileItem.riskCategory.name}}</p>
+    </div>
+
+  </div>
+
+  <!-- Bottom Row -->
+  <div class="row">
+
+    <!-- Description Column -->
+    <div class="col-md-10">
+      <p class="">Description: {{riskProfileItem.description}}</p>
+    </div>
+
+    <div class="col-md-10">
+      <p class="">Source of Risk: {{riskProfileItem.sourceOfRisk}}</p>
+    </div>
+
+    <!-- Delete / Edit Column -->
+    <div class="col-md-2">
+      <!-- Edit issue modal component -->
+      <app-edit-risk-profile
+        editTextName="Edit"
+        [editRiskProfile]='riskProfileItem'
+        editModalRiskProfileID="{{riskProfileItem.id}}"
+        editModalRiskProfileTitle="{{ riskProfileItem.title }}"
+        editModalRiskProfileLikelihood="{{ riskProfileItem.likelihood }}"
+        editModalRiskProfileImpact="{{ riskProfileItem.impact }}"
+        editModalRiskProfileDateModified="{{ riskProfileItem.dateModified }}"
+        editModalRiskProfileDescription="{{ riskProfileItem.description }}"
+        editModalRiskProfileSourceOfRisk="{{ riskProfileItem.sourceOfRisk }}"
+        class="float-right">
+      </app-edit-risk-profile>
+
+      <!--
+      Delete issue modal asking if you really want to delete the issue you have chosen.
+      Will only let you delete the item after you edit and save it (you dont have to change anything, just has to save)
+      -->
+      <!-- Delete issue modal component
+      <app-delete-issue
+        deleteTextName="Delete"
+        [deleteIssue]='issueItem'
+        deleteModalID="{{issueItem.id}}"
+        deleteModalTitle="{{ issueItem.title }}"
+        class="float-right mr-4">
+      </app-delete-issue>
+      -->
+      <!-- Delete Link -->
+      <a class="float-right mr-4" (click)="onDeleteRiskProfile()">Delete</a>
+
+    </div>
+
+  </div>
+
+</div>

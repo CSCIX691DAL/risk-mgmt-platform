@@ -1,0 +1,33 @@
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">Issue Survey Builder </div>
+    <div class="list-group list-group-flush">
+      <a class="list-group-item list-group-item-action bg-light" style="cursor: pointer;" (click)="toggleEditor('name')">Survey Title Editor</a>
+      <a class="list-group-item list-group-item-action bg-light" style="cursor: pointer;" (click)="toggleEditor('profile')">Survey Author Editor</a>
+      <a class="list-group-item list-group-item-action bg-light" style="cursor: pointer;" (click)="toggleEditor('short-answer')">Add Short Answer Questions</a>
+      <a class="list-group-item list-group-item-action bg-light" style="cursor: pointer;" (click)="toggleEditor('long-answer')">Add Long Answer Questions</a>
+      <a class="list-group-item list-group-item-action bg-light" style="cursor: pointer;" (click)="toggleEditor('dropdown')">Add Dropdown Questions</a>
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <div id="page-content-wrapper">
+
+<app-name-editor *ngIf="showNameEditor"></app-name-editor>
+
+<app-profile-editor *ngIf="showProfileEditor"></app-profile-editor>
+
+<app-short-answer-editor *ngIf="showShortAnswerEditor"></app-short-answer-editor>
+
+<app-long-answer-editor *ngIf="showLongAnswerEditor"></app-long-answer-editor>
+
+  <app-dropdown-editor *ngIf="showDropdownEditor"></app-dropdown-editor>
+
+
+
+  </div>
+
+
+

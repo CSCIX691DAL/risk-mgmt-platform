@@ -1,0 +1,46 @@
+<!-- Content Container -->
+<div id="issueListContainer" class="container-fluid">
+
+  <!-- Body Header Container -->
+  <div class="row justify-content-center addIssueMarginAndBorder">
+    <div id="addIssueContainer" class="container">
+
+      <!-- Title / Add new Issue Container -->
+      <div class="row">
+
+        <!-- Page Title -->
+        <div class="col-md-7">
+          <h2>Issue List</h2>
+        </div>
+
+        <!-- Search Issue List Container -->
+        <div class="col-md-5">
+
+          <!-- Search Issues bar -->
+          <form class="form-inline float-right">
+            <input class="form-control" type="text" placeholder="Search" name="issuelist" [(ngModel)]="IssueSearchText" value="Search">
+          </form>
+
+          <!-- Add issue modal component -->
+          <app-add-issue
+            addTextName="+ Issue"
+            [addIssue]="issueItem"
+            class="float-right">
+          </app-add-issue>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Sort Container -->
+  <app-sort-issue
+    (categorySelectedEvent)="setCurrentCategory($event)"
+  ></app-sort-issue>
+
+  <!-- Print out all issue items -->
+  <app-issue-item *ngFor="let item of issues | filter: IssueSearchText | filterByCategory:this.currentCategory" [issueItem]="item"></app-issue-item>
+
+</div>

@@ -1,0 +1,27 @@
+<form [formGroup]="dropDownForm" (ngSubmit)="onSubmit()">
+
+  <div formArrayName="longqs">
+    <h3>Dropdown Question Editor</h3> <button (click)="addLongqs()">Add Dropdown Question</button>
+
+    <div *ngFor="let longq of longqs.controls; let i=index">
+      <!-- The repeated alias template -->
+      <label>
+        Dropdown:
+        <select class="form-control" id="dropdown" [formControlName]="i">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="!dropDownForm.valid">Submit</button>
+</form>
+
+<hr>
+
+<p>
+  <button (click)="updateProfile()">Update Survey</button>
+</p>

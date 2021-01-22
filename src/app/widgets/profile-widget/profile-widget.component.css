@@ -1,0 +1,22 @@
+.widgetBorderRadius {
+  border-radius: 8px;
+  background-color: #F4A100;
+}
+.widgetHeader {
+  min-height: 35px;
+  color: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+}
+.widgetBody {
+  color: #ffffff;
+}
+.widgetDescriptionText {
+  font-size: 14px;
+}
+.widgetFooter {
+  height: 45px;
+  color: #ffffff;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: #EE9D09;
+}

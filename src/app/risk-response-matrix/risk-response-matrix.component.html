@@ -1,0 +1,66 @@
+<div class="container">
+  <h2>Risk Response Matrix</h2>
+  <canvas baseChart class="p-2"
+          [datasets]="scatterChartData"
+          [options]="scatterChartOptions"
+          [labels]="scatterChartLabels"
+          [chartType]="scatterChartType"
+          [plugins]="scatterPlugins"
+          [legend]="true"
+          (chartClick)="chartClicked($event)"
+  >
+  </canvas>
+</div>
+
+<ng-template #profileModal let-modal>
+  <form class="container">
+
+    <!-- Modal Header -->
+    <div class="modal-header justify-content-center">
+      <h2 class="mt-1">Risk Profile</h2>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body row pl-4 pr-4">
+
+      <!-- Title -->
+      <label for="editTitle" class="labelAndInput">Title</label>
+      <div class="input-group mb-3">
+        <input type="text" disabled class="form-control" id="editTitle" name="editTitle" value="{{ currentModel.title }}" ngModel [(ngModel)]="currentModel.title">
+      </div>
+
+      <label for="editTitle" class="labelAndInput">Likelihood</label>
+      <div class="input-group mb-3">
+        <input type="text" disabled class="form-control" name="likelihood" value="{{ currentModel.likelihood }}" ngModel [(ngModel)]="currentModel.likelihood">
+      </div>
+
+      <label for="editTitle" class="labelAndInput">Impact</label>
+      <div class="input-group mb-3">
+        <input type="text" disabled class="form-control" name="impact" value="{{ currentModel.impact }}" ngModel [(ngModel)]="currentModel.impact">
+      </div>
+
+      <label for="editTitle" class="labelAndInput">Risk Category</label>
+      <div class="input-group mb-3">
+        <input type="text" disabled class="form-control" name="riskCategory" value="{{ currentModel.riskCategory }}" ngModel [(ngModel)]="currentModel.riskCategory">
+      </div>
+
+      <label for="editTitle" class="labelAndInput">Description</label>
+      <div class="input-group mb-3">
+        <textarea type="text" disabled class="form-control" name="description" value="{{ currentModel.description }}" ngModel [(ngModel)]="currentModel.description">{{currentModel.description}}</textarea>
+      </div>
+
+      <label for="editTitle" class="labelAndInput">Source of Risk</label>
+      <div class="input-group mb-3">
+        <input type="text" disabled class="form-control" name="sourceOfRisk" value="{{ currentModel.sourceOfRisk }}" ngModel [(ngModel)]="currentModel.sourceOfRisk">
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="modal-footer">
+      <!-- Buttons: Cancel & Save -->
+      <button type="button" class="btn btn-primary" (click)="modal.close('')">Close</button>
+    </div>
+
+  </form>
+
+</ng-template>
