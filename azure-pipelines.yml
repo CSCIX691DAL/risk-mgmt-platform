@@ -2,6 +2,7 @@
 # Build a Node.js project that uses Angular.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+# Please note that the CD section (from Line 24 onwards) is sourced from https://medium.com/swlh/set-up-ci-cd-with-azure-and-github-under-10-minutes-39a6846fff90
 
 trigger:
 - main
@@ -20,3 +21,11 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
+- task: CopyFiles@2
+  inputs:
+    Contents: 'build/**' # Pull the build directory (React)
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    ArtifactName: 'www'
