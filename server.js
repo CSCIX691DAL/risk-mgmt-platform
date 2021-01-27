@@ -12,4 +12,4 @@ app.get('/*', function(req,res) {
 });
 
 // Attempt to listen on the Heroku env port variable, fall back to 8080 otherwise.
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 80);
