@@ -23,7 +23,7 @@ steps:
   displayName: 'npm install and build'
 - task: CopyFiles@2
   inputs:
-    Contents: 'build/**' # Pull the build directory (React)
+    Contents: 'dist/risk-management-platform/**' # Pull the build directory (React)
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
