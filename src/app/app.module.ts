@@ -66,7 +66,8 @@ const myroutes: Routes = [
   {path: 'edit-task', component: EditTaskComponent},
   {path: 'tasks', component: TaskListComponent},
   {path: 'surveys', component: IssueSurvey},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
