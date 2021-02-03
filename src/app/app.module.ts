@@ -56,6 +56,7 @@ import {DropdownEditorComponent} from './issue-survey/dropdown-editor/dropdown-e
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LandingComponent } from './landing/landing.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 const myroutes: Routes = [
@@ -121,7 +122,8 @@ const myroutes: Routes = [
     DropdownEditorComponent,
     LoginComponent,
     RegisterComponent,
-    LandingComponent
+    LandingComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
