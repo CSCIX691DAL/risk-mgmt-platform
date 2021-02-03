@@ -70,7 +70,8 @@ const myroutes: Routes = [
   {path: 'tasks', component: TaskListComponent},
   {path: 'surveys', component: IssueSurvey},
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent}
 ];
 
 @NgModule({
