@@ -55,10 +55,12 @@ import {LongAnswerEditorComponent} from './issue-survey/long-answer-editor/long-
 import {DropdownEditorComponent} from './issue-survey/dropdown-editor/dropdown-editor.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { LandingComponent } from './landing/landing.component';
 
 
 const myroutes: Routes = [
-  {path: '' , component : DashboardComponent},
+  {path: '' , component : LandingComponent},
+  {path: 'dashboard' , component : DashboardComponent},
   {path: 'categories' , component : RiskCategoriesComponent},
   {path: 'issues' , component : IssueListComponent},
   {path: 'profile' , component : RiskProfileComponent},
@@ -118,7 +120,8 @@ const myroutes: Routes = [
     LongAnswerEditorComponent,
     DropdownEditorComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
