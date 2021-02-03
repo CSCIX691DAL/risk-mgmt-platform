@@ -54,6 +54,7 @@ import {ShortAnswerEditorComponent} from './issue-survey/short-answer-editor/sho
 import {LongAnswerEditorComponent} from './issue-survey/long-answer-editor/long-answer-editor.component';
 import {DropdownEditorComponent} from './issue-survey/dropdown-editor/dropdown-editor.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const myroutes: Routes = [
@@ -115,7 +116,8 @@ const myroutes: Routes = [
     ShortAnswerEditorComponent,
     LongAnswerEditorComponent,
     DropdownEditorComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
