@@ -53,6 +53,7 @@ import { ProfileEditorComponent } from './issue-survey/profile-editor/profile-ed
 import {ShortAnswerEditorComponent} from './issue-survey/short-answer-editor/short-answer-editor.component';
 import {LongAnswerEditorComponent} from './issue-survey/long-answer-editor/long-answer-editor.component';
 import {DropdownEditorComponent} from './issue-survey/dropdown-editor/dropdown-editor.component';
+import { LoginComponent } from './login/login.component';
 
 
 const myroutes: Routes = [
@@ -63,7 +64,8 @@ const myroutes: Routes = [
   {path: 'create-task', component: CreateNewTaskComponent},
   {path: 'edit-task', component: EditTaskComponent},
   {path: 'tasks', component: TaskListComponent},
-  {path: 'surveys', component: IssueSurvey}
+  {path: 'surveys', component: IssueSurvey},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -112,7 +114,8 @@ const myroutes: Routes = [
     IssueSurvey,
     ShortAnswerEditorComponent,
     LongAnswerEditorComponent,
-    DropdownEditorComponent
+    DropdownEditorComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
