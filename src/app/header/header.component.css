@@ -9,3 +9,17 @@ nav h1 {
   font-weight: 700;
   margin-top: 5px;
 }
+
+.signupLink {
+  color: #7C7C7D;
+}
+.loginLink {
+  color: #007BFF;
+  border-radius: 5px;
+  border: 1px solid #007BFF;
+}
+  .loginLink:hover {
+    color: #FFFFFF;
+    background-color: #409cff;
+    border: 1px solid #409cff;
+  }
