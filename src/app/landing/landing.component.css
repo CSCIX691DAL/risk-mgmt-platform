@@ -14,10 +14,24 @@
             font-size: 1.3em;
         }
 
-    .featureImage {
-        min-width: 500px;
-        max-width: 500px;
-        min-height: 500px;
-        height: 500px;
-        background-color: #FFFFFF;
+    .imageCon {
+        min-width: 400px;
+        max-width: 400px;
+        min-height: 400px;
+        height: 400px;
     }
+        .addRiskImage {
+            width: 70%;
+            margin-left: 15%;
+            margin-top:  20%;
+        }
+        .tasksImage {
+            width: 70%;
+            margin-left: 15%;
+            margin-top:  20%;
+        }
+        .surveyImage {
+            width: 70%;
+            margin-left: 15%;
+            margin-top:  23%;
+        }
