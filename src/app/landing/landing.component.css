@@ -1,0 +1,22 @@
+#aboveFoldLandingContainer {
+    width: 100%;
+    min-height: calc(100vh - 77px);
+    max-height: 100vh;
+}
+    .aboveFold_Left_TextContainer {
+        margin-top: calc(50vh - 120px);
+    }
+        .aboveFoldHeading {
+            font-size: 3em;
+        }
+        .aboveFoldSubHeading {
+            font-size: 1.3em;
+        }
+
+    .featureImage {
+        min-width: 500px;
+        max-width: 500px;
+        min-height: 500px;
+        height: 500px;
+        background-color: #FFFFFF;
+    }

@@ -54,10 +54,14 @@ import {ShortAnswerEditorComponent} from './issue-survey/short-answer-editor/sho
 import {LongAnswerEditorComponent} from './issue-survey/long-answer-editor/long-answer-editor.component';
 import {DropdownEditorComponent} from './issue-survey/dropdown-editor/dropdown-editor.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { LandingComponent } from './landing/landing.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 const myroutes: Routes = [
-  {path: '' , component : DashboardComponent},
+  {path: '' , component : LandingComponent},
+  {path: 'dashboard' , component : DashboardComponent},
   {path: 'categories' , component : RiskCategoriesComponent},
   {path: 'issues' , component : IssueListComponent},
   {path: 'profile' , component : RiskProfileComponent},
@@ -65,7 +69,9 @@ const myroutes: Routes = [
   {path: 'edit-task', component: EditTaskComponent},
   {path: 'tasks', component: TaskListComponent},
   {path: 'surveys', component: IssueSurvey},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent}
 ];
 
 @NgModule({
@@ -115,7 +121,10 @@ const myroutes: Routes = [
     ShortAnswerEditorComponent,
     LongAnswerEditorComponent,
     DropdownEditorComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    LandingComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
