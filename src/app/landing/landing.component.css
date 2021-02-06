@@ -1,7 +1,8 @@
 #aboveFoldLandingContainer {
     width: 100%;
-    min-height: calc(100vh - 77px);
+    min-height: calc(100vh - 59px);
     max-height: 100vh;
+    border-bottom: 1px solid #EEEEEE;
 }
     .aboveFold_Left_TextContainer {
         margin-top: calc(50vh - 120px);
