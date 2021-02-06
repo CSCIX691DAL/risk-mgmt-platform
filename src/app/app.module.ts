@@ -57,6 +57,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LandingComponent } from './landing/landing.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AdminDashComponent } from './admin-dash/admin-dash.component';
 
 
 const myroutes: Routes = [
@@ -71,7 +72,8 @@ const myroutes: Routes = [
   {path: 'surveys', component: IssueSurvey},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'forgot-password', component: ForgotPasswordComponent}
+  {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'admin-dashboard', component: AdminDashComponent}
 ];
 
 @NgModule({
@@ -124,7 +126,8 @@ const myroutes: Routes = [
     LoginComponent,
     RegisterComponent,
     LandingComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AdminDashComponent
   ],
   imports: [
     BrowserModule,
