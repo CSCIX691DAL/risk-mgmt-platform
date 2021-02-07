@@ -23,6 +23,8 @@ export class CategoryService {
       new CategoryModel(6, 'IT failure', this.categories[3], 'Ex: website down', false),
       new CategoryModel(7, 'Loss of supplier', this.categories[3], 'Vendor does not renew contract', false),
       new CategoryModel(6, 'Interest rate', this.categories[0], 'Changes in interest rates', true));
+
+    this.updateCategoryArray();
   }
 
   getCategories(): CategoryModel[]{
@@ -30,7 +32,7 @@ export class CategoryService {
   }
 
   // Note - this is inefficient, and goes against standard convention in using Observables - please change this at some point
-  public updateRiskProfileArray(): void {
+  public updateCategoryArray(): void {
 
     // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
     this.categories = [];
@@ -66,7 +68,7 @@ export class CategoryService {
       this.dbService.categoryRef.doc(newCategory.name).set({
         id: newCategory.id,
         name: newCategory.name,
-        parentCategory: newCategory.parentCategory,
+        parentCategory: newCategory.parentCategory.id || null,
         description: newCategory.description,
         isSpeculativeRisk: newCategory.isSpeculativeRisk,
       });
@@ -85,7 +87,15 @@ export class CategoryService {
         category.isSpeculativeRisk);
       // Pushes new IssueModel object to issues array
       this.categories.push(newCategory);
-      console.log(newCategory.id);
+
+      this.dbService.categoryRef.doc(newCategory.name).set({
+        id: newCategory.id,
+        name: newCategory.name,
+        parentCategory: newCategory.parentCategory.id || null,
+        description: newCategory.description,
+        isSpeculativeRisk: newCategory.isSpeculativeRisk,
+      });
+
       // Update screen
       this.triggerToUpdate.next(true);
     }
@@ -98,7 +108,19 @@ export class CategoryService {
     // Note - the Number() is being used here as issue.id wasn't being evaluated as a number otherwise.
     const isInCategoryList = ((obj) => Number(obj.id) === Number(category.id));
     const oldIssueIndex = this.categories.findIndex(isInCategoryList);
+
+    this.dbService.categoryRef.doc(this.categories[oldIssueIndex].name).delete();
+
+    this.dbService.categoryRef.doc(category.name).set({
+      id: category.id,
+      name: category.name,
+      parentCategory: category.parentCategory,
+      description: category.description,
+      isSpeculativeRisk: category.isSpeculativeRisk,
+    });
+
     this.categories[oldIssueIndex] = category;
+
 
     // Update screen
     this.triggerToUpdate.next(true);
