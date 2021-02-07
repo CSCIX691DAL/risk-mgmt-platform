@@ -44,7 +44,7 @@ export class EditTaskComponent implements OnInit {
     );
 
     // TODO: May no longer be needed
-    // this.taskService.editTask(newTask);
+    this.taskService.editTask(newTask);
 
     // TODO: also inefficient - deleting and then creating instead of really editing - blame technical debt
     this.dbService.taskRef.doc(this.currentModel.title).delete();

@@ -15,7 +15,6 @@ export class TaskService {
 
   constructor(private router: Router, private userService: UsersService, private dbService: DbService) {
     this.updateTaskArray();
-    this.reRouteToRefresh();
   }
 
   public static currentCategoryToSort = '';
@@ -129,7 +128,7 @@ export class TaskService {
   public routeBackToHomePage(): void {
     // Quick solution to ensuring that tasks are synced - empty and fetch tasks from db every redirection
     //this.updateTaskArray();
-    this.router.navigate(['tasks']);
+    this.router.navigate(['']);
   }
 
   // A pretty "brute-force" way of handling this, but to refresh the graph we quickly navigate away and back to the dashboard.

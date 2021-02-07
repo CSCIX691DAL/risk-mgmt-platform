@@ -55,7 +55,7 @@ export class CreateNewTaskComponent implements OnInit {
       createdDate: newTask.createdDate
     });
 
-    //this.taskService.addNewTaskToArray(newTask);
+    this.taskService.addNewTaskToArray(newTask);
     this.taskService.routeBackToHomePage();
   }
 
