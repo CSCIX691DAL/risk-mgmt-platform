@@ -73,12 +73,13 @@ export class EditRiskProfileComponent implements OnInit {
     this.dbService.issueRef.doc(this.editModalRiskProfileTitle).delete();
 
     this.dbService.riskProfileRef.doc(this.riskProfile.title).set({
+      id: this.riskProfile.id,
       title: this.riskProfile.title,
       description: this.riskProfile.description,
       likelihood: this.riskProfile.likelihood,
       impact: this.riskProfile.impact,
-      category: this.riskProfile.category,
-      riskCategory: this.riskProfile.riskCategory,
+      category: this.riskProfile.category.id,
+      riskCategory: this.riskProfile.riskCategory.id,
       sourceOfRisk: this.riskProfile.sourceOfRisk
     });
 

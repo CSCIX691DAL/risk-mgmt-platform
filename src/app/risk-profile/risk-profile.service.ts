@@ -4,6 +4,7 @@ import {Subject} from 'rxjs';
 import {CategoryModel} from '../risk-categories/category.model';
 import {CategoryService} from '../risk-categories/category.service';
 import {DbService} from '../db.service';
+import {IssueModel} from '../issue-list/issue.model';
 
 @Injectable({providedIn: 'root'})
 export class RiskProfileService {
@@ -19,7 +20,9 @@ export class RiskProfileService {
     new RiskProfileModel(5, 'Risk Profile 5', 'This is risk profile 5', 5, 5, this.categoryService.categories[4], this.categoryService.categories[4], 'Source Of Risk #5')
   ];
 
-  constructor(public categoryService: CategoryService, public dbService: DbService) {}
+  constructor(public categoryService: CategoryService, public dbService: DbService) {
+    this.updateRiskProfileArray();
+  }
 
   getRiskProfiles(): RiskProfileModel[]{
     return this.riskProfiles.slice();
@@ -30,24 +33,55 @@ export class RiskProfileService {
     // console.log(issue.id);
     this.riskProfiles = this.riskProfiles.filter(x => x.id !== riskProfile.id);
 
-    this.dbService.issueRef.doc(riskProfile.title).delete();
+    this.dbService.riskProfileRef.doc(riskProfile.title).delete();
 
     // console.log(this.issues);
     this.triggerToUpdate.next(true);
   }
 
+  // Note - this is inefficient, and goes against standard convention in using Observables - please change this at some point
+  public updateRiskProfileArray(): void {
+
+    // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
+    this.riskProfiles = [];
+
+    this.dbService.riskProfileRef.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const newRiskProfile = doc.data();
+
+        this.riskProfiles.push(new RiskProfileModel(newRiskProfile.id, newRiskProfile.title, newRiskProfile.description, newRiskProfile.likelihood, newRiskProfile.impact, this.categoryService.categories[newRiskProfile.category], this.categoryService.categories[newRiskProfile.riskCategory], newRiskProfile.sourceOfRisk));
+      });
+      this.triggerToUpdate.next(true);
+    });
+  }
+
   // Add Risk Profile function
   addRiskProfile(riskProfile: RiskProfileModel): void {
+
+    if (riskProfile.description === undefined) {
+      riskProfile.description = '';
+    }
 
     // Array is empty, set new ID to 1
     if (this.riskProfiles.length === 0) {
       // Creates new IssueModel object
       const newIssue = new RiskProfileModel(1, riskProfile.title, riskProfile.description,
         riskProfile.likelihood, riskProfile.impact, riskProfile.category, riskProfile.riskCategory,
-        new Date().toISOString().substr(0, 10), new Date().toISOString().substr(0, 10),
         riskProfile.sourceOfRisk);
       // Pushes new IssueModel object to issues array
       console.log(newIssue.sourceOfRisk);
+
+      this.dbService.riskProfileRef.doc(newIssue.title).set({
+        id: newIssue.id,
+        title: newIssue.title,
+        description: newIssue.description,
+        likelihood: newIssue.likelihood,
+        impact: newIssue.impact,
+        category: newIssue.category.id - 1,
+        riskCategory: newIssue.riskCategory.id - 1,
+        sourceOfRisk: newIssue.sourceOfRisk
+      });
+
       this.riskProfiles.push(newIssue);
       // Update screen
       this.triggerToUpdate.next(true);
@@ -59,10 +93,21 @@ export class RiskProfileService {
       // Creates new IssueModel object
       const newIssue = new RiskProfileModel(max, riskProfile.title, riskProfile.description,
         riskProfile.likelihood, riskProfile.impact, riskProfile.category, riskProfile.riskCategory,
-        new Date().toISOString().substr(0, 10), new Date().toISOString().substr(0, 10),
         riskProfile.sourceOfRisk);
       // Pushes new IssueModel object to issues array
       console.log(newIssue.sourceOfRisk);
+
+      this.dbService.riskProfileRef.doc(newIssue.title).set({
+        id: newIssue.id,
+        title: newIssue.title,
+        description: newIssue.description,
+        likelihood: newIssue.likelihood,
+        impact: newIssue.impact,
+        category: newIssue.category.id - 1,
+        riskCategory: newIssue.riskCategory.id - 1,
+        sourceOfRisk: newIssue.sourceOfRisk
+      });
+
       this.riskProfiles.push(newIssue);
       // Update screen
       this.triggerToUpdate.next(true);
@@ -76,7 +121,6 @@ export class RiskProfileService {
     console.log(riskProfile);
     const newIssue = new RiskProfileModel(riskProfile.id, riskProfile.title, riskProfile.description,
       riskProfile.likelihood, riskProfile.impact, riskProfile.category, riskProfile.riskCategory,
-      riskProfile.dateCreated, new Date().toISOString().substr(0, 10),
       riskProfile.sourceOfRisk);
     // Put new object in location of object it's replacing
     // Note - the Number() is being used here as issue.id wasn't being evaluated as a number otherwise.

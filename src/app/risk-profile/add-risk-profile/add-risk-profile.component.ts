@@ -59,15 +59,7 @@ export class AddRiskProfileComponent implements OnInit {
     console.log(this.riskProfile.sourceOfRisk);
     this.riskProfile.riskCategory = this.riskProfile.category;
 
-    this.dbService.riskProfileRef.doc(this.riskProfile.title).set({
-      title: this.riskProfile.title,
-      description: this.riskProfile.description,
-      likelihood: this.riskProfile.likelihood,
-      impact: this.riskProfile.impact,
-      category: this.riskProfile.category,
-      riskCategory: this.riskProfile.riskCategory,
-      sourceOfRisk: this.riskProfile.sourceOfRisk
-    });
+    console.log(this.riskProfile);
 
     this.riskProfileService.addRiskProfile(this.riskProfile);
     this.modalService.dismissAll();
