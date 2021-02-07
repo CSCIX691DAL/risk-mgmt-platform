@@ -24,6 +24,10 @@ export class TaskItemComponent implements OnInit {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm - using a JS dialog to handle yes/no confirmation
     if (window.confirm('Are you sure that you would like to delete Task: ' + this.taskItem.title + '?')) {
       this.taskItem.isDeleted = true;
+
+      // Now attempting to directly remove them in firestore - no more soft deletes
+      this.taskService.dbService.taskRef.doc(this.taskItem.title).delete();
+
       this.taskService.routeBackToHomePage();
     }
   }
