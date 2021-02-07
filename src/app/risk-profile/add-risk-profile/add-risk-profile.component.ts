@@ -3,6 +3,7 @@ import {RiskProfileModel} from '../risk-profile.model';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {RiskProfileService} from '../risk-profile.service';
 import {CategoryService} from '../../risk-categories/category.service';
+import {DbService} from '../../db.service';
 
 @Component({
   selector: 'app-add-risk-profile',
@@ -21,11 +22,11 @@ export class AddRiskProfileComponent implements OnInit {
 
   closeResult = '';
 
-  riskProfile: RiskProfileModel = new RiskProfileModel(0, '', '', 0, 0, this.categoryService.categories[0], this.categoryService.categories[0], '00/00/0000', '00/00/0000', 'Source of Risk');
+  riskProfile: RiskProfileModel = new RiskProfileModel(0, '', '', 0, 0, this.categoryService.categories[0], this.categoryService.categories[0], 'Source of Risk');
 
   constructor( private modalService: NgbModal,
     private riskProfileService: RiskProfileService,
-    public categoryService: CategoryService ) {}
+    public categoryService: CategoryService, public dbService: DbService) {}
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -57,6 +58,17 @@ export class AddRiskProfileComponent implements OnInit {
   OnAddRiskProfile(): void {
     console.log(this.riskProfile.sourceOfRisk);
     this.riskProfile.riskCategory = this.riskProfile.category;
+
+    this.dbService.riskProfileRef.doc(this.riskProfile.title).set({
+      title: this.riskProfile.title,
+      description: this.riskProfile.description,
+      likelihood: this.riskProfile.likelihood,
+      impact: this.riskProfile.impact,
+      category: this.riskProfile.category,
+      riskCategory: this.riskProfile.riskCategory,
+      sourceOfRisk: this.riskProfile.sourceOfRisk
+    });
+
     this.riskProfileService.addRiskProfile(this.riskProfile);
     this.modalService.dismissAll();
   }

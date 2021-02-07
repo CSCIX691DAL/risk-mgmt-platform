@@ -16,7 +16,7 @@ export class RiskProfileModel
   levelOfRisk: number;
 
   constructor(id: number, title: string, description: string, likelihood: number, impact: number,
-              category: CategoryModel, riskCategory: CategoryModel, dateCreated: string, dateModified: string, sourceOfRisk: string) {
+              category: CategoryModel, riskCategory: CategoryModel, sourceOfRisk: string) {
     this.id = id;
     this.title = title;
     this.description = description;
@@ -24,8 +24,6 @@ export class RiskProfileModel
     this.impact = impact;
     this.category = category;
     this.riskCategory = riskCategory;
-    this.dateCreated = dateCreated;
-    this.dateModified = dateModified;
     this.sourceOfRisk = sourceOfRisk;
   }
 
