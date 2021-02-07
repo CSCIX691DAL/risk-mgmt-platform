@@ -21,6 +21,10 @@
                                 <h1>Register</h1>
                             </div>
 
+                            <div class="col-md-12" *ngIf="!passwordMatch">
+                                <p class="text-danger">Passwords do not match.</p>
+                            </div>
+
                             <!-- Email -->
                             <div class="col-md-8 mt-4 pt-1 pb-1">
 
@@ -46,7 +50,7 @@
 
                                 <label for="registerConfirmPassword" class="float-left">Confirm Password</label>
                                 <div class="input-group mb-3">
-                                    <input type="password" class="form-control" id="registerConfirmPassword" name="registerConfirmPassword">
+                                    <input type="password" class="form-control" id="registerConfirmPassword" name="registerConfirmPassword" [formControl]="registerConfirmPassword">
                                 </div>
 
                             </div>

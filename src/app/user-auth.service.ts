@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Observable} from 'rxjs';
 import firebase from 'firebase';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class UserAuthService {
   user$: Observable<firebase.User>;
 
   // Source: https://www.positronx.io/firebase-authentication-in-angular-8-with-angularfire2/
-  constructor(public fireAuth: AngularFireAuth) {
+  constructor(public fireAuth: AngularFireAuth, private router: Router) {
     this.user$ = fireAuth.authState;
   }
 
@@ -32,9 +33,7 @@ export class UserAuthService {
 
   userSignOut() {
     this.fireAuth.signOut();
-    console.log('Signed out');
-
-    console.log(this.user$);
+    this.router.navigate(['']);
   }
 
 
