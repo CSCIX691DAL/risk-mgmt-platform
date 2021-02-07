@@ -1,7 +1,23 @@
-h5:hover {
+.taskTitleContainer {
+
+}
+.taskTitleContainer h5:hover {
   font-weight: bolder;
   cursor: pointer;
 }
 .taskListContainer {
   margin-bottom: 15px;
 }
+.tasksNavigationBar {
+  height: 56px;
+}
+  .tasksNavigationBar button {
+    height: 36px;
+    margin-top: 10px;
+    padding-top: 3px;
+  }
+  .tasksNavigationBar input {
+    width: 250px;
+    height: 36px;
+    margin-top: 10px;
+  }
