@@ -5,8 +5,6 @@ export class IssueModel
   title: string;
   description: string;
   // Added Oct 20th
-  dateCreated: string;
-  dateModified: string;
   modifiedBy: number;
   riskCategory: string;
   assignee: number;
@@ -14,13 +12,11 @@ export class IssueModel
   parentIssue: number;
 
   // Constructor
-  constructor(id: number, title: string, description: string, dateCreated: string, dateModified: string,
+  constructor(id: number, title: string, description: string,
               modifiedBy: number, riskCategory: string, assignee: number, parentIssue: number) {
     this.id = id;
     this.title = title;
     this.description = description;
-    this.dateCreated = dateCreated;
-    this.dateModified = dateModified;
     this.modifiedBy = modifiedBy;
     this.riskCategory = riskCategory;
     this.assignee = assignee;
