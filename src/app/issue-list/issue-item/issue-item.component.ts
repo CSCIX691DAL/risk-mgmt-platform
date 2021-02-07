@@ -18,6 +18,7 @@ export class IssueItemComponent implements OnInit {
 
   // Delete issue function : Relies on deleteIssue() from issue.service.ts
   onDeleteIssue(): void {
+    console.log(this.issueItem);
     this.issueService.deleteIssue(this.issueItem);
   }
 
