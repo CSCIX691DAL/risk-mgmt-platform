@@ -8,6 +8,9 @@ import {TaskModel} from '../task-list/task.model';
 export class IssueService{
 
   constructor(public dbService: DbService) {
+    this.updateIssueArray();
+
+    this.triggerToUpdate.next(true);
   }
 
   // Updates issue list
