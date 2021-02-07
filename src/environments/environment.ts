@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebase: {
+  firebaseConfig: {
     apiKey: 'AIzaSyD-vlb6CLl8Lq25ykjHsHyhsQEOfbR-xi4',
     authDomain: 'risk-management-platform-a1831.firebaseapp.com',
     projectId: 'risk-management-platform-a1831',

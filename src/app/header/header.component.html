@@ -14,7 +14,7 @@
   <!-- Left Links - Collapse into Hamburger menu on small screens -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto" *ngIf="(userAuthService.user$ | async)">
 
       <li class="nav-item">
         <a class="nav-link" routerLink="/dashboard">Dashboard</a>
@@ -49,13 +49,17 @@
       Login / Register links
       TODO: Hide when user logs in
       -->
-      <div>
+      <div *ngIf="!(userAuthService.user$ | async)">
         <div class="float-left">
           <a class="nav-link signupLink" routerLink="/register">Sign Up</a>
         </div>
         <div class="float-left ml-3">
           <a class="nav-link loginLink" routerLink="/login">Login</a>
         </div>
+      </div>
+
+      <div *ngIf="(userAuthService.user$ | async)">
+        <button class="btn btn-danger" (click)="userAuthService.userSignOut()">Sign Out</button>
       </div>
 
       <!--
