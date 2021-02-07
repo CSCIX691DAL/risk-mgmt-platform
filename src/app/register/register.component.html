@@ -26,7 +26,7 @@
 
                                 <label for="registerEmail" class="float-left">Email</label>
                                 <div class="input-group mb-3">
-                                    <input type="email" class="form-control" id="registerEmail" name="registerEmail">
+                                    <input type="email" class="form-control" id="registerEmail" name="registerEmail" [formControl]="registerEmail">
                                 </div>
 
                             </div>
@@ -36,7 +36,7 @@
 
                                 <label for="registerPassword" class="float-left">Password</label>
                                 <div class="input-group mb-3">
-                                    <input type="password" class="form-control" id="registerPassword" name="registerPassword">
+                                    <input type="password" class="form-control" id="registerPassword" name="registerPassword" [formControl]="registerPassword">
                                 </div>
 
                             </div>
@@ -63,7 +63,7 @@
 
                             <!-- Register Button -->
                             <div class="col-md-8 pt-2 pb-5 text-center">
-                                <button type="submit" class="btn btn-primary px-5 py-2">Register</button>
+                                <button type="submit" class="btn btn-primary px-5 py-2" (click)="onSubmit()">Register</button>
                             </div>
 
                             <!-- Link to Login Page -->

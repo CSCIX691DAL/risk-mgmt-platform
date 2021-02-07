@@ -62,6 +62,7 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {DbService} from './db.service';
+import {UserAuthService} from './user-auth.service';
 
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
@@ -142,10 +143,10 @@ const myroutes: Routes = [
     ReactiveFormsModule,
     ChartsModule,
     NgbModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
   ],
-  providers: [TaskService],
+  providers: [TaskService, UserAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
