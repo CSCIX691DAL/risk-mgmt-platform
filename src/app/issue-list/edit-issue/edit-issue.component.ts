@@ -3,6 +3,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {IssueService} from '../issue.service';
 import {IssueModel} from '../issue.model';
 import {CategoryService} from '../../risk-categories/category.service';
+import {DbService} from '../../db.service';
 
 @Component({
   selector: 'app-edit-issue',
@@ -22,12 +23,13 @@ export class EditIssueComponent implements OnInit {
 
   closeResult = '';
 
-  issue: IssueModel = new IssueModel(0, 'cvbcv', 'cvbcvb', 'asd', 'asd', 12345678, 'asd', 0, 0);
+  issue: IssueModel = new IssueModel(0, 'cvbcv', 'cvbcvb', 12345678, 'asd', 0, 0);
 
   constructor(
     private modalService: NgbModal,
     private issueService: IssueService,
-    public categoryService: CategoryService ) {}
+    public categoryService: CategoryService,
+    public dbService: DbService) {}
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -60,7 +62,19 @@ export class EditIssueComponent implements OnInit {
 
   // Edit issue function
   OnEdit(): void {
+    this.dbService.issueRef.doc(this.editModalTitle).delete();
+
     this.issueService.editIssue(this.issue);
+
+    this.dbService.issueRef.doc(this.issue.title).set({
+      title: this.issue.title,
+      description: this.issue.description,
+      modifiedBy: this.issue.modifiedBy,
+      riskCategory: this.issue.riskCategory,
+      assignee: this.issue.assignee,
+      parentIssue: this.issue.parentIssue
+    });
+
     this.modalService.dismissAll();
   }
 

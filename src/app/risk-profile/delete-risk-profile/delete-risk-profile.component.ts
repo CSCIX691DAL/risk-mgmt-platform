@@ -18,7 +18,7 @@ export class DeleteRiskProfileComponent implements OnInit {
 
   closeResult = '';
 
-  riskProfile: RiskProfileModel = new RiskProfileModel(0, 'cvbcv', 'cvbcvb', 25, 50, this.categoryService.categories[0], this.categoryService.categories[1], 'asd', 'asd', 'Source of Risk');
+  riskProfile: RiskProfileModel = new RiskProfileModel(0, 'cvbcv', 'cvbcvb', 25, 50, this.categoryService.categories[0], this.categoryService.categories[1], 'Source of Risk');
 
   constructor( private modalService: NgbModal, private riskProfileService: RiskProfileService, private categoryService: CategoryService ) {}
 

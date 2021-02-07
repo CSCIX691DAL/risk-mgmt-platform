@@ -58,7 +58,10 @@ import { RegisterComponent } from './register/register.component';
 import { LandingComponent } from './landing/landing.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
-
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {DbService} from './db.service';
 
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
@@ -138,7 +141,9 @@ const myroutes: Routes = [
     ChartsModule,
     ReactiveFormsModule,
     ChartsModule,
-    NgbModule
+    NgbModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]

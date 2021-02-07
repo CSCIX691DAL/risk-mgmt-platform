@@ -19,7 +19,7 @@ export class EditCategoryComponent implements OnInit {
 
   closeResult = '';
 
-  category: CategoryModel = new CategoryModel(0, 'cvb', this.categoryService.categories[0], 'cvbcbcvb', false, 'asd', 'dsa');
+  category: CategoryModel = new CategoryModel(0, 'cvb', this.categoryService.categories[0], 'cvbcbcvb', false);
 
   constructor(private modalService: NgbModal, public categoryService: CategoryService ) {}
 

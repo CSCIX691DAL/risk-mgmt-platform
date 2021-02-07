@@ -9,8 +9,9 @@ export class FilterByCategoryPipe implements PipeTransform {
 
     var sortedList = [];
 
+    console.log(value[0]);
     console.log("value: " + value[0].riskCategory);
-    console.log("category: " + catName)
+    console.log("category: " + catName);
 
     value.forEach(
       element => {

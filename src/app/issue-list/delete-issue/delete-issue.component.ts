@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {IssueService} from '../issue.service';
 import {IssueModel} from '../issue.model';
+import {DbService} from '../../db.service';
 
 @Component({
   selector: 'app-delete-issue',
@@ -17,9 +18,9 @@ export class DeleteIssueComponent implements OnInit {
 
   closeResult = '';
 
-  issue: IssueModel = new IssueModel(0, 'cvbcv', 'cvbcvb', 'asd', 'asd', 12345678, 'asd', 0, 0);
+  issue: IssueModel = new IssueModel(0, 'cvbcv', 'cvbcvb', 12345678, 'asd', 0, 0);
 
-  constructor( private modalService: NgbModal, private issueService: IssueService ) {}
+  constructor( private modalService: NgbModal, private issueService: IssueService, public dbService: DbService ) {}
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -48,7 +49,12 @@ export class DeleteIssueComponent implements OnInit {
 
   // Delete issue function
   OnDelete(): void {
+    console.log(this.issue);
+
+    this.dbService.issueRef.doc(this.issue.title).delete();
+
     this.issueService.deleteIssue(this.issue);
+
     this.modalService.dismissAll();
   }
 
