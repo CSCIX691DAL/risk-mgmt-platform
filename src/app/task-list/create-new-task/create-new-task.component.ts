@@ -46,7 +46,7 @@ export class CreateNewTaskComponent implements OnInit {
         false
     );
 
-    // Note - task's title is being used as ID - not too great
+    // TODO: Note - task's title is being used as ID - not too great
     this.dbService.taskRef.doc(newTask.title).set({
       title: newTask.title,
       createdByID: newTask.createdBy.id,
