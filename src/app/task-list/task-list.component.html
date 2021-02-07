@@ -1,73 +1,73 @@
 <div class="container-fluid w-100 mw-100 px-0 m-0">
 
-      <!-- Tasks Navigation Bar -->
-      <div class="row tasksNavigationBar px-2 m-0">
-        <div class="col-md-12">
-          <div class="row p-0">
+  <!-- Tasks Navigation Bar -->
+  <div class="row tasksNavigationBar px-2 m-0">
+    <div class="col-md-12">
+      <div class="row p-0">
 
-            <!-- Title of component component admin is currently viewing -->
-            <div class="col-md-6">
-              <h3 class="mt-2 pt-1">Task List</h3>
+        <!-- Title of component component admin is currently viewing -->
+        <div class="col-md-6">
+          <h3 class="mt-2 pt-1">Task List</h3>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="col-md-6">
+          <div class="row justify-content-end">
+
+            <!-- Add new Task -->
+            <div>
+              <button routerLink="/create-task" class="btn btn-outline-success float-right mr-md-3">+ New Task</button>
             </div>
 
-            <!-- Search Bar -->
-            <div class="col-md-6">
-              <div class="row justify-content-end">
-
-                <!-- Add new Task -->
-                <div>
-                  <button routerLink="/create-task" class="btn btn-outline-success float-right mr-md-3">+ New Task</button>
-                </div>
-
-                <!-- Search Tasks -->
-                <div class="pr-md-3">
-                  <input class="form-control float-right tasks-SearchBar" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="taskSearchText">
-                </div>
-
-              </div>
+            <!-- Search Tasks -->
+            <div class="pr-md-3">
+              <input class="form-control float-right tasks-SearchBar" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="taskSearchText">
             </div>
 
           </div>
         </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Task Container -->
+  <div class="row p-0 m-0 mb-2">
+    <div class="col-md-12">
+
+    <!-- Task Titles -->
+    <div class="row border-bottom mt-2 taskTitleContainer">
+
+      <div class="col-2">
+        <h5 class="text-center" (click)="taskService.setSortedCategory('title')">Title</h5>
       </div>
 
-      <!-- Task Container -->
-      <div class="row p-0 m-0 mb-2">
-        <div class="col-md-12">
-
-        <!-- Task Titles -->
-        <div class="row border-bottom mt-2 taskTitleContainer">
-
-          <div class="col-2">
-            <h5 class="text-center" (click)="taskService.setSortedCategory('title')">Title</h5>
-          </div>
-
-          <div class="col-2">
-            <h5 class="text-center" (click)="taskService.setSortedCategory('source')">Created By</h5>
-          </div>
-
-          <div class="col-2">
-            <h5 class="text-center" (click)="taskService.setSortedCategory('status')">Status</h5>
-          </div>
-
-          <div class="col-2">
-            <h5 class="text-center" (click)="taskService.setSortedCategory('dueDate')">Date Created</h5>
-          </div>
-
-          <div class="col-2">
-            <h5 class="text-center" (click)="taskService.setSortedCategory('dueDate')">Due Date</h5>
-          </div>
-
-          <div class="col-2">
-            <h5 class="text-center">Actions</h5>
-          </div>
-
-        </div>
-
-        <!-- Task Items -->
-        <app-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem"></app-task-item>
-
-        </div>
+      <div class="col-2">
+        <h5 class="text-center" (click)="taskService.setSortedCategory('source')">Created By</h5>
       </div>
+
+      <div class="col-2">
+        <h5 class="text-center" (click)="taskService.setSortedCategory('status')">Status</h5>
+      </div>
+
+      <div class="col-2">
+        <h5 class="text-center" (click)="taskService.setSortedCategory('dueDate')">Date Created</h5>
+      </div>
+
+      <div class="col-2">
+        <h5 class="text-center" (click)="taskService.setSortedCategory('dueDate')">Due Date</h5>
+      </div>
+
+      <div class="col-2">
+        <h5 class="text-center">Actions</h5>
+      </div>
+
+    </div>
+
+    <!-- Task Items -->
+    <app-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem"></app-task-item>
+
+    </div>
+  </div>
 
 </div>

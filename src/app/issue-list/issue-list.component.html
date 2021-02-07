@@ -1,6 +1,39 @@
 <!-- Content Container -->
 <div id="issueListContainer" class="container-fluid">
 
+  <!-- Tasks Navigation Bar -->
+  <div class="row tasksNavigationBar px-2 m-0">
+    <div class="col-md-12">
+      <div class="row p-0">
+
+        <!-- Title of component component admin is currently viewing -->
+        <div class="col-md-6">
+          <h3 class="mt-2 pt-1">Issue List</h3>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="col-md-6">
+          <div class="row justify-content-end">
+
+            <!-- Search Issues bar -->
+            <form class="form-inline float-right">
+              <input class="form-control" type="text" placeholder="Search" name="issuelist" [(ngModel)]="IssueSearchText" value="Search">
+            </form>
+
+            <!-- Add issue modal component -->
+            <app-add-issue
+              addTextName="+ Issue"
+              [addIssue]="issueItem"
+              class="float-right">
+            </app-add-issue>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- Body Header Container -->
   <div class="row justify-content-center addIssueMarginAndBorder">
     <div id="addIssueContainer" class="container">
