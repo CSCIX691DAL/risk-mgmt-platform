@@ -50,7 +50,6 @@ Thumbs.db
 .firebaserc
 
 # Not the greatest solution, but preventing credentials from getting into repo
-environment.ts
-
+.src/environments/*
 
 firebase-debug.log
