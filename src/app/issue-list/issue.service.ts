@@ -10,7 +10,6 @@ export class IssueService{
   constructor(public dbService: DbService) {
     this.updateIssueArray();
 
-    this.triggerToUpdate.next(true);
   }
 
   // Updates issue list
@@ -41,6 +40,7 @@ export class IssueService{
 
         this.issues.push(new IssueModel(newIssue.id, newIssue.title, newIssue.description, newIssue.modifiedBy, newIssue.riskCategory, newIssue.assigneee, newIssue.parentIssue));
       });
+      this.triggerToUpdate.next(true);
     });
   }
 
