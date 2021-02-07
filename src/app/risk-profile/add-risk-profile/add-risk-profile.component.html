@@ -31,11 +31,9 @@
       <div class="input-group mb-3">
         <select class="form-control" id="addCategory" name="addCategory" ngModel [(ngModel)]="riskProfile.category">
           <option selected value="">Select a Category</option>
-
           <option *ngFor="let item of categoryService.categories" [ngValue]=item>
             {{ item.name }}
           </option>
-
         </select>
       </div>
 
