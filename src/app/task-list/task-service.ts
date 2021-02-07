@@ -13,7 +13,7 @@ export class TaskService {
 
 
 
-  constructor(private router: Router, private userService: UsersService, private dbService: DbService) {
+  constructor(private router: Router, private userService: UsersService, public dbService: DbService) {
     this.updateTaskArray();
   }
 
