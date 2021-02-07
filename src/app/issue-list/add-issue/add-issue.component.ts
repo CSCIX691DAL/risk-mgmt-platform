@@ -3,6 +3,7 @@ import {IssueModel} from '../issue.model';
 import {IssueService} from '../issue.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {CategoryService} from '../../risk-categories/category.service';
+import {DbService} from '../../db.service';
 
 @Component({
   selector: 'app-add-issue',
@@ -20,12 +21,13 @@ export class AddIssueComponent implements OnInit {
 
   closeResult = '';
 
-  issue: IssueModel = new IssueModel(0, 'cvb', 'cvbcvb', 'asd', 'asd', 12345678, 'asd', 0, 0);
+  issue: IssueModel = new IssueModel(0, 'cvb', 'cvbcvb',  12345678, 'asd', 0, 0);
 
   constructor(
     private modalService: NgbModal,
     private issueService: IssueService,
-    public categoryService: CategoryService ) {
+    public categoryService: CategoryService,
+    public dbService: DbService) {
 
   }
 
@@ -58,6 +60,16 @@ export class AddIssueComponent implements OnInit {
   // Add issue function
   OnAdd(): void {
     this.issueService.addIssue(this.issue);
+
+    this.dbService.issueRef.doc(this.issue.title).set({
+      title: this.issue.title,
+      description: this.issue.description,
+      modifiedBy: this.issue.modifiedBy,
+      riskCategory: this.issue.riskCategory,
+      assignee: this.issue.assignee,
+      parentIssue: this.issue.parentIssue
+    });
+
     this.modalService.dismissAll();
   }
 

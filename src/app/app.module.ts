@@ -53,7 +53,10 @@ import { ProfileEditorComponent } from './issue-survey/profile-editor/profile-ed
 import {ShortAnswerEditorComponent} from './issue-survey/short-answer-editor/short-answer-editor.component';
 import {LongAnswerEditorComponent} from './issue-survey/long-answer-editor/long-answer-editor.component';
 import {DropdownEditorComponent} from './issue-survey/dropdown-editor/dropdown-editor.component';
-
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {DbService} from './db.service';
 
 const myroutes: Routes = [
   {path: '' , component : DashboardComponent},
@@ -112,7 +115,7 @@ const myroutes: Routes = [
     IssueSurvey,
     ShortAnswerEditorComponent,
     LongAnswerEditorComponent,
-    DropdownEditorComponent
+    DropdownEditorComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,7 +126,9 @@ const myroutes: Routes = [
     ChartsModule,
     ReactiveFormsModule,
     ChartsModule,
-    NgbModule
+    NgbModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]

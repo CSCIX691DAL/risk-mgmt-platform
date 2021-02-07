@@ -3,6 +3,7 @@ import {RiskProfileModel} from '../risk-profile.model';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {RiskProfileService} from '../risk-profile.service';
 import {CategoryService} from '../../risk-categories/category.service';
+import {DbService} from '../../db.service';
 
 @Component({
   selector: 'app-edit-risk-profile',
@@ -25,11 +26,11 @@ export class EditRiskProfileComponent implements OnInit {
   closeResult = '';
 
   // tslint:disable-next-line:max-line-length
-  riskProfile: RiskProfileModel = new RiskProfileModel(0, 'cvbcv', 'cvbcvb', 25, 50, this.categoryService.categories[0], this.categoryService.categories[0], '00/00/0000', '00/00/0000', 'Source of Risk');
+  riskProfile: RiskProfileModel = new RiskProfileModel(0, 'cvbcv', 'cvbcvb', 25, 50, this.categoryService.categories[0], this.categoryService.categories[0], 'Source of Risk');
 
   constructor( private modalService: NgbModal,
     private riskProfileService: RiskProfileService,
-    public categoryService: CategoryService ) {}
+    public categoryService: CategoryService, public dbService: DbService ) {}
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -65,9 +66,23 @@ export class EditRiskProfileComponent implements OnInit {
   OnEditRiskProfile(): void {
     console.log("Saving Risk Profile");
     console.log(this.riskProfile);
-    console.log(this.editRiskProfile.impact)
+    console.log(this.editRiskProfile.impact);
     this.riskProfile.category = this.editRiskProfile.category;
     this.riskProfile.riskCategory = this.editRiskProfile.category;
+
+    this.dbService.issueRef.doc(this.editModalRiskProfileTitle).delete();
+
+    this.dbService.riskProfileRef.doc(this.riskProfile.title).set({
+      id: this.riskProfile.id,
+      title: this.riskProfile.title,
+      description: this.riskProfile.description,
+      likelihood: this.riskProfile.likelihood,
+      impact: this.riskProfile.impact,
+      category: this.riskProfile.category.id,
+      riskCategory: this.riskProfile.riskCategory.id,
+      sourceOfRisk: this.riskProfile.sourceOfRisk
+    });
+
     this.riskProfileService.editRiskProfile(this.riskProfile);
     this.modalService.dismissAll();
   }
