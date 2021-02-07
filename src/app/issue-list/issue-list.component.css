@@ -3,15 +3,13 @@
   height: 60px;
   border-bottom: 1px solid #EEEEEE;
 }
-.issuesNavigationBar button {
-  height: 36px;
-  margin-top: 11px;
-  padding-top: 4.5px;
-}
-.issuesNavigationBar input {
-  width: 250px;
-  height: 36px;
-  margin-top: 11px;
+  .issuesNavigationBar input {
+    width: 250px;
+    height: 36px;
+    margin-top: 11px;
+  }
+.issuesNavigationBar h3 {
+  font-weight: 700;
 }
 .addIssueMarginAndBorder {
   margin-bottom: 15px;
