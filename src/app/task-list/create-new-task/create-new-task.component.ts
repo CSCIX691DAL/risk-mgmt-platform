@@ -4,6 +4,7 @@ import {TaskModel} from '../task.model';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UsersService} from '../../users.service';
 import {UsersModel} from '../../users.model';
+import {DbService} from '../../db.service';
 
 @Component({
   selector: 'app-create-new-task',
@@ -12,7 +13,7 @@ import {UsersModel} from '../../users.model';
 })
 export class CreateNewTaskComponent implements OnInit {
 
-  constructor(taskService: TaskService, public userService: UsersService) {
+  constructor(taskService: TaskService, public userService: UsersService, private dbService: DbService) {
     this.taskService = taskService;
   }
 
@@ -35,15 +36,26 @@ export class CreateNewTaskComponent implements OnInit {
       this.newTaskForm.value.taskStatus = 'In Progress';
     }
     console.log(this.newTaskForm.value.taskStatus);
-    this.taskService.addNewTaskToArray( new TaskModel (
-      this.newTaskForm.value.taskTitle,
-      this.newTaskForm.value.createdBy,
-      this.newTaskForm.value.taskStatus,
-      new Date(this.newTaskForm.value.taskDueDate),
-      new Date(),
-      false
-    ));
-    console.log(this.newTaskForm.value.taskDueDate.valueAsDate);
+
+    const newTask =  new TaskModel (
+        this.newTaskForm.value.taskTitle,
+        this.newTaskForm.value.createdBy,
+        this.newTaskForm.value.taskStatus,
+        new Date(this.newTaskForm.value.taskDueDate),
+        new Date(),
+        false
+    );
+
+    // Note - task's title is being used as ID - not too great
+    this.dbService.taskRef.doc(newTask.title).set({
+      title: newTask.title,
+      createdByID: newTask.createdBy.id,
+      status: newTask.status,
+      dueDate: newTask.dueDate,
+      createdDate: newTask.createdDate
+    });
+
+    //this.taskService.addNewTaskToArray(newTask);
     this.taskService.routeBackToHomePage();
   }
 
