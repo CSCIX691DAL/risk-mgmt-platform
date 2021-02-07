@@ -69,7 +69,6 @@ export class RiskProfileService {
         riskProfile.likelihood, riskProfile.impact, riskProfile.category, riskProfile.riskCategory,
         riskProfile.sourceOfRisk);
       // Pushes new IssueModel object to issues array
-      console.log(newIssue.sourceOfRisk);
 
       this.dbService.riskProfileRef.doc(newIssue.title).set({
         id: newIssue.id,

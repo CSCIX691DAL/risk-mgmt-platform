@@ -19,7 +19,7 @@ export class AddCategoryComponent implements OnInit {
 
   closeResult = '';
 
-  category: CategoryModel = new CategoryModel(0, 'cvb', null, 'cvbcbcvb', false, 'asd', 'asd');
+  category: CategoryModel = new CategoryModel(0, 'cvb', null, 'cvbcbcvb', false);
 
   constructor( private modalService: NgbModal, private categoryService: CategoryService ) { }
 

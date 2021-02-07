@@ -6,19 +6,15 @@ export class CategoryModel
   parentCategory: CategoryModel;
   description: string;
   isSpeculativeRisk: boolean;
-  dateCreated: string;
-  dateModified: string;
 
   // Constructor
   constructor(id: number, name: string, parentCategory: CategoryModel, description: string,
-              isSpeculativeRisk: boolean, dateCreated: string, dateModified: string) {
+              isSpeculativeRisk: boolean) {
     this.id = id;
     this.name = name;
     this.parentCategory = parentCategory;
     this.description = description;
     this.isSpeculativeRisk = isSpeculativeRisk;
-    this.dateCreated = dateCreated;
-    this.dateModified = dateModified;
   }
 
   // Get Parent Name

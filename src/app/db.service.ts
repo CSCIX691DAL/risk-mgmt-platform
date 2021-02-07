@@ -12,6 +12,7 @@ export class DbService {
   taskRef: CollectionReference;
   issueRef: CollectionReference;
   riskProfileRef: CollectionReference;
+  categoryRef: CollectionReference
 
   constructor(firestore: AngularFirestore) {
     /* Thanks to Quince for the following solution to get a value from firestore documents
@@ -19,5 +20,6 @@ export class DbService {
     this.taskRef = firestore.firestore.collection(`task`);
     this.issueRef = firestore.firestore.collection(`issues`);
     this.riskProfileRef = firestore.firestore.collection('riskProfiles');
+    this.categoryRef = firestore.firestore.collection('categories');
   }
 }
