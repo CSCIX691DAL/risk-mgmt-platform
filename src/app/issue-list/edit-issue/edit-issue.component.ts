@@ -23,7 +23,7 @@ export class EditIssueComponent implements OnInit {
 
   closeResult = '';
 
-  issue: IssueModel = new IssueModel(0, 'cvbcv', 'cvbcvb', 'asd', 'asd', 12345678, 'asd', 0, 0);
+  issue: IssueModel = new IssueModel(0, 'cvbcv', 'cvbcvb', 12345678, 'asd', 0, 0);
 
   constructor(
     private modalService: NgbModal,
@@ -62,9 +62,9 @@ export class EditIssueComponent implements OnInit {
 
   // Edit issue function
   OnEdit(): void {
-    this.issueService.editIssue(this.issue);
+    this.dbService.issueRef.doc(this.editModalTitle).delete();
 
-    this.dbService.issueRef.doc(this.issue.title).delete();
+    this.issueService.editIssue(this.issue);
 
     this.dbService.issueRef.doc(this.issue.title).set({
       title: this.issue.title,

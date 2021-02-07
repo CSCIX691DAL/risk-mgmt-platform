@@ -48,6 +48,9 @@ export class IssueService{
   deleteIssue(issue: IssueModel): void {
     // console.log(issue.id);
     this.issues = this.issues.filter(x => x.id !== issue.id);
+
+    this.dbService.issueRef.doc(issue.title).delete();
+
     // console.log(this.issues);
     this.triggerToUpdate.next(true);
   }
