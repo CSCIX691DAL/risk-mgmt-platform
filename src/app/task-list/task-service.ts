@@ -4,14 +4,12 @@ import {Router} from '@angular/router';
 import {TasksSummaryComponent} from '../tasks-summary/tasks-summary.component';
 import {CategoryModel} from '../risk-categories/category.model';
 import {UsersService} from '../users.service';
+import {DbService} from '../db.service';
 
 // Using a injectable to share the same info between components
 // https://angular.io/guide/dependency-injection & https://angular.io/guide/architecture-services
 @Injectable()
 export class TaskService {
-
-
-  constructor(private router: Router, private userService: UsersService) {}
 
   public static currentCategoryToSort = '';
   public static reverseSort = false;
@@ -24,6 +22,23 @@ export class TaskService {
     new TaskModel('B - Example Task', this.userService.categories[2], 'Completed', new Date(2018, 1, 7), new Date(2018, 1, 2),false),
     new TaskModel('D - Example Task', this.userService.categories[3], 'In Progress', new Date(2019, 7, 8), new Date(2019, 4, 3),false),
   ];
+
+  constructor(private router: Router, private userService: UsersService, private dbService: DbService) {
+    this.dbService.taskRef.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const newTask = doc.data();
+
+        const createdDate = new Date(0);
+        createdDate.setUTCSeconds(newTask.createdDate.seconds);
+
+        const dueDate = new Date(0);
+        dueDate.setUTCSeconds(newTask.dueDate.seconds);
+
+        this.taskItemArray.push(new TaskModel(newTask.title, this.userService.categories[newTask.createdByID], newTask.status, dueDate, createdDate, false));
+      });
+    });
+  }
+
 
 
   public currentlySelectedTask = '';

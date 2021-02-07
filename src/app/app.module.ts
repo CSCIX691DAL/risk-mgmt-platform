@@ -56,6 +56,7 @@ import {DropdownEditorComponent} from './issue-survey/dropdown-editor/dropdown-e
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {DbService} from './db.service';
 
 const myroutes: Routes = [
   {path: '' , component : DashboardComponent},
@@ -114,7 +115,7 @@ const myroutes: Routes = [
     IssueSurvey,
     ShortAnswerEditorComponent,
     LongAnswerEditorComponent,
-    DropdownEditorComponent
+    DropdownEditorComponent,
   ],
   imports: [
     BrowserModule,
