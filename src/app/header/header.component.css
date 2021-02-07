@@ -1,3 +1,25 @@
-#riskMgmt-Navbar {
-  border-bottom: 1px solid #cccccc;
+nav {
+  max-height: 60px;
+  border-bottom: 1px solid #CCCCCC;
 }
+
+nav h1 {
+  color: #403D3D;
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+.signupLink {
+  color: #7C7C7D;
+}
+.loginLink {
+  color: #007BFF;
+  border-radius: 5px;
+  border: 1px solid #007BFF;
+}
+  .loginLink:hover {
+    color: #FFFFFF;
+    background-color: #409cff;
+    border: 1px solid #409cff;
+  }

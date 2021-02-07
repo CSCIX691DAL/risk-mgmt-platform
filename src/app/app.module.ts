@@ -53,20 +53,30 @@ import { ProfileEditorComponent } from './issue-survey/profile-editor/profile-ed
 import {ShortAnswerEditorComponent} from './issue-survey/short-answer-editor/short-answer-editor.component';
 import {LongAnswerEditorComponent} from './issue-survey/long-answer-editor/long-answer-editor.component';
 import {DropdownEditorComponent} from './issue-survey/dropdown-editor/dropdown-editor.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { LandingComponent } from './landing/landing.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AdminDashComponent } from './admin-dash/admin-dash.component';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {DbService} from './db.service';
 
 const myroutes: Routes = [
-  {path: '' , component : DashboardComponent},
+  {path: '' , component : LandingComponent},
+  {path: 'dashboard' , component : DashboardComponent},
   {path: 'categories' , component : RiskCategoriesComponent},
   {path: 'issues' , component : IssueListComponent},
   {path: 'profile' , component : RiskProfileComponent},
   {path: 'create-task', component: CreateNewTaskComponent},
   {path: 'edit-task', component: EditTaskComponent},
   {path: 'tasks', component: TaskListComponent},
-  {path: 'surveys', component: IssueSurvey}
+  {path: 'surveys', component: IssueSurvey},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'admin-dashboard', component: AdminDashComponent}
 ];
 
 @NgModule({
@@ -116,6 +126,11 @@ const myroutes: Routes = [
     ShortAnswerEditorComponent,
     LongAnswerEditorComponent,
     DropdownEditorComponent,
+    LoginComponent,
+    RegisterComponent,
+    LandingComponent,
+    ForgotPasswordComponent,
+    AdminDashComponent
   ],
   imports: [
     BrowserModule,
