@@ -46,6 +46,7 @@ export class IssueService{
 
   // Delete issue function
   deleteIssue(issue: IssueModel): void {
+    console.log(issue);
     // console.log(issue.id);
     this.issues = this.issues.filter(x => x.id !== issue.id);
 
@@ -57,6 +58,10 @@ export class IssueService{
 
   // Add issue function
   addIssue(issue: IssueModel): void {
+
+    if (issue.description === undefined) {
+      issue.description = null;
+    }
 
     // Array is empty, set new ID to 1
     if (this.issues.length === 0) {
@@ -83,6 +88,11 @@ export class IssueService{
 
   // Edit issue function
   editIssue(issue: IssueModel): void {
+
+    if (issue.description === undefined) {
+      issue.description = null;
+    }
+
     // Create new IssueModel object
     const newIssue = new IssueModel(issue.id, issue.title, issue.description,  issue.modifiedBy, issue.riskCategory, issue.assignee, Number(issue.parentIssue));
     // Put new object in location of object it's replacing
