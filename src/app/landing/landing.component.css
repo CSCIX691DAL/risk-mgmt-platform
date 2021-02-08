@@ -20,6 +20,7 @@
         }
         .featureImageContainer {
             height: 80px;
+            margin-top: 10px;
         }
         .largerFeatureCardImg {
             width: 25%;
