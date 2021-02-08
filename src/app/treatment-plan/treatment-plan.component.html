@@ -1,1 +1,51 @@
-<p>treatment-plan works!</p>
+
+<!-- Treatment Plan + Risk Profile here -->
+<!-- Content Container -->
+<div id="riskProfileContainer" class="container-fluid">
+
+    <!-- Body Header Container -->
+    <div class="row justify-content-center addRiskProfileMarginAndBorder">
+        <div id="addriskProfileContainer" class="container">
+
+            <!-- Title / Add new Issue Container -->
+            <div class="row">
+
+                <!-- Page Title -->
+                <div class="col-md-7">
+                    <h2>Treatment Plans</h2>
+                </div>
+
+                <!-- Search Issue List Container -->
+                <div class="col-md-5">
+
+                    <!-- Search Issues bar -->
+                    <div class="form-inline float-right">
+                        <input class="form-control" type="text" placeholder="Search" name="riskProfileList" [(ngModel)]="RiskProfileSearchText" value="Search">
+                    </div>
+
+                    <!-- Add Risk Profile modal component -->
+                    <app-add-risk-profile>
+                            <!-- need to be ordered by likelihood * impact -->
+                            addTextName="+ Risk Profile"
+                            [addRiskProfile]="riskProfileItem"
+                            class="float-right">
+                    </app-add-risk-profile>
+
+                </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Sort Container -->
+    <app-sort-profile
+            (categorySelectedEvent)="setCurrentCategory($event)"
+    ></app-sort-profile>
+
+    <!-- Print out all Risk Profile items -->
+    <app-risk-profile-item *ngFor="let item of riskProfiles | filter: RiskProfileSearchText | filterByCategory:this.currentCategory"[riskProfileItem]="item"></app-risk-profile-item>
+    <!-- Treatment Plan needs to appear below/with each item -->
+
+
+</div>

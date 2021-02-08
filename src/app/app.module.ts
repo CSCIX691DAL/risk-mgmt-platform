@@ -62,6 +62,8 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {DbService} from './db.service';
+import {TreatmentPlanComponent} from './treatment-plan/treatment-plan.component';
+import { TreatmentPlanItemComponent } from './treatment-plan/treatment-plan-item/treatment-plan-item.component';
 
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
@@ -76,7 +78,8 @@ const myroutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'admin-dashboard', component: AdminDashComponent}
+  {path: 'admin-dashboard', component: AdminDashComponent},
+  {path: 'treatment-plan', component: TreatmentPlanComponent}
 ];
 
 @NgModule({
@@ -130,7 +133,9 @@ const myroutes: Routes = [
     RegisterComponent,
     LandingComponent,
     ForgotPasswordComponent,
-    AdminDashComponent
+    AdminDashComponent,
+    TreatmentPlanComponent,
+    TreatmentPlanItemComponent
   ],
   imports: [
     BrowserModule,

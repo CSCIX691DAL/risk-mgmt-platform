@@ -16,9 +16,12 @@ are completely different. Such options or alternatives might be:
     -to retain the risk or its residual risks;
 
 1. set up table using risk-profile.model from app/risk-profile
-2. order risks by likelihood*impact, date, or whatever
-3. provide selection of treatment plan strategies for each risk
+2. order risks by likelihood*impact, date, or whatever (display risks)
+3. provide selection of treatment plan strategies for each risk (manage risks)
 4. provide guidelines for execution of strategies?
+5. allow reclassification of risk likelihood
+6. allow reclassification of risk consequences
+
 
 Responsible for create plan + delete plan
 
