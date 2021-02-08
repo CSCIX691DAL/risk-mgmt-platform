@@ -7,31 +7,26 @@
     .aboveFold_Left_TextContainer {
         margin-top: calc(50vh - 120px);
     }
-        .aboveFoldHeading {
-            font-size: 3em;
-        }
-        .aboveFoldSubHeading {
-            font-size: 1.3em;
-        }
-
-    .imageCon {
-        min-width: 400px;
-        max-width: 400px;
+    .featureCards {
         min-height: 400px;
-        height: 400px;
+        max-height: 400px;
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        border-radius: 15px;
+        box-shadow: 3px 3px 6px #EEEEEE;
     }
-        .addRiskImage {
-            width: 70%;
-            margin-left: 15%;
-            margin-top:  20%;
+        .featureCards p {
+            font-size: 1.1em;
         }
-        .tasksImage {
-            width: 70%;
-            margin-left: 15%;
-            margin-top:  20%;
+        .featureImageContainer {
+            height: 80px;
         }
-        .surveyImage {
-            width: 70%;
-            margin-left: 15%;
-            margin-top:  23%;
+        .largerFeatureCardImg {
+            width: 25%;
+            filter: invert(55%) sepia(32%) saturate(2817%) hue-rotate(188deg) brightness(98%) contrast(106%);
+        }
+        .smallerFeatureCardImg {
+            width: 16%;
+            padding-top: 14px;
+            filter: invert(55%) sepia(32%) saturate(2817%) hue-rotate(188deg) brightness(98%) contrast(106%);
         }
