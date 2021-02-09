@@ -1,20 +1,24 @@
 import {RiskProfileModel} from '../risk-profile/risk-profile.model';
-import {TreatmentOptionsModel} from './treatment-options.model';
+
 
 export class TreatmentPlanModel {
     // variables
     riskProfile: RiskProfileModel;
     title: string;
-    treatmentPlan: TreatmentOptionsModel; // maybe use a model like category does for risk-profile
-    constructor(riskProfile, title, treatmentPlan) {
+    continueRiskActivity: boolean;
+    updateRiskConsequences: boolean;
+    retainRisk: boolean;
+
+    constructor(riskProfile: RiskProfileModel, title: string, continueRiskActivity: boolean, updateRiskConsequences: boolean, retainRisk: boolean) {
         this.riskProfile = riskProfile;
         this.title = title;
-        this.treatmentPlan = treatmentPlan;
+        this.updateRiskConsequences = updateRiskConsequences;
+        this.continueRiskActivity = continueRiskActivity;
+        this.retainRisk = retainRisk;
     }
 
     orderByRisk(): void{
         // order treatment plans by risk
-        this.riskProfile.getLevelOfRisk();
     }
     getTreatmentPlan(): any{
         // return treatment plan

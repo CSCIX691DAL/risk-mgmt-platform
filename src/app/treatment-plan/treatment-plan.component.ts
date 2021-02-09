@@ -27,7 +27,7 @@ export class TreatmentPlanComponent implements OnInit {
         (value) =>
         {
           console.log(value);
-          this.treatmentPlans = this.treatmentPlanService.getTreatmentPlansq();
+          this.treatmentPlans = this.treatmentPlanService.getTreatmentPlans();
         }
     );
   }
