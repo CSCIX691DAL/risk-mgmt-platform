@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {RiskProfileModel} from '../risk-profile/risk-profile.model';
-import {RiskProfileService} from '../risk-profile/risk-profile.service';
+import {TreatmentPlanModel} from '../treatment-plan/treatment-plan.model';
+import {TreatmentPlanService} from '../treatment-plan/treatment-plan.service';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -10,24 +10,24 @@ import {Subscription} from 'rxjs';
 })
 export class TreatmentPlanComponent implements OnInit {
 
-  riskProfiles: RiskProfileModel[];
+  treatmentPlans: TreatmentPlanModel[];
   sub: Subscription;
 
-  constructor(private riskProfileService: RiskProfileService) { }
+  constructor(private treatmentPlanService: TreatmentPlanService) { }
 
-  @Input() riskProfileItem: RiskProfileModel;
+  @Input() treatmentPlanItem: TreatmentPlanModel;
 
-  RiskProfileSearchText: string;
+  TreatmentPlanSearchText: string;
   currentCategory: string;
 
   ngOnInit(): void {
-    this.riskProfiles = this.riskProfileService.getRiskProfiles();
+    this.treatmentPlans = this.treatmentPlanService.getTreatmentPlans();
     // Listener : listening to our component
-    this.sub = this.riskProfileService.triggerToUpdate.subscribe(
+    this.sub = this.treatmentPlanService.triggerToUpdate.subscribe(
         (value) =>
         {
           console.log(value);
-          this.riskProfiles = this.riskProfileService.getRiskProfiles();
+          this.treatmentPlans = this.treatmentPlanService.getTreatmentPlansq();
         }
     );
   }

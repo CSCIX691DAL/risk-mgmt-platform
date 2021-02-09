@@ -46,6 +46,6 @@
     <!-- Print out all Risk Profile items -->
     <app-risk-profile-item *ngFor="let item of riskProfiles | filter: RiskProfileSearchText | filterByCategory:this.currentCategory"[riskProfileItem]="item"></app-risk-profile-item>
     <!-- Treatment Plan needs to appear below/with each item -->
-
+    <app-treatment-plan-item></app-treatment-plan-item>
 
 </div>

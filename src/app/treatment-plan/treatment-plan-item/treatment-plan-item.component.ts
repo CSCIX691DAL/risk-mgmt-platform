@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TreatmentPlanItemComponent implements OnInit {
 
+  // need to instantiate and create a treatment plan representation to be used here
   constructor() { }
 
   ngOnInit(): void {
