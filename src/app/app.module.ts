@@ -78,7 +78,7 @@ const myroutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'admin-dashboard', component: AdminDashComponent},
-  {path: 'treatment-plan', component: TreatmentPlanComponent}
+  {path: 'treatment-plan', component: TreatmentPlanComponent},
 ];
 
 @NgModule({

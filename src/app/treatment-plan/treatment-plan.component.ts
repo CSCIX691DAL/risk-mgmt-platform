@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TreatmentPlanModel} from './treatment-plan.model';
 import {TreatmentPlanService} from './treatment-plan.service';
-import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-treatment-plan',
@@ -11,9 +10,10 @@ import {Subscription} from 'rxjs';
 export class TreatmentPlanComponent implements OnInit {
 
   treatmentPlans: TreatmentPlanModel[];
-  sub: Subscription;
 
-  constructor(private treatmentPlanService: TreatmentPlanService) { }
+  constructor(private treatmentPlanService: TreatmentPlanService) {
+    this.treatmentPlans = this.treatmentPlanService.getTreatmentPlans();
+  }
 
   @Input() treatmentPlanItem: TreatmentPlanModel;
 
@@ -22,14 +22,6 @@ export class TreatmentPlanComponent implements OnInit {
 
   ngOnInit(): void {
     this.treatmentPlans = this.treatmentPlanService.getTreatmentPlans();
-    // Listener : listening to our component
-    this.sub = this.treatmentPlanService.triggerToUpdate.subscribe(
-        (value) =>
-        {
-          console.log(value);
-          this.treatmentPlans = this.treatmentPlanService.getTreatmentPlans();
-        }
-    );
   }
 
 }
