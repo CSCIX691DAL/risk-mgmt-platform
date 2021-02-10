@@ -15,12 +15,14 @@ export class DbService {
   riskProfileRef: CollectionReference;
   categoryRef: CollectionReference;
   organizationRef: CollectionReference;
+  userRef: CollectionReference;
 
   constructor(firestore: AngularFirestore, organizationService: OrganizationService) {
     /* Thanks to Quince for the following solution to get a value from firestore documents
      * https://stackoverflow.com/questions/47549001/how-to-use-get-method-to-retrieve-all-collection-in-angularfire2 */
     this.organizationRef = firestore.firestore.collection('organizations');
 
+    this.userRef = firestore.firestore.collection('users');
     this.taskRef = this.organizationRef.doc(organizationService.currentOrganization).collection('tasks');
     this.issueRef = this.organizationRef.doc(organizationService.currentOrganization).collection(`issues`);
     this.riskProfileRef = this.organizationRef.doc(organizationService.currentOrganization).collection('riskProfiles');
