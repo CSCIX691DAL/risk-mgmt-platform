@@ -7,3 +7,10 @@
         margin-top: 10px;
         float: right;
     }
+
+    .adminComponentNav div {
+        padding-top: 9px;
+    }
+    .adminComponentNav img {
+        width: 34px;
+    }
