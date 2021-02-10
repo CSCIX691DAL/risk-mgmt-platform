@@ -1,0 +1,26 @@
+.adminDashNavigationBar {
+    height: 53px;
+}
+.adminDash-SearchBar {
+    width: 250px;
+    height: 34px;
+    margin-top: 10px;
+    float: right;
+}
+
+.adminComponentNav div {
+    padding-top: 9px;
+}
+.adminComponentNav div:hover {
+    cursor: pointer;
+    padding-top: 7px;
+    background-color: #F3F3F3;
+}
+.adminComponentNav div:hover img {
+    width: 40px;
+    margin-left: -3px;
+    filter: invert(55%) sepia(32%) saturate(2817%) hue-rotate(188deg) brightness(98%) contrast(106%);
+}
+.adminComponentNav img {
+    width: 34px;
+}

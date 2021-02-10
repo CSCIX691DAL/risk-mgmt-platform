@@ -62,6 +62,7 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {DbService} from './db.service';
+import { AdminNavComponent } from './admin-dash/admin-nav/admin-nav.component';
 
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
@@ -130,7 +131,8 @@ const myroutes: Routes = [
     RegisterComponent,
     LandingComponent,
     ForgotPasswordComponent,
-    AdminDashComponent
+    AdminDashComponent,
+    AdminNavComponent
   ],
   imports: [
     BrowserModule,
