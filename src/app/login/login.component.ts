@@ -4,6 +4,10 @@ import {FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {DbService} from '../db.service';
+import {TaskService} from '../task-list/task-service';
+import {IssueService} from '../issue-list/issue.service';
+import {CategoryService} from '../risk-categories/category.service';
+import {RiskProfileService} from '../risk-profile/risk-profile.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +17,7 @@ import {DbService} from '../db.service';
 export class LoginComponent implements OnInit {
 
 
-  constructor(public userAuthService: UserAuthService, private router: Router, public fireAuth: AngularFireAuth, public dbService: DbService) { }
+  constructor(public userAuthService: UserAuthService, private router: Router, public fireAuth: AngularFireAuth, public dbService: DbService, public taskService: TaskService, public issueService: IssueService, public categoryService: CategoryService, public profileService: RiskProfileService) { }
 
   loginEmail = new FormControl('');
   loginPassword = new FormControl('');
@@ -29,7 +33,11 @@ export class LoginComponent implements OnInit {
 
       this.dbService.setCurrentOrgOnLogin(result.user.email);
 
-      this.router.navigate(['dashboard']);
+      // These are used to sync the user's items with their specific organization.
+      this.taskService.updateTaskArray();
+      this.issueService.updateIssueArray();
+      this.categoryService.updateCategoryArray();
+      this.profileService.updateRiskProfileArray();
     }).catch(error => {
       this.loginFailed = true;
     });
