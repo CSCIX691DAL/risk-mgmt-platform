@@ -4,9 +4,47 @@
     max-height: 100vh;
     border-bottom: 1px solid #EEEEEE;
 }
-    .aboveFold_Left_TextContainer {
-        margin-top: calc(50vh - 120px);
+    .ATF_LeftCon {
+        margin-top: calc(50vh - 180px);
     }
+        .ATF_LeftCon h1 {
+            font-size: 3em;
+            font-weight: 400;
+        }
+        .ATF_LeftCon p {
+            margin-top: 30px;
+            font-size: 1.4em;
+        }
+        .ATF_LeftCon span {
+            color: #409cff;
+        }
+    .ATF_InputContainer {
+        width: 45vw;
+        padding: 10px 20px 10px 20px;
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        border-radius: 30px;
+    }
+        .ATF_InputContainer input {
+            width: 100%;
+            height: 46px;
+            margin-top: 5px;
+            font-size: 18px;
+            border: none;
+        }
+            .ATF_InputContainer input:focus {
+                outline: none !important;
+            }
+        .ATF_InputContainer button {
+            width: 100%;
+            height: 44px;
+            border: none;
+            margin-top: 6px;
+        }
+        .ATF_InputContainer button:hover {
+            background-color: #409cff;
+            border: none;
+        }
     .featureCards {
         min-height: 400px;
         max-height: 400px;
