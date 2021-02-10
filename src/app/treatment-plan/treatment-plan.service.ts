@@ -21,12 +21,22 @@ export class TreatmentPlanService {
   //  new TreatmentOptionsModel(false, false, false)];
 
   constructor( public riskProfileService: RiskProfileService,  public dbService: DbService) {
+    this.treatmentPlans = [];
+    this.riskProfileService.updateRiskProfileArray();
+    this.riskProfiles = riskProfileService.getRiskProfiles();
+
     this.updatePlans();
   }
   updatePlans(): void {
-    for (const each of this.riskProfiles) {
-      this.treatmentPlans = [new TreatmentPlanModel(each, ['task 1', 'task2'], 'title', false, false, false)];
-    }
+    console.log(this.riskProfiles);
+
+    console.log(this.riskProfileService.getRiskProfiles());
+
+    this.riskProfiles.forEach((profile) => {
+      console.log(profile);
+      this.treatmentPlans.push(new TreatmentPlanModel(profile, ['task 1', 'task2'], 'title', false, false, false));
+    });
+
   }
 
   getTreatmentPlans(): TreatmentPlanModel[]{

@@ -27,4 +27,6 @@
 
     <!-- Treatment Plan needs to appear below/with each item -->
     <app-treatment-plan-item *ngFor="let item of treatmentPlans | filter: TreatmentPlanSearchText"></app-treatment-plan-item>
+    <!-- basic placeholder - testing functionality -->
+    <p *ngFor="let plan of treatmentPlans">{{ plan.title }}</p>
 </div>

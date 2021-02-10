@@ -4,7 +4,7 @@ export class TreatmentPlanModel {
     // variables
     riskProfile: RiskProfileModel;
     tasks: string[];
-    title: string;
+    public title: string;
     continueRiskActivity: boolean;
     updateRiskConsequences: boolean;
     retainRisk: boolean;

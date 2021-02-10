@@ -43,7 +43,7 @@ export class RiskProfileService {
   public updateRiskProfileArray(): void {
 
     // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
-    this.riskProfiles = [];
+/*    this.riskProfiles = [];
 
     this.dbService.riskProfileRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -52,7 +52,7 @@ export class RiskProfileService {
         this.riskProfiles.push(new RiskProfileModel(newRiskProfile.id, newRiskProfile.title, newRiskProfile.description, newRiskProfile.likelihood, newRiskProfile.impact, this.categoryService.categories[newRiskProfile.category], this.categoryService.categories[newRiskProfile.riskCategory], newRiskProfile.sourceOfRisk));
       });
       this.triggerToUpdate.next(true);
-    });
+    });*/
   }
 
   // Add Risk Profile function
