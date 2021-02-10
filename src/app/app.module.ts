@@ -63,6 +63,8 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {DbService} from './db.service';
 import { AdminNavComponent } from './admin-dash/admin-nav/admin-nav.component';
+import { UserListComponent } from './admin-dash/user-list/user-list.component';
+import { OrgsListComponent } from './admin-dash/orgs-list/orgs-list.component';
 
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
@@ -133,6 +135,8 @@ const myroutes: Routes = [
     ForgotPasswordComponent,
     AdminDashComponent,
     AdminNavComponent,
+    UserListComponent,
+    OrgsListComponent,
   ],
   imports: [
     BrowserModule,
