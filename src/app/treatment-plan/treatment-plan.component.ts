@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TreatmentPlanModel} from '../treatment-plan/treatment-plan.model';
-import {TreatmentPlanService} from '../treatment-plan/treatment-plan.service';
+import {TreatmentPlanModel} from './treatment-plan.model';
+import {TreatmentPlanService} from './treatment-plan.service';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -30,10 +30,6 @@ export class TreatmentPlanComponent implements OnInit {
           this.treatmentPlans = this.treatmentPlanService.getTreatmentPlans();
         }
     );
-  }
-  //helps sort somehow
-  setCurrentCategory(value: string){
-    this.currentCategory = value;
   }
 
 }

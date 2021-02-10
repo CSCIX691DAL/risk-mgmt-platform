@@ -1,3 +1,11 @@
+The treatment plan includes a list of tasks that are going to be executed in case a risk happened. so for a risk you define a treatment plan and that includes a
+list of tasks. you call a set of treatment plans a policy. So a policy includes a list of treatment plans and each treatment plan related to risk and
+includes a list of tasks. If it is not clear ask you question in the comment her and if it is clear close the issue.
+- Treatment plan consists of:
+list of tasks (per risk)
+
+- Multiple treatment plans = a policy
+
 Management or treatment options for risks expected to have positive outcome include:
 
     -starting or continuing an activity likely to create or maintain this positive outcome;

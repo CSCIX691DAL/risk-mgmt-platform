@@ -2,12 +2,16 @@ import {Injectable, Input} from '@angular/core';
 import {RiskProfileService} from '../risk-profile/risk-profile.service';
 import {TreatmentPlanModel} from '../treatment-plan/treatment-plan.model';
 import {RiskProfileModel} from '../risk-profile/risk-profile.model';
+import {TaskModel} from '../task-list/task.model';
 import {Subject, Subscription} from 'rxjs';
+import {DbService} from '../db.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TreatmentPlanService {
+  // need category model for easiest sorting I think
+  tasks: TaskModel;
   triggerToUpdate = new Subject<boolean>();
   treatmentPlanService: TreatmentPlanService;
   riskProfiles: RiskProfileModel[];
@@ -16,18 +20,38 @@ export class TreatmentPlanService {
   //    [this.riskProfileService.getRiskProfiles(), 'title',
   //  new TreatmentOptionsModel(false, false, false)];
 
-  constructor( riskProfileService: RiskProfileService ) {
-    riskProfileService.updateRiskProfileArray();
-    for (const each of this.riskProfiles){
-      this.treatmentPlans = [new TreatmentPlanModel(each, 'title', false, false, false)];
+  constructor( public riskProfileService: RiskProfileService,  public dbService: DbService) {
+    this.updatePlans();
+  }
+  updatePlans(): void {
+    for (const each of this.riskProfiles) {
+      this.treatmentPlans = [new TreatmentPlanModel(each, ['task 1', 'task2'], 'title', false, false, false)];
     }
   }
 
-  addPlans(): void{
+  getTreatmentPlans(): TreatmentPlanModel[]{
+    return this.treatmentPlans.slice();
   }
 
-  getTreatmentPlans(): TreatmentPlanModel[]{
-    return this.treatmentPlans;
+  // Sort Level of Risk
+  sortLevelofRisk(sortCode: number): void {
+    // sortCode of 1 : sort Level of Risk High to Low
+    if (sortCode === 1) {
+      this.riskProfiles = this.riskProfiles.sort((n1, n2) => {
+        if (n1.getLevelOfRisk()  > n2.getLevelOfRisk() ) { return -1; }
+        if (n1.getLevelOfRisk() < n2.getLevelOfRisk() ) { return 1; }
+        return 0;
+      });
+    }
+    // sortCode of 2 : sort likelihood Low to High
+    else if (sortCode === 2) {
+      this.riskProfiles = this.riskProfiles.sort((n1, n2) => {
+        if (n1.getLevelOfRisk()  > n2.getLevelOfRisk() ) { return 1; }
+        if (n1.getLevelOfRisk() < n2.getLevelOfRisk() ) { return -1; }
+        return 0;
+      });
+    }
+    this.triggerToUpdate.next(true);
   }
 
 }

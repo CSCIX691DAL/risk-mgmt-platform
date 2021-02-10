@@ -63,7 +63,6 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {DbService} from './db.service';
 import {TreatmentPlanComponent} from './treatment-plan/treatment-plan.component';
-import { TreatmentPlanItemComponent } from './treatment-plan/treatment-plan-item/treatment-plan-item.component';
 
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
@@ -134,8 +133,7 @@ const myroutes: Routes = [
     LandingComponent,
     ForgotPasswordComponent,
     AdminDashComponent,
-    TreatmentPlanComponent,
-    TreatmentPlanItemComponent
+    TreatmentPlanComponent
   ],
   imports: [
     BrowserModule,

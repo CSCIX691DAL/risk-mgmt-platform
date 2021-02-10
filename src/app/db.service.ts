@@ -12,7 +12,7 @@ export class DbService {
   taskRef: CollectionReference;
   issueRef: CollectionReference;
   riskProfileRef: CollectionReference;
-  categoryRef: CollectionReference
+  categoryRef: CollectionReference;
 
   constructor(firestore: AngularFirestore) {
     /* Thanks to Quince for the following solution to get a value from firestore documents
