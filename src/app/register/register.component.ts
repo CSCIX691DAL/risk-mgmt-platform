@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   registerEmail = new FormControl('');
   registerPassword = new FormControl('');
   registerConfirmPassword = new FormControl('');
+  registerVerifyCode = new FormControl('');
 
   passwordMatch = true;
 
@@ -28,7 +29,7 @@ export class RegisterComponent implements OnInit {
     }
     else {
       this.passwordMatch = true;
-      this.userAuthService.userSignUp(this.registerEmail.value, this.registerPassword.value, "placeholder");
+      this.userAuthService.userSignUp(this.registerEmail.value, this.registerPassword.value, this.registerVerifyCode.value);
       this.router.navigate(['login']);
     }
   }
