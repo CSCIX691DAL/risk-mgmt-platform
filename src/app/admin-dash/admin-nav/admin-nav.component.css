@@ -1,9 +1,10 @@
 .adminDashNavigationBar {
-    height: 53px;
+    height: 52px;
+    border-bottom: 1px solid #EEEEEE;
 }
 .adminDash-SearchBar {
     width: 250px;
-    height: 34px;
+    height: 33px;
     margin-top: 10px;
     float: right;
 }

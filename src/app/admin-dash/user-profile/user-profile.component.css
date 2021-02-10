@@ -1,0 +1,14 @@
+.userProfile {
+    min-height: 700px;
+}
+    .userProfileImgCon {
+        width: 250px;
+        height: 250px;
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        border-radius: 50%;
+    }
+        .userProfileImgCon img {
+            width: 80%;
+            margin-top: 7%;
+        }
