@@ -23,8 +23,6 @@ export class OrganizationService {
     this.dbService.userRef.doc(email).get().then((document) => {
       this.currentOrganization = document.data().organizations[0];
 
-      console.log("MADE IT HERE");
-
       this.dbService.taskRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('tasks');
       this.dbService.issueRef = this.dbService.organizationRef.doc(this.currentOrganization).collection(`issues`);
       this.dbService.riskProfileRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('riskProfiles');
