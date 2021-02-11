@@ -66,6 +66,7 @@ import { AdminNavComponent } from './admin-dash/admin-nav/admin-nav.component';
 import { UserListComponent } from './admin-dash/user-list/user-list.component';
 import { OrgsListComponent } from './admin-dash/orgs-list/orgs-list.component';
 import { OrgsListItemComponent } from './admin-dash/orgs-list/orgs-list-item/orgs-list-item.component';
+import { UserListItemComponent } from './admin-dash/user-list/user-list-item/user-list-item.component';
 
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
@@ -139,6 +140,7 @@ const myroutes: Routes = [
     UserListComponent,
     OrgsListComponent,
     OrgsListItemComponent,
+    UserListItemComponent,
   ],
   imports: [
     BrowserModule,
