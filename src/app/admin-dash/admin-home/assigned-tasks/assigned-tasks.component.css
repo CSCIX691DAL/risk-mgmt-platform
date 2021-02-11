@@ -48,3 +48,11 @@
         margin-top: 6px;
         margin-bottom: 0px;
     }
+.orgLocation {
+    font-size: 18px;
+    margin-top: 14px;
+}
+.orgInfoCon {
+    border-radius: 10px;
+    border: 1px solid #CCCCCC;
+}
