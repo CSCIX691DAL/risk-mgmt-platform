@@ -12,11 +12,13 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(public userAuthService: UserAuthService) { }
 
   resetEmail = new FormControl('');
+  requestedReset = false;
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
+    this.requestedReset = true;
     this.userAuthService.fireAuth.sendPasswordResetEmail(this.resetEmail.value).then(result => {
       console.log(result);
     }).catch(err => {
