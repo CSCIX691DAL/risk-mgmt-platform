@@ -23,8 +23,6 @@ export class CategoryService {
     //   new CategoryModel(6, 'IT failure', this.categories[3], 'Ex: website down', false),
     //   new CategoryModel(7, 'Loss of supplier', this.categories[3], 'Vendor does not renew contract', false),
     //   new CategoryModel(6, 'Interest rate', this.categories[0], 'Changes in interest rates', true));
-
-    this.updateCategoryArray();
   }
 
   getCategories(): CategoryModel[]{

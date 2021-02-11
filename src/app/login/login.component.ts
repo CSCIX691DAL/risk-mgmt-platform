@@ -8,6 +8,7 @@ import {TaskService} from '../task-list/task-service';
 import {IssueService} from '../issue-list/issue.service';
 import {CategoryService} from '../risk-categories/category.service';
 import {RiskProfileService} from '../risk-profile/risk-profile.service';
+import {OrganizationService} from '../organization.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ import {RiskProfileService} from '../risk-profile/risk-profile.service';
 export class LoginComponent implements OnInit {
 
 
-  constructor(public userAuthService: UserAuthService, private router: Router, public fireAuth: AngularFireAuth, public dbService: DbService, public taskService: TaskService, public issueService: IssueService, public categoryService: CategoryService, public profileService: RiskProfileService) { }
+  constructor(public userAuthService: UserAuthService, private router: Router, public fireAuth: AngularFireAuth, public dbService: DbService, public taskService: TaskService, public issueService: IssueService, public categoryService: CategoryService, public profileService: RiskProfileService, public organizationService: OrganizationService) { }
 
   loginEmail = new FormControl('');
   loginPassword = new FormControl('');
@@ -31,13 +32,8 @@ export class LoginComponent implements OnInit {
     this.userAuthService.fireAuth.signInWithEmailAndPassword(this.loginEmail.value, this.loginPassword.value).then(result => {
       this.loginFailed = false;
 
-      this.dbService.setCurrentOrgOnLogin(result.user.email);
-
+      this.organizationService.updateOrg(result.user.email);
       // These are used to sync the user's items with their specific organization.
-      this.taskService.updateTaskArray();
-      this.issueService.updateIssueArray();
-      this.categoryService.updateCategoryArray();
-      this.profileService.updateRiskProfileArray();
     }).catch(error => {
       this.loginFailed = true;
     });

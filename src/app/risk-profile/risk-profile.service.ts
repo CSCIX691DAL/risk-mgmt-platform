@@ -21,7 +21,6 @@ export class RiskProfileService {
   ];
 
   constructor(public categoryService: CategoryService, public dbService: DbService) {
-    this.updateRiskProfileArray();
   }
 
   getRiskProfiles(): RiskProfileModel[]{

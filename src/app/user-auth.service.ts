@@ -10,11 +10,17 @@ import {OrganizationService} from './organization.service';
   providedIn: 'root'
 })
 export class UserAuthService {
-  user$: Observable<firebase.User>;
+  public user$: Observable<firebase.User>;
 
   // Source: https://www.positronx.io/firebase-authentication-in-angular-8-with-angularfire2/
   constructor(public fireAuth: AngularFireAuth, private router: Router, public dbService: DbService, public organizationService: OrganizationService) {
     this.user$ = fireAuth.authState;
+
+    if (this.user$) {
+      this.fireAuth.user.subscribe(user => {
+        this.organizationService.updateOrg(user.email);
+      });
+    }
   }
 
   userSignUp(email: string, password: string, verifyCode: string): void {
