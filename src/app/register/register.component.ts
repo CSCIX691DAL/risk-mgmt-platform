@@ -22,7 +22,9 @@ export class RegisterComponent implements OnInit {
   registerConfirmPassword = new FormControl('');
   registerVerifyCode = new FormControl('');
 
+  providedVerify = true;
   passwordMatch = true;
+  providedEmail = true;
 
   ngOnInit(): void {
   }
@@ -33,6 +35,25 @@ export class RegisterComponent implements OnInit {
       this.passwordMatch = false;
     }
     else {
+      this.passwordMatch = true;
+    }
+
+
+    if (this.registerVerifyCode.value === undefined || this.registerVerifyCode.value.length < 1) {
+      this.providedVerify = false;
+    }
+    else {
+      this.providedVerify = true;
+    }
+
+    if (this.registerEmail.value === undefined || this.registerEmail.value.length < 1) {
+      this.providedEmail = false;
+    }
+    else {
+      this.providedEmail = true;
+    }
+
+    if (this.passwordMatch && this.providedVerify && this.providedEmail) {
       this.passwordMatch = true;
       this.userAuthService.userSignUp(this.registerEmail.value, this.registerPassword.value, this.registerVerifyCode.value);
       this.router.navigate(['login']);
