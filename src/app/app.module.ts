@@ -150,7 +150,7 @@ const myroutes: Routes = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
   ],
-  providers: [TaskService, UserAuthService],
+  providers: [UserAuthService, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
