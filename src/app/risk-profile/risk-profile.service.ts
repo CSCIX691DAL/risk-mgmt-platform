@@ -12,6 +12,7 @@ export class RiskProfileService {
   // Updates issue list
   triggerToUpdate = new Subject<boolean>();
 
+  // Testing
   public riskProfiles: RiskProfileModel[] = [
     new RiskProfileModel(1, 'Risk Profile 1', 'This is risk profile 1', 9, 5, this.categoryService.categories[0], this.categoryService.categories[0], 'Source Of Risk #1'),
     new RiskProfileModel(2, 'Risk Profile 2', 'This is risk profile 2', 10, 1, this.categoryService.categories[1], this.categoryService.categories[1], 'Source Of Risk #2'),
