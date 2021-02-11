@@ -56,10 +56,7 @@ export class AddRiskProfileComponent implements OnInit {
 
   // Add issue function
   OnAddRiskProfile(): void {
-    console.log(this.riskProfile.sourceOfRisk);
     this.riskProfile.riskCategory = this.riskProfile.category;
-
-    console.log(this.riskProfile);
 
     this.riskProfileService.addRiskProfile(this.riskProfile);
     this.modalService.dismissAll();

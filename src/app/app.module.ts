@@ -70,17 +70,22 @@ import { UserListItemComponent } from './admin-dash/user-list/user-list-item/use
 import { AdminHomeComponent } from './admin-dash/admin-home/admin-home.component';
 import { UserProfileWidgetComponent } from './admin-dash/admin-home/user-profile-widget/user-profile-widget.component';
 import { AssignedTasksComponent } from './admin-dash/admin-home/assigned-tasks/assigned-tasks.component';
+import {UserAuthService} from './user-auth.service';
+import {AngularFireAuthGuard, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
+
+// https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
-  {path: 'dashboard' , component : DashboardComponent},
-  {path: 'categories' , component : RiskCategoriesComponent},
-  {path: 'issues' , component : IssueListComponent},
-  {path: 'profile' , component : RiskProfileComponent},
-  {path: 'create-task', component: CreateNewTaskComponent},
-  {path: 'edit-task', component: EditTaskComponent},
-  {path: 'tasks', component: TaskListComponent},
-  {path: 'surveys', component: IssueSurvey},
+  {path: 'dashboard' , component : DashboardComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'categories' , component : RiskCategoriesComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'issues' , component : IssueListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'profile' , component : RiskProfileComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'create-task', component: CreateNewTaskComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'edit-task', component: EditTaskComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'tasks', component: TaskListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'surveys', component: IssueSurvey, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
@@ -158,10 +163,10 @@ const myroutes: Routes = [
     ReactiveFormsModule,
     ChartsModule,
     NgbModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
   ],
-  providers: [TaskService],
+  providers: [UserAuthService, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

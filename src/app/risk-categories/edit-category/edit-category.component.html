@@ -17,10 +17,9 @@
       <div class="input-group mb-3">
         <select class="form-control" id="editParentCategory" name="editParentCategory" [(ngModel)]="category.parentCategory">
           <option>Select a Parent Category</option>
-          <option [ngValue]="this.categoryService.categories[0]">Financial</option>
-          <option [ngValue]="this.categoryService.categories[1]" [defaultSelected]="true">Strategic</option>
-          <option [ngValue]="this.categoryService.categories[2]">Hazard</option>
-          <option [ngValue]="this.categoryService.categories[3]">Operational</option>
+          <option *ngFor="let item of categoryService.categories" [ngValue]=item>
+            {{item.name}}
+          </option>
         </select>
       </div>
 
