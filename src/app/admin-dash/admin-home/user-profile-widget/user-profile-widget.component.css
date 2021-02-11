@@ -1,0 +1,19 @@
+.userProfile {
+    border: 1px solid #CCCCCC;
+    border-radius: 10px;
+}
+    .userProfileHeader {
+        background-color: #F4F4F4;
+        border-bottom: 1px solid #CCCCCC;
+        border-radius: 9px 9px 0px 0px;
+    }
+    .profilePictureCon {
+        width: 50%;
+        border: 1px solid #CCCCCC;
+        border-radius: 50%;
+        margin-left: 25%;
+    }
+    .profilePictureCon img {
+        width: 100%;
+        padding: 15%;
+    }
