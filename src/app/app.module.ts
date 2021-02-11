@@ -69,6 +69,7 @@ import { OrgsListItemComponent } from './admin-dash/orgs-list/orgs-list-item/org
 import { UserListItemComponent } from './admin-dash/user-list/user-list-item/user-list-item.component';
 import { AdminHomeComponent } from './admin-dash/admin-home/admin-home.component';
 import { UserProfileWidgetComponent } from './admin-dash/admin-home/user-profile-widget/user-profile-widget.component';
+import { AssignedTasksComponent } from './admin-dash/admin-home/assigned-tasks/assigned-tasks.component';
 
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
@@ -145,6 +146,7 @@ const myroutes: Routes = [
     UserListItemComponent,
     AdminHomeComponent,
     UserProfileWidgetComponent,
+    AssignedTasksComponent,
   ],
   imports: [
     BrowserModule,
