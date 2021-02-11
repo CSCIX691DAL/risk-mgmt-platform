@@ -2,6 +2,11 @@
   <h2>Create a New Task</h2>
   <form class="p-3" [formGroup]="newTaskForm" (ngSubmit)="createNewTask()">
     <div class="form-group">
+
+      <div class="col-md-12" *ngIf="!providedTitle">
+        <p class="text-danger">You must enter a title.</p>
+      </div>
+
       <label>Title</label>
       <input type="text" class="form-control" formControlName="taskTitle" placeholder="Enter Title...">
     </div>
@@ -23,6 +28,9 @@
       </select>
     </div>
     <div class="form-group">
+      <div class="col-md-12" *ngIf="!providedDate">
+        <p class="text-danger">You must enter a due date.</p>
+      </div>
       <label>Due Date</label>
       <input type="date" class="form-control" formControlName="taskDueDate" placeholder="Enter Due Date...">
     </div>
