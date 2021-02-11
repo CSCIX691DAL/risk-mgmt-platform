@@ -18,7 +18,9 @@ export class UserAuthService {
 
     if (this.user$) {
       this.fireAuth.user.subscribe(user => {
-        this.organizationService.updateOrg(user.email);
+        if (user) {
+          this.organizationService.updateOrg(user.email);
+        }
       });
     }
   }
