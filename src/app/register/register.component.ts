@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserAuthService} from '../user-auth.service';
 import {FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
+import {LandingService} from '../landing.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,11 @@ import {Router} from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public userAuthService: UserAuthService, private router: Router) { }
+  constructor(public userAuthService: UserAuthService, private router: Router, public landingService: LandingService) {
+    if (landingService.landingEmail && landingService.landingEmail.length > 0) {
+      this.registerEmail.setValue(this.landingService.landingEmail);
+    }
+  }
 
   registerEmail = new FormControl('');
   registerPassword = new FormControl('');
