@@ -59,7 +59,10 @@
       </div>
 
       <div *ngIf="(userAuthService.user$ | async)">
-        <button class="btn btn-danger" (click)="userAuthService.userSignOut()">Sign Out</button>
+        <div class="float-left" style="border-right:2px solid lightgray;">
+          <a class="nav-link" style="color: black;"><b>{{this.organizationService.currentOrganization}}</b></a>
+        </div>
+        <button class="btn btn-danger ml-3" (click)="userAuthService.userSignOut()">Sign Out</button>
       </div>
 
       <!--
