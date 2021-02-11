@@ -67,6 +67,8 @@ import { UserListComponent } from './admin-dash/user-list/user-list.component';
 import { OrgsListComponent } from './admin-dash/orgs-list/orgs-list.component';
 import { OrgsListItemComponent } from './admin-dash/orgs-list/orgs-list-item/orgs-list-item.component';
 import { UserListItemComponent } from './admin-dash/user-list/user-list-item/user-list-item.component';
+import { AdminHomeComponent } from './admin-dash/admin-home/admin-home.component';
+import { UserProfileWidgetComponent } from './admin-dash/admin-home/user-profile-widget/user-profile-widget.component';
 
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
@@ -141,6 +143,8 @@ const myroutes: Routes = [
     OrgsListComponent,
     OrgsListItemComponent,
     UserListItemComponent,
+    AdminHomeComponent,
+    UserProfileWidgetComponent,
   ],
   imports: [
     BrowserModule,
