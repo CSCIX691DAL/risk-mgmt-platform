@@ -5,6 +5,7 @@ import {CategoryModel} from '../risk-categories/category.model';
 import {CategoryService} from '../risk-categories/category.service';
 import {DbService} from '../db.service';
 import {IssueModel} from '../issue-list/issue.model';
+import {RiskProfileMapComponent} from './risk-report-map/risk-profile-map.component';
 
 @Injectable({providedIn: 'root'})
 export class RiskProfileService {
