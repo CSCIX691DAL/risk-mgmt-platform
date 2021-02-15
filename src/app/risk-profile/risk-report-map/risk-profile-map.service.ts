@@ -6,17 +6,12 @@ import {CategoryService} from '../../risk-categories/category.service';
 @Injectable({providedIn: 'root'})
 export class RiskProfileMapService {
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(private categoryService: CategoryService) {
+  }
 
   // Updates issue list
   triggerToUpdate = new Subject<boolean>();
-  public riskMapProfiles: RiskProfileModel[] = [
-    new RiskProfileModel(1, 'Risk Profile 1', 'This is risk profile 1', 3, 5, this.categoryService.categories[0], this.categoryService.categories[0],  'Source Of Risk #1'),
-    new RiskProfileModel(2, 'Risk Profile 2', 'This is risk profile 2', 5, 1, this.categoryService.categories[1], this.categoryService.categories[1],  'Source Of Risk #2'),
-    new RiskProfileModel(3, 'Risk Profile 3', 'This is risk profile 3', 7, 3, this.categoryService.categories[2], this.categoryService.categories[2],  'Source Of Risk #3'),
-    new RiskProfileModel(4, 'Risk Profile 4', 'This is risk profile 4', 5, 2, this.categoryService.categories[3], this.categoryService.categories[3],  'Source Of Risk #4'),
-    new RiskProfileModel(5, 'Risk Profile 5', 'This is risk profile 5', 5, 5, this.categoryService.categories[4], this.categoryService.categories[4],  'Source Of Risk #5')
-  ];
+  public riskMapProfiles: RiskProfileModel[];
 
   getRiskMapProfiles(): RiskProfileModel[]{
     return this.riskMapProfiles.slice();

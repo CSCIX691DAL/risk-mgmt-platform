@@ -5,6 +5,7 @@ import {RiskProfileModel} from 'src/app/risk-profile/risk-profile.model';
 import {RiskProfileMapService} from './risk-profile-map.service';
 import {Subscription} from 'rxjs';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {RiskProfileService} from '../risk-profile.service';
 
 
 @Component({
@@ -77,26 +78,39 @@ export class RiskProfileMapComponent implements OnInit {
     }
   ];
 
-  constructor( private riskProfileMapService: RiskProfileMapService, private modalService: NgbModal ) {
+  constructor( private riskProfileMapService: RiskProfileMapService, private modalService: NgbModal, public riskProfileService: RiskProfileService ) {
+  }
+
+  public updateRiskProfiles() {
+    this.riskMapProfiles = this.riskProfileService.getRiskProfiles();
   }
 
   @Input() riskProfileItem: RiskProfileModel;
   ngOnInit(): void {
-    this.riskMapProfiles = this.riskProfileMapService.getRiskMapProfiles();
-    // Listener : listening to our component
-    this.sub = this.riskProfileMapService.triggerToUpdate.subscribe(
-      (value) =>
-      {
-        console.log(value);
-        this.riskMapProfiles = this.riskProfileMapService.getRiskMapProfiles();
-      }
-    );
-    this.addToChart();
+    setTimeout(() => {
+      this.updateRiskProfiles();
+
+      this.sub = this.riskProfileMapService.triggerToUpdate.subscribe(
+          (value) =>
+          {
+            console.log(value);
+            this.riskMapProfiles = this.riskProfileMapService.getRiskMapProfiles();
+          }
+      );
+
+      this.addToChart();
+    }, 700);
   }
   public inputData(riskModel: RiskProfileModel): { x: number; y: number; r: number }{
     const x = riskModel.likelihood;
     const y = riskModel.impact;
-    const r = (riskModel.likelihood * riskModel.impact);
+    let r;
+    if ((riskModel.likelihood * riskModel.impact) < 4) {
+      r = 4;
+    }
+    else {
+      r = (riskModel.likelihood * riskModel.impact);
+    }
     return { x, y, r };
   }
   public addToChart(): void{
