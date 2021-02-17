@@ -102,8 +102,8 @@ export class RiskProfileMapComponent implements OnInit {
     }, 700);
   }
   public inputData(riskModel: RiskProfileModel): { x: number; y: number; r: number }{
-    const x = riskModel.likelihood;
-    const y = riskModel.impact;
+    const x = riskModel.impact;
+    const y = riskModel.likelihood;
     let r;
     if ((riskModel.likelihood * riskModel.impact) < 4) {
       r = 4;
