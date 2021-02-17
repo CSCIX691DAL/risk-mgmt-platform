@@ -8,10 +8,7 @@
     <div class="form-group">
       <label>Source</label>
       <select class="form-control" id="createdBy" name="createdBy" formControlName="createdBy" [ngModel]="currentModel.createdBy">
-        <option [ngValue]="userService.categories[0]" [defaultSelected]="true">{{userService.categories[0].firstName}} {{userService.categories[0].lastName}}</option>
-        <option [ngValue]="userService.categories[1]">{{userService.categories[1].firstName}} {{userService.categories[1].lastName}}</option>
-        <option [ngValue]="userService.categories[2]">{{userService.categories[2].firstName}} {{userService.categories[2].lastName}}</option>
-        <option [ngValue]="userService.categories[3]">{{userService.categories[3].firstName}} {{userService.categories[3].lastName}}</option>
+        <option *ngFor="let user of userService.categories" [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
       </select>
     </div>
     <div class="form-group">

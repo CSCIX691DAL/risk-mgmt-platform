@@ -21,10 +21,12 @@ export class RegisterComponent implements OnInit {
   registerPassword = new FormControl('');
   registerConfirmPassword = new FormControl('');
   registerVerifyCode = new FormControl('');
+  userName = new FormControl('')
 
   providedVerify = true;
   passwordMatch = true;
   providedEmail = true;
+  providedName = true;
 
   ngOnInit(): void {
   }
@@ -53,7 +55,14 @@ export class RegisterComponent implements OnInit {
       this.providedEmail = true;
     }
 
-    if (this.passwordMatch && this.providedVerify && this.providedEmail) {
+    if (this.userName.value === undefined || this.userName.value.length < 1) {
+      this.providedName = false;
+    }
+    else {
+      this.providedName = true;
+    }
+
+    if (this.passwordMatch && this.providedVerify && this.providedEmail && this.providedName) {
       this.passwordMatch = true;
       this.userAuthService.userSignUp(this.registerEmail.value, this.registerPassword.value, this.registerVerifyCode.value);
       this.router.navigate(['login']);
