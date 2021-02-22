@@ -25,15 +25,17 @@ export class UserAuthService {
     }
   }
 
-  userSignUp(email: string, password: string, verifyCode: string): void {
+  userSignUp(email: string, password: string, verifyCode: string, fullName: string): void {
     this.fireAuth.createUserWithEmailAndPassword(email, password).then(result => {
       // Setting ID as the user's email - should be unique.
       this.dbService.organizationRef.doc(verifyCode).collection('users').doc(email).set({
-        id: email
+        id: email,
+        name: fullName
       });
 
       this.dbService.userRef.doc(email).set({
-        organizations: [verifyCode]
+        organizations: [verifyCode],
+        name: fullName
       });
     }).catch(err => {
       console.log(err);

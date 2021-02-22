@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {UsersModel} from './users.model';
+import {CategoryModel} from './risk-categories/category.model';
+import {DbService} from './db.service';
 
 
 @Injectable({
@@ -16,5 +18,17 @@ export class UsersService {
     new UsersModel(7, 'Kenny', 'Scrub', '06/07/1995',  '01/22/2020', true),
     new UsersModel(8, 'Jordan', 'Brown', '04/03/1997',  '01/23/2020', false),
   ];
-  constructor() {}
+  constructor(public dbService: DbService) {}
+
+  updateUserArray() {
+    this.categories = [];
+
+    this.dbService.userRef.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const newUser = doc.data();
+
+        this.categories.push(new UsersModel(newUser.id, newUser.name, '', '', '', true));
+      });
+    });
+  }
 }

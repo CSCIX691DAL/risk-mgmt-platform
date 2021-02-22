@@ -38,13 +38,13 @@
                             <!-- User's Name -->
                             <div class="col-md-8 pt-1 pb-1">
 
-                                <div class="col-md-12" *ngIf="!providedVerify">
+                                <div class="col-md-12" *ngIf="!providedName">
                                     <p class="text-danger">You must enter your name.</p>
                                 </div>
 
                                 <label for="userName" class="float-left">Full Name</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="userName" name="userName" [formControl]="registerVerifyCode">
+                                    <input type="text" class="form-control" id="userName" name="userName" [formControl]="userName">
                                 </div>
 
                             </div>
