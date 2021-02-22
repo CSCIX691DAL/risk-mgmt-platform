@@ -13,13 +13,14 @@ import {UserAuthService} from './user-auth.service';
 })
 export class OrganizationService {
 
-  constructor(public dbService: DbService, public taskService: TaskService, public issueService: IssueService, public categoryService: CategoryService, public profileService: RiskProfileService, public router: Router) {
+  constructor(public dbService: DbService, public taskService: TaskService, public issueService: IssueService, public categoryService: CategoryService, public profileService: RiskProfileService, public userService: UsersService, public router: Router) {
   }
 
   // This refers to the ID of the document within the organizations collection; this should change when user selects a different org
   public currentOrganization;
 
   public updateOrg(email: string): void {
+    console.log(email);
     this.dbService.userRef.doc(email).get().then((document) => {
       this.currentOrganization = document.data().organizations[0];
 
@@ -31,6 +32,8 @@ export class OrganizationService {
       this.issueService.updateIssueArray();
       this.categoryService.updateCategoryArray();
       this.profileService.updateRiskProfileArray();
+      this.userService.userCurrentOrg = this.currentOrganization;
+      this.userService.updateUserArray();
 
       this.router.navigate(['dashboard']);
     });

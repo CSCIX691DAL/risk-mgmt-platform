@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {UsersModel} from './users.model';
 import {CategoryModel} from './risk-categories/category.model';
 import {DbService} from './db.service';
+import {OrganizationService} from './organization.service';
 
 
 @Injectable({
@@ -20,10 +21,12 @@ export class UsersService {
   ];
   constructor(public dbService: DbService) {}
 
-  updateUserArray() {
+  public userCurrentOrg = '';
+
+  updateUserArray(): void {
     this.categories = [];
 
-    this.dbService.userRef.get().then((querySnapshot) => {
+    this.dbService.userRef.where("organizations", 'array-contains-any', [this.userCurrentOrg]).get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const newUser = doc.data();
 
