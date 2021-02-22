@@ -4,14 +4,14 @@ import {isBoolean} from "util";*/
 export class UsersModel
 {
   // Initialize variables
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
   dateOfBirth: string;
   dateJoined: string;
   isEmployed: boolean;
 
-  constructor(id: number, firstName: string, lastName: string, dateOfBirth: string, dateJoined: string, isEmployed: boolean ) {
+  constructor(id: string, firstName: string, lastName: string, dateOfBirth: string, dateJoined: string, isEmployed: boolean ) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
