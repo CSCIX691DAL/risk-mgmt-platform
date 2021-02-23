@@ -28,12 +28,12 @@ export class OrganizationService {
       this.dbService.issueRef = this.dbService.organizationRef.doc(this.currentOrganization).collection(`issues`);
       this.dbService.riskProfileRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('riskProfiles');
       this.dbService.categoryRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('categories');
+      this.userService.userCurrentOrg = this.currentOrganization;
+      this.userService.updateUserArray();
       this.taskService.updateTaskArray();
       this.issueService.updateIssueArray();
       this.categoryService.updateCategoryArray();
       this.profileService.updateRiskProfileArray();
-      this.userService.userCurrentOrg = this.currentOrganization;
-      this.userService.updateUserArray();
 
       this.router.navigate(['dashboard']);
     });
