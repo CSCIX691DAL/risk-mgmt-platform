@@ -35,6 +35,8 @@ export class CreateNewTaskComponent implements OnInit {
   providedDate = true;
 
   createNewTask(): void {
+    console.log(this.dummyUserModel);
+
     if (this.newTaskForm.value.taskStatus === '') {
       this.newTaskForm.value.taskStatus = 'In Progress';
     }
