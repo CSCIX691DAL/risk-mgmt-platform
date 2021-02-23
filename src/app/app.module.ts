@@ -72,6 +72,8 @@ import { UserProfileWidgetComponent } from './admin-dash/admin-home/user-profile
 import { AssignedTasksComponent } from './admin-dash/admin-home/assigned-tasks/assigned-tasks.component';
 import {UserAuthService} from './user-auth.service';
 import {AngularFireAuthGuard, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
+import { PolicyComponent } from './policy/policy.component';
+import { PolicyItemComponent } from './policy/policy-item/policy-item.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -86,6 +88,7 @@ const myroutes: Routes = [
   {path: 'edit-task', component: EditTaskComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'tasks', component: TaskListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'surveys', component: IssueSurvey, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'policy', component: PolicyComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
@@ -152,6 +155,8 @@ const myroutes: Routes = [
     AdminHomeComponent,
     UserProfileWidgetComponent,
     AssignedTasksComponent,
+    PolicyComponent,
+    PolicyItemComponent,
   ],
   imports: [
     BrowserModule,
