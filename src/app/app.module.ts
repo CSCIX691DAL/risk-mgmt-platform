@@ -62,21 +62,38 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {DbService} from './db.service';
+import { AdminNavComponent } from './admin-dash/admin-nav/admin-nav.component';
+import { UserListComponent } from './admin-dash/user-list/user-list.component';
+import { OrgsListComponent } from './admin-dash/orgs-list/orgs-list.component';
+import { OrgsListItemComponent } from './admin-dash/orgs-list/orgs-list-item/orgs-list-item.component';
+import { UserListItemComponent } from './admin-dash/user-list/user-list-item/user-list-item.component';
+import { AdminHomeComponent } from './admin-dash/admin-home/admin-home.component';
+import { UserProfileWidgetComponent } from './admin-dash/admin-home/user-profile-widget/user-profile-widget.component';
+import { AssignedTasksComponent } from './admin-dash/admin-home/assigned-tasks/assigned-tasks.component';
+import {UserAuthService} from './user-auth.service';
+import {AngularFireAuthGuard, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
+import { NewTasklistComponent } from './new-tasklist/new-tasklist.component';
+import { NewTaskItemComponent } from './newTasklist/new-task-item/new-task-item.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
+
+// https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
-  {path: 'dashboard' , component : DashboardComponent},
-  {path: 'categories' , component : RiskCategoriesComponent},
-  {path: 'issues' , component : IssueListComponent},
-  {path: 'profile' , component : RiskProfileComponent},
-  {path: 'create-task', component: CreateNewTaskComponent},
-  {path: 'edit-task', component: EditTaskComponent},
-  {path: 'tasks', component: TaskListComponent},
-  {path: 'surveys', component: IssueSurvey},
+  {path: 'dashboard' , component : DashboardComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'categories' , component : RiskCategoriesComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'issues' , component : IssueListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'profile' , component : RiskProfileComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'create-task', component: CreateNewTaskComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'edit-task', component: EditTaskComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'tasks', component: NewTasklistComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'surveys', component: IssueSurvey, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'admin-dashboard', component: AdminDashComponent}
+  {path: 'admin-dashboard', component: AdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
 ];
 
 @NgModule({
@@ -130,10 +147,21 @@ const myroutes: Routes = [
     RegisterComponent,
     LandingComponent,
     ForgotPasswordComponent,
-    AdminDashComponent
+    AdminDashComponent,
+    AdminNavComponent,
+    UserListComponent,
+    OrgsListComponent,
+    OrgsListItemComponent,
+    UserListItemComponent,
+    AdminHomeComponent,
+    UserProfileWidgetComponent,
+    AssignedTasksComponent,
+    NewTasklistComponent,
+    NewTaskItemComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule.forRoot(myroutes),
     Ng2SearchPipeModule,
@@ -142,10 +170,14 @@ const myroutes: Routes = [
     ReactiveFormsModule,
     ChartsModule,
     NgbModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    ToastrModule.forRoot({
+      timeOut: 3450,
+      closeButton: true
+    })
   ],
-  providers: [TaskService],
+  providers: [UserAuthService, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

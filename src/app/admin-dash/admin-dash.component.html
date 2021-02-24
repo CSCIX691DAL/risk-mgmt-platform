@@ -1,50 +1,21 @@
 <div class="container-fluid">
+
     <!-- Admin Dashboard Navigation Bar -->
-    <div class="row adminDashNavigationBar">
+    <div class="row">
 
-        <!-- Left Side - Navigation -->
-        <div class="col-md-3">
-            <div class="row">
+    <!-- Admin Dash Navigation Bar -->
+    <app-admin-nav></app-admin-nav>
 
-                <!-- Link 1 -->
-                <div class="col-md-3 text-center">
-                    <h6 class="pt-3">Riski</h6>
-                </div>
+    <!-- Admin Profile Component -->
+    <app-admin-home></app-admin-home>
 
-                <!-- Link 2 -->
-                <div class="col-md-3 text-center">
-                    <h6 class="pt-3">Users</h6>
-                </div>
+    <!-- Admin Organizations Component -->
+    <app-orgs-list></app-orgs-list>
 
-                <!-- Link 3 -->
-                <div class="col-md-3 text-center">
-                    <h6 class="pt-3">Orgs.</h6>
-                </div>
+    <!-- Admin Users Component
+    <app-user-list></app-user-list>
+    -->
 
-                <!-- Link 4 -->
-                <div class="col-md-3 text-center">
-                    <h6 class="pt-3">Account</h6>
-                </div>
+    <div>
 
-            </div>
-        </div>
-
-        <!-- Right Side - Content -->
-        <div class="col-md-9">
-            <div class="row">
-
-                <!-- Title of component component admin is currently viewing -->
-                <div class="col-md-6">
-                    <h5 class="mt-2 pt-1 pl-2">Current Page</h5>
-                </div>
-
-                <!-- Search Bar -->
-                <div class="col-md-6">
-                    <input class="form-control float-right mr-2 adminDash-SearchBar" type="text" placeholder="Search" value="Search">
-                </div>
-
-            </div>
-        </div>
-
-    </div>
 </div>

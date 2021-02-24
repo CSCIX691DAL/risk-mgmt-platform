@@ -9,7 +9,7 @@
 
                     <!-- -->
                     <div class="col-md-6 border-right">
-                        placeholder image
+                        <img src="assets/img/signup.svg" alt="" class="d-inline-block align-top registerImage" />
                     </div>
 
                     <!-- -->
@@ -24,9 +24,27 @@
                             <!-- Email -->
                             <div class="col-md-8 mt-4 pt-1 pb-1">
 
+                                <div class="col-md-12" *ngIf="!providedEmail">
+                                    <p class="text-danger">You must enter an e-mail address.</p>
+                                </div>
+
                                 <label for="registerEmail" class="float-left">Email</label>
                                 <div class="input-group mb-3">
-                                    <input type="email" class="form-control" id="registerEmail" name="registerEmail">
+                                    <input type="email" class="form-control" id="registerEmail" name="registerEmail" [formControl]="registerEmail">
+                                </div>
+
+                            </div>
+
+                            <!-- User's Name -->
+                            <div class="col-md-8 pt-1 pb-1">
+
+                                <div class="col-md-12" *ngIf="!providedName">
+                                    <p class="text-danger">You must enter your name.</p>
+                                </div>
+
+                                <label for="userName" class="float-left">Full Name</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="userName" name="userName" [formControl]="userName">
                                 </div>
 
                             </div>
@@ -34,9 +52,13 @@
                             <!-- Password -->
                             <div class="col-md-8 pt-1 pb-1">
 
+                                <div class="col-md-12" *ngIf="!passwordMatch">
+                                    <p class="text-danger">Passwords do not match.</p>
+                                </div>
+
                                 <label for="registerPassword" class="float-left">Password</label>
                                 <div class="input-group mb-3">
-                                    <input type="password" class="form-control" id="registerPassword" name="registerPassword">
+                                    <input type="password" class="form-control" id="registerPassword" name="registerPassword" [formControl]="registerPassword">
                                 </div>
 
                             </div>
@@ -46,7 +68,7 @@
 
                                 <label for="registerConfirmPassword" class="float-left">Confirm Password</label>
                                 <div class="input-group mb-3">
-                                    <input type="password" class="form-control" id="registerConfirmPassword" name="registerConfirmPassword">
+                                    <input type="password" class="form-control" id="registerConfirmPassword" name="registerConfirmPassword" [formControl]="registerConfirmPassword">
                                 </div>
 
                             </div>
@@ -54,16 +76,21 @@
                             <!-- Verification Code -->
                             <div class="col-md-8 pt-1 pb-1">
 
-                                <label for="registerVCode" class="float-left">Verification Code</label>
+                                <div class="col-md-12" *ngIf="!providedVerify">
+                                    <p class="text-danger">You must enter an organization name.</p>
+                                </div>
+
+                                <label for="registerVerifyCode" class="float-left">Organization Name</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="registerVCode" name="registerVCode">
+                                    <input type="text" class="form-control" id="registerVerifyCode" name="registerVerifyCode" [formControl]="registerVerifyCode">
                                 </div>
 
                             </div>
 
+
                             <!-- Register Button -->
                             <div class="col-md-8 pt-2 pb-5 text-center">
-                                <button type="submit" class="btn btn-primary px-5 py-2">Register</button>
+                                <button type="submit" class="btn btn-primary px-5 py-2" (click)="onSubmit()">Register</button>
                             </div>
 
                             <!-- Link to Login Page -->
