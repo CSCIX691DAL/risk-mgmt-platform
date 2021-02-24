@@ -23,7 +23,7 @@ export class NewTaskItemComponent implements OnInit {
       // Now attempting to directly remove them in firestore - no more soft deletes
       this.taskService.dbService.taskRef.doc(this.taskItem.title).delete();
 
-      this.taskService.routeBackToHomePage();
+      //this.taskService.routeBackToHomePage();
     }
   }
 
