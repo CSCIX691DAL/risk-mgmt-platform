@@ -19,10 +19,30 @@ export class OrganizationService {
   // This refers to the ID of the document within the organizations collection; this should change when user selects a different org
   public currentOrganization;
 
+  public userOrganizations;
+
+  public changeCurrentOrg(orgName: string) {
+    this.currentOrganization = orgName;
+
+    this.dbService.taskRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('tasks');
+    this.dbService.issueRef = this.dbService.organizationRef.doc(this.currentOrganization).collection(`issues`);
+    this.dbService.riskProfileRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('riskProfiles');
+    this.dbService.categoryRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('categories');
+    this.userService.userCurrentOrg = this.currentOrganization;
+    this.userService.updateUserArray();
+    this.taskService.updateTaskArray();
+    this.issueService.updateIssueArray();
+    this.categoryService.updateCategoryArray();
+    this.profileService.updateRiskProfileArray();
+  }
+
   public updateOrg(email: string): void {
     console.log(email);
     this.dbService.userRef.doc(email).get().then((document) => {
       this.currentOrganization = document.data().organizations[0];
+
+      this.userOrganizations = document.data().organizations;
+      console.log(this.userOrganizations);
 
       this.dbService.taskRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('tasks');
       this.dbService.issueRef = this.dbService.organizationRef.doc(this.currentOrganization).collection(`issues`);
