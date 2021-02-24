@@ -55,7 +55,7 @@
         </div>
 
         <!-- Task Items -->
-        <app-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem"></app-task-item>
+        <app-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem" [frontPageDisplay]="true"></app-task-item>
 
       </div>
 

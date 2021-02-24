@@ -19,6 +19,7 @@ export class EditTaskComponent implements OnInit {
   private taskService: TaskService;
 
   @Input() inputTask: TaskModel;
+  @Input() frontPageDisplay: boolean;
 
   closeResult = '';
 

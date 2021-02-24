@@ -77,4 +77,5 @@
 
 </ng-template>
 
-<button type="button" class="btn btn-outline-success mr-3" (click)="open(editTaskContent)">Edit</button>
+<button *ngIf="frontPageDisplay" type="button" class="btn btn-outline-success mr-3" (click)="open(editTaskContent)">Edit</button>
+<a *ngIf="!frontPageDisplay" class="float-right" (click)="open(editTaskContent)">Edit</a>
