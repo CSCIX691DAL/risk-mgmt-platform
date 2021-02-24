@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.userAuthService.fireAuth.signInWithEmailAndPassword(this.loginEmail.value, this.loginPassword.value).then(result => {
       this.loginFailed = false;
 
-      this.organizationService.updateOrg(result.user.email);
+      //this.organizationService.updateOrg(result.user.email);
       // These are used to sync the user's items with their specific organization.
     }).catch(error => {
       this.loginFailed = true;
