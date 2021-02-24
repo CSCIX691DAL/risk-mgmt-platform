@@ -16,7 +16,8 @@
       <p class="p-0 mt-md-1 mb-0">{{taskItem.dueDate.toISOString().substr(0,10)}}</p>
     </div>
     <div class="col-2 text-center">
-      <button (click)="editSelfTask()" class="btn btn-info mr-2 p-0 taskButton">Edit</button>
+      <!--<button (click)="editSelfTask()" class="btn btn-info mr-2 p-0 taskButton">Edit</button>-->
+      <app-edit-task [inputTask]="taskItem" [frontPageDisplay]="frontPageDisplay"></app-edit-task>
       <button (click)="deleteSelfTask()" class="btn btn-danger p-0 taskButton">Delete</button>
     </div>
   </div>

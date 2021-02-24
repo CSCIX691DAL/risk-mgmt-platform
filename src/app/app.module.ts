@@ -72,6 +72,8 @@ import { UserProfileWidgetComponent } from './admin-dash/admin-home/user-profile
 import { AssignedTasksComponent } from './admin-dash/admin-home/assigned-tasks/assigned-tasks.component';
 import {UserAuthService} from './user-auth.service';
 import {AngularFireAuthGuard, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
+import { NewTasklistComponent } from './new-tasklist/new-tasklist.component';
+import { NewTaskItemComponent } from './newTasklist/new-task-item/new-task-item.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -84,7 +86,7 @@ const myroutes: Routes = [
   {path: 'profile' , component : RiskProfileComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'create-task', component: CreateNewTaskComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'edit-task', component: EditTaskComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
-  {path: 'tasks', component: TaskListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'tasks', component: NewTasklistComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'surveys', component: IssueSurvey, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
@@ -152,6 +154,8 @@ const myroutes: Routes = [
     AdminHomeComponent,
     UserProfileWidgetComponent,
     AssignedTasksComponent,
+    NewTasklistComponent,
+    NewTaskItemComponent,
   ],
   imports: [
     BrowserModule,
