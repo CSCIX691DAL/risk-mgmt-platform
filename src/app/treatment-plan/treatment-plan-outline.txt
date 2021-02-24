@@ -1,0 +1,35 @@
+The treatment plan includes a list of tasks that are going to be executed in case a risk happened. so for a risk you define a treatment plan and that includes a
+list of tasks. you call a set of treatment plans a policy. So a policy includes a list of treatment plans and each treatment plan related to risk and
+includes a list of tasks. If it is not clear ask you question in the comment her and if it is clear close the issue.
+- Treatment plan consists of:
+list of tasks (per risk)
+
+- Multiple treatment plans = a policy
+
+Management or treatment options for risks expected to have positive outcome include:
+
+    -starting or continuing an activity likely to create or maintain this positive outcome;
+    -modifying the likelihood of the risk, to increase possible beneficial outcomes;
+    -trying to manipulate possible consequences, to increase the expected gains;
+    -sharing the risk with other parties that may contribute by providing additional resources which could increase the likelihood of the opportunity or the expected gains;
+    -retaining the residual risk.
+
+Management options for risks having negative outcomes look similar to those for risks with positive ones, although their interpretation and implications
+are completely different. Such options or alternatives might be:
+    -to avoid the risk by deciding to stop, postpone, cancel, divert or continue with an activity that may be the cause for that risk;
+    -to modify the likelihood of the risk trying to reduce or eliminate the likelihood of the negative outcomes;
+    -to try modifying the consequences in a way that will reduce losses;
+    -to share the risk with other parties facing the same risk (insurance arrangements and organizational structures such as partnerships and joint ventures can be
+    -used to spread responsibility and liability); (of course one should always keep in mind that if a risk is shared in whole or in part, the organization is acquiring a new risk, i.e. the risk that the organization to which the initial risk has been transferred may not manage this risk effectively.)
+    -to retain the risk or its residual risks;
+
+1. set up table using risk-profile.model from app/risk-profile
+2. order risks by likelihood*impact, date, or whatever (display risks)
+3. provide selection of treatment plan strategies for each risk (manage risks)
+4. provide guidelines for execution of strategies?
+5. allow reclassification of risk likelihood
+6. allow reclassification of risk consequences
+
+
+Responsible for create plan + delete plan
+

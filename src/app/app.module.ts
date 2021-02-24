@@ -79,6 +79,7 @@ import {ToastrModule} from 'ngx-toastr';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+import {TreatmentPlanComponent} from './treatment-plan/treatment-plan.component';
 
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
@@ -94,6 +95,8 @@ const myroutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'admin-dashboard', component: AdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
+  {path: 'admin-dashboard', component: AdminDashComponent},
+  {path: 'treatment-plan', component: TreatmentPlanComponent},
 ];
 
 @NgModule({
@@ -158,6 +161,7 @@ const myroutes: Routes = [
     AssignedTasksComponent,
     NewTasklistComponent,
     NewTaskItemComponent,
+    TreatmentPlanComponent
   ],
   imports: [
     BrowserModule,
