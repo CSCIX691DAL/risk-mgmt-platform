@@ -6,6 +6,7 @@ import {UsersService} from '../../users.service';
 import {UsersModel} from '../../users.model';
 import {DbService} from '../../db.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-new-task',
@@ -14,7 +15,7 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class CreateNewTaskComponent implements OnInit {
 
-  constructor(taskService: TaskService, public userService: UsersService, private dbService: DbService, public modalService: NgbModal) {
+  constructor(taskService: TaskService, public userService: UsersService, private dbService: DbService, public modalService: NgbModal, public notificationService: ToastrService) {
     this.taskService = taskService;
   }
 
@@ -37,7 +38,6 @@ export class CreateNewTaskComponent implements OnInit {
   closeResult = '';
 
   createNewTask(): void {
-    console.log(this.dummyUserModel);
 
     if (this.newTaskForm.value.taskStatus === '') {
       this.newTaskForm.value.taskStatus = 'In Progress';
@@ -66,6 +66,8 @@ export class CreateNewTaskComponent implements OnInit {
           new Date(),
           false
       );
+
+      this.notificationService.success('Task "' + newTask.title + '" assigned to ' + newTask.createdBy.firstName, 'Task Successfully Created');
 
       // TODO: Note - task's title is being used as ID - not too great
       this.dbService.taskRef.doc(newTask.title).set({

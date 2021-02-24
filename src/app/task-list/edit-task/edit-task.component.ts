@@ -5,6 +5,7 @@ import {TaskService} from '../task-service';
 import {UsersService} from '../../users.service';
 import {DbService} from '../../db.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-task',
@@ -23,7 +24,7 @@ export class EditTaskComponent implements OnInit {
 
   closeResult = '';
 
-  constructor(taskService: TaskService, public userService: UsersService, public dbService: DbService, public modalService: NgbModal) {
+  constructor(taskService: TaskService, public userService: UsersService, public dbService: DbService, public modalService: NgbModal, public notificationService: ToastrService) {
     this.taskService = taskService;
   }
 
@@ -52,6 +53,8 @@ export class EditTaskComponent implements OnInit {
       dueDate: newTask.dueDate,
       createdDate: newTask.createdDate
     });
+
+    this.notificationService.success('Task "' + newTask.title + '" has been updated.', 'Task Successfully Edited');
 
     this.modalService.dismissAll();
     //this.taskService.routeBackToHomePage();

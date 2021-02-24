@@ -3,6 +3,8 @@ import {TaskModel} from '../task.model';
 import {CommonModule} from '@angular/common';
 import {TaskListComponent} from '../task-list.component';
 import {TaskService} from '../task-service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-task-item',
@@ -14,7 +16,7 @@ export class TaskItemComponent implements OnInit {
   @Input() taskItem: TaskModel;
   @Input() frontPageDisplay: boolean;
 
-  constructor(taskService: TaskService) {
+  constructor(taskService: TaskService, public notificationService: ToastrService) {
     this.taskService = taskService;
   }
 
@@ -28,6 +30,8 @@ export class TaskItemComponent implements OnInit {
 
       // Now attempting to directly remove them in firestore - no more soft deletes
       this.taskService.dbService.taskRef.doc(this.taskItem.title).delete();
+
+      this.notificationService.success('Task "' + this.taskItem.title + '" has been deleted.', 'Task Successfully Deleted');
 
       //this.taskService.routeBackToHomePage();
     }
