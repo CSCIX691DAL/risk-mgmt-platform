@@ -1,5 +1,4 @@
 <!-- Treatment Plan + Risk Profile here -->
-<p>treatment plan works :)</p>
 <!-- Content Container -->
 <div id="riskProfileContainer" class="container-fluid">
 
@@ -28,5 +27,5 @@
     <!-- Treatment Plan needs to appear below/with each item -->
     <app-treatment-plan-item *ngFor="let item of treatmentPlans | filter: TreatmentPlanSearchText"></app-treatment-plan-item>
     <!-- basic placeholder - testing functionality -->
-    <p *ngFor="let plan of treatmentPlans">{{ plan.title }}</p>
+    <p *ngFor="let plan of treatmentPlans">{{ plan.title + "\n" + plan.riskProfile.title + "\n" + "[" + plan.tasks + "]" + "\n" + plan.continueRiskActivity + "\t" +plan.updateRiskConsequences + "\t" + plan.retainRisk }}</p>
 </div>

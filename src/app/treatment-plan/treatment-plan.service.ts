@@ -34,7 +34,7 @@ export class TreatmentPlanService {
 
     this.riskProfiles.forEach((profile) => {
       console.log(profile);
-      this.treatmentPlans.push(new TreatmentPlanModel(profile, ['task 1', 'task2'], 'title', false, false, false));
+      this.treatmentPlans.push(new TreatmentPlanModel(profile, ['task1', 'task2'], 'title', false, false, false));
     });
 
   }
