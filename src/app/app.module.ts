@@ -94,7 +94,7 @@ const myroutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'admin-dashboard', component: AdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
+  {path: 'admin-dashboard', component: AdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'admin-dashboard', component: AdminDashComponent},
   {path: 'treatment-plan', component: TreatmentPlanComponent},
 ];

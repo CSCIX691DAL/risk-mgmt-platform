@@ -5,13 +5,14 @@ import {RiskProfileModel} from '../risk-profile/risk-profile.model';
 import {TaskModel} from '../task-list/task.model';
 import {Subject, Subscription} from 'rxjs';
 import {DbService} from '../db.service';
+import {TaskService} from '../task-list/task-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TreatmentPlanService {
   // need category model for easiest sorting I think
-  tasks: TaskModel;
+  tasks: Array<TaskModel>;
   triggerToUpdate = new Subject<boolean>();
   treatmentPlanService: TreatmentPlanService;
   riskProfiles: RiskProfileModel[];
@@ -20,21 +21,20 @@ export class TreatmentPlanService {
   //    [this.riskProfileService.getRiskProfiles(), 'title',
   //  new TreatmentOptionsModel(false, false, false)];
 
-  constructor( public riskProfileService: RiskProfileService,  public dbService: DbService) {
+  constructor( public riskProfileService: RiskProfileService,  taskService: TaskService, public dbService: DbService) {
     this.treatmentPlans = [];
-    this.riskProfileService.updateRiskProfileArray();
     this.riskProfiles = riskProfileService.getRiskProfiles();
-
-    this.updatePlans();
+    this.tasks = taskService.getTaskItemArray();
   }
   updatePlans(): void {
     console.log(this.riskProfiles);
 
     console.log(this.riskProfileService.getRiskProfiles());
 
+    // is there a way to forEach for riskProfile
     this.riskProfiles.forEach((profile) => {
       console.log(profile);
-      this.treatmentPlans.push(new TreatmentPlanModel(profile, ['task1', 'task2'], 'title', false, false, false));
+      this.treatmentPlans.push(new TreatmentPlanModel(profile, this.tasks, 'title', false, false, false));
     });
 
   }
