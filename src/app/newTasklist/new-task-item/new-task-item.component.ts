@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TaskService} from '../../task-list/task-service';
 import {TaskModel} from '../../task-list/task.model';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-task-item',
@@ -12,7 +13,7 @@ export class NewTaskItemComponent implements OnInit {
   @Input() taskItem: TaskModel;
   @Input() frontPageDisplay: boolean;
 
-  constructor(public taskService: TaskService) { }
+  constructor(public taskService: TaskService, public notificationService: ToastrService) { }
 
   // Using soft delete for task item for now, much easier to implement at the moment
   deleteSelfTask(): void {
@@ -22,6 +23,9 @@ export class NewTaskItemComponent implements OnInit {
 
       // Now attempting to directly remove them in firestore - no more soft deletes
       this.taskService.dbService.taskRef.doc(this.taskItem.title).delete();
+
+      this.notificationService.success('Task "' + this.taskItem.title + '" has been deleted.', 'Task Successfully Deleted');
+
 
       //this.taskService.routeBackToHomePage();
     }

@@ -74,6 +74,8 @@ import {UserAuthService} from './user-auth.service';
 import {AngularFireAuthGuard, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
 import { NewTasklistComponent } from './new-tasklist/new-tasklist.component';
 import { NewTaskItemComponent } from './newTasklist/new-task-item/new-task-item.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -159,6 +161,7 @@ const myroutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule.forRoot(myroutes),
     Ng2SearchPipeModule,
@@ -169,6 +172,10 @@ const myroutes: Routes = [
     NgbModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    ToastrModule.forRoot({
+      timeOut: 3450,
+      closeButton: true
+    })
   ],
   providers: [UserAuthService, TaskService],
   bootstrap: [AppComponent]
