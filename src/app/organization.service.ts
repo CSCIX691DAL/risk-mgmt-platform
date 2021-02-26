@@ -61,8 +61,17 @@ export class OrganizationService {
 
   public createOrg(orgName: string): void {
     this.dbService.organizationRef.doc(orgName).set({
+      isActive: true
     });
   }
+
+  public activateOrg(orgName: string): void {
+    this.dbService.organizationRef.doc(orgName).update({
+      isActive: true
+    });
+  }
+
+
 
   public deleteOrg(orgName: string): void {
     this.dbService.organizationRef.doc(orgName).delete();
