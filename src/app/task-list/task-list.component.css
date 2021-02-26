@@ -20,3 +20,12 @@ h5:hover {
     height: 36px;
     margin-top: 11px;
   }
+.tasksSortButton {
+  height: 36px;
+  margin-top: 11px;
+  padding-top: 4.5px;
+}
+  .tasksSortButton:focus {
+    outline: none;
+    box-shadow: none;
+  }

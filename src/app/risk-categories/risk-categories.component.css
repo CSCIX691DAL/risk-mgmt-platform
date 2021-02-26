@@ -33,3 +33,12 @@
 .cat-group-item{
   padding-right: 0px;
 }
+.categoriesSortButton {
+  height: 36px;
+  margin-top: 11px;
+  padding-top: 4.5px;
+}
+  .categoriesSortButton:focus {
+    outline: none;
+    box-shadow: none;
+  }
