@@ -26,7 +26,7 @@
 
                         <!-- Search Treatment Plans bar -->
                         <div class="pr-3">
-                            <input class="form-control" type="text" placeholder="Search" name="treatmentPlans" [(ngModel)]="TreatmentPlanSearchText" value="Search">
+                            <input class="form-control" type="text" placeholder="Search treatment plans" name="treatmentPlans" [(ngModel)]="TreatmentPlanSearchText" value="Search">
                         </div>
 
                     </div>
@@ -37,19 +37,26 @@
     </div>
 
 
-    <div class="row px-2 m-0">
+    <div class="row m-0">
 
         <!-- Treatment Plan List -->
         <div class="col-md-3 treatmentPlan_LeftSidebar">
-            <!-- Treatment Plan needs to appear below/with each item -->
-            <app-treatment-plan-item *ngFor="let item of treatmentPlans | filter: TreatmentPlanSearchText"></app-treatment-plan-item>
-            <!-- basic placeholder - testing functionality -->
-            <p *ngFor="let plan of treatmentPlans">{{ plan.title + "\n" + plan.riskProfile.title + "\n" + "[" + plan.tasks + "]" + "\n" + plan.continueRiskActivity + "\t" +plan.updateRiskConsequences + "\t" + plan.retainRisk }}</p>
+
+                <!-- Treatment Plan Item -->
+                <app-treatment-plan-item></app-treatment-plan-item>
+
+                <!-- Treatment Plan needs to appear below/with each item -->
+                <app-treatment-plan-item *ngFor="let item of treatmentPlans | filter: TreatmentPlanSearchText" [treatmentPlanItem]="item"></app-treatment-plan-item>
+
+                <!-- basic placeholder - testing functionality -->
+                <p *ngFor="let plan of treatmentPlans">{{ plan.title + "\n" + plan.riskProfile.title + "\n" + "[" + plan.tasks + "]" + "\n" + plan.continueRiskActivity + "\t" +plan.updateRiskConsequences + "\t" + plan.retainRisk }}</p>
+
+
         </div>
 
         <!-- Treatment Plan Display -->
         <div class="col-md-9">
-            Treatment Plan Display
+            <h2>Treatment Plan Title</h2>
         </div>
 
     </div>
