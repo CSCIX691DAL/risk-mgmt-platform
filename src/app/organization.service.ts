@@ -58,4 +58,9 @@ export class OrganizationService {
       this.router.navigate(['dashboard']);
     });
   }
+
+  public createOrg(orgName: string): void {
+    this.dbService.organizationRef.doc(orgName).set({
+    });
+  }
 }
