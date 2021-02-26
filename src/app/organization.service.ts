@@ -37,7 +37,7 @@ export class OrganizationService {
     this.issueService.updateIssueArray();
     this.categoryService.updateCategoryArray();
     this.profileService.updateRiskProfileArray();
-    this.treatmentService.updatePlans();
+    this.treatmentService.updateTreatmentPlans();
   }
 
   public updateOrg(email: string): void {
@@ -58,6 +58,7 @@ export class OrganizationService {
       this.issueService.updateIssueArray();
       this.categoryService.updateCategoryArray();
       this.profileService.updateRiskProfileArray();
+      this.treatmentService.updateTreatmentPlans();
 
       this.router.navigate(['dashboard']);
     });

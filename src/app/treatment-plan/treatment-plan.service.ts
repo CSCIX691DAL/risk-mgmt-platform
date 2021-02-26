@@ -6,6 +6,9 @@ import {TaskModel} from '../task-list/task.model';
 import {Subject, Subscription} from 'rxjs';
 import {DbService} from '../db.service';
 import {TaskService} from '../task-list/task-service';
+import {IssueModel} from '../issue-list/issue.model';
+import {CategoryService} from '../risk-categories/category.service';
+import {CategoryModel} from '../risk-categories/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,55 +16,40 @@ import {TaskService} from '../task-list/task-service';
 export class TreatmentPlanService {
   // need category model for easiest sorting I think
   tasks: Array<TaskModel>;
-  triggerToUpdate = new Subject<boolean>();
   treatmentPlanService: TreatmentPlanService;
   riskProfiles: RiskProfileModel[];
   treatmentPlans: TreatmentPlanModel[];
-  // set data here
-  //    [this.riskProfileService.getRiskProfiles(), 'title',
-  //  new TreatmentOptionsModel(false, false, false)];
+  categories: CategoryModel[];
 
-  constructor( public riskProfileService: RiskProfileService,  taskService: TaskService, public dbService: DbService) {
+  constructor( public riskProfileService: RiskProfileService, taskService: TaskService, categoryService: CategoryService, public dbService: DbService) {
     this.treatmentPlans = [];
+    this.categories = categoryService.getCategories();
     this.riskProfiles = riskProfileService.getRiskProfiles();
     this.tasks = taskService.getTaskItemArray();
   }
-  updatePlans(): void {
-    console.log(this.riskProfiles);
+  // Updates issue list
+  triggerToUpdate = new Subject<boolean>();
 
-    console.log(this.riskProfileService.getRiskProfiles());
+  updateTreatmentPlans(): void {
+    // update plans from db + into db
+    // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
+    /* this.treatmentPlans = [];
 
-    // is there a way to forEach for riskProfile
-    this.riskProfiles.forEach((profile) => {
-      console.log(profile);
-      this.treatmentPlans.push(new TreatmentPlanModel(profile, this.tasks, 'title', false, false, false));
+    this.dbService.treatmentRef.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const newPlan = doc.data();
+
+        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, newPlan.tasks, newPlan.title, false, false, false));
+      });
+      this.triggerToUpdate.next(true);
     });
-
+    */
+    // force display example treatmentPlan
+    this.treatmentPlans.push(new TreatmentPlanModel((new RiskProfileModel(1, 'Risk Profile 1', 'This is risk profile 1', 9, 5, this.categories[0], this.categories[0], 'Source Of Risk #1')), [] , 'title', false, false, false));
   }
 
   getTreatmentPlans(): TreatmentPlanModel[]{
     return this.treatmentPlans.slice();
-  }
-
-  // Sort Level of Risk
-  sortLevelofRisk(sortCode: number): void {
-    // sortCode of 1 : sort Level of Risk High to Low
-    if (sortCode === 1) {
-      this.riskProfiles = this.riskProfiles.sort((n1, n2) => {
-        if (n1.getLevelOfRisk()  > n2.getLevelOfRisk() ) { return -1; }
-        if (n1.getLevelOfRisk() < n2.getLevelOfRisk() ) { return 1; }
-        return 0;
-      });
-    }
-    // sortCode of 2 : sort likelihood Low to High
-    else if (sortCode === 2) {
-      this.riskProfiles = this.riskProfiles.sort((n1, n2) => {
-        if (n1.getLevelOfRisk()  > n2.getLevelOfRisk() ) { return 1; }
-        if (n1.getLevelOfRisk() < n2.getLevelOfRisk() ) { return -1; }
-        return 0;
-      });
-    }
-    this.triggerToUpdate.next(true);
   }
 
 }
