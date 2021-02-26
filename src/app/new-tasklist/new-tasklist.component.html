@@ -34,6 +34,11 @@
         </div>
     </div>
 
+
+    <!-- Sort Container -->
+    <app-sort-tasks></app-sort-tasks>
+
+
     <!-- Print out all Task items -->
     <app-new-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem" [frontPageDisplay]="false"></app-new-task-item>
 
