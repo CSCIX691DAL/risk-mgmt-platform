@@ -15,10 +15,6 @@ import {RiskProfileService} from './risk-profile/risk-profile.service';
 })
 export class DbService {
 
-  taskRef: CollectionReference;
-  issueRef: CollectionReference;
-  riskProfileRef: CollectionReference;
-  categoryRef: CollectionReference;
   public taskRef: CollectionReference;
   public issueRef: CollectionReference;
   public riskProfileRef: CollectionReference;

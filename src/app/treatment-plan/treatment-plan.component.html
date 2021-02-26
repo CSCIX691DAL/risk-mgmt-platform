@@ -1,28 +1,45 @@
 <!-- Treatment Plan + Risk Profile here -->
 <!-- Content Container -->
-<div id="riskProfileContainer" class="container-fluid">
+<div class="container-fluid w-100 mw-100 px-0 m-0">
 
-    <!-- Body Header Container -->
-    <div class="row justify-content-center addRiskProfileMarginAndBorder">
-        <!-- Title / Add new Treatment Plan Container -->
-        <div class="row">
-            <!-- Page Title -->
-            <div class="col-md-7">
-                <h2>Treatment Plans</h2>
-            </div>
-            <!-- Search Treatment Plan Container -->
-            <div class="col-md-5">
+    <!-- Tasks Navigation Bar -->
+    <div class="row treatmentPlanNavigationBar px-2 m-0">
+        <div class="col-md-12">
+            <div class="row p-0">
 
-                <!-- Search Treatment Plans bar -->
-                <div class="form-inline float-right">
-                    <input class="form-control" type="text" placeholder="Search" name="treatmentPlans" [(ngModel)]="TreatmentPlanSearchText" value="Search">
+                <!-- Title of component component admin is currently viewing -->
+                <div class="col-md-6">
+                    <h3 class="mt-2 pt-1">Treatment Plan</h3>
                 </div>
 
-                <!-- Add Treatment Plan -->
+                <!-- Search Bar -->
+                <div class="col-md-6">
+                    <div class="row justify-content-end">
+
+                        <!-- Add issue modal component -->
+                        <div>
+                            <app-add-issue
+                                    addTextName="+ Treatment Plan"
+                                    [addIssue]="issueItem"
+                                    class="float-right">
+                            </app-add-issue>
+                        </div>
+
+                        <!-- Search Issues bar -->
+                        <div class="pr-3">
+                            <input class="form-control" type="text" placeholder="Search" name="treatmentPlans" [(ngModel)]="TreatmentPlanSearchText" value="Search">
+                        </div>
+
+                    </div>
+                </div>
 
             </div>
         </div>
     </div>
+
+
+    
+
 
     <!-- Treatment Plan needs to appear below/with each item -->
     <app-treatment-plan-item *ngFor="let item of treatmentPlans | filter: TreatmentPlanSearchText"></app-treatment-plan-item>
