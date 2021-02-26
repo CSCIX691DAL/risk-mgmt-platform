@@ -63,4 +63,8 @@ export class OrganizationService {
     this.dbService.organizationRef.doc(orgName).set({
     });
   }
+
+  public deleteOrg(orgName: string): void {
+    this.dbService.organizationRef.doc(orgName).delete();
+  }
 }
