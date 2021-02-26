@@ -1,90 +1,37 @@
-<!--<div class="w-100" class="container-fluid">
-    <div class="taskListContainer">
-        <div class="container">
+<div class="container-fluid w-100 mw-100 px-0 m-0">
 
-            &lt;!&ndash; Task Container &ndash;&gt;
-            <div class="">
+    <!-- Tasks Navigation Bar -->
+    <div class="row tasksListNavigationBar px-2 m-0">
+        <div class="col-md-12">
+            <div class="row p-0">
 
-                &lt;!&ndash; Title, Task search & Add new task Container &ndash;&gt;
-                <div class="row border-bottom mb-1 pb-2 mt-md-3">
-                    &lt;!&ndash; Page title &ndash;&gt;
-                    <div class="col-md-6">
-                        <h2>Task List</h2>
-                    </div>
-
+                <!-- Title of page user is currently viewing -->
+                <div class="col-md-6">
+                    <h3 class="mt-2 pt-1">Task List</h3>
                 </div>
 
-                &lt;!&ndash; Task Titles &ndash;&gt;
-                <div class="row border-bottom mt-2">
-                    <div class="col-2">
-                        <h5 class="text-center w-auto" (click)="taskService.setSortedCategory('title')">Title</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5 class="text-center" (click)="taskService.setSortedCategory('source')">Created By</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5 class="text-center" (click)="taskService.setSortedCategory('status')">Status</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5 class="text-center" (click)="taskService.setSortedCategory('dueDate')">Date Created</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5 class="text-center" (click)="taskService.setSortedCategory('dueDate')">Due Date</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5 class="text-center">Actions</h5>
-                    </div>
-                </div>
-
-                &lt;!&ndash; Task Items &ndash;&gt;
-                <app-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem"></app-task-item>
-
-            </div>
-
-        </div>
-    </div>
-</div>-->
-
-<!-- Content Container -->
-<div id="riskProfileContainer" class="container-fluid">
-
-    <!-- Body Header Container -->
-    <div class="row justify-content-center addRiskProfileMarginAndBorder">
-        <div id="addriskProfileContainer" class="container">
-
-            <!-- Title / Add new Issue Container -->
-            <div class="row">
-
-                <!-- Page Title -->
-                <div class="col-md-7">
-                    <h2>Task List</h2>
-                </div>
-
-                <!-- Search and Add New Task -->
-                <div class="col-md-5">
+                <!-- Search Bar -->
+                <div class="col-md-6">
                     <div class="row justify-content-end">
 
                         <!-- Add new Task -->
-                        <!--              <div>
-                                        <button routerLink="/create-task" class="btn btn-outline-success float-right mr-md-3">+ New Task</button>
-                                      </div>-->
-
-                        <app-create-new-task class="float-right"></app-create-new-task>
+                        <div>
+                            <app-create-new-task class="float-right"></app-create-new-task>
+                        </div>
 
                         <!-- Search Tasks -->
-                        <div class="pr-md-3">
-                            <input class="form-control float-right" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="taskSearchText">
+                        <div class="pr-3">
+                            <input class="form-control float-right tasks-SearchBar" type="search" placeholder="Search tasks" aria-label="Search" [(ngModel)]="taskSearchText">
                         </div>
 
                     </div>
                 </div>
 
             </div>
-
         </div>
     </div>
 
-    <!-- Print out all Risk Profile items -->
+    <!-- Print out all Task items -->
     <app-new-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem" [frontPageDisplay]="false"></app-new-task-item>
 
 </div>
