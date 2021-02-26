@@ -11,3 +11,9 @@
 .treatmentPlanNavigationBar h3 {
     font-weight: 700;
 }
+.treatmentPlan_LeftSidebar {
+    min-height: calc(100vh - 120px);
+    max-height: calc(100vh - 120px);
+    background-color: #F9F9F9;
+    border-right: 1px solid #EEEEEE;
+}

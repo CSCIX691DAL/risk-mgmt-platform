@@ -1,22 +1,21 @@
-<!-- Treatment Plan + Risk Profile here -->
-<!-- Content Container -->
 <div class="container-fluid w-100 mw-100 px-0 m-0">
 
-    <!-- Tasks Navigation Bar -->
+    <!-- Treatment Plans Navigation Bar -->
     <div class="row treatmentPlanNavigationBar px-2 m-0">
         <div class="col-md-12">
             <div class="row p-0">
 
-                <!-- Title of component component admin is currently viewing -->
+                <!-- Title of Current Page -->
                 <div class="col-md-6">
-                    <h3 class="mt-2 pt-1">Treatment Plan</h3>
+                    <h3 class="mt-2 pt-1">Treatment Plans</h3>
                 </div>
 
                 <!-- Search Bar -->
                 <div class="col-md-6">
                     <div class="row justify-content-end">
 
-                        <!-- Add issue modal component -->
+                        <!-- Add Treatment Plan modal component -->
+                        <!-- Need to create an add-treatment-plan component -->
                         <div>
                             <app-add-issue
                                     addTextName="+ Treatment Plan"
@@ -25,7 +24,7 @@
                             </app-add-issue>
                         </div>
 
-                        <!-- Search Issues bar -->
+                        <!-- Search Treatment Plans bar -->
                         <div class="pr-3">
                             <input class="form-control" type="text" placeholder="Search" name="treatmentPlans" [(ngModel)]="TreatmentPlanSearchText" value="Search">
                         </div>
@@ -38,11 +37,21 @@
     </div>
 
 
-    
+    <div class="row px-2 m-0">
 
+        <!-- Treatment Plan List -->
+        <div class="col-md-3 treatmentPlan_LeftSidebar">
+            <!-- Treatment Plan needs to appear below/with each item -->
+            <app-treatment-plan-item *ngFor="let item of treatmentPlans | filter: TreatmentPlanSearchText"></app-treatment-plan-item>
+            <!-- basic placeholder - testing functionality -->
+            <p *ngFor="let plan of treatmentPlans">{{ plan.title + "\n" + plan.riskProfile.title + "\n" + "[" + plan.tasks + "]" + "\n" + plan.continueRiskActivity + "\t" +plan.updateRiskConsequences + "\t" + plan.retainRisk }}</p>
+        </div>
 
-    <!-- Treatment Plan needs to appear below/with each item -->
-    <app-treatment-plan-item *ngFor="let item of treatmentPlans | filter: TreatmentPlanSearchText"></app-treatment-plan-item>
-    <!-- basic placeholder - testing functionality -->
-    <p *ngFor="let plan of treatmentPlans">{{ plan.title + "\n" + plan.riskProfile.title + "\n" + "[" + plan.tasks + "]" + "\n" + plan.continueRiskActivity + "\t" +plan.updateRiskConsequences + "\t" + plan.retainRisk }}</p>
+        <!-- Treatment Plan Display -->
+        <div class="col-md-9">
+            Treatment Plan Display
+        </div>
+
+    </div>
+
 </div>
