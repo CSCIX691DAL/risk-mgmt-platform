@@ -31,3 +31,12 @@
   background-color: #fefefe;
   position: relative;
 }
+.issuesSortButton {
+  height: 36px;
+  margin-top: 11px;
+  padding-top: 4.5px;
+}
+  .issuesSortButton:focus {
+    outline: none;
+    box-shadow: none;
+  }
