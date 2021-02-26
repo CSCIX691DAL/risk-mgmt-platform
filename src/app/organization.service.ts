@@ -71,7 +71,11 @@ export class OrganizationService {
     });
   }
 
-
+  public deactivateOrg(orgName: string): void {
+    this.dbService.organizationRef.doc(orgName).update({
+      isActive: true
+    });
+  }
 
   public deleteOrg(orgName: string): void {
     this.dbService.organizationRef.doc(orgName).delete();
