@@ -398,7 +398,7 @@ export class RiskResponseMatrixComponent implements OnInit {
   ];
   public scatterChartType: ChartType = 'scatter';
 
-  ngOnInit(): void {
+  public updateGraphData(): void {
     for (const riskProfile of this.riskProfileService.getRiskProfiles()) {
       if (riskProfile.impact !== 0 && riskProfile.impact % 2 === 0) {
         riskProfile.impact = riskProfile.impact + 1;
@@ -409,6 +409,11 @@ export class RiskResponseMatrixComponent implements OnInit {
       // @ts-ignore
       this.scatterChartData[0].data.push({x: riskProfile.impact, y: riskProfile.likelihood});
     }
+  }
+
+  ngOnInit(): void {
+    // Not really a good way of doing this - this assumes that all data is loaded within 500ms of component being initialized
+    setTimeout(() => this.updateGraphData(), 500);
   }
 
   // Thank you to Asif Karim Bherani of SO for his code on getting a specific value on click

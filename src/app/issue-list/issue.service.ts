@@ -3,13 +3,13 @@ import {Injectable, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {DbService} from '../db.service';
 import {TaskModel} from '../task-list/task.model';
+import {TaskService} from '../task-list/task-service';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({providedIn: 'root'})
 export class IssueService{
 
-  constructor(public dbService: DbService) {
-    this.updateIssueArray();
-
+  constructor(public dbService: DbService, public notificationService: ToastrService) {
   }
 
   // Updates issue list
@@ -46,8 +46,8 @@ export class IssueService{
 
   // Delete issue function
   deleteIssue(issue: IssueModel): void {
-    console.log(issue);
-    // console.log(issue.id);
+    this.notificationService.success('Issue "' + issue.title + '" has been deleted.', 'Issue Successfully Deleted');
+
     this.issues = this.issues.filter(x => x.id !== issue.id);
 
     this.dbService.issueRef.doc(issue.title).delete();
@@ -84,6 +84,8 @@ export class IssueService{
       this.triggerToUpdate.next(true);
     }
 
+    this.notificationService.success('Issue "' + issue.title + '" has been added.', 'Issue Successfully Created');
+
   }
 
   // Edit issue function
@@ -100,6 +102,9 @@ export class IssueService{
     const isInIssueList = ((obj) => Number(obj.id) === Number(issue.id));
     const oldIssueIndex = this.issues.findIndex(isInIssueList);
     this.issues[oldIssueIndex] = issue;
+
+    this.notificationService.success('Issue "' + issue.title + '" has been updated.', 'Issue Successfully Edited');
+
     // Update screen
     this.triggerToUpdate.next(true);
   }

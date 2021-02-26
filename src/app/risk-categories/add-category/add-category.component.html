@@ -16,7 +16,6 @@
       <label for="addParentCategory" class="labelAndInput">Parent Category</label>
       <div class="input-group mb-3">
         <select class="form-control" id="addParentCategory" name="addParentCategory" ngModel [(ngModel)]="category.parentCategory">
-          <option>Select a Parent Category</option>
           <option *ngFor="let item of categoryService.categories" [ngValue]=item>
             {{item.name}}
           </option>
@@ -38,4 +37,4 @@
 
 </ng-template>
 
-<button type="button" class="btn btn-outline-success mr-3" (click)="open(addCategoryContent)">{{ addTextName }}</button>
+<button type="button" class="btn btn-outline-success mr-3 categoriesNavigationBarButton" (click)="open(addCategoryContent)">{{ addTextName }}</button>

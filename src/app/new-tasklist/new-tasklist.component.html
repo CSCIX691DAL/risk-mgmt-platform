@@ -1,0 +1,37 @@
+<div class="container-fluid w-100 mw-100 px-0 m-0">
+
+    <!-- Tasks Navigation Bar -->
+    <div class="row tasksListNavigationBar px-2 m-0">
+        <div class="col-md-12">
+            <div class="row p-0">
+
+                <!-- Title of page user is currently viewing -->
+                <div class="col-md-6">
+                    <h3 class="mt-2 pt-1">Task List</h3>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="col-md-6">
+                    <div class="row justify-content-end">
+
+                        <!-- Add new Task -->
+                        <div>
+                            <app-create-new-task class="float-right"></app-create-new-task>
+                        </div>
+
+                        <!-- Search Tasks -->
+                        <div class="pr-3">
+                            <input class="form-control float-right tasks-SearchBar" type="search" placeholder="Search tasks" aria-label="Search" [(ngModel)]="taskSearchText">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Print out all Task items -->
+    <app-new-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem" [frontPageDisplay]="false"></app-new-task-item>
+
+</div>
