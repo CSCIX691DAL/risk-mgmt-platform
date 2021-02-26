@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {TreatmentPlanModel} from '../treatment-plan.model';
 
 @Component({
   selector: 'app-treatment-plan-item',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./treatment-plan-item.component.css']
 })
 export class TreatmentPlanItemComponent implements OnInit {
+
+  @Input() treatmentPlanItem: TreatmentPlanModel;
 
   constructor() { }
 

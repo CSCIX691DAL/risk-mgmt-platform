@@ -45,7 +45,7 @@
                 <app-treatment-plan-item></app-treatment-plan-item>
 
                 <!-- Treatment Plan needs to appear below/with each item -->
-                <app-treatment-plan-item *ngFor="let item of treatmentPlans | filter: TreatmentPlanSearchText"></app-treatment-plan-item>
+                <app-treatment-plan-item *ngFor="let item of treatmentPlans | filter: TreatmentPlanSearchText" [treatmentPlanItem]="item"></app-treatment-plan-item>
 
                 <!-- basic placeholder - testing functionality -->
                 <p *ngFor="let plan of treatmentPlans">{{ plan.title + "\n" + plan.riskProfile.title + "\n" + "[" + plan.tasks + "]" + "\n" + plan.continueRiskActivity + "\t" +plan.updateRiskConsequences + "\t" + plan.retainRisk }}</p>
