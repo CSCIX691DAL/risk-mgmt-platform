@@ -15,14 +15,14 @@ import {ChartsModule} from 'ng2-charts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { IssueListComponent } from './issue-list/issue-list.component';
 import { IssueItemComponent } from './issue-list/issue-item/issue-item.component';
-import {RiskProfileComponent} from './risk-profile/risk-profile.component';
+import { RiskProfileComponent } from './risk-profile/risk-profile.component';
 import { TasksSummaryComponent } from './tasks-summary/tasks-summary.component';
 import { RiskProfileItemComponent } from './risk-profile/risk-profile-item/risk-profile-item.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskItemComponent } from './task-list/task-item/task-item.component';
-import {TaskService} from './task-list/task-service';
+import { TaskService } from './task-list/task-service';
 import { CreateNewTaskComponent } from './task-list/create-new-task/create-new-task.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { EditTaskComponent } from './task-list/edit-task/edit-task.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './modal/modal.component';
@@ -45,14 +45,14 @@ import { IssueWidgetComponent } from './widgets/issue-widget/issue-widget.compon
 import { ProfileWidgetComponent } from './widgets/profile-widget/profile-widget.component';
 import { CategoryWidgetComponent } from './widgets/category-widget/category-widget.component';
 import { TaskWidgetComponent } from './widgets/task-widget/task-widget.component';
-import {RiskResponseMatrixComponent} from './risk-response-matrix/risk-response-matrix.component';
-import {RiskProfileMapComponent} from './risk-profile/risk-report-map/risk-profile-map.component';
+import { RiskResponseMatrixComponent } from './risk-response-matrix/risk-response-matrix.component';
+import { RiskProfileMapComponent } from './risk-profile/risk-report-map/risk-profile-map.component';
 import { IssueSurvey } from './issue-survey/issue-survey';
 import { NameEditorComponent } from './issue-survey/name-editor/name-editor.component';
 import { ProfileEditorComponent } from './issue-survey/profile-editor/profile-editor.component';
-import {ShortAnswerEditorComponent} from './issue-survey/short-answer-editor/short-answer-editor.component';
-import {LongAnswerEditorComponent} from './issue-survey/long-answer-editor/long-answer-editor.component';
-import {DropdownEditorComponent} from './issue-survey/dropdown-editor/dropdown-editor.component';
+import { ShortAnswerEditorComponent } from './issue-survey/short-answer-editor/short-answer-editor.component';
+import { LongAnswerEditorComponent } from './issue-survey/long-answer-editor/long-answer-editor.component';
+import { DropdownEditorComponent } from './issue-survey/dropdown-editor/dropdown-editor.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LandingComponent } from './landing/landing.component';
@@ -62,6 +62,7 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {DbService} from './db.service';
+import { TreatmentPlanComponent } from './treatment-plan/treatment-plan.component';
 import { AdminNavComponent } from './admin-dash/admin-nav/admin-nav.component';
 import { UserListComponent } from './admin-dash/user-list/user-list.component';
 import { OrgsListComponent } from './admin-dash/orgs-list/orgs-list.component';
@@ -76,11 +77,11 @@ import { NewTasklistComponent } from './new-tasklist/new-tasklist.component';
 import { NewTaskItemComponent } from './newTasklist/new-task-item/new-task-item.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import { AddTreatmentPlanComponent } from './treatment-plan/add-treatment-plan/add-treatment-plan.component';
+import { TreatmentPlanItemComponent } from './treatment-plan/treatment-plan-item/treatment-plan-item.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
-import {TreatmentPlanComponent} from './treatment-plan/treatment-plan.component';
-
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
   {path: 'dashboard' , component : DashboardComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
@@ -151,6 +152,7 @@ const myroutes: Routes = [
     LandingComponent,
     ForgotPasswordComponent,
     AdminDashComponent,
+    TreatmentPlanComponent,
     AdminNavComponent,
     UserListComponent,
     OrgsListComponent,
@@ -161,7 +163,9 @@ const myroutes: Routes = [
     AssignedTasksComponent,
     NewTasklistComponent,
     NewTaskItemComponent,
-    TreatmentPlanComponent
+    TreatmentPlanComponent,
+    AddTreatmentPlanComponent,
+    TreatmentPlanItemComponent,
   ],
   imports: [
     BrowserModule,
