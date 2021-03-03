@@ -1,1 +1,28 @@
-<p>add-treatment-plan works!</p>
+<ng-template #addIssueContent let-modal>
+
+    <form (ngSubmit)="OnAdd()">
+
+        <div class="modal-header justify-content-center">
+            <h2 class="mt-1">Add Treatment Plan</h2>
+        </div>
+
+        <div class="modal-body row pl-4 pr-4">
+
+            <!-- Title -->
+            <label for="addTitle" class="labelAndInput">Title</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="addTitle" name="addTitle" ngModel [(ngModel)]="treatmentPlans.title">
+            </div>
+        </div>
+
+        <!-- Buttons: Cancel & Save -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
+            <button type="submit" class="btn btn-outline-primary">Add Issue</button>
+        </div>
+
+    </form>
+
+</ng-template>
+
+<button type="button" class="btn btn-outline-success mr-3 issuesNavigationBarButton" (click)="open(addIssueContent)">{{ addTextName }}</button>

@@ -33,23 +33,48 @@ export class TreatmentPlanService {
   updateTreatmentPlans(): void {
     // update plans from db + into db
     // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
-    /* this.treatmentPlans = [];
+    this.treatmentPlans = [];
 
     this.dbService.treatmentRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const newPlan = doc.data();
 
-        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, newPlan.tasks, newPlan.title, false, false, false));
+        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, newPlan.tasks, newPlan.title));
       });
       this.triggerToUpdate.next(true);
     });
-    */
-    // force display example treatmentPlan
-    this.treatmentPlans.push(new TreatmentPlanModel((new RiskProfileModel(1, 'Risk Profile 1', 'This is risk profile 1', 9, 5, this.categories[0], this.categories[0], 'Source Of Risk #1')), [] , 'title', false, false, false));
   }
 
   getTreatmentPlans(): TreatmentPlanModel[]{
     return this.treatmentPlans.slice();
+  }
+
+// Add plan function
+  addPlan(plan: TreatmentPlanModel): void {
+
+    // Array is empty, set new ID to 1
+    if (this.treatmentPlans.length === 0) {
+      // Creates new IssueModel object
+      const newPlan = new TreatmentPlanModel(this.riskProfiles, issue.title, issue.description,   issue.modifiedBy, issue.riskCategory, issue.assignee, Number(issue.parentIssue));
+      // Pushes new IssueModel object to issues array
+      this.issues.push(newIssue);
+      // Update screen
+      this.triggerToUpdate.next(true);
+    }
+    // Array has one or more objects
+    else {
+      // Generates number equal to the length of our issues array + 1
+      const max = Math.max.apply(Math, this.issues.map( (x) => +x.id)) + 1;
+      // Creates new IssueModel object
+      const newIssue = new IssueModel(max, issue.title, issue.description,  issue.modifiedBy, issue.riskCategory, issue.assignee, Number(issue.parentIssue));
+      // Pushes new IssueModel object to issues array
+      this.issues.push(newIssue);
+      // Update screen
+      this.triggerToUpdate.next(true);
+    }
+
+    this.notificationService.success('Issue "' + issue.title + '" has been added.', 'Issue Successfully Created');
+
   }
 
 }

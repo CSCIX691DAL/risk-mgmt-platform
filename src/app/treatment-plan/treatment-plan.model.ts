@@ -6,17 +6,11 @@ export class TreatmentPlanModel {
     riskProfile: RiskProfileModel;
     tasks: Array<TaskModel>;
     public title: string;
-    continueRiskActivity: boolean;
-    updateRiskConsequences: boolean;
-    retainRisk: boolean;
 
-    constructor(riskProfile: RiskProfileModel, tasks: Array<TaskModel>, title: string, continueRiskActivity: boolean, updateRiskConsequences: boolean, retainRisk: boolean) {
+    constructor(riskProfile: RiskProfileModel, tasks: Array<TaskModel>, title: string) {
         this.riskProfile = riskProfile;
         this.tasks = tasks;
         this.title = title;
-        this.continueRiskActivity = continueRiskActivity;
-        this.updateRiskConsequences = updateRiskConsequences;
-        this.retainRisk = retainRisk;
     }
     addTaskDetail(td: string): void{
         // this.tasks.push(td);

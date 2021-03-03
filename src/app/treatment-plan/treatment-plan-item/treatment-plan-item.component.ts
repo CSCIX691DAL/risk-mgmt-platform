@@ -10,9 +10,10 @@ export class TreatmentPlanItemComponent implements OnInit {
 
   @Input() treatmentPlanItem: TreatmentPlanModel;
 
-  constructor() { }
+  constructor( ) { }
 
   ngOnInit(): void {
+    console.log(this.treatmentPlanItem);
   }
 
 }
