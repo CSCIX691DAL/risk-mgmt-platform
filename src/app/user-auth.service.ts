@@ -25,17 +25,40 @@ export class UserAuthService {
     }
   }
 
+  makeUserOrgAdmin(email: string, orgName: string) {
+    this.dbService.organizationRef.doc(orgName).collection('users').doc(email).update({
+      admin: true
+    });
+  }
+
+  activateUser(email: string, orgName: string): void {
+    this.dbService.organizationRef.doc(orgName).collection('users').doc(email).update({
+      isActive: true
+    });
+  }
+
+  deactivateUser(email: string, orgName: string): void {
+    this.dbService.organizationRef.doc(orgName).collection('users').doc(email).update({
+      isActive: false
+    });
+  }
+
   userSignUp(email: string, password: string, verifyCode: string, fullName: string): void {
     this.fireAuth.createUserWithEmailAndPassword(email, password).then(result => {
       // Setting ID as the user's email - should be unique.
       this.dbService.organizationRef.doc(verifyCode).collection('users').doc(email).set({
         id: email,
-        name: fullName
+        name: fullName,
+        // This indicates an organization-specific admin
+        admin: false,
+        isActive: false
       });
 
       this.dbService.userRef.doc(email).set({
         organizations: [verifyCode],
-        name: fullName
+        name: fullName,
+        // This handles site-wide (riski) admins
+        admin: false
       });
     }).catch(err => {
       console.log(err);
