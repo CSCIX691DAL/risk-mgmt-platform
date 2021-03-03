@@ -25,9 +25,15 @@ export class AddTreatmentPlanComponent implements OnInit {
   @Input() addTasks: Array<TaskModel>;
   @Input() addUsers: UsersModel;
 
-  users: UsersModel = new UsersModel('1', 'bryson', 'sf', '11/08/1999', '07/01/2021', 'Yes');
-  tasks: TaskModel = new TaskModel('Title', this.users, 'Active', '31/12/2020', 'Jan 15/2020', 'No');
-  riskProfiles: RiskProfileModel = new RiskProfileModel(1, 'Title', 'description text', 5, 5, this.addCategories, 'words', "risk source");
+  // might need to define category modely here aswellthis.id = id;
+  //     this.name = name;
+  //     this.parentCategory = parentCategory;
+  //     this.description = description;
+  //     this.isSpeculativeRisk = isSpeculativeRisk;
+  categories: CategoryModel = new CategoryModel(1,  'name', this.addCategories , 'description',  false);
+  users: UsersModel = new UsersModel('1', 'bryson', 'sf', '11/08/1999', '07/01/2021', true);
+  tasks: TaskModel = new TaskModel('Title', this.users, 'Active', new Date('December 12/2020'), new Date('Jan 15/2020'), false);
+  riskProfiles: RiskProfileModel = new RiskProfileModel(1, 'Title', 'description text', 5, 5, this.categories, this.categories, "risk source");
   treatmentPlans: TreatmentPlanModel = new TreatmentPlanModel(this.riskProfiles, [this.tasks], 'Title');
   constructor(private taskService: TaskService,
               public categoryService: CategoryService,

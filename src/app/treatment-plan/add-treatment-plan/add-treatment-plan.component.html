@@ -1,4 +1,4 @@
-<ng-template #addIssueContent let-modal>
+<ng-template #addTreatmentPlan let-modal>
 
     <form (ngSubmit)="OnAdd()">
 
@@ -18,11 +18,9 @@
         <!-- Buttons: Cancel & Save -->
         <div class="modal-footer">
             <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
-            <button type="submit" class="btn btn-outline-primary">Add Issue</button>
+            <button type="submit" class="btn btn-outline-primary">Add Treatment Plan</button>
         </div>
 
     </form>
 
 </ng-template>
-
-<button type="button" class="btn btn-outline-success mr-3 issuesNavigationBarButton" (click)="open(addIssueContent)">{{ addTextName }}</button>
