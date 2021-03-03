@@ -13,7 +13,8 @@
     font-weight: 700;
 }
 .adminDashboardNavigationBar a {
-    margin-top: 14px;
+    margin-top: 11px;
+    height: 36px;
 }
 
 .adminComponentNav div {
