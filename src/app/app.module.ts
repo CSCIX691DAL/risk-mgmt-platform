@@ -76,6 +76,8 @@ import { NewTasklistComponent } from './new-tasklist/new-tasklist.component';
 import { NewTaskItemComponent } from './newTasklist/new-task-item/new-task-item.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import { OrgAdminPanelComponent } from './org-admin-panel/org-admin-panel.component';
+import { UnapprovedUserComponent } from './org-admin-panel/unapproved-user/unapproved-user.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -158,6 +160,8 @@ const myroutes: Routes = [
     AssignedTasksComponent,
     NewTasklistComponent,
     NewTaskItemComponent,
+    OrgAdminPanelComponent,
+    UnapprovedUserComponent,
   ],
   imports: [
     BrowserModule,
