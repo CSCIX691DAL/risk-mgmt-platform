@@ -1,12 +1,19 @@
-.adminDashNavigationBar {
-    height: 52px;
+.adminDashboardNavigationBar {
+    width: 100%;
+    max-width: 100%;
+    height: 60px;
     border-bottom: 1px solid #EEEEEE;
 }
-.adminDash-SearchBar {
+.adminDashboardNavigationBar input {
     width: 250px;
-    height: 33px;
-    margin-top: 10px;
-    float: right;
+    height: 36px;
+    margin-top: 11px;
+}
+.adminDashboardNavigationBar h3 {
+    font-weight: 700;
+}
+.adminDashboardNavigationBar a {
+    margin-top: 14px;
 }
 
 .adminComponentNav div {
