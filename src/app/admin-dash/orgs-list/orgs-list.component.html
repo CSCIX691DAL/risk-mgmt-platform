@@ -1,47 +1,57 @@
-<div class="row px-0 m-0">
-    <div class="col-md-12">
+<div class="container-fluid w-100 mw-100 p-0 m-0">
+    <div class="row p-0 m-0">
+        <div class="col-md-12 p-0 m-0">
 
-        <!-- Organization Headings -->
-        <div class="row border-bottom mt-4 p-0">
+            <!-- Admin Dashboard Navigation Bar -->
+            <app-admin-nav></app-admin-nav>
 
-            <!-- Organization Name -->
-            <div class="col-2">
-                <h6 class="text-center">Name</h6>
-            </div>
+            <!-- Organization Headings -->
+            <div class="row px-0 m-0">
+                <div class="col-md-12">
+                    <div class="row border-bottom mt-4 p-0">
 
-            <!-- Number of Employees -->
-            <div class="col-2">
-                <h6 class="text-center"># of Employees</h6>
-            </div>
+                        <!-- Organization Name -->
+                        <div class="col-2">
+                            <h6 class="text-center">Name</h6>
+                        </div>
 
-            <!-- Membership Package -->
-            <div class="col-2">
-                <h6 class="text-center">Status</h6>
-            </div>
+                        <!-- Number of Employees -->
+                        <div class="col-2">
+                            <h6 class="text-center"># of Employees</h6>
+                        </div>
 
-            <!-- Renewal Date -->
-            <div class="col-2">
-                <h6 class="text-center">Renews in</h6>
-            </div>
+                        <!-- Membership Package -->
+                        <div class="col-2">
+                            <h6 class="text-center">Status</h6>
+                        </div>
 
-            <!-- Number of Tasks Created -->
-            <div class="col-2">
-                <h6 class="text-center">Tasks Created</h6>
-            </div>
+                        <!-- Renewal Date -->
+                        <div class="col-2">
+                            <h6 class="text-center">Renews in</h6>
+                        </div>
 
-            <!-- Number of Tasks Completed -->
-            <div class="col-2">
-                <h6 class="text-center">Tasks Completed</h6>
+                        <!-- Number of Tasks Created -->
+                        <div class="col-2">
+                            <h6 class="text-center">Tasks Created</h6>
+                        </div>
+
+                        <!-- Number of Tasks Completed -->
+                        <div class="col-2">
+                            <h6 class="text-center">Tasks Completed</h6>
+                        </div>
+
+                    </div>
+
+                    <!-- Organization Items -->
+                    <div class="row mb-3 orgItemsCon">
+                        <div class="col-md-12 p-0 m-0">
+                            <app-orgs-list-item></app-orgs-list-item>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
         </div>
-
-        <!-- Organization Items -->
-        <div class="row pb-3 orgItemsCon">
-            <div class="col-md-12 p-0 m-0">
-                <app-orgs-list-item></app-orgs-list-item>
-            </div>
-        </div>
-
     </div>
 </div>
