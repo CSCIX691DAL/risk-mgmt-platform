@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UsersService} from '../users.service';
 
 @Component({
   selector: 'app-org-admin-panel',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrgAdminPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(public userService: UsersService) { }
 
   ngOnInit(): void {
+    console.log(this.userService.getInactiveUsers());
   }
 
 }

@@ -23,6 +23,14 @@ export class UsersService {
 
   public userCurrentOrg = '';
 
+  getInactiveUsers(): UsersModel[] {
+    const filteredArray = this.categories.filter(function (user) {
+      return !user.isEmployed;
+    });
+
+    return filteredArray;
+  }
+
   updateUserArray(): void {
     this.categories = [];
 
@@ -30,7 +38,7 @@ export class UsersService {
       querySnapshot.forEach((doc) => {
         const newUser = doc.data();
 
-        this.categories.push(new UsersModel(doc.id, newUser.name, '', '', '', true));
+        this.categories.push(new UsersModel(doc.id, newUser.name, '', '', '', newUser.isActive));
       });
     });
   }
