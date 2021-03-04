@@ -9,6 +9,7 @@ import {TaskService} from '../task-list/task-service';
 import {IssueModel} from '../issue-list/issue.model';
 import {CategoryService} from '../risk-categories/category.service';
 import {CategoryModel} from '../risk-categories/category.model';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,11 @@ export class TreatmentPlanService {
   tasks: Array<TaskModel>;
   treatmentPlanService: TreatmentPlanService;
   riskProfiles: RiskProfileModel[];
-  treatmentPlans: TreatmentPlanModel[];
+  treatmentPlans: TreatmentPlanModel[] = [];
   categories: CategoryModel[];
 
-  constructor( public riskProfileService: RiskProfileService, taskService: TaskService, categoryService: CategoryService, public dbService: DbService) {
-    this.treatmentPlans = [];
+  constructor( public riskProfileService: RiskProfileService, taskService: TaskService,
+               categoryService: CategoryService, public dbService: DbService, public notificationService: ToastrService) {
     this.categories = categoryService.getCategories();
     this.riskProfiles = riskProfileService.getRiskProfiles();
     this.tasks = taskService.getTaskItemArray();
@@ -39,7 +40,7 @@ export class TreatmentPlanService {
       querySnapshot.forEach((doc) => {
         const newPlan = doc.data();
 
-        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, newPlan.tasks, newPlan.title));
+        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, newPlan.tasks, newPlan.title, newPlan.id));
       });
       this.triggerToUpdate.next(true);
     });
@@ -55,25 +56,27 @@ export class TreatmentPlanService {
     // Array is empty, set new ID to 1
     if (this.treatmentPlans.length === 0) {
       // Creates new IssueModel object
-      const newPlan = new TreatmentPlanModel(this.riskProfiles, issue.title, issue.description,   issue.modifiedBy, issue.riskCategory, issue.assignee, Number(issue.parentIssue));
+      const newPlan = new TreatmentPlanModel(this.riskProfiles[0], [], plan.title, 0);
       // Pushes new IssueModel object to issues array
-      this.issues.push(newIssue);
+      this.treatmentPlans.push(newPlan);
       // Update screen
       this.triggerToUpdate.next(true);
     }
     // Array has one or more objects
     else {
       // Generates number equal to the length of our issues array + 1
-      const max = Math.max.apply(Math, this.issues.map( (x) => +x.id)) + 1;
+      const max = Math.max.apply(Math, this.treatmentPlans.map( (x) => +x.id)) + 1;
       // Creates new IssueModel object
-      const newIssue = new IssueModel(max, issue.title, issue.description,  issue.modifiedBy, issue.riskCategory, issue.assignee, Number(issue.parentIssue));
+      const newPlan = new TreatmentPlanModel(this.riskProfiles[0], [], plan.title, max);
       // Pushes new IssueModel object to issues array
-      this.issues.push(newIssue);
+      this.treatmentPlans.push(newPlan);
       // Update screen
       this.triggerToUpdate.next(true);
     }
 
-    this.notificationService.success('Issue "' + issue.title + '" has been added.', 'Issue Successfully Created');
+    console.log(this.treatmentPlans)
+
+    this.notificationService.success('Issue "' + plan.title + '" has been added.', 'Treatment Plan Successfully Created');
 
   }
 

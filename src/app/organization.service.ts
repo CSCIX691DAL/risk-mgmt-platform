@@ -52,6 +52,7 @@ export class OrganizationService {
       this.dbService.issueRef = this.dbService.organizationRef.doc(this.currentOrganization).collection(`issues`);
       this.dbService.riskProfileRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('riskProfiles');
       this.dbService.categoryRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('categories');
+      this.dbService.treatmentRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('treatmentPlans');
       this.userService.userCurrentOrg = this.currentOrganization;
       this.userService.updateUserArray();
       this.taskService.updateTaskArray();
