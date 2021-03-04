@@ -40,8 +40,8 @@ export class TreatmentPlanService {
       querySnapshot.forEach((doc) => {
         const newPlan = doc.data();
 
-        this.treatmentPlans.push(new TreatmentPlanModel(new RiskProfileModel('Placeholder', null, null, null, null, null, null, null),
-            new TaskModel('Placeholder', null, null, null, null, null), newPlan.title, newPlan.id));
+        this.treatmentPlans.push(new TreatmentPlanModel(new RiskProfileModel(0, 'Placeholder', null, null, null, null, null, null),
+            [new TaskModel('Placeholder', null, null, null, null, null)], newPlan.title, newPlan.id));
 
         //this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, newPlan.tasks, newPlan.title, newPlan.id));
       });
