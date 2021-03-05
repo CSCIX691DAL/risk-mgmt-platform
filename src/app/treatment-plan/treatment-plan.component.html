@@ -38,23 +38,26 @@
 
     <div class="row m-0">
 
-        <!-- Treatment Plan List -->
+        <!-- Treatment Plan Display -->
         <div class="col-md-3 treatmentPlan_LeftSidebar">
-
-
-
                 <!-- Treatment Plan needs to appear below/with each item -->
                 <app-treatment-plan-item *ngFor="let plan of this.treatmentPlanService.treatmentPlans | filter: TreatmentPlanSearchText" [treatmentPlanItem]="plan"></app-treatment-plan-item>
 
             <!-- basic placeholder - testing functionality -->
 
         </div>
-
-        <!-- Treatment Plan Display -->
+        <!-- Treatment Plan List -->
         <div class="col-md-9">
-            <h2>Treatment Plan Title</h2>
-        </div>
+            <h2>
+                Risk Profile: {{treatmentPlans.pop().riskProfile.title}}
+            </h2>
+            <div class="col-md-3">
+                Id: {{treatmentPlans.pop().riskProfile.id}} <br>
+                Description: {{treatmentPlans.pop().riskProfile.description}}<br>
+                Level of Risk: {{treatmentPlans.pop().riskProfile.levelOfRisk}}
+            </div>
 
+        </div>
     </div>
 
 </div>
