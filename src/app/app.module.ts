@@ -85,6 +85,14 @@ import { OrgApprovalItemComponent } from './admin-dash/org-approval/org-approval
 import { OrgsViewComponent } from './admin-dash/orgs-view/orgs-view.component';
 import { OrgUsersComponent } from './admin-dash/orgs-list/org-users/org-users.component';
 import { OrgUsersItemComponent } from './admin-dash/orgs-list/org-users/org-users-item/org-users-item.component';
+import { OrgRiskCategoriesComponent } from './admin-dash/orgs-view/org-risk-categories/org-risk-categories.component';
+import { OrgRiskCategoriesItemComponent } from './admin-dash/orgs-view/org-risk-categories/org-risk-categories-item/org-risk-categories-item.component';
+import { OrgRiskProfilesComponent } from './admin-dash/orgs-view/org-risk-profiles/org-risk-profiles.component';
+import { OrgRiskProfilesItemComponent } from './admin-dash/orgs-view/org-risk-profiles/org-risk-profiles-item/org-risk-profiles-item.component';
+import { OrgRiskIssuesComponent } from './admin-dash/orgs-view/org-risk-issues/org-risk-issues.component';
+import { OrgRiskIssuesItemComponent } from './admin-dash/orgs-view/org-risk-issues/org-risk-issues-item/org-risk-issues-item.component';
+import { OrgTasksComponent } from './admin-dash/orgs-view/org-tasks/org-tasks.component';
+import { OrgTasksItemComponent } from './admin-dash/orgs-view/org-tasks/org-tasks-item/org-tasks-item.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -181,6 +189,14 @@ const myroutes: Routes = [
     OrgsViewComponent,
     OrgUsersComponent,
     OrgUsersItemComponent,
+    OrgRiskCategoriesComponent,
+    OrgRiskCategoriesItemComponent,
+    OrgRiskProfilesComponent,
+    OrgRiskProfilesItemComponent,
+    OrgRiskIssuesComponent,
+    OrgRiskIssuesItemComponent,
+    OrgTasksComponent,
+    OrgTasksItemComponent,
   ],
   imports: [
     BrowserModule,
