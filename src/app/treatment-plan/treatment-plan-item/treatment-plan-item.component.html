@@ -2,12 +2,13 @@
     <div class="col-md-12 py-3">
         {{treatmentPlanItem.riskProfile.title}}<br />
         {{treatmentPlanItem.title}}<br/>
+        <!-- below code is buggy for sure -->
         <div *ngFor="let task of treatmentPlanItem.tasks">
             {{task.title + ":\t" + task.status}}
         </div>
         <br/>
     </div>
-    <!-- Delete / Edit Column -->
+    <!-- Delete Column - may be not loading at all (commented out in app-delete-issue) -->
     <div class="col-md-2">
         <app-delete-plan>
         </app-delete-plan>
