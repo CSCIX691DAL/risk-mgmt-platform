@@ -11,7 +11,7 @@ export class TreatmentPlanItemComponent implements OnInit {
   plans: TreatmentPlanModel[];
   @Input() treatmentPlanItem: TreatmentPlanModel;
 
-  constructor(private treatmentPlanService: TreatmentPlanService ) { }
+  constructor(public treatmentPlanService: TreatmentPlanService ) { }
 
   ngOnInit(): void {
     console.log(this.treatmentPlanItem);

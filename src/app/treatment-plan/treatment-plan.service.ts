@@ -22,6 +22,8 @@ export class TreatmentPlanService {
   treatmentPlans: TreatmentPlanModel[] = [];
   categories: CategoryModel[];
 
+  currentlySelectedPlan: TreatmentPlanModel;
+
   constructor( public riskProfileService: RiskProfileService, taskService: TaskService,
                categoryService: CategoryService, public dbService: DbService, public notificationService: ToastrService) {
     this.categories = categoryService.getCategories();

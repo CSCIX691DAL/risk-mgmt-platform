@@ -45,15 +45,15 @@
 
         </div>
         <!-- Treatment Plan List -->
-        <div *ngFor="let plan of treatmentPlans" class="col-md-9">
-            <div *ngIf="plan.title=='Title1'">
+        <div *ngIf="treatmentPlanService.currentlySelectedPlan" class="col-md-9">
+            <div >
                 <h2>
-                    Risk Profile: {{plan.riskProfile.title}}
+                    Risk Profile: {{treatmentPlanService.currentlySelectedPlan.riskProfile.title}}
                 </h2>
                 <div class="col-md-3">
-                    Id: {{plan.riskProfile.id}} <br>
-                    Description: {{plan.riskProfile.description}}<br>
-                    Level of Risk: {{plan.riskProfile.levelOfRisk}}
+                    Id: {{treatmentPlanService.currentlySelectedPlan.riskProfile.id}} <br>
+                    Description: {{treatmentPlanService.currentlySelectedPlan.riskProfile.description}}<br>
+                    Level of Risk: {{treatmentPlanService.currentlySelectedPlan.riskProfile.levelOfRisk}}
                 </div>
             </div>
         </div>
