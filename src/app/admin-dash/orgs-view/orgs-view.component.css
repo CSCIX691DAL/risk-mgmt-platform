@@ -1,0 +1,23 @@
+.orgViewCon {
+    min-height: 650px;
+    margin-bottom: 20px;
+}
+.orgViewCon img {
+    min-width: 95%;
+    max-width: 95%;
+}
+.orgViewCon h6 {
+    margin-left: 4px;
+    margin-bottom: 7px;
+}
+.orgViewCon span {
+    font-weight: 400;
+}
+.orgViewCon a {
+    margin-top: 9px;
+    height: 36px;
+}
+
+.orgViewBorder {
+    border-bottom: 1px solid #CCCCCC;
+}
