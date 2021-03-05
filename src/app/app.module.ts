@@ -80,6 +80,8 @@ import {ToastrModule} from 'ngx-toastr';
 import { AddTreatmentPlanComponent } from './treatment-plan/add-treatment-plan/add-treatment-plan.component';
 import { TreatmentPlanItemComponent } from './treatment-plan/treatment-plan-item/treatment-plan-item.component';
 import { SortTasksComponent } from './task-list/sort-tasks/sort-tasks.component';
+import { OrgApprovalComponent } from './admin-dash/org-approval/org-approval.component';
+import { OrgApprovalItemComponent } from './admin-dash/org-approval/org-approval-item/org-approval-item.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -100,7 +102,8 @@ const myroutes: Routes = [
   {path: 'treatment-plan', component: TreatmentPlanComponent},
   {path: 'admin-dashboard', component: AdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'admin-dashboard-users', component: UserListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
-  {path: 'admin-dashboard-organizations', component: OrgsListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
+  {path: 'admin-dashboard-organizations', component: OrgsListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin-dashboard-approval', component: OrgApprovalComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
 ];
 
 @NgModule({
@@ -169,6 +172,8 @@ const myroutes: Routes = [
     AddTreatmentPlanComponent,
     TreatmentPlanItemComponent,
     SortTasksComponent,
+    OrgApprovalComponent,
+    OrgApprovalItemComponent,
   ],
   imports: [
     BrowserModule,
