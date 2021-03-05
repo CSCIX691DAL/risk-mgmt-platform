@@ -21,3 +21,9 @@
 .orgViewBorder {
     border-bottom: 1px solid #CCCCCC;
 }
+.orgViewSubHeadingBorder {
+    margin-bottom: 15px;
+}
+.orgViewListedInfo {
+    background-color: #F8F8F8;
+}

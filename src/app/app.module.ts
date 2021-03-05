@@ -83,6 +83,8 @@ import { SortTasksComponent } from './task-list/sort-tasks/sort-tasks.component'
 import { OrgApprovalComponent } from './admin-dash/org-approval/org-approval.component';
 import { OrgApprovalItemComponent } from './admin-dash/org-approval/org-approval-item/org-approval-item.component';
 import { OrgsViewComponent } from './admin-dash/orgs-view/orgs-view.component';
+import { OrgUsersComponent } from './admin-dash/orgs-list/org-users/org-users.component';
+import { OrgUsersItemComponent } from './admin-dash/orgs-list/org-users/org-users-item/org-users-item.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -177,6 +179,8 @@ const myroutes: Routes = [
     OrgApprovalComponent,
     OrgApprovalItemComponent,
     OrgsViewComponent,
+    OrgUsersComponent,
+    OrgUsersItemComponent,
   ],
   imports: [
     BrowserModule,
