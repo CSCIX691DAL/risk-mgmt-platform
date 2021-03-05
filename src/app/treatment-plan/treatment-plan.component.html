@@ -47,14 +47,14 @@
 
         </div>
         <!-- Treatment Plan List -->
-        <div class="col-md-9">
+        <div *ngFor="let plan of treatmentPlans" class="col-md-9">
             <h2>
-                Risk Profile: {{treatmentPlans.pop().riskProfile.title}}
+                Risk Profile: {{plan.riskProfile.title}}
             </h2>
             <div class="col-md-3">
-                Id: {{treatmentPlans.pop().riskProfile.id}} <br>
-                Description: {{treatmentPlans.pop().riskProfile.description}}<br>
-                Level of Risk: {{treatmentPlans.pop().riskProfile.levelOfRisk}}
+                Id: {{plan.riskProfile.id}} <br>
+                Description: {{plan.riskProfile.description}}<br>
+                Level of Risk: {{plan.riskProfile.levelOfRisk}}
             </div>
 
         </div>
