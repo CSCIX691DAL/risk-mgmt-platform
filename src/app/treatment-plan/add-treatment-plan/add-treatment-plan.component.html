@@ -1,1 +1,42 @@
 <p>add-treatment-plan works!</p>
+<ng-template #addCategoryContent let-modal>
+
+    <form (ngSubmit)="OnSubmit()">
+
+        <div class="modal-header justify-content-center">
+            <h2 class="mt-1">Add Category</h2>
+        </div>
+
+        <div class="modal-body row pl-4 pr-4">
+
+            <label for="addName" class="labelAndInput">Title</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="addName" name="addName" ngModel [(ngModel)]="category.name">
+            </div>
+
+            <label for="addParentCategory" class="labelAndInput">Parent Category</label>
+            <div class="input-group mb-3">
+                <select class="form-control" id="addParentCategory" name="addParentCategory" ngModel [(ngModel)]="category.parentCategory">
+                    <option>Select a Parent Category</option>
+                    <option *ngFor="let item of categoryService.categories" [ngValue]=item>
+                        {{item.name}}
+                    </option>
+                </select>
+            </div>
+
+            <label for="addDescription" class="labelAndInput">Description</label>
+            <div class="input-group mb-1">
+                <textarea class="form-control" id="addDescription" name="addDescription" ngModel [(ngModel)]="category.description"></textarea>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" (click)="modal.close('')">Cancel</button>
+            <button type="submit" class="btn btn-outline-primary">Add Category</button>
+        </div>
+
+    </form>
+
+</ng-template>
+
+<button type="button" class="btn btn-outline-success mr-3" (click)="open(addCategoryContent)">{{ addTextName }}</button>
