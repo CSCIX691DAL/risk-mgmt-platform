@@ -2,6 +2,15 @@
     <div class="col-md-12 py-3">
         {{treatmentPlanItem.riskProfile.title}}<br />
         {{treatmentPlanItem.title}}<br/>
-        {{treatmentPlanItem.tasks}} <-- Should be an *ngFor on this array probably<br/>
+        <div *ngFor="let task of treatmentPlanItem.tasks">
+            {{task.title + ":\t" + task.status}}
+        </div>
+        <br/>
     </div>
+    <!-- Delete / Edit Column -->
+    <div class="col-md-2">
+        <app-delete-plan>
+        </app-delete-plan>
+    </div>
+    <a class="float-right mr-4" (click)="onDeleteIssue()">Delete</a>
 </div>

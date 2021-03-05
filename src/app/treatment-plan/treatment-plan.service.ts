@@ -49,6 +49,17 @@ export class TreatmentPlanService {
     });
   }
 
+  // Delete issue function
+  deletePlan(plan: TreatmentPlanModel): void {
+    this.notificationService.success('Plan "' + plan.title + '" has been deleted.', 'Plan Successfully Deleted');
+
+    this.treatmentPlans = this.treatmentPlans.filter(x => x.id !== plan.id);
+
+    this.dbService.issueRef.doc(plan.title).delete();
+
+    // console.log(this.issues);
+    this.triggerToUpdate.next(true);
+  }
   getTreatmentPlans(): TreatmentPlanModel[]{
     return this.treatmentPlans.slice();
   }
