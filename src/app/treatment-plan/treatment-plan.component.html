@@ -48,6 +48,7 @@
         <div *ngIf="treatmentPlanService.currentlySelectedPlan" class="col-md-9">
             <div >
                 <h2>
+                    Treatment Plan: {{treatmentPlanService.currentlySelectedPlan.title}}<br/>
                     Risk Profile: {{treatmentPlanService.currentlySelectedPlan.riskProfile.title}}
                 </h2>
                 <div class="col-md-3">
