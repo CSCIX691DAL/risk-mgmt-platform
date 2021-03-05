@@ -1,6 +1,17 @@
 <div class="row px-2 border-bottom">
     <div class="col-md-12 py-3">
-        Title of Risk Profile<br />
-        Title of Treatment Plan
+        {{treatmentPlanItem.riskProfile.title}}<br />
+        {{treatmentPlanItem.title}}<br/>
+        <!-- below code is buggy for sure -->
+        <div *ngFor="let task of treatmentPlanItem.tasks">
+            {{task.title + ":\t" + task.status}}
+        </div>
+        <br/>
     </div>
+    <!-- Delete Column - may be not loading at all (commented out in app-delete-issue) -->
+    <div class="col-md-2">
+        <app-delete-plan>
+        </app-delete-plan>
+    </div>
+    <a class="float-right mr-4" (click)="onDeleteIssue()">Delete</a>
 </div>

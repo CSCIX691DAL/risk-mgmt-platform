@@ -7,13 +7,15 @@ import {RiskProfileService} from './risk-profile/risk-profile.service';
 import {Router} from '@angular/router';
 import {UsersService} from './users.service';
 import {UserAuthService} from './user-auth.service';
+import {TreatmentPlanService} from './treatment-plan/treatment-plan.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrganizationService {
 
-  constructor(public dbService: DbService, public taskService: TaskService, public issueService: IssueService, public categoryService: CategoryService, public profileService: RiskProfileService, public userService: UsersService, public router: Router) {
+  constructor(public dbService: DbService, public taskService: TaskService, public issueService: IssueService,
+              public categoryService: CategoryService, public profileService: RiskProfileService, public userService: UsersService, public treatmentService: TreatmentPlanService, public router: Router) {
   }
 
   // This refers to the ID of the document within the organizations collection; this should change when user selects a different org
@@ -28,12 +30,14 @@ export class OrganizationService {
     this.dbService.issueRef = this.dbService.organizationRef.doc(this.currentOrganization).collection(`issues`);
     this.dbService.riskProfileRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('riskProfiles');
     this.dbService.categoryRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('categories');
+    this.dbService.treatmentRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('treatmentPlans');
     this.userService.userCurrentOrg = this.currentOrganization;
     this.userService.updateUserArray();
     this.taskService.updateTaskArray();
     this.issueService.updateIssueArray();
     this.categoryService.updateCategoryArray();
     this.profileService.updateRiskProfileArray();
+    this.treatmentService.updateTreatmentPlans();
   }
 
   public updateOrg(email: string): void {
@@ -48,12 +52,14 @@ export class OrganizationService {
       this.dbService.issueRef = this.dbService.organizationRef.doc(this.currentOrganization).collection(`issues`);
       this.dbService.riskProfileRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('riskProfiles');
       this.dbService.categoryRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('categories');
+      this.dbService.treatmentRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('treatmentPlans');
       this.userService.userCurrentOrg = this.currentOrganization;
       this.userService.updateUserArray();
       this.taskService.updateTaskArray();
       this.issueService.updateIssueArray();
       this.categoryService.updateCategoryArray();
       this.profileService.updateRiskProfileArray();
+      this.treatmentService.updateTreatmentPlans();
 
       this.router.navigate(['dashboard']);
     });

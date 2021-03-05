@@ -58,10 +58,10 @@ import { RegisterComponent } from './register/register.component';
 import { LandingComponent } from './landing/landing.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { DbService } from './db.service';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {DbService} from './db.service';
 import { TreatmentPlanComponent } from './treatment-plan/treatment-plan.component';
 import { AdminNavComponent } from './admin-dash/admin-nav/admin-nav.component';
 import { UserListComponent } from './admin-dash/user-list/user-list.component';
@@ -80,10 +80,11 @@ import {ToastrModule} from 'ngx-toastr';
 import { AddTreatmentPlanComponent } from './treatment-plan/add-treatment-plan/add-treatment-plan.component';
 import { TreatmentPlanItemComponent } from './treatment-plan/treatment-plan-item/treatment-plan-item.component';
 import { SortTasksComponent } from './task-list/sort-tasks/sort-tasks.component';
+import {CommonModule} from '@angular/common';
+import {DeletePlanComponent} from './treatment-plan/delete-plan/delete-plan.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
-
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
   {path: 'dashboard' , component : DashboardComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
@@ -97,8 +98,9 @@ const myroutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'admin-dashboard', component: AdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin-dashboard', component: AdminDashComponent},
   {path: 'treatment-plan', component: TreatmentPlanComponent},
-  {path: 'admin-dashboard', component: AdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
 ];
 
 @NgModule({
@@ -164,12 +166,15 @@ const myroutes: Routes = [
     AssignedTasksComponent,
     NewTasklistComponent,
     NewTaskItemComponent,
+    TreatmentPlanComponent,
     AddTreatmentPlanComponent,
     TreatmentPlanItemComponent,
     SortTasksComponent,
+      DeletePlanComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule.forRoot(myroutes),

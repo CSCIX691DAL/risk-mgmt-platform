@@ -11,7 +11,7 @@ export class TreatmentPlanComponent implements OnInit {
 
   treatmentPlans: TreatmentPlanModel[];
 
-  constructor(private treatmentPlanService: TreatmentPlanService) {
+  constructor(public treatmentPlanService: TreatmentPlanService) {
     this.treatmentPlans = this.treatmentPlanService.getTreatmentPlans();
   }
 
