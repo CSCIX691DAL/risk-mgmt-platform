@@ -38,7 +38,7 @@
 
     <div class="row m-0">
         <!-- Treatment Plan Display -->
-        <div class="col-md-3 treatmentPlan_LeftSidebar">
+        <div class="col-md-3 treatmentPlan_LeftSidebar overflow-auto">
                 <!-- Treatment Plan needs to appear below/with each item -->
                 <app-treatment-plan-item *ngFor="let plan of this.treatmentPlanService.treatmentPlans | filter: TreatmentPlanSearchText" [treatmentPlanItem]="plan"></app-treatment-plan-item>
             <!-- basic placeholder - testing functionality -->

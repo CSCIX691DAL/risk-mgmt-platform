@@ -44,6 +44,18 @@ export class TreatmentPlanService {
 
         this.treatmentPlans.push(new TreatmentPlanModel(new RiskProfileModel(0, 'Placeholder', null, null, null, null, null, null),
             [new TaskModel('Placeholder', null, null, null, null, null)], newPlan.title, newPlan.id));
+
+        this.treatmentPlans.push(new TreatmentPlanModel(new RiskProfileModel(0, 'Placeholder', null, null, null, null, null, null),
+            [new TaskModel('Placeholder', null, null, null, null, null)], newPlan.title, newPlan.id));
+
+        this.treatmentPlans.push(new TreatmentPlanModel(new RiskProfileModel(0, 'Placeholder', null, null, null, null, null, null),
+            [new TaskModel('Placeholder', null, null, null, null, null)], newPlan.title, newPlan.id));
+
+        this.treatmentPlans.push(new TreatmentPlanModel(new RiskProfileModel(0, 'Placeholder', null, null, null, null, null, null),
+            [new TaskModel('Placeholder', null, null, null, null, null)], newPlan.title, newPlan.id));
+
+        this.treatmentPlans.push(new TreatmentPlanModel(new RiskProfileModel(0, 'Placeholder', null, null, null, null, null, null),
+            [new TaskModel('Placeholder', null, null, null, null, null)], newPlan.title, newPlan.id));
       });
       this.triggerToUpdate.next(true);
     });
