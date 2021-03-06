@@ -43,6 +43,30 @@ export class OrganizationService {
     this.issueService.updateIssueArray();
     this.categoryService.updateCategoryArray();
     this.profileService.updateRiskProfileArray();
+
+    this.getOrgModelByID(this.currentOrganization).then((org) => {
+      this.currentlySelectedOrg = org;
+    });
+  }
+
+  public async getOrgModelByID(orgName: string): Promise<OrganizationModel> {
+    let orgModel: OrganizationModel = null;
+
+    await this.dbService.organizationRef.get().then((document) => {
+      document.forEach(org => {
+        const orgData = org.data();
+
+        console.log(orgData);
+        console.log(this.currentOrganization);
+
+        if (orgData.name === this.currentOrganization) {
+          orgModel = new OrganizationModel(orgData.name, 'Inactive');
+        }
+      });
+    });
+
+    console.log(orgModel);
+    return orgModel;
   }
 
   public async getOrgUserCount(orgName): Promise<number> {
@@ -82,7 +106,7 @@ export class OrganizationService {
   }
 
   public async getAllIssuesByOrg(orgName): Promise<IssueModel[]> {
-    let issues = [];
+    const issues = [];
 
     await this.dbService.organizationRef.doc(orgName).collection('issues').get().then((querySnapshot) => {
 
@@ -97,7 +121,7 @@ export class OrganizationService {
   }
 
   public async getAllCategoriesByOrgReal(orgName): Promise<CategoryModel[]> {
-    let categories = [];
+    const categories = [];
 
     await this.dbService.organizationRef.doc(orgName).collection('categories').get().then((querySnapshot) => {
 
@@ -113,7 +137,7 @@ export class OrganizationService {
   }
 
   public async getAllCategoriesByOrg(orgName): Promise<CategoryModel[]> {
-    let categories = [];
+    const categories = [];
 
     await this.dbService.organizationRef.doc(orgName).collection('categories').get().then((querySnapshot) => {
 
@@ -129,7 +153,7 @@ export class OrganizationService {
   }
 
   public async getUserName(email): Promise<string> {
-    let userName = ''
+    let userName = '';
 
     await this.dbService.userRef.doc(email).get().then((user) => {
       userName = user.data().name;
@@ -141,7 +165,7 @@ export class OrganizationService {
   }
 
   public async getAllProfilesByOrgReal(orgName): Promise<RiskProfileModel[]> {
-    let profiles = [];
+    const profiles = [];
 
     let categories = [];
 
@@ -164,7 +188,7 @@ export class OrganizationService {
   }
 
   public async getAllProfilesByOrg(orgName): Promise<RiskProfileModel[]> {
-    let profiles = [];
+    const profiles = [];
 
     await this.dbService.organizationRef.doc(orgName).collection('riskProfiles').get().then((querySnapshot) => {
 
@@ -180,7 +204,7 @@ export class OrganizationService {
   }
 
   public async getAllTasksByOrg(orgName): Promise<TaskModel[]> {
-    let tasks = [];
+    const tasks = [];
 
     await this.dbService.organizationRef.doc(orgName).collection('tasks').get().then((querySnapshot) => {
 
@@ -228,7 +252,7 @@ export class OrganizationService {
 
   public async getUserTaskCount(orgName, userID): Promise<number> {
     let i = 0;
-    await this.dbService.organizationRef.doc(orgName).collection('tasks').where('createdByID','==', userID).get().then((doc) => {
+    await this.dbService.organizationRef.doc(orgName).collection('tasks').where('createdByID', '==', userID).get().then((doc) => {
       i =  doc.size;
     });
 
@@ -237,7 +261,7 @@ export class OrganizationService {
 
   public async getUserAllCompletedTasks(orgName, userID): Promise<number> {
     let i = 0;
-    await this.dbService.organizationRef.doc(orgName).collection('tasks').where('createdByID','==', userID).where('status','==','Completed').get().then((doc) => {
+    await this.dbService.organizationRef.doc(orgName).collection('tasks').where('createdByID', '==', userID).where('status', '==', 'Completed').get().then((doc) => {
       i =  doc.size;
     });
 
@@ -246,7 +270,7 @@ export class OrganizationService {
 
   public async getOrgAllCompletedTasks(orgName): Promise<number> {
     let i = 0;
-    await this.dbService.organizationRef.doc(orgName).collection('tasks').where('status','==','Completed').get().then((doc) => {
+    await this.dbService.organizationRef.doc(orgName).collection('tasks').where('status', '==', 'Completed').get().then((doc) => {
       i =  doc.size;
     });
 
@@ -256,8 +280,8 @@ export class OrganizationService {
   public getAllOrgs(): void {
     this.dbService.organizationRef.get().then((document) => {
       document.forEach(org => {
-        let orgData = org.data();
-        this.organizations.push(new OrganizationModel(orgData.name, "Inactive"));
+        const orgData = org.data();
+        this.organizations.push(new OrganizationModel(orgData.name, 'Inactive'));
       });
     });
   }
@@ -281,6 +305,10 @@ export class OrganizationService {
       this.categoryService.updateCategoryArray();
       this.profileService.updateRiskProfileArray();
 
+
+      this.getOrgModelByID(this.currentOrganization).then((org) => {
+        this.currentlySelectedOrg = org;
+      });
 
       this.router.navigate(['dashboard']);
     });
