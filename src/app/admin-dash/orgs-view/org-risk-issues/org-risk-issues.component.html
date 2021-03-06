@@ -19,7 +19,7 @@
 
                         <!-- Creator of Risk Issue -->
                         <div class="col-2">
-                            <h6 class="text-center">Creator</h6>
+                            <h6 class="text-center">Description</h6>
                         </div>
 
                         <!-- Assignee of Risk Issue -->
@@ -34,7 +34,7 @@
 
                         <!-- Associated Risk Profile for Risk Issue -->
                         <div class="col-2">
-                            <h6 class="text-center">Risk Profile</h6>
+                            <h6 class="text-center">Risk Category</h6>
                         </div>
 
                     </div>
@@ -42,7 +42,7 @@
                     <!-- Risk Issue Items -->
                     <div class="row mb-3">
                         <div class="col-md-12 p-0 m-0">
-                            <app-org-risk-issues-item></app-org-risk-issues-item>
+                            <app-org-risk-issues-item *ngFor="let issue of issueList" [issue]="issue"></app-org-risk-issues-item>
                         </div>
                     </div>
 

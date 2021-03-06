@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {RiskProfileModel} from '../../../risk-profile/risk-profile.model';
+import {IssueModel} from '../../../issue-list/issue.model';
+import {OrganizationModel} from '../../../organization.model';
+import {OrganizationService} from '../../../organization.service';
 
 @Component({
   selector: 'app-org-risk-issues',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrgRiskIssuesComponent implements OnInit {
 
-  constructor() { }
+  constructor(public orgService: OrganizationService) { }
+
+  @Input() org: OrganizationModel;
+
+  issueList: IssueModel[] = [];
 
   ngOnInit(): void {
+    this.orgService.getAllIssuesByOrg(this.org.orgName).then((result) => {
+      this.issueList = result;
+    });
   }
 
 }

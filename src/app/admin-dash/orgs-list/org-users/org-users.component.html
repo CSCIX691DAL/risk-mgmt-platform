@@ -13,14 +13,14 @@
                         </div>
 
                         <!-- Users First Name -->
-                        <div class="col-3">
-                            <h6 class="pl-1">First Name</h6>
+                        <div class="col-5">
+                            <h6 class="pl-1">Full Name</h6>
                         </div>
 
                         <!-- Users Last Name -->
-                        <div class="col-2">
+<!--                        <div class="col-2">
                             <h6>Last Name</h6>
-                        </div>
+                        </div>-->
 
                         <!-- # of Organizations -->
                         <div class="col-2">
@@ -42,7 +42,7 @@
                     <!-- User Items -->
                     <div class="row mb-3">
                         <div class="col-md-12 p-0 m-0">
-                            <app-org-users-item></app-org-users-item>
+                            <app-org-users-item *ngFor="let user of this.orgUsers" [user]="user" [org]="org"></app-org-users-item>
                         </div>
                     </div>
 

@@ -19,12 +19,12 @@
 
                         <!-- Creator of Risk Profile -->
                         <div class="col-2">
-                            <h6 class="text-center">Creator</h6>
+                            <h6 class="text-center">Description</h6>
                         </div>
 
                         <!-- Date Risk Profile was Created -->
                         <div class="col-2">
-                            <h6 class="text-center">Date Created</h6>
+                            <h6 class="text-center">Level of Risk</h6>
                         </div>
 
                         <!-- Associated Category of Risk Profile -->
@@ -37,7 +37,7 @@
                     <!-- Risk Profile Items -->
                     <div class="row mb-3">
                         <div class="col-md-12 p-0 m-0">
-                            <app-org-risk-profiles-item></app-org-risk-profiles-item>
+                            <app-org-risk-profiles-item *ngFor="let profile of this.profileList" [riskProfile]="profile"></app-org-risk-profiles-item>
                         </div>
                     </div>
 

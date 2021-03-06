@@ -7,27 +7,27 @@
 
     <!-- Task Name -->
     <div class="col-3 text-left">
-        <p class="p-0 mt-md-1 mb-0 pl-1">Name of Task</p>
+        <p class="p-0 mt-md-1 mb-0 pl-1">{{task.title}}</p>
     </div>
 
     <!-- Task Assignee -->
     <div class="col-2">
-        <p class="p-0 mt-md-1 mb-0">Jane Smith</p>
+        <p class="p-0 mt-md-1 mb-0">{{task.createdBy.firstName}}</p>
     </div>
 
     <!-- Task Status -->
     <div class="col-2">
-        <p class="p-0 mt-md-1 mb-0">Status</p>
+        <p class="p-0 mt-md-1 mb-0">{{task.status}}</p>
     </div>
 
     <!-- Days before Task Deadline -->
-    <div class="col-2">
-        <p class="p-0 mt-md-1 mb-0">5 days</p>
+    <div class="col-4">
+        <p class="p-0 mt-md-1 mb-0">{{task.dueDate}}</p>
     </div>
 
     <!-- Total Tasks Completed by User -->
-    <div class="col-2 text-center">
+<!--    <div class="col-2 text-center">
         <p class="p-0 mt-md-1 mb-0">Financial</p>
-    </div>
+    </div>-->
 
 </div>

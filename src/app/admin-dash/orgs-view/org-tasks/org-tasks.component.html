@@ -19,30 +19,30 @@
 
                         <!-- Task Creator -->
                         <div class="col-2">
-                            <h6 class="text-center">Creator</h6>
+                            <h6 class="text-center">Assignee</h6>
                         </div>
 
                         <!-- Task Assignee -->
                         <div class="col-2">
-                            <h6 class="text-center">Assignee</h6>
+                            <h6 class="text-center">Status</h6>
                         </div>
 
                         <!-- Date Task was Created -->
-                        <div class="col-2">
+                        <div class="col-4">
                             <h6 class="text-center">Deadline</h6>
                         </div>
 
                         <!-- Associated Issue of Task -->
-                        <div class="col-2">
+<!--                        <div class="col-2">
                             <h6 class="text-center">Risk Issue</h6>
-                        </div>
+                        </div>-->
 
                     </div>
 
                     <!-- Organization Task Items -->
                     <div class="row mb-3">
                         <div class="col-md-12 p-0 m-0">
-                            <app-org-tasks-item></app-org-tasks-item>
+                            <app-org-tasks-item *ngFor="let task of this.taskList" [task]="task"></app-org-tasks-item>
                         </div>
                     </div>
 

@@ -7,22 +7,22 @@
 
     <!-- Risk Profile Name -->
     <div class="col-5 text-left">
-        <p class="p-0 mt-md-1 mb-0 pl-1">Name of Risk Profile</p>
+        <p class="p-0 mt-md-1 mb-0 pl-1">{{riskProfile.title}}</p>
     </div>
 
     <!-- Creator of Risk Profile -->
     <div class="col-2">
-        <p class="p-0 mt-md-1 mb-0">John Smith</p>
+        <p class="p-0 mt-md-1 mb-0">{{riskProfile.description}}</p>
     </div>
 
     <!-- Date Risk Profile was Created -->
     <div class="col-2">
-        <p class="p-0 mt-md-1 mb-0">March 5th 2021</p>
+        <p class="p-0 mt-md-1 mb-0">{{riskProfile.getLevelOfRiskBadge().level}}</p>
     </div>
 
     <!-- Associated Risk Category for Risk Profile -->
     <div class="col-2 text-center">
-        <p class="p-0 mt-md-1 mb-0">Financial</p>
+        <p class="p-0 mt-md-1 mb-0">{{riskProfile.category.name}}</p>
     </div>
 
 </div>

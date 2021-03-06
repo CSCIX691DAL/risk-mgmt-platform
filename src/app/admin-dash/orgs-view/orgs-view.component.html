@@ -63,7 +63,7 @@
 
                                         <!-- Organization Name -->
                                         <div class="col-md-9">
-                                            <h1 class="">Organization One</h1>
+                                            <h1 class="">{{this.organizationService.currentlySelectedOrg.orgName}}</h1>
                                         </div>
 
                                         <!-- Admin Options -->
@@ -137,6 +137,7 @@
 <!--                                    </div>-->
 <!--                                </div>-->
 
+
                                 <!-- Organization Associated Users -->
                                 <div class="col-md-12 mb-5">
                                     <div class="row p-0">
@@ -153,7 +154,6 @@
                                                 <!-- Add User -->
                                                 <div class="col-md-6">
                                                     <app-orgs-add-user
-                                                        addOrgUserText="+ User to Organization"
                                                         class="float-right">
                                                     </app-orgs-add-user>
                                                 </div>
@@ -165,7 +165,7 @@
                                         <div class="col-md-12">
                                             <div class="row p-0 rounded orgViewListedInfo">
                                                 <div class="col-md-12">
-                                                    <app-org-users></app-org-users>
+                                                    <app-org-users [org] = "this.organizationService.currentlySelectedOrg"></app-org-users>
                                                 </div>
                                             </div>
                                         </div>
@@ -185,7 +185,7 @@
                                         <div class="col-md-12">
                                             <div class="row p-0 rounded orgViewListedInfo">
                                                 <div class="col-md-12">
-                                                    <app-org-risk-categories></app-org-risk-categories>
+                                                    <app-org-risk-categories [org]="this.organizationService.currentlySelectedOrg"></app-org-risk-categories>
                                                 </div>
                                             </div>
                                         </div>
@@ -205,7 +205,7 @@
                                         <div class="col-md-12">
                                             <div class="row p-0 rounded orgViewListedInfo">
                                                 <div class="col-md-12">
-                                                    <app-org-risk-profiles></app-org-risk-profiles>
+                                                    <app-org-risk-profiles [org]="this.organizationService.currentlySelectedOrg"></app-org-risk-profiles>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,19 +213,20 @@
                                 </div>
 
                                 <!-- Organization Associated Risk Issues -->
+
                                 <div class="col-md-12 mb-5">
                                     <div class="row p-0">
 
                                         <!-- Subheading -->
                                         <div class="col-md-12 pt-3 pb-1 orgViewIssueSubHeading">
+
                                             <h4>Risk Issues</h4>
                                         </div>
 
-                                        <!-- Organization Risk Issues -->
                                         <div class="col-md-12">
                                             <div class="row p-0 rounded orgViewListedInfo">
                                                 <div class="col-md-12">
-                                                    <app-org-risk-issues></app-org-risk-issues>
+                                                    <app-org-risk-issues [org] = "this.organizationService.currentlySelectedOrg"></app-org-risk-issues>
                                                 </div>
                                             </div>
                                         </div>
@@ -245,7 +246,7 @@
                                         <div class="col-md-12">
                                             <div class="row p-0 rounded orgViewListedInfo">
                                                 <div class="col-md-12">
-                                                    <app-org-tasks></app-org-tasks>
+                                                    <app-org-tasks [org]="this.organizationService.currentlySelectedOrg"></app-org-tasks>
                                                 </div>
                                             </div>
                                         </div>
