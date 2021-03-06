@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {IssueModel} from '../../../../issue-list/issue.model';
 
 @Component({
   selector: 'app-org-risk-issues-item',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class OrgRiskIssuesItemComponent implements OnInit {
 
   constructor() { }
+
+  @Input() issue: IssueModel;
 
   ngOnInit(): void {
   }

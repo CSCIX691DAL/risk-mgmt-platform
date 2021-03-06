@@ -11,6 +11,7 @@ import {OrganizationModel} from './organization.model';
 import {TaskModel} from './task-list/task.model';
 import {RiskProfileModel} from './risk-profile/risk-profile.model';
 import {CategoryModel} from './risk-categories/category.model';
+import {IssueModel} from './issue-list/issue.model';
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +79,21 @@ export class OrganizationService {
     });
 
     return i;
+  }
+
+  public async getAllIssuesByOrg(orgName): Promise<IssueModel[]> {
+    let issues = [];
+
+    await this.dbService.organizationRef.doc(orgName).collection('issues').get().then((querySnapshot) => {
+
+      querySnapshot.forEach((doc) => {
+        const newIssue = doc.data();
+        issues.push(new IssueModel(newIssue.id, newIssue.title, newIssue.description, newIssue.modifiedBy, newIssue.riskCategory, newIssue.assigneee, newIssue.parentIssue));
+      });
+
+    });
+
+    return issues;
   }
 
   public async getAllCategoriesByOrgReal(orgName): Promise<CategoryModel[]> {

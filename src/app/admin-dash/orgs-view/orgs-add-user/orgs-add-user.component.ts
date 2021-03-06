@@ -3,6 +3,7 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {OrganizationService} from '../../../organization.service';
 import firebase from 'firebase';
 import firestore = firebase.firestore;
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-orgs-add-user',
@@ -11,7 +12,7 @@ import firestore = firebase.firestore;
 })
 export class OrgsAddUserComponent implements OnInit {
 
-  constructor(private modalService: NgbModal, public orgService: OrganizationService) { }
+  constructor(private modalService: NgbModal, public orgService: OrganizationService, public notificationService: ToastrService) { }
 
   closeResult = '';
 
@@ -54,6 +55,12 @@ export class OrgsAddUserComponent implements OnInit {
       id: this.userEmail,
       name: userNameFromEmail
     });
+
+    this.modalService.dismissAll();
+
+    this.notificationService.success(this.userEmail + ' successfully added to ' + this.orgService.currentlySelectedOrg.orgName + '!', 'User Added');
+
+
   }
 
 }
