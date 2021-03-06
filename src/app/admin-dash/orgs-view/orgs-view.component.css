@@ -29,6 +29,17 @@
     color: #FFFFFF;
     border-radius: 9px 9px 0px 0px;
 }
+    .orgViewUserSubHeadingButton {
+        height: 36px;
+        color: #49a5de;
+        margin-top: -4px;
+        background-color: #FFFFFF;
+     }
+    .orgViewUserSubHeadingButton:hover {
+        color: #0062F2;
+        cursor: pointer;
+        background-color: #F9F9F9;
+    }
 .orgViewCategorySubHeading {
     background-color: #0062F2;
     color: #FFFFFF;
