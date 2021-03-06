@@ -152,7 +152,11 @@
 
                                                 <!-- Add User -->
                                                 <div class="col-md-6">
-                                                    <button class="btn float-right orgViewUserSubHeadingButton">+ User to Organization</button>
+                                                    <app-orgs-add-user
+                                                            addOrgUserText="+ User to Organization"
+                                                        [addOrganizationUser]="organizationUserItem"
+                                                        class="float-right">
+                                                    </app-orgs-add-user>
                                                 </div>
 
                                             </div>
