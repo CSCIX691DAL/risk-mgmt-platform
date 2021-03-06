@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {OrganizationModel} from '../../../organization.model';
+import {OrganizationService} from '../../../organization.service';
+import {UsersService} from '../../../users.service';
+import {UsersModel} from '../../../users.model';
 
 @Component({
   selector: 'app-org-users',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrgUsersComponent implements OnInit {
 
-  constructor() { }
+  @Input() org: OrganizationModel;
+
+  orgUsers: UsersModel[] = [];
+
+  constructor(public orgService: OrganizationService, public userService: UsersService) { }
 
   ngOnInit(): void {
+    this.userService.getUserArrayByOrg(this.org.orgName).then((result) => {
+      this.orgUsers = result;
+    });
   }
 
 }

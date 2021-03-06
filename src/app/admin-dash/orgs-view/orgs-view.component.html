@@ -68,7 +68,7 @@
 
                                         <!-- Organization Name -->
                                         <div class="col-md-9">
-                                            <h1 class="">Organization One</h1>
+                                            <h1 class="">{{this.organizationService.currentlySelectedOrg.orgName}}</h1>
                                         </div>
 
                                         <!-- Admin Options -->
@@ -112,28 +112,27 @@
                                             <h4>Overview</h4>
                                         </div>
 
-                                        <!-- Risk Category, Issues and Profile widgets -->
+<!--                                        &lt;!&ndash; Risk Category, Issues and Profile widgets &ndash;&gt;
                                         <div class="col-md-12 px-4">
                                             <div class="row p-0">
 
-                                                <!-- Organization Risk Categories -->
+                                                &lt;!&ndash; Organization Risk Categories &ndash;&gt;
                                                 <div class="col-md-4">
                                                     <app-category-widget></app-category-widget>
                                                 </div>
 
-                                                <!-- Organization Risk Issues -->
+                                                &lt;!&ndash; Organization Risk Issues &ndash;&gt;
                                                 <div class="col-md-4">
                                                     <app-issue-widget></app-issue-widget>
                                                 </div>
 
-                                                <!-- Organization Risk Profiles -->
+                                                &lt;!&ndash; Organization Risk Profiles &ndash;&gt;
                                                 <div class="col-md-4">
                                                     <app-profile-widget></app-profile-widget>
                                                 </div>
 
-
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
 
@@ -150,7 +149,7 @@
                                         <div class="col-md-12">
                                             <div class="row p-0 rounded orgViewListedInfo">
                                                 <div class="col-md-12">
-                                                    <app-org-users></app-org-users>
+                                                    <app-org-users [org] = "this.organizationService.currentlySelectedOrg"></app-org-users>
                                                 </div>
                                             </div>
                                         </div>
