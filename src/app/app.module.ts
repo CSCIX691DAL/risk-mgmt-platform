@@ -93,6 +93,7 @@ import { OrgRiskIssuesComponent } from './admin-dash/orgs-view/org-risk-issues/o
 import { OrgRiskIssuesItemComponent } from './admin-dash/orgs-view/org-risk-issues/org-risk-issues-item/org-risk-issues-item.component';
 import { OrgTasksComponent } from './admin-dash/orgs-view/org-tasks/org-tasks.component';
 import { OrgTasksItemComponent } from './admin-dash/orgs-view/org-tasks/org-tasks-item/org-tasks-item.component';
+import { OrgsAddUserComponent } from './admin-dash/orgs-view/orgs-add-user/orgs-add-user.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -197,6 +198,7 @@ const myroutes: Routes = [
     OrgRiskIssuesItemComponent,
     OrgTasksComponent,
     OrgTasksItemComponent,
+    OrgsAddUserComponent,
   ],
   imports: [
     BrowserModule,

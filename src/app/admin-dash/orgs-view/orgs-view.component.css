@@ -24,6 +24,31 @@
 .orgViewSubHeadingBorder {
     margin-bottom: 15px;
 }
+.orgViewUserSubHeading {
+    background-color: #49a5de;
+    color: #FFFFFF;
+    border-radius: 9px 9px 0px 0px;
+}
+.orgViewCategorySubHeading {
+    background-color: #0062F2;
+    color: #FFFFFF;
+    border-radius: 9px 9px 0px 0px;
+}
+.orgViewProfileSubHeading {
+    background-color: #fcac49;
+    color: #FFFFFF;
+    border-radius: 9px 9px 0px 0px;
+}
+.orgViewIssueSubHeading {
+    background-color: #02A767;
+    color: #FFFFFF;
+    border-radius: 9px 9px 0px 0px;
+}
+.orgViewTaskSubHeading {
+    background-color: #E81500;
+    color: #FFFFFF;
+    border-radius: 9px 9px 0px 0px;
+}
 .orgViewListedInfo {
     background-color: #F8F8F8;
 }

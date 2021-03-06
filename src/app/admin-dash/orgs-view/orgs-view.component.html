@@ -25,32 +25,27 @@
                                     <h6>Owner: <span>John Smith</span></h6>
                                 </div>
 
-                                <!-- Owner -->
+                                <!-- Created -->
                                 <div class="col-md-12">
                                     <h6>Created: <span>March 5th 2021</span></h6>
                                 </div>
 
-                                <!-- Owner -->
+                                <!-- Status -->
                                 <div class="col-md-12">
-                                    <h6>Status: <span>Gold</span></h6>
+                                    <h6>Status: <span>Active</span></h6>
                                 </div>
 
-                                <!-- Owner -->
-                                <div class="col-md-12">
-                                    <h6>Renews In: <span>30 Days</span></h6>
-                                </div>
-
-                                <!-- Owner -->
+                                <!-- Employees -->
                                 <div class="col-md-12">
                                     <h6>Employees: <span>16</span></h6>
                                 </div>
 
-                                <!-- Owner -->
+                                <!-- Tasks Created -->
                                 <div class="col-md-12">
                                     <h6>Tasks Created: <span>501</span></h6>
                                 </div>
 
-                                <!-- Owner -->
+                                <!-- Tasks Completed -->
                                 <div class="col-md-12">
                                     <h6>Tasks Completed: <span>489</span></h6>
                                 </div>
@@ -80,9 +75,14 @@
                                                     <a class="btn btn-outline-secondary" routerLink="/admin-dashboard-organizations">Edit</a>
                                                 </div>
 
+                                                <!-- Freeze Organization -->
+                                                <div class="ml-3">
+                                                    <a class="btn btn-outline-warning" routerLink="/admin-dashboard-organizations">Freeze</a>
+                                                </div>
+
                                                 <!-- Delete Organization -->
                                                 <div class="ml-3">
-                                                    <a class="btn btn-outline-danger" routerLink="/admin-dashboard-organizations">Freeze</a>
+                                                    <a class="btn btn-outline-danger" routerLink="/admin-dashboard-organizations">Delete</a>
                                                 </div>
 
                                             </div>
@@ -104,45 +104,63 @@
                                 </div>
 
                                 <!-- Overview of Risk Categories, Issues and Profiles -->
-                                <div class="col-md-12 orgViewSubHeading mb-5">
+<!--                                <div class="col-md-12 orgViewSubHeading mb-5">-->
+<!--                                    <div class="row p-0">-->
+
+<!--                                        &lt;!&ndash; Subheading &ndash;&gt;-->
+<!--                                        <div class="col-md-12 orgViewSubHeadingBorder">-->
+<!--                                            <h4>Overview</h4>-->
+<!--                                        </div>-->
+
+<!--                                        &lt;!&ndash; Risk Category, Issues and Profile widgets &ndash;&gt;-->
+<!--                                        <div class="col-md-12 px-4">-->
+<!--                                            <div class="row p-0">-->
+
+<!--                                                &lt;!&ndash; Organization Risk Categories &ndash;&gt;-->
+<!--                                                <div class="col-md-4">-->
+<!--                                                    <app-category-widget></app-category-widget>-->
+<!--                                                </div>-->
+
+<!--                                                &lt;!&ndash; Organization Risk Issues &ndash;&gt;-->
+<!--                                                <div class="col-md-4">-->
+<!--                                                    <app-issue-widget></app-issue-widget>-->
+<!--                                                </div>-->
+
+<!--                                                &lt;!&ndash; Organization Risk Profiles &ndash;&gt;-->
+<!--                                                <div class="col-md-4">-->
+<!--                                                    <app-profile-widget></app-profile-widget>-->
+<!--                                                </div>-->
+
+
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+
+                                <!-- Organization Associated Users -->
+                                <div class="col-md-12 mb-5">
                                     <div class="row p-0">
 
                                         <!-- Subheading -->
-                                        <div class="col-md-12 orgViewSubHeadingBorder">
-                                            <h4>Overview</h4>
-                                        </div>
-
-<!--                                        &lt;!&ndash; Risk Category, Issues and Profile widgets &ndash;&gt;
-                                        <div class="col-md-12 px-4">
+                                        <div class="col-md-12 pt-3 pb-1 orgViewUserSubHeading">
                                             <div class="row p-0">
 
-                                                &lt;!&ndash; Organization Risk Categories &ndash;&gt;
-                                                <div class="col-md-4">
-                                                    <app-category-widget></app-category-widget>
+                                                <!-- Users -->
+                                                <div class="col-md-6">
+                                                    <h4>Users</h4>
                                                 </div>
 
-                                                &lt;!&ndash; Organization Risk Issues &ndash;&gt;
-                                                <div class="col-md-4">
-                                                    <app-issue-widget></app-issue-widget>
-                                                </div>
-
-                                                &lt;!&ndash; Organization Risk Profiles &ndash;&gt;
-                                                <div class="col-md-4">
-                                                    <app-profile-widget></app-profile-widget>
+                                                <!-- Add User -->
+                                                <div class="col-md-6">
+                                                    <app-orgs-add-user
+                                                            addOrgUserText="+ User to Organization"
+                                                        [addOrganizationUser]="organizationUserItem"
+                                                        class="float-right">
+                                                    </app-orgs-add-user>
                                                 </div>
 
                                             </div>
-                                        </div>-->
-                                    </div>
-                                </div>
-
-                                <!-- Organization Associated Users -->
-                                <div class="col-md-12 orgViewSubHeading mb-5">
-                                    <div class="row p-0">
-
-                                        <!-- Subheading -->
-                                        <div class="col-md-12 orgViewSubHeadingBorder">
-                                            <h4>Organization Users</h4>
                                         </div>
 
                                         <!-- Organization Users -->
@@ -157,11 +175,11 @@
                                 </div>
 
                                 <!-- Organization Associated Risk Categories -->
-                                <div class="col-md-12 orgViewSubHeading mb-5">
+                                <div class="col-md-12 mb-5">
                                     <div class="row p-0">
 
                                         <!-- Subheading -->
-                                        <div class="col-md-12 orgViewSubHeadingBorder">
+                                        <div class="col-md-12 pt-3 pb-1 orgViewCategorySubHeading">
                                             <h4>Risk Categories</h4>
                                         </div>
 
@@ -177,11 +195,11 @@
                                 </div>
 
                                 <!-- Organization Associated Risk Profiles -->
-                                <div class="col-md-12 orgViewSubHeading mb-5">
+                                <div class="col-md-12 mb-5">
                                     <div class="row p-0">
 
                                         <!-- Subheading -->
-                                        <div class="col-md-12 orgViewSubHeadingBorder">
+                                        <div class="col-md-12 pt-3 pb-1 orgViewProfileSubHeading">
                                             <h4>Risk Profiles</h4>
                                         </div>
 
@@ -197,11 +215,13 @@
                                 </div>
 
                                 <!-- Organization Associated Risk Issues -->
-<!--                                <div class="col-md-12 orgViewSubHeading mb-5">
+
+                                <div class="col-md-12 mb-5">
                                     <div class="row p-0">
 
-                                        &lt;!&ndash; Subheading &ndash;&gt;
-                                        <div class="col-md-12 orgViewSubHeadingBorder">
+                                        <!-- Subheading -->
+                                        <div class="col-md-12 pt-3 pb-1 orgViewIssueSubHeading">
+
                                             <h4>Risk Issues</h4>
                                         </div>
 
@@ -217,11 +237,11 @@
                                 </div>-->
 
                                 <!-- Organization Associated Tasks -->
-                                <div class="col-md-12 orgViewSubHeading">
+                                <div class="col-md-12">
                                     <div class="row p-0">
 
                                         <!-- Subheading -->
-                                        <div class="col-md-12 orgViewSubHeadingBorder">
+                                        <div class="col-md-12 pt-3 pb-1 orgViewTaskSubHeading">
                                             <h4>Organizations Tasks</h4>
                                         </div>
 
