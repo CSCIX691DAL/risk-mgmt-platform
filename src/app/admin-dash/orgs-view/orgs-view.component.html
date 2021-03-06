@@ -169,7 +169,7 @@
                                         <div class="col-md-12">
                                             <div class="row p-0 rounded orgViewListedInfo">
                                                 <div class="col-md-12">
-                                                    <app-org-risk-categories></app-org-risk-categories>
+                                                    <app-org-risk-categories [org]="this.organizationService.currentlySelectedOrg"></app-org-risk-categories>
                                                 </div>
                                             </div>
                                         </div>
@@ -189,7 +189,7 @@
                                         <div class="col-md-12">
                                             <div class="row p-0 rounded orgViewListedInfo">
                                                 <div class="col-md-12">
-                                                    <app-org-risk-profiles></app-org-risk-profiles>
+                                                    <app-org-risk-profiles [org]="this.organizationService.currentlySelectedOrg"></app-org-risk-profiles>
                                                 </div>
                                             </div>
                                         </div>
@@ -197,15 +197,15 @@
                                 </div>
 
                                 <!-- Organization Associated Risk Issues -->
-                                <div class="col-md-12 orgViewSubHeading mb-5">
+<!--                                <div class="col-md-12 orgViewSubHeading mb-5">
                                     <div class="row p-0">
 
-                                        <!-- Subheading -->
+                                        &lt;!&ndash; Subheading &ndash;&gt;
                                         <div class="col-md-12 orgViewSubHeadingBorder">
                                             <h4>Risk Issues</h4>
                                         </div>
 
-                                        <!-- Organization Risk Issues -->
+                                        &lt;!&ndash; Organization Risk Issues &ndash;&gt;
                                         <div class="col-md-12">
                                             <div class="row p-0 rounded orgViewListedInfo">
                                                 <div class="col-md-12">
@@ -214,7 +214,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
 
                                 <!-- Organization Associated Tasks -->
                                 <div class="col-md-12 orgViewSubHeading">
@@ -229,7 +229,7 @@
                                         <div class="col-md-12">
                                             <div class="row p-0 rounded orgViewListedInfo">
                                                 <div class="col-md-12">
-                                                    <app-org-tasks></app-org-tasks>
+                                                    <app-org-tasks [org]="this.organizationService.currentlySelectedOrg"></app-org-tasks>
                                                 </div>
                                             </div>
                                         </div>

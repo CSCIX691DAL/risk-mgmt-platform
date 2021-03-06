@@ -37,7 +37,7 @@
                     <!-- Organization Risk Category Items -->
                     <div class="row mb-3">
                         <div class="col-md-12 p-0 m-0">
-                            <app-org-risk-categories-item></app-org-risk-categories-item>
+                            <app-org-risk-categories-item *ngFor="let category of categoryList" [category]="category"></app-org-risk-categories-item>
                         </div>
                     </div>
 

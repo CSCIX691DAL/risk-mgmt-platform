@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {CategoryModel} from '../../../../risk-categories/category.model';
 
 @Component({
   selector: 'app-org-risk-categories-item',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class OrgRiskCategoriesItemComponent implements OnInit {
 
   constructor() { }
+
+  @Input() category: CategoryModel;
 
   ngOnInit(): void {
   }

@@ -8,6 +8,9 @@ import {Router} from '@angular/router';
 import {UsersService} from './users.service';
 import {UserAuthService} from './user-auth.service';
 import {OrganizationModel} from './organization.model';
+import {TaskModel} from './task-list/task.model';
+import {RiskProfileModel} from './risk-profile/risk-profile.model';
+import {CategoryModel} from './risk-categories/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +60,117 @@ export class OrganizationService {
     });
 
     return i;
+  }
+
+  public async getAllCategoriesByOrgReal(orgName): Promise<CategoryModel[]> {
+    let categories = [];
+
+    await this.dbService.organizationRef.doc(orgName).collection('categories').get().then((querySnapshot) => {
+
+      querySnapshot.forEach((doc) => {
+        const newCategory = doc.data();
+
+        categories.push(new CategoryModel(newCategory.id, newCategory.name, categories[Number(newCategory.parentCategory - 1)], newCategory.description, newCategory.isSpeculativeRisk));
+      });
+
+    });
+
+    return categories;
+  }
+
+  public async getAllCategoriesByOrg(orgName): Promise<CategoryModel[]> {
+    let categories = [];
+
+    await this.dbService.organizationRef.doc(orgName).collection('categories').get().then((querySnapshot) => {
+
+      querySnapshot.forEach((doc) => {
+        const newCategory = doc.data();
+
+        categories.push(new CategoryModel(newCategory.id, newCategory.name, categories[Number(newCategory.parentCategory - 1)], newCategory.description, newCategory.isSpeculativeRisk));
+      });
+
+    });
+
+    return categories;
+  }
+
+  public async getAllProfilesByOrgReal(orgName): Promise<RiskProfileModel[]> {
+    let profiles = [];
+
+    await this.dbService.organizationRef.doc(orgName).collection('riskProfiles').get().then((querySnapshot) => {
+
+      querySnapshot.forEach((doc) => {
+        const newRiskProfile = doc.data();
+
+        profiles.push(new RiskProfileModel(newRiskProfile.id, newRiskProfile.title, newRiskProfile.description, newRiskProfile.likelihood, newRiskProfile.impact, null, null, newRiskProfile.sourceOfRisk));
+      });
+
+    });
+
+    return profiles;
+  }
+
+  public async getAllProfilesByOrg(orgName): Promise<RiskProfileModel[]> {
+    let profiles = [];
+
+    await this.dbService.organizationRef.doc(orgName).collection('riskProfiles').get().then((querySnapshot) => {
+
+      querySnapshot.forEach((doc) => {
+        const newRiskProfile = doc.data();
+
+        profiles.push(new RiskProfileModel(newRiskProfile.id, newRiskProfile.title, newRiskProfile.description, newRiskProfile.likelihood, newRiskProfile.impact, null, null, newRiskProfile.sourceOfRisk));
+      });
+
+    });
+
+    return profiles;
+  }
+
+  public async getAllTasksByOrg(orgName): Promise<TaskModel[]> {
+    let tasks = [];
+
+    await this.dbService.organizationRef.doc(orgName).collection('tasks').get().then((querySnapshot) => {
+
+      querySnapshot.forEach((doc) => {
+        const newTask = doc.data();
+
+        const createdDate = new Date(0);
+        createdDate.setUTCSeconds(newTask.createdDate.seconds);
+
+        const dueDate = new Date(0);
+        dueDate.setUTCSeconds(newTask.dueDate.seconds);
+
+        console.log(newTask.createdByID);
+
+        this.getIndexOfUserByEmail(newTask.createdByID, this.currentlySelectedOrg.orgName).then((index) => {
+          tasks.push(new TaskModel(newTask.title, this.userService.categories[index], newTask.status, dueDate, createdDate, false));
+        });
+      });
+    });
+
+    return tasks;
+  }
+
+  public async getIndexOfUserByEmail(email: string, orgName: string): Promise<number> {
+    let i = 0;
+
+    let userArr = [];
+
+    return await this.userService.getUserArrayByOrg(orgName).then((result) => {
+      userArr = result;
+
+
+      for (const user of userArr) {
+        if (user.id === email) {
+          return i;
+        }
+        i++;
+      }
+
+      return -1;
+
+    });
+
   }
 
   public async getUserTaskCount(orgName, userID): Promise<number> {
