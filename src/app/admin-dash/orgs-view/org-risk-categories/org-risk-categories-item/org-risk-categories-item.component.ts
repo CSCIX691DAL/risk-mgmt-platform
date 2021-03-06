@@ -11,6 +11,7 @@ export class OrgRiskCategoriesItemComponent implements OnInit {
   constructor() { }
 
   @Input() category: CategoryModel;
+  @Input() categoryList: CategoryModel[];
 
   ngOnInit(): void {
   }

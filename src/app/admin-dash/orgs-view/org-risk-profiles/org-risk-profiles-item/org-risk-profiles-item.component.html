@@ -17,12 +17,12 @@
 
     <!-- Date Risk Profile was Created -->
     <div class="col-2">
-        <p class="p-0 mt-md-1 mb-0">{{riskProfile.dateCreated}}</p>
+        <p class="p-0 mt-md-1 mb-0">{{riskProfile.getLevelOfRiskBadge().level}}</p>
     </div>
 
     <!-- Associated Risk Category for Risk Profile -->
     <div class="col-2 text-center">
-        <p class="p-0 mt-md-1 mb-0">Financial</p>
+        <p class="p-0 mt-md-1 mb-0">{{riskProfile.category.name}}</p>
     </div>
 
 </div>

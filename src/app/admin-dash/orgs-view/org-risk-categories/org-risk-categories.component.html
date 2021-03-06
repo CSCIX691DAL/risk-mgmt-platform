@@ -19,7 +19,7 @@
 
                         <!-- Creator of Risk Category -->
                         <div class="col-2">
-                            <h6 class="text-center">Creator</h6>
+                            <h6 class="text-center">Description</h6>
                         </div>
 
                         <!-- Date Risk Category was Created -->
@@ -29,7 +29,7 @@
 
                         <!-- Parent Category of Risk Category -->
                         <div class="col-2">
-                            <h6 class="text-center">Category</h6>
+                            <h6 class="text-center">Parent Category</h6>
                         </div>
 
                     </div>
@@ -37,7 +37,7 @@
                     <!-- Organization Risk Category Items -->
                     <div class="row mb-3">
                         <div class="col-md-12 p-0 m-0">
-                            <app-org-risk-categories-item *ngFor="let category of categoryList" [category]="category"></app-org-risk-categories-item>
+                            <app-org-risk-categories-item *ngFor="let category of categoryList" [category]="category" [categoryList]="categoryList"></app-org-risk-categories-item>
                         </div>
                     </div>
 

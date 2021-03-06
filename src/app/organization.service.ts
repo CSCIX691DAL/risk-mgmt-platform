@@ -53,6 +53,24 @@ export class OrganizationService {
     return i;
   }
 
+  public async getAllOrgsCount(): Promise<number> {
+    let i = 0;
+    await this.dbService.organizationRef.get().then((document) => {
+      i =  document.size;
+    });
+
+    return i;
+  }
+
+  public async getAllUsersCount(): Promise<number> {
+    let i = 0;
+    await this.dbService.userRef.get().then((document) => {
+      i =  document.size;
+    });
+
+    return i;
+  }
+
   public async getOrgAllTasks(orgName): Promise<number> {
     let i = 0;
     await this.dbService.organizationRef.doc(orgName).collection('tasks').get().then((doc) => {
@@ -94,15 +112,34 @@ export class OrganizationService {
     return categories;
   }
 
+  public async getUserName(email): Promise<string> {
+    let userName = ''
+
+    await this.dbService.userRef.doc(email).get().then((user) => {
+      userName = user.data().name;
+
+      console.log(userName);
+    });
+
+    return userName;
+  }
+
   public async getAllProfilesByOrgReal(orgName): Promise<RiskProfileModel[]> {
     let profiles = [];
 
-    await this.dbService.organizationRef.doc(orgName).collection('riskProfiles').get().then((querySnapshot) => {
+    let categories = [];
 
-      querySnapshot.forEach((doc) => {
-        const newRiskProfile = doc.data();
+    await this.getAllCategoriesByOrgReal(orgName).then((categoryArr) => {
+      categories = categoryArr;
 
-        profiles.push(new RiskProfileModel(newRiskProfile.id, newRiskProfile.title, newRiskProfile.description, newRiskProfile.likelihood, newRiskProfile.impact, null, null, newRiskProfile.sourceOfRisk));
+      this.dbService.organizationRef.doc(orgName).collection('riskProfiles').get().then((querySnapshot) => {
+
+        querySnapshot.forEach((doc) => {
+          const newRiskProfile = doc.data();
+
+          profiles.push(new RiskProfileModel(newRiskProfile.id, newRiskProfile.title, newRiskProfile.description, newRiskProfile.likelihood, newRiskProfile.impact, categories[newRiskProfile.category], categories[newRiskProfile.riskCategory], newRiskProfile.sourceOfRisk));
+        });
+
       });
 
     });

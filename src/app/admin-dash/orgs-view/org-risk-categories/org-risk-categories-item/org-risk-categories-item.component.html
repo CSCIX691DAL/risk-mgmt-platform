@@ -22,7 +22,8 @@
 
     <!-- Parent Category of Risk Category -->
     <div class="col-2 text-center">
-        <p class="p-0 mt-md-1 mb-0">Financial</p>
+        <p *ngIf="this.category.parentCategory" class="p-0 mt-md-1 mb-0">{{this.category.parentCategory}}</p>
+        <p *ngIf="!this.category.parentCategory" class="p-0 mt-md-1 mb-0">N/A</p>
     </div>
 
 </div>
