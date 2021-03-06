@@ -94,6 +94,9 @@ import { OrgRiskIssuesItemComponent } from './admin-dash/orgs-view/org-risk-issu
 import { OrgTasksComponent } from './admin-dash/orgs-view/org-tasks/org-tasks.component';
 import { OrgTasksItemComponent } from './admin-dash/orgs-view/org-tasks/org-tasks-item/org-tasks-item.component';
 import { OrgsAddUserComponent } from './admin-dash/orgs-view/orgs-add-user/orgs-add-user.component';
+import { OrgAdminDashComponent } from './org-admin-dash/org-admin-dash.component';
+import { OrgAdminNavComponent } from './org-admin-dash/org-admin-nav/org-admin-nav.component';
+import { OrgAdminHomeComponent } from './org-admin-dash/org-admin-home/org-admin-home.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -116,7 +119,8 @@ const myroutes: Routes = [
   {path: 'admin-dashboard-users', component: UserListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'admin-dashboard-organizations', component: OrgsListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'admin-dashboard-approval', component: OrgApprovalComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
-  {path: 'admin-organization-view', component: OrgsViewComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
+  {path: 'admin-organization-view', component: OrgsViewComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'org-admin-dashboard', component: OrgAdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
 ];
 
 @NgModule({
@@ -199,6 +203,9 @@ const myroutes: Routes = [
     OrgTasksComponent,
     OrgTasksItemComponent,
     OrgsAddUserComponent,
+    OrgAdminDashComponent,
+    OrgAdminNavComponent,
+    OrgAdminHomeComponent,
   ],
   imports: [
     BrowserModule,

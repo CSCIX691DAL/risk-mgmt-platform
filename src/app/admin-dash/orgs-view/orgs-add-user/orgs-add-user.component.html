@@ -1,6 +1,6 @@
 <ng-template #addOrganizationUserContent let-modal>
 
-    <form (ngSubmit)="OnAdd()">
+    <form>
 
         <div class="modal-header justify-content-center">
             <h2 class="mt-1">Add User to Organization</h2>
@@ -11,7 +11,7 @@
             <!-- Users Email -->
             <label for="addTitle" class="labelAndInput">User's Email</label>
             <div class="input-group mb-3">
-                <input type="email" class="form-control" id="addTitle" name="addTitle" ngModel [(ngModel)]="issue.title">
+                <input type="email" class="form-control" id="addTitle" name="addTitle">
             </div>
 
         </div>
@@ -26,4 +26,4 @@
 
 </ng-template>
 
-<button type="button" class="btn float-right orgViewUserSubHeadingButton" (click)="open(addOrganizationUserContent)">+ User to Organization</button>
+<button type="button" class="btn float-right orgViewUserSubHeadingButton">+ User to Organization</button>
