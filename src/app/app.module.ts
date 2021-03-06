@@ -101,6 +101,7 @@ import { OrgAdminApprovalComponent } from './org-admin-dash/org-admin-approval/o
 import { OrgAdminUserListComponent } from './org-admin-dash/org-admin-user-list/org-admin-user-list.component';
 import { OrgAdminOrgViewComponent } from './org-admin-dash/org-admin-org-view/org-admin-org-view.component';
 import { OrgAdminApprovalItemComponent } from './org-admin-dash/org-admin-approval/org-admin-approval-item/org-admin-approval-item.component';
+import { OrgAdminUserListItemComponent } from './org-admin-dash/org-admin-user-list/org-admin-user-list-item/org-admin-user-list-item.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -217,6 +218,7 @@ const myroutes: Routes = [
     OrgAdminUserListComponent,
     OrgAdminOrgViewComponent,
     OrgAdminApprovalItemComponent,
+    OrgAdminUserListItemComponent,
   ],
   imports: [
     BrowserModule,
