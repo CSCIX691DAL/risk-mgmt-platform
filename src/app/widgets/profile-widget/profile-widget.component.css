@@ -20,3 +20,22 @@
   border-bottom-right-radius: 8px;
   background-color: #EE9D09;
 }
+.widgetFooter a {
+  color: #FFFFFF;
+}
+/* unvisited link */
+.widgetFooter a:link {
+  color: #FFFFFF;
+}
+/* visited link */
+.widgetFooter a:visited {
+  color: #FFFFFF;
+}
+/* mouse over link */
+.widgetFooter a:hover {
+  color: #FFFFFF;
+}
+/* selected link */
+.widgetFooter a:active {
+  color: #FFFFFF;
+}

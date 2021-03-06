@@ -1,0 +1,35 @@
+.adminDashOverviewCon {
+    border-radius: 10px;
+    border: 1px solid #CCCCCC;
+}
+    .adminDashOverviewConHeader {
+        background-color: #EEEEEE;
+        border-bottom: 1px solid #CCCCCC;
+        border-radius: 9px 9px 0px 0px;
+    }
+    .adminDashOverviewConFooter {
+        background-color: #EEEEEE;
+        border-top: 1px solid #CCCCCC;
+        border-radius: 0px 0px 9px 9px;
+    }
+.adminDashOverviewCon a {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+/* unvisited link */
+.adminDashOverviewCon a:link {
+    color: #000000;
+}
+/* visited link */
+.adminDashOverviewCon a:visited {
+    color: #000000;
+}
+/* mouse over link */
+.adminDashOverviewCon a:hover {
+    color: #000000;
+}
+/* selected link */
+.adminDashOverviewCon a:active {
+    color: #000000;
+}
