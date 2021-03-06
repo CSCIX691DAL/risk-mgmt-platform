@@ -1,0 +1,85 @@
+.adminDashOverviewCon {
+    border-radius: 10px;
+}
+h2 {
+    font-weight: 500;
+}
+.adminDashOverviewConHeaderUsers {
+    background-color: #49a5de;
+    color: #FFFFFF;
+    border-radius: 9px 9px 0px 0px;
+}
+.adminDashOverviewConBodyUsers {
+    background-color: #68b4e3;
+    color: #FFFFFF;
+}
+.adminDashOverviewConFooterUsers {
+    background-color: #49a5de;
+    color: #FFFFFF;
+    border-radius: 0px 0px 9px 9px;
+}
+.adminDashOverviewConHeaderOrganizations {
+    background-color: #fcac49;
+    color: #FFFFFF;
+    border-radius: 9px 9px 0px 0px;
+}
+.adminDashOverviewConBodyOrganizations {
+    background-color: #ffb457;
+    color: #FFFFFF;
+}
+.adminDashOverviewConFooterOrganizations {
+    background-color: #fcac49;
+    color: #FFFFFF;
+    border-radius: 0px 0px 9px 9px;
+}
+.adminDashOverviewConHeaderApprovals {
+    background-color: #02A767;
+    color: #FFFFFF;
+    border-radius: 9px 9px 0px 0px;
+}
+.adminDashOverviewConBodyApprovals {
+    background-color: #00AC69;
+    color: #FFFFFF;
+}
+    span {
+        font-size: 18px;
+        font-weight: 400;
+    }
+.adminDashOverviewConFooterApprovals {
+    background-color: #02A767;
+    color: #FFFFFF;
+    border-radius: 0px 0px 9px 9px;
+}
+
+.adminDashOverviewCon a {
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+/* unvisited link */
+.adminDashOverviewCon a:link {
+    color: #FFFFFF;
+}
+/* visited link */
+.adminDashOverviewCon a:visited {
+    color: #FFFFFF;
+}
+/* mouse over link */
+.adminDashOverviewCon a:hover {
+    color: #FFFFFF;
+}
+/* selected link */
+.adminDashOverviewCon a:active {
+    color: #FFFFFF;
+}
+.adminDashOverviewChartCon {
+    width: 100%;
+    min-height: 650px;
+    max-height: 650px;
+    border-radius: 10px;
+    background-color: #F4F4F4;
+}
+.adminDashOverviewChartConHeader {
+    background-color: #ffe552;
+    border-radius: 10px 10px 0px 0px;
+}
