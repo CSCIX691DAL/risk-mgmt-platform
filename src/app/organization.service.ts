@@ -282,6 +282,11 @@ export class OrganizationService {
 
   public async getAllTasksByOrg(orgName): Promise<TaskModel[]> {
     const tasks = [];
+    let userArr = [];
+
+    await this.getUserArrayByOrg(orgName).then((users) => {
+      userArr = users;
+    });
 
     await this.dbService.organizationRef.doc(orgName).collection('tasks').get().then((querySnapshot) => {
 
@@ -297,7 +302,7 @@ export class OrganizationService {
         console.log(newTask.createdByID);
 
         this.getIndexOfUserByEmail(newTask.createdByID, this.currentlySelectedOrg.orgName).then((index) => {
-          tasks.push(new TaskModel(newTask.title, this.userService.categories[index], newTask.status, dueDate, createdDate, false));
+          tasks.push(new TaskModel(newTask.title, userArr[index], newTask.status, dueDate, createdDate, false));
         });
       });
     });
