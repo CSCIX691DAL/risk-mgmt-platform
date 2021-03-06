@@ -44,15 +44,15 @@
         <a class="nav-link" routerLink="/treatment-plan">Treatment Plan</a>
       </li>-->
 
-      <li class="nav-item">
+      <li *ngIf="userAuthService.isSiteAdmin" class="nav-item">
         <a class="nav-link" routerLink="/admin-dashboard">Admin Dashboard</a>
       </li>
 
-      <li class="nav-item">
+<!--      <li class="nav-item">
         <a class="nav-link" routerLink="/admin-organization-view">Organization View</a>
-      </li>
+      </li>-->
 
-      <li class="nav-item">
+      <li *ngIf="userAuthService.isOrgAdmin" class="nav-item">
         <a class="nav-link" routerLink="/org-admin-dashboard">Org Admin</a>
       </li>
 

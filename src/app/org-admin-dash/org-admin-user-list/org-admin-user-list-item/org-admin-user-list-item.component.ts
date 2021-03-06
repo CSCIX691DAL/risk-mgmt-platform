@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {UsersModel} from '../../../users.model';
+import {OrganizationService} from '../../../organization.service';
 
 @Component({
   selector: 'app-org-admin-user-list-item',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrgAdminUserListItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(public orgService: OrganizationService) { }
+
+  countTasksCreated: number = 0;
+  countTasksCompleted: number = 0;
+
+  @Input() user: UsersModel;
 
   ngOnInit(): void {
+    this.orgService.getUserTaskCount(this.orgService.currentOrganization, this.user.id).then((result) => {
+      this.countTasksCreated = result;
+    });
+
+    this.orgService.getUserAllCompletedTasks(this.orgService.currentOrganization, this.user.id).then((result) => {
+      this.countTasksCompleted = result;
+    });
   }
 
 }

@@ -22,6 +22,7 @@ export class UsersService {
   constructor(public dbService: DbService) {}
 
   public userCurrentOrg = '';
+  public userRole = 0;
 
   updateUserArray(): void {
     this.categories = [];

@@ -12,6 +12,8 @@ import {TaskModel} from './task-list/task.model';
 import {RiskProfileModel} from './risk-profile/risk-profile.model';
 import {CategoryModel} from './risk-categories/category.model';
 import {IssueModel} from './issue-list/issue.model';
+import {Observable, Subject} from 'rxjs';
+import {UsersModel} from './users.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +28,14 @@ export class OrganizationService {
   public currentOrganization;
 
   public userOrganizations;
+  triggerToUpdate = new Subject<boolean>();
 
   public organizations: OrganizationModel[] = [];
   public currentlySelectedOrg: OrganizationModel;
 
   public changeCurrentOrg(orgName: string) {
     this.currentOrganization = orgName;
+    this.triggerToUpdate.next(true);
 
     this.dbService.taskRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('tasks');
     this.dbService.issueRef = this.dbService.organizationRef.doc(this.currentOrganization).collection(`issues`);
@@ -49,6 +53,34 @@ export class OrganizationService {
     });
   }
 
+  async getUserArrayByOrg(orgName: string): Promise<UsersModel[]> {
+    let orgUsers = [];
+
+    await this.dbService.userRef.where("organizations", 'array-contains-any', [orgName]).get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const newUser = doc.data();
+
+        orgUsers.push(new UsersModel(doc.id, newUser.name, '', '', '', true));
+      });
+    });
+
+    return orgUsers;
+  }
+
+  async getAllUserArray(): Promise<UsersModel[]> {
+    let orgUsers = [];
+
+    await this.dbService.userRef.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const newUser = doc.data();
+
+        orgUsers.push(new UsersModel(doc.id, newUser.name, '', '', '', true));
+      });
+    });
+
+    return orgUsers;
+  }
+
   public async getOrgModelByID(orgName: string): Promise<OrganizationModel> {
     let orgModel: OrganizationModel = null;
 
@@ -60,7 +92,7 @@ export class OrganizationService {
         console.log(this.currentOrganization);
 
         if (orgData.name === this.currentOrganization) {
-          orgModel = new OrganizationModel(orgData.name, 'Inactive');
+          orgModel = new OrganizationModel(orgData.name, 'Active');
         }
       });
     });
@@ -82,6 +114,51 @@ export class OrganizationService {
     let i = 0;
     await this.dbService.organizationRef.get().then((document) => {
       i =  document.size;
+    });
+
+    return i;
+  }
+
+  public async getAllOrgProfileCount(orgName: string): Promise<number> {
+    let i = 0;
+    await this.dbService.organizationRef.doc(orgName).collection('riskProfiles').get().then((document) => {
+      i =  document.size;
+    });
+
+    return i;
+  }
+
+  public async getAllOrgCategoryCount(orgName: string): Promise<number> {
+    let i = 0;
+    await this.dbService.organizationRef.doc(orgName).collection('categories').get().then((document) => {
+      i =  document.size;
+    });
+
+    return i;
+  }
+
+  public async getAllOrgUserCount(orgName: string): Promise<number> {
+    let i = 0;
+    await this.dbService.organizationRef.doc(orgName).collection('users').get().then((document) => {
+      i =  document.size;
+    });
+
+    return i;
+  }
+
+  public async getAllOrgIssueCount(orgName: string): Promise<number> {
+    let i = 0;
+    await this.dbService.organizationRef.doc(orgName).collection('issues').get().then((document) => {
+      i =  document.size;
+    });
+
+    return i;
+  }
+
+  public async getUserOrgCount(userName: string): Promise<number> {
+    let i = 0;
+    await this.dbService.userRef.doc(userName).get().then((document) => {
+      i = document.data().organizations.length;
     });
 
     return i;
@@ -309,6 +386,8 @@ export class OrganizationService {
       this.getOrgModelByID(this.currentOrganization).then((org) => {
         this.currentlySelectedOrg = org;
       });
+
+      this.triggerToUpdate.next(true);
 
       this.router.navigate(['dashboard']);
     });

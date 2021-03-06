@@ -8,18 +8,46 @@ import {OrganizationService} from '../organization.service';
 })
 export class OrgAdminDashComponent implements OnInit {
 
-  constructor(public orgService: OrganizationService) { }
+  constructor(public orgService: OrganizationService) {
+
+    this.orgService.getAllOrgUserCount(this.orgService.currentOrganization).then((result) => {
+      this.countOrgUsers = result;
+    });
+
+    this.orgService.getOrgAllTasks(this.orgService.currentOrganization).then((result) => {
+      this.countOrgTasks = result;
+    });
+
+    this.orgService.getAllOrgProfileCount(this.orgService.currentOrganization).then((result) => {
+      this.countOrgProfiles = result;
+    });
+
+    this.orgService.getAllOrgCategoryCount(this.orgService.currentOrganization).then((result) => {
+      this.countOrgCategories = result;
+    });
+
+    this.orgService.getAllOrgIssueCount(this.orgService.currentOrganization).then((result) => {
+      this.countOrgIssues = result;
+    });
+
+  }
+
+  countOrgCategories = 0;
+  countOrgProfiles = 0;
+  countOrgTasks = 0;
+  countOrgIssues = 0;
+
+  countOrgUsers = 0;
 
   ngOnInit(): void {
+
+
+    console.log(this.orgService.currentOrganization);
+
   }
 
 
   onSubmit() {
     this.orgService.currentlySelectedOrg = this.orgService.currentOrganization;
-
-    console.log("NEW");
-    console.log(this.orgService.currentlySelectedOrg);
-    console.log("OLD");
-    console.log(this.orgService.currentOrganization);
   }
 }

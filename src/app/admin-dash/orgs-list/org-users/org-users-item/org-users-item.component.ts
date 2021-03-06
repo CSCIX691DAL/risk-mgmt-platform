@@ -20,9 +20,9 @@ export class OrgUsersItemComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let arr = this.user.firstName.split(' ');
+/*    let arr = this.user.firstName.split(' ');
     this.user.firstName = arr[0];
-    this.user.lastName = arr[1];
+    this.user.lastName = arr[1];*/
 
     this.orgService.getUserTaskCount(this.org.orgName, this.user.id).then((result) => {
       this.totalTasks = result;

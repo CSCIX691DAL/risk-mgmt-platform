@@ -11,19 +11,19 @@
                     <div class="row border-bottom mt-4 p-0">
 
                         <!-- Users ID -->
-                        <div class="col-2">
+<!--                        <div class="col-2">
                             <h6 class="text-center">ID</h6>
-                        </div>
+                        </div>-->
 
                         <!-- Users First Name -->
-                        <div class="col-2">
-                            <h6 class="text-center">First Name</h6>
+                        <div class="col-6">
+                            <h6 class="text-center">Full Name</h6>
                         </div>
 
                         <!-- Users Last Name -->
-                        <div class="col-2">
+<!--                        <div class="col-2">
                             <h6 class="text-center">Last Name</h6>
-                        </div>
+                        </div>-->
 
                         <!-- Tasks Created -->
                         <div class="col-2">
@@ -36,16 +36,16 @@
                         </div>
 
                         <!-- Actions -->
-                        <div class="col-2">
+<!--                        <div class="col-2">
                             <h6 class="text-center">Actions</h6>
-                        </div>
+                        </div>-->
 
                     </div>
 
                     <!-- User Items -->
                     <div class="row mb-3 orgAdminUserItemsCon">
                         <div class="col-md-12 p-0 m-0">
-                            <app-org-admin-user-list-item></app-org-admin-user-list-item>
+                            <app-org-admin-user-list-item *ngFor="let user of userArr" [user]="user"></app-org-admin-user-list-item>
                         </div>
                     </div>
 

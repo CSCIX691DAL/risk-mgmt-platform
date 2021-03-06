@@ -11,41 +11,41 @@
                     <div class="row border-bottom mt-4 p-0">
 
                         <!-- Users ID -->
-                        <div class="col-2">
+<!--                        <div class="col-2">
                             <h6 class="text-center">ID</h6>
-                        </div>
+                        </div>-->
 
                         <!-- Users First Name -->
-                        <div class="col-2">
-                            <h6 class="text-center">First Name</h6>
+                        <div class="col-6">
+                            <h6 class="text-center">Full Name</h6>
                         </div>
 
                         <!-- Users Last Name -->
-                        <div class="col-2">
+<!--                        <div class="col-2">
                             <h6 class="text-center">Last Name</h6>
-                        </div>
+                        </div>-->
 
                         <!-- # of Organizations -->
-                        <div class="col-2">
+                        <div class="col-6">
                             <h6 class="text-center"># of Orgs.</h6>
                         </div>
 
                         <!-- Tasks Created -->
-                        <div class="col-2">
+<!--                        <div class="col-2">
                             <h6 class="text-center">Tasks Created</h6>
                         </div>
 
-                        <!-- Tasks Completed -->
+                        &lt;!&ndash; Tasks Completed &ndash;&gt;
                         <div class="col-2">
                             <h6 class="text-center">Tasks Completed</h6>
-                        </div>
+                        </div>-->
 
                     </div>
 
                     <!-- User Items -->
                     <div class="row mb-3 userItemsCon">
                         <div class="col-md-12 p-0 m-0">
-                            <app-user-list-item></app-user-list-item>
+                            <app-user-list-item *ngFor="let user of userList" [user]="user"></app-user-list-item>
                         </div>
                     </div>
 
