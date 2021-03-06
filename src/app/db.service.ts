@@ -27,6 +27,11 @@ export class DbService {
      * https://stackoverflow.com/questions/47549001/how-to-use-get-method-to-retrieve-all-collection-in-angularfire2 */
     this.organizationRef = firestore.firestore.collection('organizations');
 
+
+    firestore.collection('organizations').get().subscribe((doc) => {
+      console.log(doc);
+    });
+
     this.userRef = firestore.firestore.collection('users');
   }
 }

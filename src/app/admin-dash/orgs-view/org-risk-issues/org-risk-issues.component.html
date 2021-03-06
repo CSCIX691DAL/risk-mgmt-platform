@@ -1,0 +1,54 @@
+<div class="container-fluid w-100 mw-100 p-0 m-0">
+    <div class="row p-0 m-0">
+        <div class="col-md-12 p-0 m-0">
+
+            <!-- Risk Issues Headings -->
+            <div class="row px-0 m-0">
+                <div class="col-md-12">
+                    <div class="row border-bottom mt-4 p-0">
+
+                        <!-- Risk Issues ID -->
+<!--                        <div class="col-1">
+                            <h6 class="text-center">ID</h6>
+                        </div>-->
+
+                        <!-- Risk Issue Name -->
+                        <div class="col-4">
+                            <h6 class="pl-1">Risk Issue Name</h6>
+                        </div>
+
+                        <!-- Creator of Risk Issue -->
+                        <div class="col-3">
+                            <h6 class="text-center">Description</h6>
+                        </div>
+
+                        <!-- Assignee of Risk Issue -->
+<!--                        <div class="col-2">
+                            <h6 class="text-center">Assignee</h6>
+                        </div>-->
+
+                        <!-- Date Risk Issue was Created -->
+                        <div class="col-3">
+                            <h6 class="text-center">Date Created</h6>
+                        </div>
+
+                        <!-- Associated Risk Profile for Risk Issue -->
+                        <div class="col-2">
+                            <h6 class="text-center">Risk Category</h6>
+                        </div>
+
+                    </div>
+
+                    <!-- Risk Issue Items -->
+                    <div class="row mb-3">
+                        <div class="col-md-12 p-0 m-0">
+                            <app-org-risk-issues-item *ngFor="let issue of issueList" [issue]="issue"></app-org-risk-issues-item>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

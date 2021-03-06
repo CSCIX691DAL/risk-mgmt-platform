@@ -1,0 +1,49 @@
+<div class="container-fluid w-100 mw-100 p-0 m-0">
+    <div class="row p-0 m-0">
+        <div class="col-md-12 p-0 m-0">
+
+            <!-- Risk Category Headings -->
+            <div class="row px-0 m-0">
+                <div class="col-md-12">
+                    <div class="row border-bottom mt-4 p-0">
+
+                        <!-- Risk Categories ID -->
+<!--                        <div class="col-1">
+                            <h6 class="text-center">ID</h6>
+                        </div>-->
+
+                        <!-- Risk Category Name -->
+                        <div class="col-6">
+                            <h6 class="pl-1">Risk Category Name</h6>
+                        </div>
+
+                        <!-- Creator of Risk Category -->
+                        <div class="col-2">
+                            <h6 class="text-center">Description</h6>
+                        </div>
+
+                        <!-- Date Risk Category was Created -->
+                        <div class="col-2">
+                            <h6 class="text-center">Date Created</h6>
+                        </div>
+
+                        <!-- Parent Category of Risk Category -->
+                        <div class="col-2">
+                            <h6 class="text-center">Parent Category</h6>
+                        </div>
+
+                    </div>
+
+                    <!-- Organization Risk Category Items -->
+                    <div class="row mb-3">
+                        <div class="col-md-12 p-0 m-0">
+                            <app-org-risk-categories-item *ngFor="let category of categoryList" [category]="category" [categoryList]="categoryList"></app-org-risk-categories-item>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

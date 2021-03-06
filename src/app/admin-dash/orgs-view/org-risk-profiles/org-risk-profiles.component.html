@@ -1,0 +1,49 @@
+<div class="container-fluid w-100 mw-100 p-0 m-0">
+    <div class="row p-0 m-0">
+        <div class="col-md-12 p-0 m-0">
+
+            <!-- Risk Profile Headings -->
+            <div class="row px-0 m-0">
+                <div class="col-md-12">
+                    <div class="row border-bottom mt-4 p-0">
+
+                        <!-- Risk Profile ID -->
+<!--                        <div class="col-1">
+                            <h6 class="text-center">ID</h6>
+                        </div>-->
+
+                        <!-- Risk Profile Name -->
+                        <div class="col-6">
+                            <h6 class="pl-1">Risk Profile Name</h6>
+                        </div>
+
+                        <!-- Creator of Risk Profile -->
+                        <div class="col-2">
+                            <h6 class="text-center">Description</h6>
+                        </div>
+
+                        <!-- Date Risk Profile was Created -->
+                        <div class="col-2">
+                            <h6 class="text-center">Level of Risk</h6>
+                        </div>
+
+                        <!-- Associated Category of Risk Profile -->
+                        <div class="col-2">
+                            <h6 class="text-center">Risk Category</h6>
+                        </div>
+
+                    </div>
+
+                    <!-- Risk Profile Items -->
+                    <div class="row mb-3">
+                        <div class="col-md-12 p-0 m-0">
+                            <app-org-risk-profiles-item *ngFor="let profile of this.profileList" [riskProfile]="profile"></app-org-risk-profiles-item>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

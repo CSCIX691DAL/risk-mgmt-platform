@@ -1,21 +1,147 @@
-<div class="container-fluid">
+<div class="container-fluid w-100 mw-100 p-0 m-0">
+    <div class="row p-0 m-0">
+        <div class="col-md-12 p-0 m-0">
 
-    <!-- Admin Dashboard Navigation Bar -->
-    <div class="row">
+            <!-- Admin Dashboard Navigation Bar -->
+            <app-admin-nav></app-admin-nav>
 
-    <!-- Admin Dash Navigation Bar -->
-    <app-admin-nav></app-admin-nav>
+            <!-- Admin Dashboard Home Page -->
+            <div class="row px-0 m-0">
+                <div class="col-md-12">
+                    <div class="row my-4 p-0 px-3">
 
-    <!-- Admin Profile Component -->
-    <app-admin-home></app-admin-home>
+                        <!-- LEFT SIDEBAR -->
+                        <div class="col-md-3">
 
-    <!-- Admin Organizations Component -->
-    <app-orgs-list></app-orgs-list>
+                            <!-- Users Overview -->
+                            <div class="row adminDashOverviewCon mb-4">
 
-    <!-- Admin Users Component
-    <app-user-list></app-user-list>
-    -->
+                                <!-- Header -->
+                                <div class="col-md-12 pt-2 pb-1 adminDashOverviewConHeaderUsers">
+                                    <h5>Users</h5>
+                                </div>
 
-    <div>
+                                <!-- Body -->
+                                <div class="col-md-12 py-4 px-0 adminDashOverviewConBodyUsers">
+                                    <div class="row p-0 text-center">
 
+                                        <!-- Total Users -->
+                                        <div class="col-md-12">
+                                            <h2>{{this.currentUserCount}}</h2>
+                                            <h6>Total<br/>Users</h6>
+                                        </div>
+
+                                        <!-- New Users Today -->
+<!--                                        <div class="col-md-6">
+                                            <h2>31</h2>
+                                            <h6>Joined<br/>Today</h6>
+                                        </div>-->
+
+                                    </div>
+                                </div>
+
+                                <!-- Footer -->
+                                <div class="col-md-12 py-2 adminDashOverviewConFooterUsers">
+                                    <a routerLink="/admin-dashboard-users">View all Users</a>
+                                </div>
+
+                            </div>
+
+                            <!-- Organizations Overview -->
+                            <div class="row adminDashOverviewCon mb-4">
+
+                                <!-- Header -->
+                                <div class="col-md-12 pt-2 pb-1 adminDashOverviewConHeaderOrganizations">
+                                    <h5>Organizations</h5>
+                                </div>
+
+                                <!-- Body -->
+                                <div class="col-md-12 py-4 px-0 adminDashOverviewConBodyOrganizations">
+                                    <div class="row p-0 text-center">
+
+                                        <!-- Total Organizations -->
+                                        <div class="col-md-12">
+                                            <h2>{{this.currentOrgCount}}</h2>
+                                            <h6>Total<br/>Orgs.</h6>
+                                        </div>
+
+                                        <!-- New Organizations Today -->
+<!--                                        <div class="col-md-6">
+                                            <h2>2</h2>
+                                            <h6>Joined<br/>Today</h6>
+                                        </div>-->
+
+                                    </div>
+                                </div>
+
+                                <!-- Footer -->
+                                <div class="col-md-12 py-2 adminDashOverviewConFooterOrganizations">
+                                    <a routerLink="/admin-dashboard-organizations">View all Organizations</a>
+                                </div>
+
+                            </div>
+
+                            <!-- Approval Overview -->
+<!--                            <div class="row adminDashOverviewCon">
+
+                                &lt;!&ndash; Header &ndash;&gt;
+                                <div class="col-md-12 pt-2 pb-1 adminDashOverviewConHeaderApprovals">
+                                    <h5>Approvals</h5>
+                                </div>
+
+                                &lt;!&ndash; Body &ndash;&gt;
+                                <div class="col-md-12 py-4 px-0 adminDashOverviewConBodyApprovals">
+                                    <div class="row p-0 text-center">
+
+                                        &lt;!&ndash; Total Organizations &ndash;&gt;
+                                        <div class="col-md-12">
+                                            <h2>1</h2>
+                                            <h6>Awaiting<br/>Approval</h6>
+                                        </div>
+
+                                        &lt;!&ndash; New Organizations Today &ndash;&gt;
+&lt;!&ndash;                                        <div class="col-md-6">
+                                            <h2>30</h2>
+                                            <h6>Approved<br/>Today</h6>
+                                        </div>&ndash;&gt;
+
+                                    </div>
+                                </div>
+
+                                &lt;!&ndash; Footer &ndash;&gt;
+                                <div class="col-md-12 py-2 adminDashOverviewConFooterApprovals">
+                                    <a routerLink="/admin-dashboard-approval">View all Required Approvals</a>
+                                </div>
+
+                            </div>-->
+
+                        </div>
+
+                        <!-- RIGHT SIDEBAR -->
+                        <div class="col-md-9">
+                            <div class="row p-0 pl-4 pr-1">
+                                <div class="col-md-12 adminDashOverviewChartCon">
+                                    <div class="row p-0">
+
+                                        <!-- Graph Header -->
+                                        <div class="col-md-12 pt-2 pb-1 adminDashOverviewChartConHeader">
+                                            <h5>Platform Usage</h5>
+                                        </div>
+
+                                        <!-- Graph Body -->
+                                        <div class="col-md-12 pt-2 pb-1">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
