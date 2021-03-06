@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {OrganizationService} from '../../organization.service';
 
 @Component({
   selector: 'app-orgs-view',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrgsViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(public organizationService: OrganizationService) { }
 
   ngOnInit(): void {
   }

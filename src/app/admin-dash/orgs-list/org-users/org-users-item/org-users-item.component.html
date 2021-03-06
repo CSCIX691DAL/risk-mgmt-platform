@@ -7,12 +7,12 @@
 
     <!-- First Name -->
     <div class="col-3 text-left">
-        <p class="p-0 mt-md-1 mb-0 pl-1">John</p>
+        <p class="p-0 mt-md-1 mb-0 pl-1">{{user.firstName}}</p>
     </div>
 
     <!-- Last Name -->
     <div class="col-2 text-left">
-        <p class="p-0 mt-md-1 mb-0">Smith</p>
+        <p class="p-0 mt-md-1 mb-0">{{user.lastName}}</p>
     </div>
 
     <!-- # of Organizations user is in -->
@@ -22,12 +22,12 @@
 
     <!-- Total Tasks Created by User -->
     <div class="col-2">
-        <p class="p-0 mt-md-1 mb-0">32</p>
+        <p class="p-0 mt-md-1 mb-0">{{this.totalTasks}}</p>
     </div>
 
     <!-- Total Tasks Completed by User -->
     <div class="col-2 text-center">
-        <p class="p-0 mt-md-1 mb-0">29</p>
+        <p class="p-0 mt-md-1 mb-0">{{this.completedTasks}}</p>
     </div>
 
 </div>

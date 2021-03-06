@@ -37,7 +37,7 @@
                     <!-- Risk Profile Items -->
                     <div class="row mb-3">
                         <div class="col-md-12 p-0 m-0">
-                            <app-org-risk-profiles-item></app-org-risk-profiles-item>
+                            <app-org-risk-profiles-item *ngFor="let profile of this.profileList" [riskProfile]="profile"></app-org-risk-profiles-item>
                         </div>
                     </div>
 

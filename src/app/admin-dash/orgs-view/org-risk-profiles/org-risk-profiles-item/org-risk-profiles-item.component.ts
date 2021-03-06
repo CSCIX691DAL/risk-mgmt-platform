@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {OrganizationModel} from '../../../../organization.model';
+import {RiskProfileModel} from '../../../../risk-profile/risk-profile.model';
 
 @Component({
   selector: 'app-org-risk-profiles-item',
@@ -8,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class OrgRiskProfilesItemComponent implements OnInit {
 
   constructor() { }
+
+  @Input() riskProfile: RiskProfileModel;
 
   ngOnInit(): void {
   }

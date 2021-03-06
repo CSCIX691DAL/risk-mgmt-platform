@@ -42,7 +42,7 @@
                     <!-- User Items -->
                     <div class="row mb-3">
                         <div class="col-md-12 p-0 m-0">
-                            <app-org-users-item></app-org-users-item>
+                            <app-org-users-item *ngFor="let user of this.orgUsers" [user]="user" [org]="org"></app-org-users-item>
                         </div>
                     </div>
 
