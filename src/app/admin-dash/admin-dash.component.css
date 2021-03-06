@@ -5,16 +5,16 @@ h2 {
     font-weight: 500;
 }
     .adminDashOverviewConHeaderUsers {
-        background-color: #db4848;
+        background-color: #49a5de;
         color: #FFFFFF;
         border-radius: 9px 9px 0px 0px;
     }
         .adminDashOverviewConBodyUsers {
-            background-color: #eb6363;
+            background-color: #68b4e3;
             color: #FFFFFF;
         }
         .adminDashOverviewConFooterUsers {
-            background-color: #db4848;
+            background-color: #49a5de;
             color: #FFFFFF;
             border-radius: 0px 0px 9px 9px;
         }
