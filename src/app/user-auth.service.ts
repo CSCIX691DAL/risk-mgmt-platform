@@ -5,6 +5,7 @@ import firebase from 'firebase';
 import {Router} from '@angular/router';
 import {DbService} from './db.service';
 import {OrganizationService} from './organization.service';
+import {CategoryModel} from './risk-categories/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +71,26 @@ export class UserAuthService {
 
       this.dbService.organizationRef.doc(verifyCode).set({
         name: verifyCode
+      });
+
+      //new CategoryModel(1, 'Financial', null, 'Risks to money and investments', false),
+      //new CategoryModel(2, 'Strategic', null, 'Affects business strategy and objectives', false),
+      //new CategoryModel(3, 'Hazard', null, 'Harm or health effect to people', false),
+      //new CategoryModel(4, 'Operational', null, 'Impacts to systems, procedures, policies, and people', false),
+
+      let predefOrgIds = [      new CategoryModel(1, 'Financial', null, 'Risks to money and investments', false),
+        new CategoryModel(2, 'Strategic', null, 'Affects business strategy and objectives', false),
+        new CategoryModel(3, 'Hazard', null, 'Harm or health effect to people', false),
+        new CategoryModel(4, 'Operational', null, 'Impacts to systems, procedures, policies, and people', false)];
+
+      predefOrgIds.forEach((org) => {
+        this.dbService.organizationRef.doc(verifyCode).collection('categories').doc(org.name).set({
+          name: org.name,
+          id: org.id,
+          description: org.description,
+          parentCategory: null,
+          isSpeculativeRisk: false
+        });
       });
 
       this.dbService.userRef.doc(email).set({
