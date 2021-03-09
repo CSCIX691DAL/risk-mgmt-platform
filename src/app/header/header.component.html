@@ -64,15 +64,21 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" routerLink="/profile">Profiles</a>
-      </li>
+        <div class="dropdown">
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/risk-matrix">Risk Matrix</a>
-      </li>
+          <!-- Profile Dropdown Toggle -->
+          <a class="nav-link dropdown-toggle linkDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="pr-1">Profiles</span>
+          </a>
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/risk-map-report">Map Report</a>
+          <!-- Profile Dropdown Items -->
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/profile">Risk Profile</a>
+            <a class="dropdown-item" routerLink="/risk-matrix">Risk Matrix</a>
+            <a class="dropdown-item" routerLink="risk-map">Risk Map Report</a>
+          </div>
+
+        </div>
       </li>
 
       <li class="nav-item">
@@ -91,17 +97,17 @@
         <a class="nav-link" routerLink="/treatment-plan">Treatment Plan</a>
       </li>-->
 
-      <li *ngIf="userAuthService.isSiteAdmin" class="nav-item">
-        <a class="nav-link" routerLink="/admin-dashboard">Admin Dashboard</a>
-      </li>
+<!--      <li *ngIf="userAuthService.isSiteAdmin" class="nav-item">-->
+<!--        <a class="nav-link" routerLink="/admin-dashboard">Admin Dashboard</a>-->
+<!--      </li>-->
 
 <!--      <li class="nav-item">
         <a class="nav-link" routerLink="/admin-organization-view">Organization View</a>
       </li>-->
 
-      <li *ngIf="userAuthService.isOrgAdmin" class="nav-item">
-        <a class="nav-link" routerLink="/org-admin-dashboard">Org Admin</a>
-      </li>
+<!--      <li *ngIf="userAuthService.isOrgAdmin" class="nav-item">-->
+<!--        <a class="nav-link" routerLink="/org-admin-dashboard">Org Admin</a>-->
+<!--      </li>-->
 
     </ul>
   </div>
