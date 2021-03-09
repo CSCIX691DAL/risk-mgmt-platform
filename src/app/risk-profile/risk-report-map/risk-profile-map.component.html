@@ -14,21 +14,20 @@
         <div class="col-md-6">
           <div class="row justify-content-end">
 
-            <!-- Sort Risk Profiles Dropdown Toggle -->
+            <!-- Sort Risk Map Items Dropdown Toggle -->
 <!--            <button class="btn btn-outline-primary riskMapSortButton mr-3" type="button" data-toggle="collapse" data-target="#profilesSortDropdown" aria-expanded="false" aria-controls="profilesSortDropdown">Sort Profiles</button>-->
 
             <!-- Add Risk Profile modal component -->
             <div>
               <app-add-risk-profile
                       addTextName="+ Risk Profile"
-                      [addRiskProfile]="riskProfileItem"
                       class="float-right">
               </app-add-risk-profile>
             </div>
 
             <!-- Search Issues bar -->
             <div class="pr-3">
-              <input class="form-control" type="text" placeholder="Search" name="riskProfileMapList">
+              <input class="form-control" type="text" placeholder="Search profiles" name="riskProfileMapList">
             </div>
 
           </div>

@@ -1,45 +1,50 @@
-<!-- Listed Issues -->
-<div id="categoryContainer" class="container">
+<!-- New Category Item -->
+<div class="row categoryItemContainer">
+    <div class="col-md-12">
 
-  <!-- Top Row -->
-  <div class="row">
+        <!-- Category Item Heading -->
+        <div class="row">
+            <!-- Category Name -->
+            <div class="col-md-12 pt-2 pb-1 categoryItemHeading">
+                <h5>{{categoryItem.name}}</h5>
+            </div>
+        </div>
 
-    <!-- Title Column -->
-    <div class="col-md-10">
-      <h4 class="float-left">{{categoryItem.name}}</h4>
+        <!-- Category Item Body -->
+        <div class="row py-2 categoryItemBody">
+
+            <!-- Category Parent -->
+            <div class="col-md-12">
+                Parent: {{categoryItem.getParentName()}}
+            </div>
+
+            <!-- Category Description -->
+            <div class="col-md-12">
+                Description:<br /> {{categoryItem.description}}
+            </div>
+
+        </div>
+
+        <!-- Category Item Footer -->
+        <div class="row">
+            <div class="col-md-12 pt-2 pb-1 categoryItemFooting">
+
+                <!-- Edit Category modal component -->
+                <app-edit-category
+                        editTextName="Edit"
+                        [editCategory]='categoryItem'
+                        editModalID="{{categoryItem.id}}"
+                        editModalName="{{ categoryItem.name }}"
+                        editParentCategory="{{ categoryItem.parentCategory }}"
+                        editModalDescription="{{ categoryItem.description }}"
+                        class="float-right">
+                </app-edit-category>
+
+                <!-- Delete Link -->
+                <a class="float-right mr-3" (click)="onDeleteCategory()">Delete</a>
+
+            </div>
+        </div>
+
     </div>
-
-    <!-- Status Column -->
-    <div class="col-md-2">
-      <p class="float-right">Parent Category: {{categoryItem.getParentName()}}</p>
-    </div>
-  </div>
-
-  <!-- Bottom Row -->
-  <div class="row">
-
-    <!-- Description Column -->
-    <div class="col-md-10">
-      <p class="">{{categoryItem.description}}</p>
-    </div>
-
-    <!-- Delete / Edit Column -->
-    <div class="col-md-2">
-      <!-- Edit issue modal component -->
-      <app-edit-category
-        editTextName="Edit"
-        [editCategory]='categoryItem'
-        editModalID="{{categoryItem.id}}"
-        editModalName="{{ categoryItem.name }}"
-        editParentCategory="{{ categoryItem.parentCategory }}"
-        editModalDescription="{{ categoryItem.description }}"
-        class="float-right">
-      </app-edit-category>
-
-      <!-- Delete Link -->
-      <a class="float-right mr-4" (click)="onDeleteCategory()">Delete</a>
-    </div>
-
-  </div>
-
 </div>
