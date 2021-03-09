@@ -41,7 +41,14 @@
   <!-- Sort Container -->
   <app-sort-issue (categorySelectedEvent)="setCurrentCategory($event)"></app-sort-issue>
 
+  <!-- Print out all Issue items -->
+  <div class="row px-2 m-0 issuesContentCon justify-content-start">
+    <div class="col-md-4 issuesItemContainer" *ngFor="let item of issues | filter: IssueSearchText">
+      <app-issue-item [issueItem]="item"></app-issue-item>
+    </div>
+  </div>
+
   <!-- Print out all issue items -->
-  <app-issue-item *ngFor="let item of issues | filter: IssueSearchText" [issueItem]="item"></app-issue-item>
+<!--  <app-issue-item *ngFor="let item of issues | filter: IssueSearchText" [issueItem]="item"></app-issue-item>-->
 
 </div>
