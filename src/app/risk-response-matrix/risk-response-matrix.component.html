@@ -1,15 +1,58 @@
-<div class="container">
-  <h2>Risk Response Matrix</h2>
-  <canvas baseChart class="p-2"
-          [datasets]="scatterChartData"
-          [options]="scatterChartOptions"
-          [labels]="scatterChartLabels"
-          [chartType]="scatterChartType"
-          [plugins]="scatterPlugins"
-          [legend]="true"
-          (chartClick)="chartClicked($event)"
-  >
-  </canvas>
+<div class="container-fluid w-100 mw-100 px-0 m-0">
+
+  <!-- Risk Map Report Navigation Bar -->
+  <div class="row riskMatrixNavigationBar px-2 m-0">
+    <div class="col-md-12">
+      <div class="row p-0">
+
+        <!-- Title of page user is currently viewing -->
+        <div class="col-md-6">
+          <h3 class="mt-2 pt-1">Risk Map Report</h3>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="col-md-6">
+          <div class="row justify-content-end">
+
+            <!-- Sort Risk Profiles Dropdown Toggle -->
+            <!--            <button class="btn btn-outline-primary riskMatrixSortButton mr-3" type="button" data-toggle="collapse" data-target="#profilesSortDropdown" aria-expanded="false" aria-controls="profilesSortDropdown">Sort Profiles</button>-->
+
+            <!-- Add Risk Profile modal component -->
+            <div>
+              <app-add-risk-profile
+                      addTextName="+ Risk Profile"
+                      [addRiskProfile]="riskProfileItem"
+                      class="float-right">
+              </app-add-risk-profile>
+            </div>
+
+            <!-- Search Issues bar -->
+            <div class="pr-3">
+              <input class="form-control" type="text" placeholder="Search" name="riskProfileMapList">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row p-0 m-0 justify-content-center">
+    <div class="col-md-10 my-5">
+      <canvas baseChart class="p-2"
+              [datasets]="scatterChartData"
+              [options]="scatterChartOptions"
+              [labels]="scatterChartLabels"
+              [chartType]="scatterChartType"
+              [plugins]="scatterPlugins"
+              [legend]="true"
+              (chartClick)="chartClicked($event)"
+      >
+      </canvas>
+    </div>
+  </div>
+
 </div>
 
 <ng-template #profileModal let-modal>

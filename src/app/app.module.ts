@@ -128,7 +128,9 @@ const myroutes: Routes = [
   {path: 'org-admin-dashboard', component: OrgAdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'org-admin-dashboard-users', component: OrgAdminUserListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'org-admin-dashboard-approval', component: OrgAdminApprovalComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
-  {path: 'org-admin-organization-view', component: OrgAdminOrgViewComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
+  {path: 'org-admin-organization-view', component: OrgAdminOrgViewComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'risk-matrix', component: RiskResponseMatrixComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'risk-map', component: RiskProfileMapComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
 ];
 
 @NgModule({
