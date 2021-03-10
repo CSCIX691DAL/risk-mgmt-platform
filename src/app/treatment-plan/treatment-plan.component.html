@@ -47,10 +47,12 @@
         <!-- Treatment Plan List -->
         <div *ngIf="treatmentPlanService.currentlySelectedPlan" class="col-md-9">
             <div >
+                <!-- Treatment Plan List -->
                 <h2>
                     Treatment Plan: {{treatmentPlanService.currentlySelectedPlan.title}}<br/>
                     Risk Profile: {{treatmentPlanService.currentlySelectedPlan.riskProfile.title}}
                 </h2>
+                <!-- Treatment Plan Specific Display -->
                 <div class="col-md-3">
                     Id: {{treatmentPlanService.currentlySelectedPlan.riskProfile.id}} <br>
                     Description: {{treatmentPlanService.currentlySelectedPlan.riskProfile.description}}<br>

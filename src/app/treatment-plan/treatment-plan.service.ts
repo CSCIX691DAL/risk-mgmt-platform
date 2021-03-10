@@ -41,9 +41,8 @@ export class TreatmentPlanService {
     this.dbService.treatmentRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const newPlan = doc.data();
-
-        this.treatmentPlans.push(new TreatmentPlanModel(new RiskProfileModel(0, 'Placeholder', null, null, null, null, null, null),
-            [new TaskModel('Placeholder', null, null, null, null, null)], newPlan.title, newPlan.id));
+        this.treatmentPlans.push(new TreatmentPlanModel(this.riskProfiles.pop(),
+            [new TaskModel(newPlan.tasks.title, newPlan.tasks.createdBy, newPlan.tasks.status, newPlan.tasks.dueDate, newPlan.tasks.createdDate, newPlan.tasks.isDeleted)], newPlan.title, newPlan.id));
       });
       this.triggerToUpdate.next(true);
     });
@@ -80,15 +79,15 @@ export class TreatmentPlanService {
     else {
       // Generates number equal to the length of our issues array + 1
       const max = Math.max.apply(Math, this.treatmentPlans.map( (x) => +x.id)) + 1;
-      // Creates new IssueModel object
+      // Creates new TreatmentPlanModel object
       const newPlan = new TreatmentPlanModel(this.riskProfiles[0], [], plan.title, max);
-      // Pushes new IssueModel object to issues array
+      // Pushes new TreatmentPlanModel object to issues array
       this.treatmentPlans.push(newPlan);
       // Update screen
       this.triggerToUpdate.next(true);
     }
 
-    console.log(this.treatmentPlans)
+    console.log(this.treatmentPlans);
 
     this.notificationService.success('Issue "' + plan.title + '" has been added.', 'Treatment Plan Successfully Created');
 

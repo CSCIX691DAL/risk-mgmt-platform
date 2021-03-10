@@ -65,6 +65,7 @@ export class AddTreatmentPlanComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //below being set to each treatment plan - maybe needs to be set for
     this.riskProfiles = new RiskProfileModel(1, 'Title', 'description text', 5, 5, this.categories, this.categories, "risk source");
   }
 // Add issue function
@@ -75,10 +76,11 @@ export class AddTreatmentPlanComponent implements OnInit {
 
       this.treatmentPlanService.addPlan(this.treatmentPlans);
 
+      // set below not working
       this.dbService.treatmentRef.doc(this.treatmentPlans.title).set({
         title: this.treatmentPlans.title,
-        //tasks: this.treatmentPlans.tasks,
-        //riskProfile: this.treatmentPlans.riskProfile,
+        riskProfile: this.treatmentPlans.riskProfile,
+        tasks: this.treatmentPlans.tasks
       });
 
     }
