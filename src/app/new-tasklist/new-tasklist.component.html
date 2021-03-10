@@ -40,6 +40,13 @@
 
 
     <!-- Print out all Task items -->
-    <app-new-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem" [frontPageDisplay]="false"></app-new-task-item>
+    <div class="row px-2 m-0 tasksContentCon justify-content-start">
+        <div class="col-md-4 tasksItemContainer" *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText">
+            <app-new-task-item [taskItem]="taskItem" [frontPageDisplay]="false"></app-new-task-item>
+        </div>
+    </div>
+
+    <!-- Print out all Task items -->
+<!--    <app-new-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem" [frontPageDisplay]="false"></app-new-task-item>-->
 
 </div>

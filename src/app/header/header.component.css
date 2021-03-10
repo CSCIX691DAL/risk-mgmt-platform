@@ -23,3 +23,24 @@ nav h1 {
     background-color: #409cff;
     border: 1px solid #409cff;
   }
+.linkDropdown:hover {
+  cursor: pointer;
+}
+.accountHeaderButton {
+  color: #008BFF;
+  border: 1px solid #008BFF;
+}
+  .accountHeaderButtonIcon {
+    width: 22px;
+    margin-top: -2px;
+    filter: invert(55%) sepia(32%) saturate(2817%) hue-rotate(188deg) brightness(98%) contrast(106%);
+  }
+.orgHeaderButton {
+  color: #6C757D;
+  border: 1px solid #6C757D;
+}
+  .orgHeaderButtonIcon {
+    width: 22px;
+    margin-top: -2px;
+    filter: invert(46%) sepia(17%) saturate(227%) hue-rotate(166deg) brightness(94%) contrast(91%);
+  }

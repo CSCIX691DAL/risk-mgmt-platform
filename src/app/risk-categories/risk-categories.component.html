@@ -41,6 +41,11 @@
   <!-- Sort Container -->
   <app-sort-category></app-sort-category>
 
-  <!-- Print out all issue items -->
-  <app-category-item *ngFor="let item of categoryService.categories | filter: SearchText"[categoryItem]="item"></app-category-item>
+  <!-- Print out all Category items -->
+  <div class="row px-2 m-0 categoriesContentCon justify-content-start">
+    <div class="col-md-4 categoriesItemContainer" *ngFor="let item of categoryService.categories | filter: SearchText">
+      <app-category-item [categoryItem]="item"></app-category-item>
+    </div>
+  </div>
+
 </div>

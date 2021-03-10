@@ -1,63 +1,51 @@
-<!-- Listed Issues -->
-<div *ngIf="issueItem.parentIssue === 0" id="issueContainer" class="container">
+<!-- New Issue Item -->
+<div class="row issueItemContainer" *ngIf="issueItem.parentIssue === 0">
+  <div class="col-md-12">
 
-  <!-- Top Row -->
-  <div class="row">
-
-    <!-- Title Column -->
-    <div class="col-md-10">
-      <h4 class="float-left">{{issueItem.title}}</h4>
+    <!-- Issue Item Heading -->
+    <div class="row">
+      <!-- Issue Name -->
+      <div class="col-md-12 pt-2 pb-1 issueItemHeading">
+        <h5>{{issueItem.title}}</h5>
+      </div>
     </div>
 
+    <!-- Issue Item Body -->
+    <div class="row py-2 issueItemBody">
 
-  </div>
+      <!-- Issue Associated Category -->
+      <div class="col-md-12">
+        Category: {{issueItem.riskCategory}}
+      </div>
 
-  <div class="row">
-    <div class="col">
-      <p class="float-left mr-20">Category: {{issueItem.riskCategory}}</p>
-    </div>
-  </div>
+      <!-- Issue Description -->
+      <div class="col-md-12">
+        Description:<br /> {{issueItem.description}}
+      </div>
 
-  <!-- Bottom Row -->
-  <div class="row">
-
-    <!-- Description Column -->
-    <div class="col-md-10">
-      <p class="">{{issueItem.description}}</p>
     </div>
 
-    <!-- Delete / Edit Column -->
-    <div class="col-md-2">
-      <!-- Edit issue modal component -->
-      <app-edit-issue
-        editTextName="Edit"
-        [editIssue]='issueItem'
-        editModalID="{{issueItem.id}}"
-        editModalTitle="{{ issueItem.title }}"
-        editModalRiskCategory="{{ issueItem.riskCategory }}"
-        editModalAssignee="{{ issueItem.assignee }}"
-        editModalDescription="{{ issueItem.description }}"
-        class="float-right">
-      </app-edit-issue>
+    <!-- Issue Item Footer -->
+    <div class="row">
+      <div class="col-md-12 pt-2 pb-1 issueItemFooting">
 
-      <!--
-      Delete issue modal asking if you really want to delete the issue you have chosen.
-      Will only let you delete the item after you edit and save it (you dont have to change anything, just has to save)
-      -->
-      <!-- Delete issue modal component
-      <app-delete-issue
-        deleteTextName="Delete"
-        [deleteIssue]='issueItem'
-        deleteModalID="{{issueItem.id}}"
-        deleteModalTitle="{{ issueItem.title }}"
-        class="float-right mr-4">
-      </app-delete-issue>
-      -->
-      <!-- Delete Link -->
-      <a class="float-right mr-4" (click)="onDeleteIssue()">Delete</a>
+        <!-- Edit Issue modal component -->
+        <app-edit-issue
+                editTextName="Edit"
+                [editIssue]='issueItem'
+                editModalID="{{issueItem.id}}"
+                editModalTitle="{{ issueItem.title }}"
+                editModalRiskCategory="{{ issueItem.riskCategory }}"
+                editModalAssignee="{{ issueItem.assignee }}"
+                editModalDescription="{{ issueItem.description }}"
+                class="float-right">
+        </app-edit-issue>
 
+        <!-- Delete Issue Link -->
+        <a class="float-right mr-3" (click)="onDeleteIssue()">Delete</a>
+
+      </div>
     </div>
 
   </div>
-
 </div>

@@ -3,13 +3,12 @@
   padding-right: 15px;
 }
 
-#issueContainer {
-  padding-top: 12px;
+.profileItemContainer {
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   border: 1px solid #cccccc;
   background-color: #fefefe;
-  position: relative;
 }
 
 div a {
@@ -36,4 +35,17 @@ div a:hover {
 .badge-hi {
   background-color: red;
   color: white;
+}
+.profileItemHeading {
+  background-color: #f9f9f9;
+  border-radius: 6px 6px 0px 0px;
+  border-bottom: 1px solid #DEDEDE;
+}
+.profileItemBody {
+  min-height: 150px;
+}
+.profileItemFooting {
+  background-color: #f9f9f9;
+  border-radius: 0px 0px 6px 6px;
+  border-top: 1px solid #DEDEDE;
 }
