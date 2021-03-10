@@ -12,7 +12,7 @@ export class PolicyService {
 
   constructor(public dbService: DbService) { }
 
-  public updateIssueArray(): void {
+  public updatePolicyArray(): void {
 
     // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
     this.policies = [];
@@ -25,6 +25,10 @@ export class PolicyService {
       });
       //this.triggerToUpdate.next(true);
     });
+  }
+
+  public addNewPolicy(policy: PolicyModel): void {
+
   }
 
 

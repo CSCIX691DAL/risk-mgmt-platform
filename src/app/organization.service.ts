@@ -7,13 +7,15 @@ import {RiskProfileService} from './risk-profile/risk-profile.service';
 import {Router} from '@angular/router';
 import {UsersService} from './users.service';
 import {UserAuthService} from './user-auth.service';
+import {PolicyService} from './policy/policy.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrganizationService {
 
-  constructor(public dbService: DbService, public taskService: TaskService, public issueService: IssueService, public categoryService: CategoryService, public profileService: RiskProfileService, public userService: UsersService, public router: Router) {
+  constructor(public dbService: DbService, public taskService: TaskService, public policyService: PolicyService,
+              public issueService: IssueService, public categoryService: CategoryService, public profileService: RiskProfileService, public userService: UsersService, public router: Router) {
   }
 
   // This refers to the ID of the document within the organizations collection; this should change when user selects a different org
@@ -35,6 +37,7 @@ export class OrganizationService {
       this.issueService.updateIssueArray();
       this.categoryService.updateCategoryArray();
       this.profileService.updateRiskProfileArray();
+      this.policyService.updatePolicyArray();
 
       this.router.navigate(['dashboard']);
     });
