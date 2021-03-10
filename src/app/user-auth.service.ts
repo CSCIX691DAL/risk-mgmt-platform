@@ -78,7 +78,7 @@ export class UserAuthService {
       //new CategoryModel(3, 'Hazard', null, 'Harm or health effect to people', false),
       //new CategoryModel(4, 'Operational', null, 'Impacts to systems, procedures, policies, and people', false),
 
-      let predefOrgIds = [      new CategoryModel(1, 'Financial', null, 'Risks to money and investments', false),
+      let predefOrgIds = [new CategoryModel(1, 'Financial', null, 'Risks to money and investments', false),
         new CategoryModel(2, 'Strategic', null, 'Affects business strategy and objectives', false),
         new CategoryModel(3, 'Hazard', null, 'Harm or health effect to people', false),
         new CategoryModel(4, 'Operational', null, 'Impacts to systems, procedures, policies, and people', false)];
