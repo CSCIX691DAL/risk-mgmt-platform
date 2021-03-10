@@ -54,7 +54,7 @@ export class RiskProfileService {
       querySnapshot.forEach((doc) => {
         const newRiskProfile = doc.data();
 
-        this.riskProfiles.push(new RiskProfileModel(newRiskProfile.id, newRiskProfile.title, newRiskProfile.description, newRiskProfile.likelihood, newRiskProfile.impact, this.categoryService.categories[newRiskProfile.category], this.categoryService.categories[newRiskProfile.riskCategory], newRiskProfile.sourceOfRisk));
+        this.riskProfiles.push(new RiskProfileModel(newRiskProfile.id, newRiskProfile.title, newRiskProfile.description, parseInt(newRiskProfile.likelihood, 10), parseInt(newRiskProfile.impact, 10), this.categoryService.categories[newRiskProfile.category], this.categoryService.categories[newRiskProfile.riskCategory], newRiskProfile.sourceOfRisk));
       });
       this.triggerToUpdate.next(true);
     });
