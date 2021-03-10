@@ -74,6 +74,9 @@ import {UserAuthService} from './user-auth.service';
 import {AngularFireAuthGuard, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
 import { PolicyComponent } from './policy/policy.component';
 import { PolicyItemComponent } from './policy/policy-item/policy-item.component';
+import { EditPolicyComponent } from './policy/edit-policy/edit-policy.component';
+import { DeletePolicyComponent } from './policy/delete-policy/delete-policy.component';
+import { AddPolicyComponent } from './policy/add-policy/add-policy.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -157,6 +160,9 @@ const myroutes: Routes = [
     AssignedTasksComponent,
     PolicyComponent,
     PolicyItemComponent,
+    EditPolicyComponent,
+    DeletePolicyComponent,
+    AddPolicyComponent,
   ],
   imports: [
     BrowserModule,

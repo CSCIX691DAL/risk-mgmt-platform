@@ -1,0 +1,20 @@
+.addPolicyMarginAndBorder {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #cccccc;
+}
+#policyListContainer {
+    min-height: 750px;
+}
+#addPolicyContainer {
+    margin-top: 15px;
+    margin-bottom: 7px;
+}
+#addNewIssueContainer {
+    padding-top: 12px;
+    padding-bottom: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    background-color: #fefefe;
+    position: relative;
+}
