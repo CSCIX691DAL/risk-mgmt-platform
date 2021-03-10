@@ -41,7 +41,7 @@ export class AddTreatmentPlanComponent implements OnInit {
   constructor(private taskService: TaskService,
               public categoryService: CategoryService,
               private treatmentPlanService: TreatmentPlanService,
-              public dbService: DbService, public modalService: NgbModal,) {
+              public dbService: DbService, public modalService: NgbModal) {
     this.categories = new CategoryModel(1,  'name', this.addCategories , 'description',  false);
   }
 
@@ -65,7 +65,7 @@ export class AddTreatmentPlanComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //below being set to each treatment plan - maybe needs to be set for
+    //below being set to each treatment plan
     this.riskProfiles = new RiskProfileModel(1, 'Title', 'description text', 5, 5, this.categories, this.categories, "risk source");
   }
 // Add issue function
@@ -79,8 +79,8 @@ export class AddTreatmentPlanComponent implements OnInit {
       // set below not working
       this.dbService.treatmentRef.doc(this.treatmentPlans.title).set({
         title: this.treatmentPlans.title,
-        riskProfile: this.treatmentPlans.riskProfile,
-        tasks: this.treatmentPlans.tasks
+        //riskProfile: this.treatmentPlans.riskProfile,
+        //tasks: this.treatmentPlans.tasks
       });
 
     }
