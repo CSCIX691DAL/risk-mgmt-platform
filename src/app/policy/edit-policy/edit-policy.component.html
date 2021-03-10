@@ -1,22 +1,23 @@
+<!--
 <ng-template #editContent let-modal>
 
     <form (ngSubmit)="OnEdit()">
 
-        <!-- Modal Header -->
+        &lt;!&ndash; Modal Header &ndash;&gt;
         <div class="modal-header justify-content-center">
             <h2 class="mt-1">Edit Issue</h2>
         </div>
 
-        <!-- Modal Body -->
+        &lt;!&ndash; Modal Body &ndash;&gt;
         <div class="modal-body row pl-4 pr-4">
 
-            <!-- Title -->
+            &lt;!&ndash; Title &ndash;&gt;
             <label for="editTitle" class="labelAndInput">Title</label>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" id="editTitle" name="editTitle" value="{{ editModalTitle }}" ngModel [(ngModel)]="issue.title">
             </div>
 
-            <!-- Risk Category -->
+            &lt;!&ndash; Risk Category &ndash;&gt;
             <label for="editRiskCategory" class="labelAndInput">Risk Category</label>
             <div class="input-group mb-3">
                 <select
@@ -34,7 +35,7 @@
                 </select>
             </div>
 
-            <!-- Parent Issue -->
+            &lt;!&ndash; Parent Issue &ndash;&gt;
             <label for="addParentIssue" class="labelAndInput">Parent Issue</label>
             <div class="input-group mb-3">
                 <select
@@ -52,13 +53,13 @@
                 </select>
             </div>
 
-            <!-- Add Assignee -->
+            &lt;!&ndash; Add Assignee &ndash;&gt;
             <label for="editAssignee" class="labelAndInput">Assignee</label>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" id="editAssignee" name="editAssignee" ngModel [(ngModel)]="issue.assignee">
             </div>
 
-            <!-- Description -->
+            &lt;!&ndash; Description &ndash;&gt;
             <label for="editDescription" class="labelAndInput">Description</label>
             <div class="input-group mb-1">
                 <textarea class="form-control" id="editDescription" name="editDescription" ngModel [(ngModel)]="issue.description">{{ editModalDescription }}</textarea>
@@ -66,9 +67,9 @@
 
         </div>
 
-        <!-- Modal Footer -->
+        &lt;!&ndash; Modal Footer &ndash;&gt;
         <div class="modal-footer">
-            <!-- Buttons: Cancel & Save -->
+            &lt;!&ndash; Buttons: Cancel & Save &ndash;&gt;
             <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
             <button type="submit" class="btn btn-outline-primary">Save Changes</button>
         </div>
@@ -78,3 +79,4 @@
 </ng-template>
 
 <a class="float-right" (click)="open(editContent)">{{ editTextName }}</a>
+-->

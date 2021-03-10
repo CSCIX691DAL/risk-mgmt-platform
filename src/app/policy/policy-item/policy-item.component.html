@@ -28,14 +28,15 @@
 
 
 </div>
+<!--
 
-<!-- Listed Issues -->
+&lt;!&ndash; Listed Issues &ndash;&gt;
 <div *ngIf="issueItem.parentIssue === 0" id="issueContainer" class="container">
 
-    <!-- Top Row -->
+    &lt;!&ndash; Top Row &ndash;&gt;
     <div class="row">
 
-        <!-- Title Column -->
+        &lt;!&ndash; Title Column &ndash;&gt;
         <div class="col-md-10">
             <h4 class="float-left">{{issueItem.title}}</h4>
         </div>
@@ -49,17 +50,17 @@
         </div>
     </div>
 
-    <!-- Bottom Row -->
+    &lt;!&ndash; Bottom Row &ndash;&gt;
     <div class="row">
 
-        <!-- Description Column -->
+        &lt;!&ndash; Description Column &ndash;&gt;
         <div class="col-md-10">
             <p class="">{{issueItem.description}}</p>
         </div>
 
-        <!-- Delete / Edit Column -->
+        &lt;!&ndash; Delete / Edit Column &ndash;&gt;
         <div class="col-md-2">
-            <!-- Edit issue modal component -->
+            &lt;!&ndash; Edit issue modal component &ndash;&gt;
             <app-edit-issue
                     editTextName="Edit"
                     [editIssue]='issueItem'
@@ -71,11 +72,11 @@
                     class="float-right">
             </app-edit-issue>
 
-            <!--
+            &lt;!&ndash;
             Delete issue modal asking if you really want to delete the issue you have chosen.
             Will only let you delete the item after you edit and save it (you dont have to change anything, just has to save)
-            -->
-            <!-- Delete issue modal component
+            &ndash;&gt;
+            &lt;!&ndash; Delete issue modal component
             <app-delete-issue
               deleteTextName="Delete"
               [deleteIssue]='issueItem'
@@ -83,8 +84,8 @@
               deleteModalTitle="{{ issueItem.title }}"
               class="float-right mr-4">
             </app-delete-issue>
-            -->
-            <!-- Delete Link -->
+            &ndash;&gt;
+            &lt;!&ndash; Delete Link &ndash;&gt;
             <a class="float-right mr-4" (click)="onDeleteIssue()">Delete</a>
 
         </div>
@@ -92,3 +93,4 @@
     </div>
 
 </div>
+-->

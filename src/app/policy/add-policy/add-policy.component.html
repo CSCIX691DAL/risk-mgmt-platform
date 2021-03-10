@@ -1,3 +1,4 @@
+<!--
 <ng-template #addIssueContent let-modal>
 
     <form (ngSubmit)="OnAdd()">
@@ -8,13 +9,13 @@
 
         <div class="modal-body row pl-4 pr-4">
 
-            <!-- Title -->
+            &lt;!&ndash; Title &ndash;&gt;
             <label for="addTitle" class="labelAndInput">Title</label>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" id="addTitle" name="addTitle" ngModel [(ngModel)]="issue.title">
             </div>
 
-            <!-- Risk Category -->
+            &lt;!&ndash; Risk Category &ndash;&gt;
             <label for="addRiskCategory" class="labelAndInput">Risk Category</label>
             <div class="input-group mb-3">
                 <select
@@ -32,7 +33,7 @@
                 </select>
             </div>
 
-            <!-- Parent Issue -->
+            &lt;!&ndash; Parent Issue &ndash;&gt;
             <label for="addParentIssue" class="labelAndInput">Parent Issue</label>
             <div class="input-group mb-3">
                 <select
@@ -50,13 +51,13 @@
                 </select>
             </div>
 
-            <!-- Add Assignee -->
+            &lt;!&ndash; Add Assignee &ndash;&gt;
             <label for="addAssignee" class="labelAndInput">Assignee ID</label>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" id="addAssignee" name="addAssignee" ngModel [(ngModel)]="issue.assignee">
             </div>
 
-            <!-- Description -->
+            &lt;!&ndash; Description &ndash;&gt;
             <label for="addDescription" class="labelAndInput">Description</label>
             <div class="input-group mb-1">
                 <textarea class="form-control" id="addDescription" name="addDescription" ngModel [(ngModel)]="issue.description"></textarea>
@@ -64,7 +65,7 @@
 
         </div>
 
-        <!-- Buttons: Cancel & Save -->
+        &lt;!&ndash; Buttons: Cancel & Save &ndash;&gt;
         <div class="modal-footer">
             <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
             <button type="submit" class="btn btn-outline-primary">Add Issue</button>
@@ -75,3 +76,4 @@
 </ng-template>
 
 <button type="button" class="btn btn-outline-success mr-3" (click)="open(addIssueContent)">{{ addTextName }}</button>
+-->
