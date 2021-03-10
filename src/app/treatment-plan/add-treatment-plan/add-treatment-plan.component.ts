@@ -82,6 +82,12 @@ export class AddTreatmentPlanComponent implements OnInit {
         //riskProfile: this.treatmentPlans.riskProfile,
         //tasks: this.treatmentPlans.tasks
       });
+      // connect to tasks subcollection
+      this.dbService.treatmentRef.doc(this.treatmentPlans.title).collection('tasks').add({
+        title: this.treatmentPlans.title,
+        //riskProfile: this.treatmentPlans.riskProfile,
+        //tasks: this.treatmentPlans.tasks
+      });
 
     }
   }

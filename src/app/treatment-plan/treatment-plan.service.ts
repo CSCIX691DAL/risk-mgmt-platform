@@ -42,7 +42,8 @@ export class TreatmentPlanService {
       querySnapshot.forEach((doc) => {
         const newPlan = doc.data();
         this.treatmentPlans.push(new TreatmentPlanModel(this.riskProfiles.pop(),
-            [new TaskModel(newPlan.tasks.title, newPlan.tasks.createdBy, newPlan.tasks.status, newPlan.tasks.dueDate, newPlan.tasks.createdDate, newPlan.tasks.isDeleted)], newPlan.title, newPlan.id));
+            [],// [new TaskModel(newPlan.tasks.title, newPlan.tasks.createdBy, newPlan.tasks.status, newPlan.tasks.dueDate, newPlan.tasks.createdDate, newPlan.tasks.isDeleted)]
+        newPlan.title, newPlan.id));
       });
       this.triggerToUpdate.next(true);
     });
