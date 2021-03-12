@@ -1,0 +1,60 @@
+<ng-template #PolicyModel let-modal>
+
+    <form (ngSubmit)="PolicyModel()">
+
+        <div class="modal-header justify-content-center">
+            <h2 class="mt-1">Create Risk Profile</h2>
+        </div>
+
+        <div class="modal-body row pl-4 pr-4">
+
+
+            <!-- Title -->
+            <label for="addTitle" class="labelAndInput">Title</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="addTitle" name="addTitle" ngModel [(ngModel)]="PolicyModel.title">
+            </div>
+
+
+            <!-- Risk Profile Impact -->
+            <label for="addImpact" class="labelAndInput">Impact</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="addImpact" name="addImpact" type="range" min="1" max="10" ngModel [(ngModel)]="riskProfile.impact">
+            </div>
+
+            <!-- Risk Profile Category -->
+            <label for="addCategory" class="labelAndInput">Risk Category</label>
+            <div class="input-group mb-3">
+                <select class="form-control" id="addCategory" name="addCategory" ngModel [(ngModel)]="PolicyModel.category">
+                    <option selected value="">Select a Category</option>
+                    <option *ngFor="let item of PolicyModel.categories" [ngValue]=item>
+                        {{ item.name }}
+                    </option>
+                </select>
+            </div>
+
+            <!-- Description -->
+            <label for="addDescription" class="labelAndInput">Description</label>
+            <div class="input-group mb-1">
+                <textarea class="form-control" id="addDescription" name="addDescription" ngModel [(ngModel)]="PolicyModel.description"></textarea>
+            </div>
+
+            <!-- Source of Risk -->
+            <label for="addSourceOfRisk" class="labelAndInput">Source of Risk</label>
+            <div class="input-group mb-1">
+                <textarea class="form-control" id="addSourceOfRisk" name="addSourceOfRisk" ngModel [(ngModel)]="PolicyModel.sourceOfRisk"></textarea>
+            </div>
+
+        </div>
+
+        <!-- Buttons: Cancel & Save -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
+            <button type="submit" class="btn btn-outline-primary">Create Policy</button>
+        </div>
+
+    </form>
+
+</ng-template>
+
+<button type="button" class="btn btn-outline-success mr-3" (click)="open(PolicyModel)">{{  }}</button>
