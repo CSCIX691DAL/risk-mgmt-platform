@@ -11,6 +11,7 @@ import {CommonModule} from '@angular/common';
 })
 export class TasksSummaryComponent implements OnInit {
 
+  // Testing
   public taskService: TaskService;
 
   constructor(taskService: TaskService) {
