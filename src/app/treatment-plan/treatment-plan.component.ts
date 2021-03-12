@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TreatmentPlanModel} from './treatment-plan.model';
 import {TreatmentPlanService} from './treatment-plan.service';
+import {TaskModel} from '../task-list/task.model';
 
 @Component({
   selector: 'app-treatment-plan',
@@ -24,4 +25,7 @@ export class TreatmentPlanComponent implements OnInit {
     this.treatmentPlans = this.treatmentPlanService.getTreatmentPlans();
   }
 
+  iterate(p1: TaskModel, p2: number, p3: TaskModel[] ): TaskModel {
+      return p1;
+  }
 }

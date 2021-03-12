@@ -60,7 +60,12 @@
                 </div>
                 <!-- Treatment Plan Task Display -->
                 <div class="col-md-6">
-                    Tasks: {{treatmentPlanService.currentlySelectedPlan.tasks.slice()}} <br>
+
+                    Tasks: {{
+                    treatmentPlanService.currentlySelectedPlan.tasks.forEach(iterate())
+
+                    }}
+                    <br>
                 </div>
             </div>
         </div>
