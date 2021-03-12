@@ -79,6 +79,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 import { AddTreatmentPlanComponent } from './treatment-plan/add-treatment-plan/add-treatment-plan.component';
 import { TreatmentPlanItemComponent } from './treatment-plan/treatment-plan-item/treatment-plan-item.component';
+import { EditTreatmentPlanComponent } from './treatment-plan/edit-treatment-plan/edit-treatment-plan.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -166,6 +167,7 @@ const myroutes: Routes = [
     TreatmentPlanComponent,
     AddTreatmentPlanComponent,
     TreatmentPlanItemComponent,
+    EditTreatmentPlanComponent,
   ],
   imports: [
     BrowserModule,
