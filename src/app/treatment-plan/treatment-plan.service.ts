@@ -41,8 +41,7 @@ export class TreatmentPlanService {
     this.dbService.treatmentRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const newPlan = doc.data();
-        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfiles,
-            [newPlan.tasks],// [new TaskModel(newPlan.tasks.title, newPlan.tasks.createdBy, newPlan.tasks.status, newPlan.tasks.dueDate, newPlan.tasks.createdDate, newPlan.tasks.isDeleted)]
+        this.treatmentPlans.push(new TreatmentPlanModel(this.riskProfiles.pop(), [new TaskModel('title', null, 'Open', null, null, false)],
         newPlan.title, newPlan.id));
       });
       this.triggerToUpdate.next(true);
@@ -70,7 +69,7 @@ export class TreatmentPlanService {
     // Array is empty, set new ID to 1
     if (this.treatmentPlans.length === 0) {
       // Creates new IssueModel object
-      const newPlan = new TreatmentPlanModel(this.riskProfiles[0], this.tasks, plan.title, 0);
+      const newPlan = new TreatmentPlanModel(plan.riskProfile, plan.tasks, plan.title, 0);
       // Pushes new IssueModel object to issues array
       this.treatmentPlans.push(newPlan);
       // Update screen
@@ -81,7 +80,7 @@ export class TreatmentPlanService {
       // Generates number equal to the length of our issues array + 1
       const max = Math.max.apply(Math, this.treatmentPlans.map( (x) => +x.id)) + 1;
       // Creates new TreatmentPlanModel object
-      const newPlan = new TreatmentPlanModel(this.riskProfiles[0], [], plan.title, max);
+      const newPlan = new TreatmentPlanModel(plan.riskProfile, plan.tasks, plan.title, max);
       // Pushes new TreatmentPlanModel object to issues array
       this.treatmentPlans.push(newPlan);
       // Update screen
@@ -90,7 +89,7 @@ export class TreatmentPlanService {
 
     console.log(this.treatmentPlans);
 
-    this.notificationService.success('Issue "' + plan.title + '" has been added.', 'Treatment Plan Successfully Created');
+    this.notificationService.success('Plan "' + plan.title + '" has been added.', 'Treatment Plan Successfully Created');
 
   }
 

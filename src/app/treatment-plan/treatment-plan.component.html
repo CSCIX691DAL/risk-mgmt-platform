@@ -52,11 +52,15 @@
                     Treatment Plan: {{treatmentPlanService.currentlySelectedPlan.title}}<br/>
                     Risk Profile: {{treatmentPlanService.currentlySelectedPlan.riskProfile.title}}
                 </h2>
-                <!-- Treatment Plan Specific Display -->
-                <div class="col-md-3">
+                <!-- Treatment Plan Risk Profile Display -->
+                <div class="col-md-6">
                     Id: {{treatmentPlanService.currentlySelectedPlan.riskProfile.id}} <br>
                     Description: {{treatmentPlanService.currentlySelectedPlan.riskProfile.description}}<br>
                     Level of Risk: {{treatmentPlanService.currentlySelectedPlan.riskProfile.levelOfRisk}}
+                </div>
+                <!-- Treatment Plan Task Display -->
+                <div class="col-md-6">
+                    Tasks: {{treatmentPlanService.currentlySelectedPlan.tasks.slice()}} <br>
                 </div>
             </div>
         </div>
