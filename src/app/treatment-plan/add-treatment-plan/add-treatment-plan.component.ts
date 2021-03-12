@@ -13,6 +13,7 @@ import {TaskService} from '../../task-list/task-service';
 import {TreatmentPlanService} from '../treatment-plan.service';
 import {DbService} from '../../db.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {fromCollectionRef} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-add-treatment-plan',
@@ -72,20 +73,23 @@ export class AddTreatmentPlanComponent implements OnInit {
   OnAdd(): void {
     if (this.treatmentPlans.title) {
 
-      this.treatmentPlans = new TreatmentPlanModel(this.riskProfiles, [this.tasks], this.treatmentPlans.title, 0);
+      this.treatmentPlans = new TreatmentPlanModel(this.treatmentPlans.riskProfile, this.treatmentPlans.tasks, this.treatmentPlans.title, this.treatmentPlans.id);
 
       this.treatmentPlanService.addPlan(this.treatmentPlans);
 
-      // set below not working
-      this.dbService.treatmentRef.doc(this.treatmentPlans.title).set({
-        title: this.treatmentPlans.title,
-        //riskProfile: this.treatmentPlans.riskProfile,
-        //tasks: this.treatmentPlans.tasks
+
+      // connect to risk profile subcollection
+      this.dbService.treatmentRef.doc(this.treatmentPlans.title).collection('risk-profiles').add({
+        riskProfile: this.treatmentPlans.riskProfile
       });
       // connect to tasks subcollection
       this.dbService.treatmentRef.doc(this.treatmentPlans.title).collection('tasks').add({
-        //riskProfile: this.treatmentPlans.riskProfile,
         tasks: this.treatmentPlans.tasks
+      });
+      // set below not working
+      this.dbService.treatmentRef.doc(this.treatmentPlans.title).set({
+        title: this.treatmentPlans.title,
+        id: this.treatmentPlans.id
       });
 
     }
