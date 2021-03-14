@@ -102,6 +102,7 @@ import { OrgAdminUserListComponent } from './org-admin-dash/org-admin-user-list/
 import { OrgAdminOrgViewComponent } from './org-admin-dash/org-admin-org-view/org-admin-org-view.component';
 import { OrgAdminApprovalItemComponent } from './org-admin-dash/org-admin-approval/org-admin-approval-item/org-admin-approval-item.component';
 import { OrgAdminUserListItemComponent } from './org-admin-dash/org-admin-user-list/org-admin-user-list-item/org-admin-user-list-item.component';
+import { UserViewComponent } from './admin-dash/user-view/user-view.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -130,7 +131,8 @@ const myroutes: Routes = [
   {path: 'org-admin-dashboard-approval', component: OrgAdminApprovalComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'org-admin-organization-view', component: OrgAdminOrgViewComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'risk-matrix', component: RiskResponseMatrixComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
-  {path: 'risk-map', component: RiskProfileMapComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
+  {path: 'risk-map', component: RiskProfileMapComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin-user-view', component: UserViewComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
 ];
 
 @NgModule({
@@ -221,6 +223,7 @@ const myroutes: Routes = [
     OrgAdminOrgViewComponent,
     OrgAdminApprovalItemComponent,
     OrgAdminUserListItemComponent,
+    UserViewComponent,
   ],
   imports: [
     BrowserModule,
