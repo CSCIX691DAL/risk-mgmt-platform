@@ -14,6 +14,8 @@ import {TreatmentPlanService} from '../treatment-plan.service';
 import {DbService} from '../../db.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {fromCollectionRef} from '@angular/fire/firestore';
+import {RiskProfileService} from '../../risk-profile/risk-profile.service';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-add-treatment-plan',
@@ -29,7 +31,7 @@ export class AddTreatmentPlanComponent implements OnInit {
 
   closeResult = '';
 
-  // might need to define category modely here aswellthis.id = id;
+  // might need to define category modely here aswell this.id = id;
   //     this.name = name;
   //     this.parentCategory = parentCategory;
   //     this.description = description;
@@ -37,14 +39,20 @@ export class AddTreatmentPlanComponent implements OnInit {
   categories: CategoryModel;
   users: UsersModel = new UsersModel('1', 'bryson', 'sf', '11/08/1999', '07/01/2021', true);
   tasks: TaskModel = new TaskModel('Title', this.users, 'Active', new Date('December 12/2020'), new Date('Jan 15/2020'), false);
-  riskProfiles: RiskProfileModel;
+  riskProfile: RiskProfileModel;
   treatmentPlans: TreatmentPlanModel = new TreatmentPlanModel(null, null, 'Title', 0);
-  constructor(private taskService: TaskService,
+
+  constructor(public taskService: TaskService,
               public categoryService: CategoryService,
               private treatmentPlanService: TreatmentPlanService,
+              public riskProfileService: RiskProfileService,
               public dbService: DbService, public modalService: NgbModal) {
     this.categories = new CategoryModel(1,  'name', this.addCategories , 'description',  false);
   }
+
+  newPlanForm = new FormGroup({
+    riskProfile: new FormControl(''),
+  });
 
   // tslint:disable-next-line:typedef
   open(content) {
@@ -66,10 +74,9 @@ export class AddTreatmentPlanComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //below being set to each treatment plan
-    this.riskProfiles = new RiskProfileModel(1, 'Title', 'description text', 5, 5, this.categories, this.categories, "risk source");
+    this.riskProfile = this.riskProfileService.riskProfiles[0];
   }
-// Add issue function
+// Add issue function;
   OnAdd(): void {
     if (this.treatmentPlans.title) {
 
@@ -80,7 +87,8 @@ export class AddTreatmentPlanComponent implements OnInit {
 
       // connect to risk profile subcollection
       this.dbService.treatmentRef.doc(this.treatmentPlans.title).collection('risk-profiles').add({
-        riskProfile: this.treatmentPlans.riskProfile
+        // below needs to properly set up a riskProfile to insert with all fields I think,, still not loading
+        riskProfile: this.newPlanForm.value.profile,
       });
       // connect to tasks subcollection
       this.dbService.treatmentRef.doc(this.treatmentPlans.title).collection('tasks').add({

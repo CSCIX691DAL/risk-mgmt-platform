@@ -1,6 +1,6 @@
 <ng-template #addTreatmentPlan let-modal>
-
-    <form (ngSubmit)="OnAdd()">
+    <form [formGroup]="newPlanForm">
+        <form (ngSubmit)="OnAdd()">
 
         <div class="modal-header justify-content-center">
             <h2 class="mt-1">Add Treatment Plan</h2>
@@ -13,6 +13,11 @@
             <div class="input-group mb-3">
                 <input type="text" class="form-control" id="addTitle" name="addTitle" ngModel [(ngModel)]="treatmentPlans.title">
             </div>
+            <!-- Risk Profile Dummy still working to get it functional -->
+            <select class="form-control" id="riskProfile" name="riskProfile" formControlName="riskProfile" [ngModel]="treatmentPlans.riskProfile">
+                <option *ngFor="let profile of riskProfileService.riskProfiles" [ngValue]="profile">{{profile.title}} {{profile.description}}{{profile.likelihood}}{{profile.impact}} </option>
+            </select>
+
         </div>
 
         <!-- Buttons: Cancel & Save -->
@@ -20,7 +25,7 @@
             <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
             <button type="submit" class="btn btn-outline-primary">Add Treatment Plan</button>
         </div>
-
+        </form>
     </form>
 
 </ng-template>
