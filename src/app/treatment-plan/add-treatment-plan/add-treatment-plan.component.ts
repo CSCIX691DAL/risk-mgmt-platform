@@ -74,30 +74,37 @@ export class AddTreatmentPlanComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.riskProfile = this.riskProfileService.riskProfiles[0];
+    this.riskProfile = this.newPlanForm.value.profile;
   }
 // Add issue function;
   OnAdd(): void {
     if (this.treatmentPlans.title) {
-
+      const newPlan = new TreatmentPlanModel(
+          this.newPlanForm.value.riskProfile,
+          this.newPlanForm.value.tasks,
+          this.treatmentPlans.title,
+          this.treatmentPlans.id,
+      );
+      this.riskProfile = this.newPlanForm.value.profile;
       this.treatmentPlans = new TreatmentPlanModel(this.treatmentPlans.riskProfile, this.treatmentPlans.tasks, this.treatmentPlans.title, this.treatmentPlans.id);
 
       this.treatmentPlanService.addPlan(this.treatmentPlans);
 
 
+      // set below not working
+      this.dbService.treatmentRef.doc(this.treatmentPlans.title).set({
+        title: newPlan.title,
+        riskProfile: newPlan.riskProfile,
+        id: newPlan.id,
+      });
       // connect to risk profile subcollection
       this.dbService.treatmentRef.doc(this.treatmentPlans.title).collection('risk-profiles').add({
         // below needs to properly set up a riskProfile to insert with all fields I think,, still not loading
-        riskProfile: this.newPlanForm.value.profile,
+        riskProfile: newPlan.riskProfile,
       });
       // connect to tasks subcollection
       this.dbService.treatmentRef.doc(this.treatmentPlans.title).collection('tasks').add({
-        tasks: this.treatmentPlans.tasks
-      });
-      // set below not working
-      this.dbService.treatmentRef.doc(this.treatmentPlans.title).set({
-        title: this.treatmentPlans.title,
-        id: this.treatmentPlans.id
+        tasks: newPlan.tasks,
       });
 
     }
