@@ -11,11 +11,11 @@ export class PolicyComponent implements OnInit {
 
   constructor(public policyService: PolicyService) { }
 
-  policyarray: PolicyModel[];
+  policyArray: PolicyModel[];
 
   ngOnInit(): void {
-    this.policyarray = [];
-    this.policyarray.push(new PolicyModel(2, 'policytest', 'This is a test', []));
+    this.policyArray = [];
+    this.policyArray.push(new PolicyModel(2, 'policytest', 'This is a test', []));
   }
 
 

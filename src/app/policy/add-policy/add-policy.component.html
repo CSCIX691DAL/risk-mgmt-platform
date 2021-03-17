@@ -1,6 +1,6 @@
 <ng-template #addPolicyContent let-modal>
 
-    <form (ngSubmit)="OnAdd()">
+    <form [formGroup]="newPolicyForm" (ngSubmit)="OnAdd()">
 
         <div class="modal-header justify-content-center">
             <h2 class="mt-1">Add Policy</h2>
@@ -11,26 +11,25 @@
             <!-- Title -->
             <label for="policyTitle" class="labelAndInput">Title</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="policyTitle" name="policyTitle" ngModel>
+                <input type="text" class="form-control" id="policyTitle" name="policyTitle" formControlName="policyTitle">
             </div>
 
             <!-- Description -->
             <label for="policyDescription" class="labelAndInput">Description</label>
             <div class="input-group mb-3">
-                <textarea class="form-control" id="policyDescription" name="policyDescription" ngModel></textarea>
+                <textarea class="form-control" id="policyDescription" name="policyDescription" formControlName="policyDescription"></textarea>
             </div>
 
             <!-- Risk Category -->
-            <label for="addRiskCategory" class="labelAndInput">Risk Category</label>
+            <label for="addRiskCategory" class="labelAndInput">Risk Profiles</label>
             <div class="input-group mb-3">
                 <select
                         class="form-control"
                         id="addRiskCategory"
                         name="addRiskCategory"
-                        ngModel [(ngModel)]="this.selectedRiskModels"
+                        formControlName="riskProfiles"
+                        multiple
                 >
-                    <option selected value="">Risk Profiles</option>
-
                     <option *ngFor="let risk of riskService.riskProfiles" [value]=risk.title>
                         {{ risk.title }}
                     </option>
@@ -43,7 +42,7 @@
         <!-- Buttons: Cancel & Save -->
         <div class="modal-footer">
             <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
-            <button type="submit" class="btn btn-outline-primary">Add Issue</button>
+            <button type="submit" class="btn btn-outline-primary">Add Policy</button>
         </div>
 
     </form>

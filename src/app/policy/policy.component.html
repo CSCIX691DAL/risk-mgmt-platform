@@ -22,6 +22,9 @@
                         </app-add-policy>
                     </div>
 
+                    <!-- Sort Risk Issues Dropdown Toggle -->
+                    <button class="btn btn-outline-primary issuesSortButton mr-3" type="button" data-toggle="collapse" data-target="#issuesSortDropdown" aria-expanded="false" aria-controls="issuesSortDropdown">Sort Issues</button>
+
                     <!-- Search Issues bar -->
                     <form class="form-inline float-right">
                         <input class="form-control" type="text" placeholder="Search" name="issuelist" value="Search">
@@ -39,9 +42,15 @@
 
     <!-- Sort Container -->
 
+    <!-- Print out all Issue items -->
+    <div class="row px-2 m-0 issuesContentCon justify-content-start">
+        <div class="col-md-4 issuesItemContainer" *ngFor="let item of policyArray">
+            <app-policy-item [policyItem]="item"></app-policy-item>
+        </div>
+    </div>
 
     <!-- Print out all Policy items -->
-    <app-policy-item *ngFor="let item of policyarray"[policyItem]="item" ></app-policy-item>
+<!--    <app-policy-item *ngFor="let item of policyArray"[policyItem]="item" ></app-policy-item>-->
 
 </div>
 

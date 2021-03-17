@@ -81,39 +81,37 @@
 <a class="float-right" (click)="open(editContent)">{{ editTextName }}</a>
 -->
 
-<ng-template #addPolicyContent let-modal>
+<ng-template #editPolicyComponent let-modal>
 
-    <form (ngSubmit)="OnAdd()">
+    <form [formGroup]="newPolicyForm" (ngSubmit)="editPolicy()">
 
         <div class="modal-header justify-content-center">
-            <h2 class="mt-1">Add Policy</h2>
+            <h2 class="mt-1">Edit an Existing Policy</h2>
         </div>
 
         <div class="modal-body row pl-4 pr-4">
 
             <!-- Title -->
-            <label for="policyTitle" class="labelAndInput">Title</label>
+            <label class="labelAndInput">Title</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="policyTitle" name="policyTitle" ngModel>
+                <input type="text" class="form-control" formControlName="policyTitle">
             </div>
 
             <!-- Description -->
-            <label for="policyDescription" class="labelAndInput">Description</label>
+            <label class="labelAndInput">Description</label>
             <div class="input-group mb-3">
-                <textarea class="form-control" id="policyDescription" name="policyDescription" ngModel></textarea>
+                <textarea class="form-control" formControlName="policyDescription"></textarea>
             </div>
 
-            <!-- Risk Category -->
-            <label for="addRiskCategory" class="labelAndInput">Risk Category</label>
+            <label for="addRiskCategory" class="labelAndInput">Risk Profiles</label>
             <div class="input-group mb-3">
                 <select
                         class="form-control"
                         id="addRiskCategory"
                         name="addRiskCategory"
-                        ngModel [(ngModel)]="this.selectedRiskModels"
+                        formControlName="riskProfiles"
+                        multiple
                 >
-                    <option selected value="">Risk Profiles</option>
-
                     <option *ngFor="let risk of riskService.riskProfiles" [value]=risk.title>
                         {{ risk.title }}
                     </option>
@@ -121,16 +119,17 @@
                 </select>
             </div>
 
+
         </div>
 
         <!-- Buttons: Cancel & Save -->
         <div class="modal-footer">
             <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
-            <button type="submit" class="btn btn-outline-primary">Add Issue</button>
+            <button type="submit" class="btn btn-outline-primary">Update</button>
         </div>
 
     </form>
 
 </ng-template>
 
-<button type="button" class="btn btn-outline-success mr-3 issuesNavigationBarButton" (click)="open(addPolicyContent)">+ Policy</button>
+<button type="button" class="btn btn-outline-success py-1 px-2 mr-1" (click)="open(editPolicyComponent)">Edit</button>

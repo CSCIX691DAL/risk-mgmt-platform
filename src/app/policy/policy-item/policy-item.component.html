@@ -1,5 +1,5 @@
 <!-- New Issue Item -->
-<div class="row issueItemContainer" *ngIf="issueItem.parentIssue === 0">
+<div class="row issueItemContainer">
     <div class="col-md-12">
 
         <!-- Issue Item Heading -->
@@ -26,13 +26,7 @@
 
                 <!-- Edit Issue modal component -->
                 <app-edit-policy
-                        editTextName="Edit"
-                        [editIssue]='issueItem'
-                        editModalID="{{issueItem.id}}"
-                        editModalTitle="{{ issueItem.title }}"
-                        editModalRiskCategory="{{ issueItem.riskCategory }}"
-                        editModalAssignee="{{ issueItem.assignee }}"
-                        editModalDescription="{{ issueItem.description }}"
+                        [inputPolicy]="policyItem"
                         class="float-right">
                 </app-edit-policy>
 

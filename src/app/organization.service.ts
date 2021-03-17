@@ -44,12 +44,14 @@ export class OrganizationService {
     this.dbService.issueRef = this.dbService.organizationRef.doc(this.currentOrganization).collection(`issues`);
     this.dbService.riskProfileRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('riskProfiles');
     this.dbService.categoryRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('categories');
+    this.dbService.policyRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('policies');
     this.userService.userCurrentOrg = this.currentOrganization;
     this.userService.updateUserArray();
     this.taskService.updateTaskArray();
     this.issueService.updateIssueArray();
     this.categoryService.updateCategoryArray();
     this.profileService.updateRiskProfileArray();
+    this.policyService.updatePolicyArray();
 
     this.getOrgModelByID(this.currentOrganization).then((org) => {
       this.currentlySelectedOrg = org;
@@ -383,7 +385,7 @@ export class OrganizationService {
       this.dbService.issueRef = this.dbService.organizationRef.doc(this.currentOrganization).collection(`issues`);
       this.dbService.riskProfileRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('riskProfiles');
       this.dbService.categoryRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('categories');
-      this.dbService.policyRef = this.dbService.policyRef.doc(this.currentOrganization).collection('policies');
+      this.dbService.policyRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('policies');
       this.userService.userCurrentOrg = this.currentOrganization;
       this.userService.updateUserArray();
       this.taskService.updateTaskArray();

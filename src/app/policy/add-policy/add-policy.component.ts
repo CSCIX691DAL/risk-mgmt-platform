@@ -21,6 +21,7 @@ export class AddPolicyComponent implements OnInit {
   public newPolicyForm = new FormGroup({
     policyTitle: new FormControl(''),
     policyDescription: new FormControl(''),
+    riskProfiles: new FormControl('')
   });
 
   closeResult = '';
@@ -50,6 +51,8 @@ export class AddPolicyComponent implements OnInit {
 
   OnAdd(): void {
     const newPolicy = new PolicyModel(0, this.newPolicyForm.value.policyTitle, this.newPolicyForm.value.policyDescription, []);
+
+    console.log(this.newPolicyForm.value.riskProfiles);
 
     this.policyService.addNewPolicy(newPolicy);
 

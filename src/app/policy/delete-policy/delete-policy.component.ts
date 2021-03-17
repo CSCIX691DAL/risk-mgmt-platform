@@ -16,12 +16,12 @@ export class DeletePolicyComponent implements OnInit {
   }
 
   OnDelete(): void {
-
+/*
     this.dbService.policyRef.doc(this.issue.title).delete();
 
     this.issueService.deleteIssue(this.issue);
 
-    this.modalService.dismissAll();
+    this.modalService.dismissAll();*/
   }
 
 }

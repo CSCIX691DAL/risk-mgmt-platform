@@ -1,0 +1,11 @@
+#editDescription {
+    min-height: 150px;
+}
+a {
+    color: #0275DA;
+}
+a:hover {
+    color: #0275D8;
+    underline: #0275D8;
+    cursor: pointer;
+}
