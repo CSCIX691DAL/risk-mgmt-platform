@@ -22,6 +22,7 @@ export class UsersService {
   constructor(public dbService: DbService) {}
 
   public userCurrentOrg = '';
+  public userRole = 0;
 
   updateUserArray(): void {
     this.categories = [];
@@ -34,4 +35,20 @@ export class UsersService {
       });
     });
   }
+
+
+  async getUserArrayByOrg(orgName: string): Promise<UsersModel[]> {
+    let orgUsers = [];
+
+    await this.dbService.userRef.where("organizations", 'array-contains-any', [orgName]).get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const newUser = doc.data();
+
+        orgUsers.push(new UsersModel(doc.id, newUser.name, '', '', '', true));
+      });
+    });
+
+    return orgUsers;
+  }
+
 }

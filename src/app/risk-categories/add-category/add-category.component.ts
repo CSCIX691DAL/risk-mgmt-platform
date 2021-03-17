@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {CategoryService} from '../category.service';
 import {CategoryModel} from '../category.model';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-category',
@@ -21,7 +22,7 @@ export class AddCategoryComponent implements OnInit {
 
   category: CategoryModel = new CategoryModel(0, 'cvb', null, 'cvbcbcvb', false);
 
-  constructor( private modalService: NgbModal, private categoryService: CategoryService ) { }
+  constructor( private modalService: NgbModal, private categoryService: CategoryService) { }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {

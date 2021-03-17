@@ -1,23 +1,39 @@
 <div class="border-bottom p-1">
   <div class="row text-center pt-md-1">
-    <div class="col-2">
+
+    <!-- Task Created By -->
+    <div class="col-3 text-left">
       <p class="p-0 mt-md-1 mb-0">{{taskItem.title}}</p>
     </div>
-    <div class="col-2">
+
+    <!-- Task Assignee -->
+    <div class="col-3 text-left">
       <p class="p-0 mt-md-1 mb-0">{{taskItem.createdBy.firstName}} {{taskItem.createdBy.lastName}}</p>
     </div>
+
+    <!-- Task Status -->
     <div class="col-2">
       <p class="p-0 mt-md-1 mb-0">{{taskItem.status}}</p>
     </div>
-    <div class="col-2">
-      <p class="p-0 mt-md-1 mb-0">{{taskItem.createdDate.toISOString().substr(0,10)}}</p>
-    </div>
+
+    <!-- Task Creation Date -->
+<!--    <div class="col-2">-->
+<!--      <p class="p-0 mt-md-1 mb-0">{{taskItem.createdDate.toISOString().substr(0,10)}}</p>-->
+<!--    </div>-->
+
+    <!-- Task Due Date -->
     <div class="col-2">
       <p class="p-0 mt-md-1 mb-0">{{taskItem.dueDate.toISOString().substr(0,10)}}</p>
     </div>
+
+    <!-- Task Edit / Delete Buttons -->
     <div class="col-2 text-center">
-      <button (click)="editSelfTask()" class="btn btn-info mr-2 p-0 taskButton">Edit</button>
-      <button (click)="deleteSelfTask()" class="btn btn-danger p-0 taskButton">Delete</button>
+
+      <!--<button (click)="editSelfTask()" class="btn btn-info mr-2 p-0 taskButton">Edit</button>-->
+      <app-edit-task [inputTask]="taskItem" [frontPageDisplay]="frontPageDisplay"></app-edit-task>
+      <button (click)="deleteSelfTask()" class="btn btn-outline-danger py-1 px-2 ml-2">Delete</button>
+
     </div>
+
   </div>
 </div>

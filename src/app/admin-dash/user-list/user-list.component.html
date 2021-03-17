@@ -1,47 +1,57 @@
-<div class="row">
-    <div class="col-md-12">
+<div class="container-fluid w-100 mw-100 p-0 m-0">
+    <div class="row p-0 m-0">
+        <div class="col-md-12 p-0 m-0">
 
-        <!-- User Information Headings -->
-        <div class="row border-bottom mt-4">
+            <!-- Admin Dashboard Navigation Bar -->
+            <app-admin-nav></app-admin-nav>
 
-            <!-- Users ID -->
-            <div class="col-2">
-                <h6 class="text-center">ID</h6>
-            </div>
+            <!-- User Information Headings -->
+            <div class="row px-0 m-0">
+                <div class="col-md-12">
+                    <div class="row border-bottom mt-4 p-0">
 
-            <!-- Users First Name -->
-            <div class="col-2">
-                <h6 class="text-center w-auto">First Name</h6>
-            </div>
+                        <!-- Users ID -->
+<!--                        <div class="col-2">
+                            <h6 class="text-center">ID</h6>
+                        </div>-->
 
-            <!-- Users Last Name -->
-            <div class="col-2">
-                <h6 class="text-center">Last Name</h6>
-            </div>
+                        <!-- Users First Name -->
+                        <div class="col-6">
+                            <h6 class="text-center">Full Name</h6>
+                        </div>
 
-            <!-- # of Organizations -->
-            <div class="col-2">
-                <h6 class="text-center"># of Orgs.</h6>
-            </div>
+                        <!-- Users Last Name -->
+<!--                        <div class="col-2">
+                            <h6 class="text-center">Last Name</h6>
+                        </div>-->
 
-            <!-- Tasks Created -->
-            <div class="col-2">
-                <h6 class="text-center">Tasks Created</h6>
-            </div>
+                        <!-- # of Organizations -->
+                        <div class="col-6">
+                            <h6 class="text-center"># of Orgs.</h6>
+                        </div>
 
-            <!-- Tasks Completed -->
-            <div class="col-2">
-                <h6 class="text-center">Tasks Completed</h6>
+                        <!-- Tasks Created -->
+<!--                        <div class="col-2">
+                            <h6 class="text-center">Tasks Created</h6>
+                        </div>
+
+                        &lt;!&ndash; Tasks Completed &ndash;&gt;
+                        <div class="col-2">
+                            <h6 class="text-center">Tasks Completed</h6>
+                        </div>-->
+
+                    </div>
+
+                    <!-- User Items -->
+                    <div class="row mb-3 userItemsCon">
+                        <div class="col-md-12 p-0 m-0">
+                            <app-user-list-item *ngFor="let user of userList" [user]="user"></app-user-list-item>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
         </div>
-
-        <!-- User Items -->
-        <div class="row pb-3 userItemsCon">
-            <div class="col-md-12">
-                <app-user-list-item></app-user-list-item>
-            </div>
-        </div>
-
     </div>
 </div>

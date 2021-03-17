@@ -3,13 +3,12 @@
   padding-right: 15px;
 }
 
-#issueContainer {
-  padding-top: 12px;
+.issueItemContainer {
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   border: 1px solid #cccccc;
   background-color: #fefefe;
-  position: relative;
 }
 
 div a {
@@ -19,4 +18,17 @@ div a:hover {
   color: #0275D8;
   underline: #0275D8;
   cursor: pointer;
+}
+.issueItemHeading {
+  background-color: #f9f9f9;
+  border-radius: 6px 6px 0px 0px;
+  border-bottom: 1px solid #DEDEDE;
+}
+.issueItemBody {
+  min-height: 150px;
+}
+.issueItemFooting {
+  background-color: #f9f9f9;
+  border-radius: 0px 0px 6px 6px;
+  border-top: 1px solid #DEDEDE;
 }

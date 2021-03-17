@@ -5,6 +5,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {UsersService} from '../../users.service';
 import {UsersModel} from '../../users.model';
 import {DbService} from '../../db.service';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-new-task',
@@ -13,7 +15,7 @@ import {DbService} from '../../db.service';
 })
 export class CreateNewTaskComponent implements OnInit {
 
-  constructor(taskService: TaskService, public userService: UsersService, private dbService: DbService) {
+  constructor(taskService: TaskService, public userService: UsersService, private dbService: DbService, public modalService: NgbModal, public notificationService: ToastrService) {
     this.taskService = taskService;
   }
 
@@ -33,9 +35,9 @@ export class CreateNewTaskComponent implements OnInit {
 
   providedTitle = true;
   providedDate = true;
+  closeResult = '';
 
   createNewTask(): void {
-    console.log(this.dummyUserModel);
 
     if (this.newTaskForm.value.taskStatus === '') {
       this.newTaskForm.value.taskStatus = 'In Progress';
@@ -65,6 +67,8 @@ export class CreateNewTaskComponent implements OnInit {
           false
       );
 
+      this.notificationService.success('Task "' + newTask.title + '" assigned to ' + newTask.createdBy.firstName, 'Task Successfully Created');
+
       // TODO: Note - task's title is being used as ID - not too great
       this.dbService.taskRef.doc(newTask.title).set({
         title: newTask.title,
@@ -75,12 +79,32 @@ export class CreateNewTaskComponent implements OnInit {
       });
 
       this.taskService.addNewTaskToArray(newTask);
-      this.taskService.routeBackToHomePage();
+      this.modalService.dismissAll();
+      //this.taskService.routeBackToHomePage();
     }
   }
 
   ngOnInit(): void {
     this.dummyUserModel = this.userService.categories[0];
+  }
+
+  // tslint:disable-next-line:typedef
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 }
