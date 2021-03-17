@@ -1,20 +1,34 @@
-.sortMenuMarginAndBorder {
-    border-bottom: 1px solid #cccccc;
+.paddingSolution {
+    padding-left:15px;
+    padding-right: 15px;
 }
-.categorySelect {
-    width: calc(100% - 25px);
-    height: 32px;
-    border: none;
-    border-bottom: 1px solid #000000;
-    color: #2d3246;
-    margin-top: -3px;
-    margin-bottom: 11px;
+
+.issueItemContainer {
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    background-color: #fefefe;
 }
-p a {
-    color: #0275d8;
+
+div a {
+    color: #0275DA;
 }
-p a:hover{
-    color: #0275d8;
+div a:hover {
+    color: #0275D8;
+    underline: #0275D8;
     cursor: pointer;
-    text-decoration: underline;
+}
+.issueItemHeading {
+    background-color: #f9f9f9;
+    border-radius: 6px 6px 0px 0px;
+    border-bottom: 1px solid #DEDEDE;
+}
+.issueItemBody {
+    min-height: 150px;
+}
+.issueItemFooting {
+    background-color: #f9f9f9;
+    border-radius: 0px 0px 6px 6px;
+    border-top: 1px solid #DEDEDE;
 }

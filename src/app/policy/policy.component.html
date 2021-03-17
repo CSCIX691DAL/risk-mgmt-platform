@@ -1,50 +1,50 @@
 <!-- Content Container -->
-<div id="policyListContainer" class="container-fluid">
+<div class="container-fluid w-100 mw-100 px-0 m-0">
 
-    <!-- Body Header Container -->
-    <div class="row justify-content-center addPolicyMarginAndBorder">
-        <div id="addPolicyContainer" class="container">
+    <!-- Issues Navigation Bar -->
+    <div class="row issuesNavigationBar px-2 m-0">
+        <div class="col-md-12">
+            <div class="row p-0">
 
-            <!-- Title / Add new Issue Container -->
-            <div class="row">
-
-                <!-- Page Title -->
-                <div class="col-md-7">
-                    <h2>Policy List</h2>
+                <!-- Title of Current Page -->
+                <div class="col-md-6">
+                    <h3 class="mt-2 pt-1">Policy List</h3>
                 </div>
 
-                <!-- Search Issue List Container -->
-                <div class="col-md-5">
+                <!-- Search Bar -->
+                <div class="col-md-6">
+                    <div class="row justify-content-end">
 
-                    <div>
-                        <app-add-policy
-                                class="float-right">
-                        </app-add-policy>
+                        <!-- Sort Risk Issues Dropdown Toggle -->
+                        <button class="btn btn-outline-primary issuesSortButton mr-3" type="button" data-toggle="collapse" data-target="#issuesSortDropdown" aria-expanded="false" aria-controls="issuesSortDropdown">Sort Policies</button>
+
+                        <!-- Add issue modal component -->
+                        <div>
+                            <app-add-policy
+                                    class="float-right">
+                            </app-add-policy>
+                        </div>
+
+                        <!-- Search Issues bar -->
+                        <div class="pr-3">
+                            <input class="form-control" type="text" placeholder="Search issues" name="issuelist" value="Search policies">
+                        </div>
+
                     </div>
-
-                    <!-- Sort Risk Issues Dropdown Toggle -->
-                    <button class="btn btn-outline-primary issuesSortButton mr-3" type="button" data-toggle="collapse" data-target="#issuesSortDropdown" aria-expanded="false" aria-controls="issuesSortDropdown">Sort Issues</button>
-
-                    <!-- Search Issues bar -->
-                    <form class="form-inline float-right">
-                        <input class="form-control" type="text" placeholder="Search" name="issuelist" value="Search">
-                    </form>
-
-                    <!-- Add policy modal component -->
-
-
                 </div>
 
             </div>
-
         </div>
     </div>
+
+    <!-- Sort Container -->
+    <app-sort-issue></app-sort-issue>
 
     <!-- Sort Container -->
 
     <!-- Print out all Issue items -->
     <div class="row px-2 m-0 issuesContentCon justify-content-start">
-        <div class="col-md-4 issuesItemContainer" *ngFor="let item of policyArray">
+        <div class="col-md-4 issuesItemContainer" *ngFor="let item of policyService.policies">
             <app-policy-item [policyItem]="item"></app-policy-item>
         </div>
     </div>

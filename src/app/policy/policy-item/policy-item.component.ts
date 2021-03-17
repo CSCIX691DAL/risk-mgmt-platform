@@ -14,6 +14,8 @@ export class PolicyItemComponent implements OnInit {
   @Input() policyItem: PolicyModel;
 
   ngOnInit(): void {
+    console.log("Policy");
+    console.log(this.policyItem);
   }
 
   onDeletePolicy(): void {

@@ -6,6 +6,7 @@ import {DbService} from '../../db.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ToastrService} from 'ngx-toastr';
 import {RiskProfileService} from '../../risk-profile/risk-profile.service';
+import {PolicyService} from '../policy.service';
 
 @Component({
   selector: 'app-edit-policy',
@@ -14,7 +15,7 @@ import {RiskProfileService} from '../../risk-profile/risk-profile.service';
 })
 export class EditPolicyComponent implements OnInit {
 
-  constructor(public dbService: DbService, public modalService: NgbModal, public notificationService: ToastrService, public riskService: RiskProfileService) { }
+  constructor(public dbService: DbService, public modalService: NgbModal, public notificationService: ToastrService, public riskService: RiskProfileService, public policyService: PolicyService) { }
 
   newPolicyForm: FormGroup;
   @Input() inputPolicy: PolicyModel;
@@ -36,9 +37,39 @@ export class EditPolicyComponent implements OnInit {
 
   editPolicy(): void {
 
-    //this.currentModel = taskService.getSelectedModel();
-    //console.log(this.currentModel);
+    const newPolicy =  new PolicyModel (
+        0,
+        this.newPolicyForm.value.policyTitle,
+        this.newPolicyForm.value.policyDescription,
+        this.newPolicyForm.value.riskProfiles,
+    );
 
+    console.log("New Policy");
+    console.log(newPolicy);
+
+    const riskTitles = [];
+
+    newPolicy.riskprofile.forEach((risk) => {
+      riskTitles.push(risk);
+    });
+
+
+    console.log(riskTitles);
+
+    this.dbService.policyRef.doc(this.currentModel.title).delete();
+
+    this.dbService.policyRef.doc(newPolicy.title).set({
+      title: newPolicy.title,
+      description: newPolicy.description,
+      riskProfiles: riskTitles
+    });
+
+    this.policyService.editPolicy(newPolicy, this.inputPolicy);
+
+    console.log("New");
+    console.log(newPolicy);
+
+    this.modalService.dismissAll();
 
   }
 

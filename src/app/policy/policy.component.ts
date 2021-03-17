@@ -14,8 +14,6 @@ export class PolicyComponent implements OnInit {
   policyArray: PolicyModel[];
 
   ngOnInit(): void {
-    this.policyArray = [];
-    this.policyArray.push(new PolicyModel(2, 'policytest', 'This is a test', []));
   }
 
 

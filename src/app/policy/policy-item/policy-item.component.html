@@ -15,7 +15,15 @@
 
             <!-- Issue Associated Category -->
             <div class="col-md-12">
-                Category: {{policyItem.description}}
+                Description: {{policyItem.description}}
+            </div>
+
+            <!-- Issue Associated Category -->
+            <div class="col-md-12">
+                Risk Profiles: <br/>
+                <li *ngFor="let risk of policyItem.riskprofile">
+                    {{risk.title || risk}}
+                </li>
             </div>
 
         </div>
