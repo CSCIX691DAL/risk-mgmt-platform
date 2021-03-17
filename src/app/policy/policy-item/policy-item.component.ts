@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PolicyModel} from '../policy.model';
+import {PolicyService} from '../policy.service';
 
 @Component({
   selector: 'app-policy-item',
@@ -8,13 +9,16 @@ import {PolicyModel} from '../policy.model';
 })
 export class PolicyItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(public policyService: PolicyService) { }
 
   @Input() policyItem: PolicyModel;
 
   ngOnInit(): void {
   }
 
+  onDeletePolicy(): void {
+    this.policyService.deletePolicy(this.policyItem);
+  }
 
 
 }

@@ -1,96 +1,46 @@
-<!-- Listed Issues -->
-<div id="PolicyContainer" class="container">
+<!-- New Issue Item -->
+<div class="row issueItemContainer" *ngIf="issueItem.parentIssue === 0">
+    <div class="col-md-12">
 
-    <!-- Top Row -->
-    <div class="row">
-
-        <!-- Title Column -->
-        <div class="col-md-10">
-            <h4 class="float-left">{{policyItem.title}}</h4>
+        <!-- Issue Item Heading -->
+        <div class="row">
+            <!-- Issue Name -->
+            <div class="col-md-12 pt-2 pb-1 issueItemHeading">
+                <h5>{{policyItem.title}}</h5>
+            </div>
         </div>
 
+        <!-- Issue Item Body -->
+        <div class="row py-2 issueItemBody">
 
-    </div>
+            <!-- Issue Associated Category -->
+            <div class="col-md-12">
+                Category: {{policyItem.description}}
+            </div>
 
-    <div class="row">
-
-        <!-- Title Column -->
-        <div class="col-md-10">
-            <h4 class="float-left">{{policyItem.description}}</h4>
         </div>
 
+        <!-- Issue Item Footer -->
+        <div class="row">
+            <div class="col-md-12 pt-2 pb-1 issueItemFooting">
+
+                <!-- Edit Issue modal component -->
+                <app-edit-policy
+                        editTextName="Edit"
+                        [editIssue]='issueItem'
+                        editModalID="{{issueItem.id}}"
+                        editModalTitle="{{ issueItem.title }}"
+                        editModalRiskCategory="{{ issueItem.riskCategory }}"
+                        editModalAssignee="{{ issueItem.assignee }}"
+                        editModalDescription="{{ issueItem.description }}"
+                        class="float-right">
+                </app-edit-policy>
+
+                <!-- Delete Policy Link -->
+                <a class="float-right mr-3" (click)="onDeletePolicy()">Delete</a>
+
+            </div>
+        </div>
 
     </div>
-
-
-
-
-
-
 </div>
-<!--
-
-&lt;!&ndash; Listed Issues &ndash;&gt;
-<div *ngIf="issueItem.parentIssue === 0" id="issueContainer" class="container">
-
-    &lt;!&ndash; Top Row &ndash;&gt;
-    <div class="row">
-
-        &lt;!&ndash; Title Column &ndash;&gt;
-        <div class="col-md-10">
-            <h4 class="float-left">{{issueItem.title}}</h4>
-        </div>
-
-
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <p class="float-left mr-20">Category: {{issueItem.riskCategory}}</p>
-        </div>
-    </div>
-
-    &lt;!&ndash; Bottom Row &ndash;&gt;
-    <div class="row">
-
-        &lt;!&ndash; Description Column &ndash;&gt;
-        <div class="col-md-10">
-            <p class="">{{issueItem.description}}</p>
-        </div>
-
-        &lt;!&ndash; Delete / Edit Column &ndash;&gt;
-        <div class="col-md-2">
-            &lt;!&ndash; Edit issue modal component &ndash;&gt;
-            <app-edit-issue
-                    editTextName="Edit"
-                    [editIssue]='issueItem'
-                    editModalID="{{issueItem.id}}"
-                    editModalTitle="{{ issueItem.title }}"
-                    editModalRiskCategory="{{ issueItem.riskCategory }}"
-                    editModalAssignee="{{ issueItem.assignee }}"
-                    editModalDescription="{{ issueItem.description }}"
-                    class="float-right">
-            </app-edit-issue>
-
-            &lt;!&ndash;
-            Delete issue modal asking if you really want to delete the issue you have chosen.
-            Will only let you delete the item after you edit and save it (you dont have to change anything, just has to save)
-            &ndash;&gt;
-            &lt;!&ndash; Delete issue modal component
-            <app-delete-issue
-              deleteTextName="Delete"
-              [deleteIssue]='issueItem'
-              deleteModalID="{{issueItem.id}}"
-              deleteModalTitle="{{ issueItem.title }}"
-              class="float-right mr-4">
-            </app-delete-issue>
-            &ndash;&gt;
-            &lt;!&ndash; Delete Link &ndash;&gt;
-            <a class="float-right mr-4" (click)="onDeleteIssue()">Delete</a>
-
-        </div>
-
-    </div>
-
-</div>
--->

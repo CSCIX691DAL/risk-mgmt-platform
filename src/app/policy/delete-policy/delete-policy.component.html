@@ -1,27 +1,26 @@
-<!--
 <ng-template #deleteContent let-modal>
 
     <form (ngSubmit)="OnDelete()">
 
-        &lt;!&ndash; Modal Header &ndash;&gt;
+        <!-- Modal Header -->
         <div class="modal-header justify-content-center">
             <h2 class="mt-1">Delete Issue</h2>
         </div>
 
-        &lt;!&ndash; Modal Body &ndash;&gt;
+        <!-- Modal Body -->
         <div class="modal-body row pl-4 pr-4 text-center">
             <div class="col-12 pt-5 pb-5">
-                &lt;!&ndash; Title &ndash;&gt;
+                <!-- Title -->
                 <h2>{{ deleteModalTitle }}</h2>
 
-                &lt;!&ndash; Are you sure? &ndash;&gt;
+                <!-- Are you sure? -->
                 <h6 class="text-center mt-5">Are you sure you want to delete this issue?</h6>
             </div>
         </div>
 
-        &lt;!&ndash; Modal Footer &ndash;&gt;
+        <!-- Modal Footer -->
         <div class="modal-footer">
-            &lt;!&ndash; Buttons: Cancel & Save &ndash;&gt;
+            <!-- Buttons: Cancel & Save -->
             <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
             <button type="submit" class="btn btn-outline-danger">Delete Issue</button>
         </div>
@@ -31,4 +30,3 @@
 </ng-template>
 
 <a class="float-right" (click)="open(deleteContent)">{{ deleteTextName }}</a>
--->

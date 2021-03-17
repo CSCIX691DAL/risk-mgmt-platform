@@ -1,71 +1,46 @@
-<!--
-<ng-template #addIssueContent let-modal>
+<ng-template #addPolicyContent let-modal>
 
     <form (ngSubmit)="OnAdd()">
 
         <div class="modal-header justify-content-center">
-            <h2 class="mt-1">Add Issue</h2>
+            <h2 class="mt-1">Add Policy</h2>
         </div>
 
         <div class="modal-body row pl-4 pr-4">
 
-            &lt;!&ndash; Title &ndash;&gt;
-            <label for="addTitle" class="labelAndInput">Title</label>
+            <!-- Title -->
+            <label for="policyTitle" class="labelAndInput">Title</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="addTitle" name="addTitle" ngModel [(ngModel)]="issue.title">
+                <input type="text" class="form-control" id="policyTitle" name="policyTitle" ngModel>
             </div>
 
-            &lt;!&ndash; Risk Category &ndash;&gt;
+            <!-- Description -->
+            <label for="policyDescription" class="labelAndInput">Description</label>
+            <div class="input-group mb-3">
+                <textarea class="form-control" id="policyDescription" name="policyDescription" ngModel></textarea>
+            </div>
+
+            <!-- Risk Category -->
             <label for="addRiskCategory" class="labelAndInput">Risk Category</label>
             <div class="input-group mb-3">
                 <select
                         class="form-control"
                         id="addRiskCategory"
                         name="addRiskCategory"
-                        ngModel [(ngModel)]="issue.riskCategory"
+                        ngModel [(ngModel)]="this.selectedRiskModels"
                 >
-                    <option selected value="">Category</option>
+                    <option selected value="">Risk Profiles</option>
 
-                    <option *ngFor="let item of categoryService.categories" [value]=item.name>
-                        {{ item.name }}
+                    <option *ngFor="let risk of riskService.riskProfiles" [value]=risk.title>
+                        {{ risk.title }}
                     </option>
 
                 </select>
-            </div>
-
-            &lt;!&ndash; Parent Issue &ndash;&gt;
-            <label for="addParentIssue" class="labelAndInput">Parent Issue</label>
-            <div class="input-group mb-3">
-                <select
-                        class="form-control"
-                        id="addParentIssue"
-                        name="addParentIssue"
-                        ngModel [(ngModel)]="issue.parentIssue"
-                >
-                    <option selected value="0">None</option>
-
-                    <option *ngFor="let item of issueService.issues" [value]=item.id>
-                        {{ item.title }}
-                    </option>
-
-                </select>
-            </div>
-
-            &lt;!&ndash; Add Assignee &ndash;&gt;
-            <label for="addAssignee" class="labelAndInput">Assignee ID</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="addAssignee" name="addAssignee" ngModel [(ngModel)]="issue.assignee">
-            </div>
-
-            &lt;!&ndash; Description &ndash;&gt;
-            <label for="addDescription" class="labelAndInput">Description</label>
-            <div class="input-group mb-1">
-                <textarea class="form-control" id="addDescription" name="addDescription" ngModel [(ngModel)]="issue.description"></textarea>
             </div>
 
         </div>
 
-        &lt;!&ndash; Buttons: Cancel & Save &ndash;&gt;
+        <!-- Buttons: Cancel & Save -->
         <div class="modal-footer">
             <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
             <button type="submit" class="btn btn-outline-primary">Add Issue</button>
@@ -75,5 +50,4 @@
 
 </ng-template>
 
-<button type="button" class="btn btn-outline-success mr-3" (click)="open(addIssueContent)">{{ addTextName }}</button>
--->
+<button type="button" class="btn btn-outline-success mr-3 issuesNavigationBarButton" (click)="open(addPolicyContent)">+ Policy</button>
