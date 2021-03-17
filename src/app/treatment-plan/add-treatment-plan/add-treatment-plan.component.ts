@@ -81,11 +81,23 @@ export class AddTreatmentPlanComponent implements OnInit {
     if (this.treatmentPlans.title) {
       const newPlan = new TreatmentPlanModel(
           this.newPlanForm.value.riskProfile,
-          this.newPlanForm.value.tasks,
+          [this.newPlanForm.value.tasks],
           this.treatmentPlans.title,
           this.treatmentPlans.id,
       );
       this.riskProfile = this.newPlanForm.value.profile;
+    // id: number;
+    // title: string;
+    // description: string;
+    // likelihood: number;
+    // impact: number;
+    // category: CategoryModel;
+    // riskCategory: CategoryModel;
+    // dateCreated: string;
+    // dateModified: string;
+    // sourceOfRisk: string;
+    // levelOfRisk: number;
+
       this.treatmentPlans = new TreatmentPlanModel(this.treatmentPlans.riskProfile, this.treatmentPlans.tasks, this.treatmentPlans.title, this.treatmentPlans.id);
 
       this.treatmentPlanService.addPlan(this.treatmentPlans);
@@ -95,16 +107,12 @@ export class AddTreatmentPlanComponent implements OnInit {
       this.dbService.treatmentRef.doc(this.treatmentPlans.title).set({
         title: newPlan.title,
         riskProfile: newPlan.riskProfile,
-        id: newPlan.id,
+        id: this.treatmentPlans.id,
       });
       // connect to risk profile subcollection
       this.dbService.treatmentRef.doc(this.treatmentPlans.title).collection('risk-profiles').add({
         // below needs to properly set up a riskProfile to insert with all fields I think,, still not loading
         riskProfile: newPlan.riskProfile,
-      });
-      // connect to tasks subcollection
-      this.dbService.treatmentRef.doc(this.treatmentPlans.title).collection('tasks').add({
-        tasks: newPlan.tasks,
       });
 
     }

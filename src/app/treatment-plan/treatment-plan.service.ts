@@ -41,7 +41,7 @@ export class TreatmentPlanService {
     this.dbService.treatmentRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const newPlan = doc.data();
-        this.treatmentPlans.push(new TreatmentPlanModel(this.riskProfiles.pop(), [],
+        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, [],
         newPlan.title, newPlan.id));
       });
       this.triggerToUpdate.next(true);
