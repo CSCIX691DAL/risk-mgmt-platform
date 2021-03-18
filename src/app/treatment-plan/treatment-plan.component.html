@@ -42,7 +42,6 @@
                 <!-- Treatment Plan needs to appear below/with each item -->
                 <app-treatment-plan-item *ngFor="let plan of this.treatmentPlanService.treatmentPlans | filter: TreatmentPlanSearchText" [treatmentPlanItem]="plan"></app-treatment-plan-item>
             <!-- basic placeholder - testing functionality -->
-
         </div>
         <!-- Treatment Plan List -->
         <div *ngIf="treatmentPlanService.currentlySelectedPlan" class="col-md-9">
@@ -50,13 +49,13 @@
                 <!-- Treatment Plan List -->
                 <h2>
                     Treatment Plan: {{treatmentPlanService.currentlySelectedPlan.title}}<br/>
-                    Risk Profile: {{treatmentPlanService.currentlySelectedPlan.riskProfile.title}}
+                    Risk Profile: {{treatmentPlanService.currentlySelectedPlan.riskProfile[0].title}}
                 </h2>
                 <!-- Treatment Plan Risk Profile Display -->
                 <div class="col-md-6">
-                    Id: {{treatmentPlanService.currentlySelectedPlan.riskProfile.id}} <br>
-                    Description: {{treatmentPlanService.currentlySelectedPlan.riskProfile.description}}<br>
-                    Level of Risk: {{treatmentPlanService.currentlySelectedPlan.riskProfile.levelOfRisk}}
+                    Id: {{treatmentPlanService.currentlySelectedPlan.riskProfile[0].id}} <br>
+                    Description: {{treatmentPlanService.currentlySelectedPlan.riskProfile[0].description}}<br>
+                    Level of Risk: {{treatmentPlanService.currentlySelectedPlan.riskProfile[0].levelOfRisk}}
                 </div>
                 <!-- Treatment Plan Task Display -->
                 <div class="col-md-6">

@@ -51,7 +51,7 @@ export class TreatmentPlanService {
 
         this.treatmentPlans.push(new TreatmentPlanModel(riskArr, tasks, newPlan.title, newPlan.id  ));
       });
-      // this.triggerToUpdate.next(true);
+      this.triggerToUpdate.next(true);
     });
   }
 
@@ -89,9 +89,11 @@ export class TreatmentPlanService {
   addPlan(plan: TreatmentPlanModel): void {
 
     const riskTitles = [];
+    const tasksArr = [];
 
     riskTitles.push(plan.riskProfile);
     console.log(plan.riskProfile);
+    // use below code to retrieve tasks
     // plan.riskProfile.forEach((risk) => {
     //   riskTitles.push(risk);
     //   console.log(risk);
@@ -104,9 +106,9 @@ export class TreatmentPlanService {
       // Pushes new IssueModel object to issues array
       this.treatmentPlans.push(newPlan);
       // Update screen
-      // this.triggerToUpdate.next(true);
-      this.dbService.treatmentRef.doc(plan.title).set({
-        title: plan.title,
+
+      this.dbService.treatmentRef.doc(newPlan.title).set({
+        title: newPlan.title,
         tasks: plan.tasks,
         riskProfiles: riskTitles,
         id: 0,
@@ -121,15 +123,15 @@ export class TreatmentPlanService {
       // Pushes new TreatmentPlanModel object to issues array
       this.treatmentPlans.push(newPlan);
       // Update screen
-      // this.triggerToUpdate.next(true);
-      this.dbService.treatmentRef.doc(plan.title).set({
+
+      this.dbService.treatmentRef.doc(newPlan.title).set({
         title: newPlan.title,
-        tasks: plan.tasks,
+        tasks: tasksArr,
         riskProfiles: riskTitles,
         id: newPlan.id,
       });
     }
-
+    this.triggerToUpdate.next(true);
     console.log(this.treatmentPlans);
 
     this.notificationService.success('Plan "' + plan.title + '" has been added.', 'Treatment Plan Successfully Created');

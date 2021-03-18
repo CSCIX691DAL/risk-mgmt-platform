@@ -48,11 +48,12 @@ export class AddTreatmentPlanComponent implements OnInit {
               private treatmentPlanService: TreatmentPlanService,
               public riskProfileService: RiskProfileService,
               public dbService: DbService, public modalService: NgbModal) {
-    this.categories = new CategoryModel(1,  'name', this.addCategories , 'description',  false);
   }
 
   newPlanForm = new FormGroup({
+    title: new FormControl(''),
     riskProfile: new FormControl(''),
+    tasks: new FormControl(''),
   });
 
   // tslint:disable-next-line:typedef
@@ -75,11 +76,10 @@ export class AddTreatmentPlanComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.riskProfile = this.newPlanForm.value.profile;
   }
   
   onAdd(): void {
-    const newPlan = new TreatmentPlanModel(this.newPlanForm.value.riskProfile, this.newPlanForm.value.tasks, this.newPlanForm.value.title, this.newPlanForm.value.id);
+    const newPlan = new TreatmentPlanModel(this.newPlanForm.value.riskProfile, this.newPlanForm.value.tasks, this.newPlanForm.value.addTitle, this.newPlanForm.value.id);
 
     console.log(this.newPlanForm.value.riskProfiles);
 
