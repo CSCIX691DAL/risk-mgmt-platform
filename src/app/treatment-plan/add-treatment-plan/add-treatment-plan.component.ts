@@ -81,9 +81,9 @@ export class AddTreatmentPlanComponent implements OnInit {
   onAdd(): void {
     const newPlan = new TreatmentPlanModel(this.newPlanForm.value.riskProfile, this.newPlanForm.value.tasks, this.newPlanForm.value.planTitle, 0);
 
-    console.log(this.newPlanForm.value.riskProfiles);
+    // console.log(this.newPlanForm.value.riskProfiles);
 
-    console.log(newPlan);
+    // console.log(newPlan);
 
     this.treatmentPlanService.addPlan(newPlan);
 

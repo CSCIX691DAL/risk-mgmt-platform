@@ -56,7 +56,6 @@ export class AddPolicyComponent implements OnInit {
 
     console.log(newPolicy);
 
-
     this.policyService.addNewPolicy(newPolicy);
 
     this.modalService.dismissAll();

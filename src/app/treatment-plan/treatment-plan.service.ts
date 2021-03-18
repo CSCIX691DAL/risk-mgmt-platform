@@ -28,6 +28,7 @@ export class TreatmentPlanService {
   constructor( public riskProfileService: RiskProfileService, taskService: TaskService,
                categoryService: CategoryService, public dbService: DbService, public notificationService: ToastrService) {
     this.categories = categoryService.getCategories();
+
     this.riskProfiles = riskProfileService.getRiskProfiles();
     this.tasks = taskService.getTaskItemArray();
   }
@@ -36,20 +37,20 @@ export class TreatmentPlanService {
   public updatePlanArray(): void {
     // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
     this.treatmentPlans = [];
+    this.riskProfileService.updateRiskProfileArray();
 
     this.dbService.treatmentRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const newPlan = doc.data();
 
-        const riskArr = [];
         const tasks = [];
+        const riskArr = [];
 
-        // newPlan.riskProfiles.forEach((risk) => {
-        //   riskArr.push(new RiskProfileModel(0, risk, '', null, null, null, null, null));
-        // });
-        riskArr.push(this.riskProfiles);
+        this.riskProfiles.forEach((risk) => {
+          riskArr.push(risk);
+        });
 
-        this.treatmentPlans.push(new TreatmentPlanModel(riskArr[0], tasks, newPlan.title, newPlan.id  ));
+        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, tasks, newPlan.title, newPlan.id ));
       });
       this.triggerToUpdate.next(true);
     });
@@ -88,9 +89,10 @@ export class TreatmentPlanService {
 // Add plan function
   addPlan(plan: TreatmentPlanModel): void {
 
-    this.treatmentPlans.push(plan);
 
     const riskTitle = plan.riskProfile;
+
+    // const riskTitle = [plan.riskProfile];
     const tasksArr = [];
 
     console.log(plan.riskProfile);
@@ -100,32 +102,43 @@ export class TreatmentPlanService {
     //   console.log(risk);
     // });
 
+    this.treatmentPlans.push(plan);
     // Array is empty, set new ID to 1
-    if (this.treatmentPlans.length === 0) {
-      // Creates new IssueModel object
-      // Pushes new IssueModel object to issues array
-      // Update screen
-      this.dbService.treatmentRef.doc(plan.title).set({
-        riskProfiles: riskTitle,
-        tasks: tasksArr,
-        title: plan.title,
-        id: 0,
-      });
+    if (this.treatmentPlans.length === 1) {
+      plan.id = 0;
     }
     // Array has one or more objects
     else {
       // Generates number equal to the length of our issues array + 1
       const max = Math.max.apply(Math, this.treatmentPlans.map( (x) => +x.id)) + 1;
-      // Creates new TreatmentPlanModel object
-      // Pushes new TreatmentPlanModel object to issues array
-      // Update screen
-      this.dbService.treatmentRef.doc(plan.title).set({
-        riskProfiles: riskTitle,
-        tasks: tasksArr,
-        title: plan.title,
-        id: max,
-      });
+      plan.id = max;
     }
+
+    const catConst = {
+      id: riskTitle.riskCategory.id,
+      name: riskTitle.riskCategory.name,
+      parentCategory: riskTitle.riskCategory.parentCategory,
+      description: riskTitle.riskCategory.description,
+      isSpeculativeRisk: riskTitle.riskCategory.isSpeculativeRisk,
+    }
+
+    const riskConst = {
+      id: riskTitle.id,
+      title: riskTitle.title,
+      description: riskTitle.description,
+      likelihood: riskTitle.likelihood,
+      impact: riskTitle.impact,
+      category: riskTitle.riskCategory.name,
+      riskCategory: riskTitle.riskCategory.name,
+      sourceOfRisk: riskTitle.sourceOfRisk,
+    };
+    const planConst = {
+      riskProfile: riskConst,
+      tasks: tasksArr,
+      title: plan.title,
+      id: plan.id,
+    };
+    this.dbService.treatmentRef.doc(plan.title).set(planConst);
     //this.triggerToUpdate.next(true);
     console.log(this.treatmentPlans);
 
