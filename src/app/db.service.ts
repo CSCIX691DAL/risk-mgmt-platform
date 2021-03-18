@@ -22,6 +22,7 @@ export class DbService {
   public organizationRef: CollectionReference;
   public userRef: CollectionReference;
   public policyRef: CollectionReference;
+  public treatmentRef: CollectionReference;
 
   constructor(firestore: AngularFirestore, public router: Router) {
     /* Thanks to Quince for the following solution to get a value from firestore documents

@@ -17,10 +17,10 @@
                         <!-- Add Treatment Plan modal component -->
                         <!-- Need to create an add-treatment-plan component -->
                         <div>
-                            <app-add-issue
+                            <app-add-treatment-plan
                                     addTextName="+ Treatment Plan"
                                     class="float-right">
-                            </app-add-issue>
+                            </app-add-treatment-plan>
                         </div>
 
                         <!-- Search Treatment Plans bar -->
@@ -37,27 +37,39 @@
 
 
     <div class="row m-0">
-
-        <!-- Treatment Plan List -->
-        <div class="col-md-3 treatmentPlan_LeftSidebar">
-
-                <!-- Treatment Plan Item -->
-                <app-treatment-plan-item></app-treatment-plan-item>
-
-                <!-- Treatment Plan needs to appear below/with each item -->
-                <app-treatment-plan-item *ngFor="let item of treatmentPlans | filter: TreatmentPlanSearchText" [treatmentPlanItem]="item"></app-treatment-plan-item>
-
-                <!-- basic placeholder - testing functionality -->
-                <p *ngFor="let plan of treatmentPlans">{{ plan.title + "\n" + plan.riskProfile.title + "\n" + "[" + plan.tasks + "]" + "\n" + plan.continueRiskActivity + "\t" +plan.updateRiskConsequences + "\t" + plan.retainRisk }}</p>
-
-
-        </div>
-
         <!-- Treatment Plan Display -->
-        <div class="col-md-9">
-            <h2>Treatment Plan Title</h2>
-        </div>
+        <div class="col-md-3 treatmentPlan_LeftSidebar overflow-auto">
+                <!-- Treatment Plan needs to appear below/with each item -->
+                <app-treatment-plan-item *ngFor="let plan of this.treatmentPlanService.treatmentPlans | filter: TreatmentPlanSearchText" [treatmentPlanItem]="plan"></app-treatment-plan-item>
+            <!-- basic placeholder - testing functionality -->
 
+        </div>
+        <!-- Treatment Plan List -->
+        <div *ngIf="treatmentPlanService.currentlySelectedPlan" class="col-md-9">
+            <div >
+                <!-- Treatment Plan List -->
+                <h2>
+                    Treatment Plan: {{treatmentPlanService.currentlySelectedPlan.title}}<br/>
+                    Risk Profile: {{treatmentPlanService.currentlySelectedPlan.riskProfile.title}}
+                </h2>
+                <!-- Treatment Plan Risk Profile Display -->
+                <div class="col-md-6">
+                    Id: {{treatmentPlanService.currentlySelectedPlan.riskProfile.id}} <br>
+                    Description: {{treatmentPlanService.currentlySelectedPlan.riskProfile.description}}<br>
+                    Level of Risk: {{treatmentPlanService.currentlySelectedPlan.riskProfile.levelOfRisk}}
+                </div>
+                <!-- Treatment Plan Task Display -->
+                <div class="col-md-6">
+
+                    Tasks: {{
+                    treatmentPlanService.currentlySelectedPlan.tasks//.forEach(print)
+
+                    }}
+                    <br>
+                </div>
+            </div>
+        </div>
     </div>
+
 
 </div>

@@ -5,63 +5,92 @@ import {RiskProfileModel} from '../risk-profile/risk-profile.model';
 import {TaskModel} from '../task-list/task.model';
 import {Subject, Subscription} from 'rxjs';
 import {DbService} from '../db.service';
+import {TaskService} from '../task-list/task-service';
+import {IssueModel} from '../issue-list/issue.model';
+import {CategoryService} from '../risk-categories/category.service';
+import {CategoryModel} from '../risk-categories/category.model';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TreatmentPlanService {
   // need category model for easiest sorting I think
-  tasks: TaskModel;
-  triggerToUpdate = new Subject<boolean>();
+  tasks: Array<TaskModel>;
   treatmentPlanService: TreatmentPlanService;
   riskProfiles: RiskProfileModel[];
-  treatmentPlans: TreatmentPlanModel[];
-  // set data here
-  //    [this.riskProfileService.getRiskProfiles(), 'title',
-  //  new TreatmentOptionsModel(false, false, false)];
+  treatmentPlans: TreatmentPlanModel[] = [];
+  categories: CategoryModel[];
 
-  constructor( public riskProfileService: RiskProfileService,  public dbService: DbService) {
-    this.treatmentPlans = [];
-    this.riskProfileService.updateRiskProfileArray();
+  currentlySelectedPlan: TreatmentPlanModel;
+
+  constructor( public riskProfileService: RiskProfileService, taskService: TaskService,
+               categoryService: CategoryService, public dbService: DbService, public notificationService: ToastrService) {
+    this.categories = categoryService.getCategories();
     this.riskProfiles = riskProfileService.getRiskProfiles();
-
-    this.updatePlans();
+    this.tasks = taskService.getTaskItemArray();
   }
-  updatePlans(): void {
-    console.log(this.riskProfiles);
+  // Updates issue list
+  triggerToUpdate = new Subject<boolean>();
 
-    console.log(this.riskProfileService.getRiskProfiles());
+  updateTreatmentPlans(): void {
+    // update plans from db + into db
+    // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
+    this.treatmentPlans = [];
 
-    this.riskProfiles.forEach((profile) => {
-      console.log(profile);
-      this.treatmentPlans.push(new TreatmentPlanModel(profile, ['task1', 'task2'], 'title', false, false, false));
+    this.dbService.treatmentRef.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const newPlan = doc.data();
+        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, [],
+        newPlan.title, newPlan.id));
+      });
+      this.triggerToUpdate.next(true);
     });
-
   }
 
+  // Delete issue function
+  deletePlan(plan: TreatmentPlanModel): void {
+    this.notificationService.success('Plan "' + plan.title + '" has been deleted.', 'Plan Successfully Deleted');
+
+    this.treatmentPlans = this.treatmentPlans.filter(x => x.id !== plan.id);
+
+    this.dbService.issueRef.doc(plan.title).delete();
+
+    // console.log(this.issues);
+    this.triggerToUpdate.next(true);
+  }
   getTreatmentPlans(): TreatmentPlanModel[]{
     return this.treatmentPlans.slice();
   }
 
-  // Sort Level of Risk
-  sortLevelofRisk(sortCode: number): void {
-    // sortCode of 1 : sort Level of Risk High to Low
-    if (sortCode === 1) {
-      this.riskProfiles = this.riskProfiles.sort((n1, n2) => {
-        if (n1.getLevelOfRisk()  > n2.getLevelOfRisk() ) { return -1; }
-        if (n1.getLevelOfRisk() < n2.getLevelOfRisk() ) { return 1; }
-        return 0;
-      });
+// Add plan function
+  addPlan(plan: TreatmentPlanModel): void {
+
+    // Array is empty, set new ID to 1
+    if (this.treatmentPlans.length === 0) {
+      // Creates new IssueModel object
+      const newPlan = new TreatmentPlanModel(plan.riskProfile, plan.tasks, plan.title, 0);
+      // Pushes new IssueModel object to issues array
+      this.treatmentPlans.push(newPlan);
+      // Update screen
+      this.triggerToUpdate.next(true);
     }
-    // sortCode of 2 : sort likelihood Low to High
-    else if (sortCode === 2) {
-      this.riskProfiles = this.riskProfiles.sort((n1, n2) => {
-        if (n1.getLevelOfRisk()  > n2.getLevelOfRisk() ) { return 1; }
-        if (n1.getLevelOfRisk() < n2.getLevelOfRisk() ) { return -1; }
-        return 0;
-      });
+    // Array has one or more objects
+    else {
+      // Generates number equal to the length of our issues array + 1
+      const max = Math.max.apply(Math, this.treatmentPlans.map( (x) => +x.id)) + 1;
+      // Creates new TreatmentPlanModel object
+      const newPlan = new TreatmentPlanModel(plan.riskProfile, plan.tasks, plan.title, max);
+      // Pushes new TreatmentPlanModel object to issues array
+      this.treatmentPlans.push(newPlan);
+      // Update screen
+      this.triggerToUpdate.next(true);
     }
-    this.triggerToUpdate.next(true);
+
+    console.log(this.treatmentPlans);
+
+    this.notificationService.success('Plan "' + plan.title + '" has been added.', 'Treatment Plan Successfully Created');
+
   }
 
 }

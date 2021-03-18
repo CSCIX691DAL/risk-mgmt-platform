@@ -58,10 +58,10 @@ import { RegisterComponent } from './register/register.component';
 import { LandingComponent } from './landing/landing.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { DbService } from './db.service';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {DbService} from './db.service';
 import { TreatmentPlanComponent } from './treatment-plan/treatment-plan.component';
 import { AdminNavComponent } from './admin-dash/admin-nav/admin-nav.component';
 import { UserListComponent } from './admin-dash/user-list/user-list.component';
@@ -107,10 +107,11 @@ import { OrgAdminUserListComponent } from './org-admin-dash/org-admin-user-list/
 import { OrgAdminOrgViewComponent } from './org-admin-dash/org-admin-org-view/org-admin-org-view.component';
 import { OrgAdminApprovalItemComponent } from './org-admin-dash/org-admin-approval/org-admin-approval-item/org-admin-approval-item.component';
 import { OrgAdminUserListItemComponent } from './org-admin-dash/org-admin-user-list/org-admin-user-list-item/org-admin-user-list-item.component';
+import {CommonModule} from '@angular/common';
+import {DeletePlanComponent} from './treatment-plan/delete-plan/delete-plan.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
-
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
   {path: 'dashboard' , component : DashboardComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
@@ -125,6 +126,8 @@ const myroutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'admin-dashboard', component: AdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin-dashboard', component: AdminDashComponent},
   {path: 'treatment-plan', component: TreatmentPlanComponent},
   {path: 'admin-dashboard', component: AdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'admin-dashboard-users', component: UserListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
@@ -207,6 +210,7 @@ const myroutes: Routes = [
     AddPolicyComponent,
     NewTasklistComponent,
     NewTaskItemComponent,
+    TreatmentPlanComponent,
     AddTreatmentPlanComponent,
     TreatmentPlanItemComponent,
     SortTasksComponent,
@@ -232,9 +236,11 @@ const myroutes: Routes = [
     OrgAdminOrgViewComponent,
     OrgAdminApprovalItemComponent,
     OrgAdminUserListItemComponent,
+      DeletePlanComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule.forRoot(myroutes),
