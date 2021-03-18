@@ -24,11 +24,6 @@ import {PolicyModel} from '../../policy/policy.model';
   styleUrls: ['./add-treatment-plan.component.css']
 })
 export class AddTreatmentPlanComponent implements OnInit {
-  @Input() addTitle: string;
-  @Input() addRisks: RiskProfileModel;
-  @Input() addCategories: CategoryModel;
-  @Input() addTasks: Array<TaskModel>;
-  @Input() addUsers: UsersModel;
 
   closeResult = '';
 
@@ -53,7 +48,7 @@ export class AddTreatmentPlanComponent implements OnInit {
   newPlanForm = new FormGroup({
     planTitle: new FormControl(''),
     riskProfile: new FormControl(''),
-    tasks: new FormControl(''),
+    addTasks: new FormControl(''),
   });
 
   // tslint:disable-next-line:typedef
@@ -79,7 +74,7 @@ export class AddTreatmentPlanComponent implements OnInit {
   }
   
   onAdd(): void {
-    const newPlan = new TreatmentPlanModel(this.newPlanForm.value.riskProfile, this.newPlanForm.value.tasks, this.newPlanForm.value.planTitle, 0);
+    const newPlan = new TreatmentPlanModel(this.newPlanForm.value.riskProfile, this.newPlanForm.value.addTasks, this.newPlanForm.value.planTitle, 0);
 
     // console.log(this.newPlanForm.value.riskProfiles);
 

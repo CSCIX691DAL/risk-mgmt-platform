@@ -11,6 +11,7 @@ import {CategoryService} from '../risk-categories/category.service';
 import {CategoryModel} from '../risk-categories/category.model';
 import {ToastrService} from 'ngx-toastr';
 import {PolicyModel} from '../policy/policy.model';
+import {UsersService} from '../users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,8 @@ export class TreatmentPlanService {
 
   currentlySelectedPlan: TreatmentPlanModel;
 
-  constructor( public riskProfileService: RiskProfileService, taskService: TaskService,
-               categoryService: CategoryService, public dbService: DbService, public notificationService: ToastrService) {
+  constructor( public riskProfileService: RiskProfileService, public taskService: TaskService,
+               public categoryService: CategoryService, public userService: UsersService, public dbService: DbService, public notificationService: ToastrService) {
     this.categories = categoryService.getCategories();
 
     this.riskProfiles = riskProfileService.getRiskProfiles();
@@ -38,6 +39,7 @@ export class TreatmentPlanService {
     // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
     this.treatmentPlans = [];
     this.riskProfileService.updateRiskProfileArray();
+    this.taskService.updateTaskArray();
 
     this.dbService.treatmentRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -49,8 +51,11 @@ export class TreatmentPlanService {
         this.riskProfiles.forEach((risk) => {
           riskArr.push(risk);
         });
+        this.tasks.forEach((task) => {
+          tasks.push(task);
+        });
 
-        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, tasks, newPlan.title, newPlan.id ));
+        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, newPlan.tasks, newPlan.title, newPlan.id ));
       });
       this.triggerToUpdate.next(true);
     });
@@ -75,7 +80,7 @@ export class TreatmentPlanService {
   deletePlan(plan: TreatmentPlanModel): void {
     this.notificationService.success('Plan "' + plan.title + '" has been deleted.', 'Plan Successfully Deleted');
 
-    this.treatmentPlans = this.treatmentPlans.filter(x => x.title !== plan.title);
+    this.treatmentPlans = this.treatmentPlans.filter(x => x.id !== plan.id);
 
     this.dbService.issueRef.doc(plan.title).delete();
 
@@ -89,30 +94,29 @@ export class TreatmentPlanService {
 // Add plan function
   addPlan(plan: TreatmentPlanModel): void {
 
-
     const riskTitle = plan.riskProfile;
-
     // const riskTitle = [plan.riskProfile];
     const tasksArr = [];
 
-    console.log(plan.riskProfile);
+    console.log(plan.tasks);
     // use below code to retrieve tasks
-    // plan.riskProfile.forEach((risk) => {
-    //   riskTitles.push(risk);
-    //   console.log(risk);
-    // });
+    plan.tasks.forEach((task) => {
+      tasksArr.push(task);
+      console.log(task);
+    });
+
+// Array is empty, set new ID to 1
+//     if (this.treatmentPlans.length === 0) {
+//       plan.setId(0);
+//     }
+//     // Array has one or more objects
+//     else {
+      // Generates number equal to the length of our issues array + 1
+    const max = Math.max.apply(Math, this.treatmentPlans.map( (x) => +x.id)) + 1;
+    plan.setId(max);
+    // }
 
     this.treatmentPlans.push(plan);
-    // Array is empty, set new ID to 1
-    if (this.treatmentPlans.length === 1) {
-      plan.setId(0);
-    }
-    // Array has one or more objects
-    else {
-      // Generates number equal to the length of our issues array + 1
-      const max = Math.max.apply(Math, this.treatmentPlans.map( (x) => +x.id)) + 1;
-      plan.setId(max);
-    }
     const riskConst = {
       id: riskTitle.id,
       title: riskTitle.title,
@@ -127,7 +131,7 @@ export class TreatmentPlanService {
       riskProfile: riskConst,
       tasks: tasksArr,
       title: plan.title,
-      id: plan.id,
+      id: max,
     };
 
 
