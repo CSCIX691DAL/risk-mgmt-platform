@@ -28,12 +28,12 @@ export class DeletePlanComponent implements OnInit {
   //     [new TaskModel('Title', null, 'complete', null, null, false)], 'cvbcvb', 12345678);
 
 
-  constructor( private modalService: NgbModal, private treatmentPlanService: TreatmentPlanService, public dbService: DbService ) {}
+  constructor( private modalService: NgbModal, private treatmentPlanService: TreatmentPlanService, public dbService: DbService ) {
+    this.plan = this.deletePlan;
+  }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
-    this.plan.id = this.deleteModalID;
-    this.plan.title = this.deleteModalTitle;
   }
 
   // tslint:disable-next-line:typedef

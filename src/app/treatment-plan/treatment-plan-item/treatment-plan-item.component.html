@@ -5,7 +5,9 @@
     </div>
     <!-- Delete Column - may be not loading at all (commented out in app-delete-issue) -->
     <div class="col-md-2">
-        <app-delete-plan>
+        <app-delete-plan
+        [deletePlan]="treatmentPlanItem"
+        >
         </app-delete-plan>
     </div>
     <a class="float-right mr-4" (click)="onDeleteIssue()">Delete</a>
