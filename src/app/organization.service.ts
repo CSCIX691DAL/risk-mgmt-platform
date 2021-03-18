@@ -57,7 +57,8 @@ export class OrganizationService {
     this.profileService.updateRiskProfileArray();
 
     this.policyService.updatePolicyArray();
-    this.treatmentService.updateTreatmentPlans();
+    this.treatmentService.updatePlanArray();
+
     this.getOrgModelByID(this.currentOrganization).then((org) => {
       this.currentlySelectedOrg = org;
     });
@@ -402,7 +403,7 @@ export class OrganizationService {
       this.categoryService.updateCategoryArray();
       this.profileService.updateRiskProfileArray();
       this.policyService.updatePolicyArray();
-      this.treatmentService.updateTreatmentPlans();
+      this.treatmentService.updatePlanArray();
 
 
       this.getOrgModelByID(this.currentOrganization).then((org) => {

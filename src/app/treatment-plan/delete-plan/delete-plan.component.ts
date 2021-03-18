@@ -22,10 +22,10 @@ export class DeletePlanComponent implements OnInit {
   @Input() deletePlan: TreatmentPlanModel;
 
   closeResult = '';
-
-  plan: TreatmentPlanModel = new TreatmentPlanModel(
-      new RiskProfileModel(1, 'title', null, null, null, null, null, null),
-      [new TaskModel('Title', null, 'complete', null, null, false)], 'cvbcvb', 12345678);
+  plan : TreatmentPlanModel;
+  // plan: TreatmentPlanModel = new TreatmentPlanModel(
+  //     new RiskProfileModel(1, 'title', null, null, null, null, null, null),
+  //     [new TaskModel('Title', null, 'complete', null, null, false)], 'cvbcvb', 12345678);
 
 
   constructor( private modalService: NgbModal, private treatmentPlanService: TreatmentPlanService, public dbService: DbService ) {}

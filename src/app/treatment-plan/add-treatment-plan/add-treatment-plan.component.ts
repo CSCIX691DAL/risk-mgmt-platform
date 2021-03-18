@@ -16,6 +16,7 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {fromCollectionRef} from '@angular/fire/firestore';
 import {RiskProfileService} from '../../risk-profile/risk-profile.service';
 import {FormControl, FormGroup} from '@angular/forms';
+import {PolicyModel} from '../../policy/policy.model';
 
 @Component({
   selector: 'app-add-treatment-plan',
@@ -76,46 +77,16 @@ export class AddTreatmentPlanComponent implements OnInit {
   ngOnInit(): void {
     this.riskProfile = this.newPlanForm.value.profile;
   }
-// Add issue function;
-  OnAdd(): void {
-    if (this.treatmentPlans.title) {
-      const newPlan = new TreatmentPlanModel(
-          this.newPlanForm.value.riskProfile,
-          [this.newPlanForm.value.tasks],
-          this.treatmentPlans.title,
-          this.treatmentPlans.id,
-      );
-      this.riskProfile = this.newPlanForm.value.profile;
-    // id: number;
-    // title: string;
-    // description: string;
-    // likelihood: number;
-    // impact: number;
-    // category: CategoryModel;
-    // riskCategory: CategoryModel;
-    // dateCreated: string;
-    // dateModified: string;
-    // sourceOfRisk: string;
-    // levelOfRisk: number;
+  
+  onAdd(): void {
+    const newPlan = new TreatmentPlanModel(this.newPlanForm.value.riskProfile, this.newPlanForm.value.tasks, this.newPlanForm.value.title, this.newPlanForm.value.id);
 
-      this.treatmentPlans = new TreatmentPlanModel(this.treatmentPlans.riskProfile, this.treatmentPlans.tasks, this.treatmentPlans.title, this.treatmentPlans.id);
+    console.log(this.newPlanForm.value.riskProfiles);
 
-      this.treatmentPlanService.addPlan(this.treatmentPlans);
+    console.log(newPlan);
 
+    this.treatmentPlanService.addPlan(newPlan);
 
-      // set below not working
-      this.dbService.treatmentRef.doc(this.treatmentPlans.title).set({
-        title: newPlan.title,
-        riskProfile: newPlan.riskProfile,
-        id: this.treatmentPlans.id,
-      });
-      // connect to risk profile subcollection
-      this.dbService.treatmentRef.doc(this.treatmentPlans.title).collection('risk-profiles').add({
-        // below needs to properly set up a riskProfile to insert with all fields I think,, still not loading
-        riskProfile: newPlan.riskProfile,
-      });
-
-    }
+    this.modalService.dismissAll();
   }
-
 }
