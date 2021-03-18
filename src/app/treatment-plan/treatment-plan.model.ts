@@ -14,6 +14,14 @@ export class TreatmentPlanModel {
         this.title = title;
         this.id = id;
     }
+
+    getId(): number {
+        return this.id;
+    }
+    setId(setId: number): void {
+        this.id = setId;
+    }
+
     addTaskDetail(td: string): void{
         // this.tasks.push(td);
     }

@@ -75,12 +75,12 @@ export class TreatmentPlanService {
   deletePlan(plan: TreatmentPlanModel): void {
     this.notificationService.success('Plan "' + plan.title + '" has been deleted.', 'Plan Successfully Deleted');
 
-    this.treatmentPlans = this.treatmentPlans.filter(x => x.id !== plan.id);
+    this.treatmentPlans = this.treatmentPlans.filter(x => x.title !== plan.title);
 
     this.dbService.issueRef.doc(plan.title).delete();
 
     // console.log(this.issues);
-    this.triggerToUpdate.next(true);
+    // this.triggerToUpdate.next(true);
   }
   getTreatmentPlans(): TreatmentPlanModel[]{
     return this.treatmentPlans.slice();
@@ -105,23 +105,14 @@ export class TreatmentPlanService {
     this.treatmentPlans.push(plan);
     // Array is empty, set new ID to 1
     if (this.treatmentPlans.length === 1) {
-      plan.id = 0;
+      plan.setId(0);
     }
     // Array has one or more objects
     else {
       // Generates number equal to the length of our issues array + 1
       const max = Math.max.apply(Math, this.treatmentPlans.map( (x) => +x.id)) + 1;
-      plan.id = max;
+      plan.setId(max);
     }
-
-    const catConst = {
-      id: riskTitle.riskCategory.id,
-      name: riskTitle.riskCategory.name,
-      parentCategory: riskTitle.riskCategory.parentCategory,
-      description: riskTitle.riskCategory.description,
-      isSpeculativeRisk: riskTitle.riskCategory.isSpeculativeRisk,
-    }
-
     const riskConst = {
       id: riskTitle.id,
       title: riskTitle.title,
@@ -138,6 +129,8 @@ export class TreatmentPlanService {
       title: plan.title,
       id: plan.id,
     };
+
+
     this.dbService.treatmentRef.doc(plan.title).set(planConst);
     //this.triggerToUpdate.next(true);
     console.log(this.treatmentPlans);

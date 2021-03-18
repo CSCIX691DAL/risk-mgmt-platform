@@ -48,11 +48,13 @@
             <div >
                 <!-- Treatment Plan List -->
                 <h2>
-                    Treatment Plan: {{treatmentPlanService.currentlySelectedPlan.title}}<br/>
-                    Risk Profile: {{treatmentPlanService.currentlySelectedPlan.riskProfile.title}}
+                    Treatment Plan: {{treatmentPlanService.currentlySelectedPlan.title}}
                 </h2>
+                ID: {{treatmentPlanService.currentlySelectedPlan.id}}<br/>
                 <!-- Treatment Plan Risk Profile Display -->
+
                 <div class="col-md-6">
+                    Risk Profile: {{treatmentPlanService.currentlySelectedPlan.riskProfile.title}}<br>
                     Id: {{treatmentPlanService.currentlySelectedPlan.riskProfile.id}} <br>
                     Description: {{treatmentPlanService.currentlySelectedPlan.riskProfile.description}}<br>
                     Impact: {{treatmentPlanService.currentlySelectedPlan.riskProfile.impact }}<br>
