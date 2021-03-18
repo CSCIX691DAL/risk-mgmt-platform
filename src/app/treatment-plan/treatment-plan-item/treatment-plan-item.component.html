@@ -4,4 +4,9 @@
         {{treatmentPlanItem.title}}<br/>
         {{treatmentPlanItem.tasks}} <-- Should be an *ngFor on this array probably<br/>
     </div>
+    <app-edit-treatment-plan
+            addTextName="+ Edit Plan"
+            [treatmentPlanItem]="treatmentPlanItem"
+            class="float-left">
+    </app-edit-treatment-plan>
 </div>
