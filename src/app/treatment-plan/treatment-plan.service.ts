@@ -47,9 +47,9 @@ export class TreatmentPlanService {
         // newPlan.riskProfiles.forEach((risk) => {
         //   riskArr.push(new RiskProfileModel(0, risk, '', null, null, null, null, null));
         // });
-        riskArr.push(new RiskProfileModel(0, '', '', null, null, null, null, null));
+        riskArr.push(this.riskProfiles);
 
-        this.treatmentPlans.push(new TreatmentPlanModel(riskArr, tasks, newPlan.title, newPlan.id  ));
+        this.treatmentPlans.push(new TreatmentPlanModel(riskArr[0], tasks, newPlan.title, newPlan.id  ));
       });
       this.triggerToUpdate.next(true);
     });
@@ -88,10 +88,11 @@ export class TreatmentPlanService {
 // Add plan function
   addPlan(plan: TreatmentPlanModel): void {
 
-    const riskTitles = [];
+    this.treatmentPlans.push(plan);
+
+    const riskTitle = plan.riskProfile;
     const tasksArr = [];
 
-    riskTitles.push(plan.riskProfile);
     console.log(plan.riskProfile);
     // use below code to retrieve tasks
     // plan.riskProfile.forEach((risk) => {
@@ -102,15 +103,12 @@ export class TreatmentPlanService {
     // Array is empty, set new ID to 1
     if (this.treatmentPlans.length === 0) {
       // Creates new IssueModel object
-      const newPlan = new TreatmentPlanModel(plan.riskProfile, plan.tasks, plan.title, 0);
       // Pushes new IssueModel object to issues array
-      this.treatmentPlans.push(newPlan);
       // Update screen
-
-      this.dbService.treatmentRef.doc(newPlan.title).set({
-        title: newPlan.title,
-        tasks: plan.tasks,
-        riskProfiles: riskTitles,
+      this.dbService.treatmentRef.doc(plan.title).set({
+        riskProfiles: riskTitle,
+        tasks: tasksArr,
+        title: plan.title,
         id: 0,
       });
     }
@@ -119,19 +117,16 @@ export class TreatmentPlanService {
       // Generates number equal to the length of our issues array + 1
       const max = Math.max.apply(Math, this.treatmentPlans.map( (x) => +x.id)) + 1;
       // Creates new TreatmentPlanModel object
-      const newPlan = new TreatmentPlanModel(plan.riskProfile, plan.tasks, plan.title, max);
       // Pushes new TreatmentPlanModel object to issues array
-      this.treatmentPlans.push(newPlan);
       // Update screen
-
-      this.dbService.treatmentRef.doc(newPlan.title).set({
-        title: newPlan.title,
+      this.dbService.treatmentRef.doc(plan.title).set({
+        riskProfiles: riskTitle,
         tasks: tasksArr,
-        riskProfiles: riskTitles,
-        id: newPlan.id,
+        title: plan.title,
+        id: max,
       });
     }
-    this.triggerToUpdate.next(true);
+    //this.triggerToUpdate.next(true);
     console.log(this.treatmentPlans);
 
     this.notificationService.success('Plan "' + plan.title + '" has been added.', 'Treatment Plan Successfully Created');

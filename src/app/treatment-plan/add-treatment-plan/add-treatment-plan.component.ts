@@ -51,7 +51,7 @@ export class AddTreatmentPlanComponent implements OnInit {
   }
 
   newPlanForm = new FormGroup({
-    title: new FormControl(''),
+    planTitle: new FormControl(''),
     riskProfile: new FormControl(''),
     tasks: new FormControl(''),
   });
@@ -79,7 +79,7 @@ export class AddTreatmentPlanComponent implements OnInit {
   }
   
   onAdd(): void {
-    const newPlan = new TreatmentPlanModel(this.newPlanForm.value.riskProfile, this.newPlanForm.value.tasks, this.newPlanForm.value.addTitle, this.newPlanForm.value.id);
+    const newPlan = new TreatmentPlanModel(this.newPlanForm.value.riskProfile, this.newPlanForm.value.tasks, this.newPlanForm.value.planTitle, 0);
 
     console.log(this.newPlanForm.value.riskProfiles);
 
