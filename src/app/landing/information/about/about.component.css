@@ -1,0 +1,16 @@
+.aboutCon {
+    min-height: calc(100vh - 60px);
+    max-height: calc(100vh - 60px);
+    background-color: #FFFFFF;
+}
+.aboutCon h1 {
+    font-weight: 700;
+}
+.aboutCon p {
+    font-size: 20px;
+}
+.aboutCon svg {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
