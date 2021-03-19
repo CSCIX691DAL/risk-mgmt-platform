@@ -7,6 +7,7 @@ import {RiskProfileService} from './risk-profile/risk-profile.service';
 import {Router} from '@angular/router';
 import {UsersService} from './users.service';
 import {UserAuthService} from './user-auth.service';
+import {PolicyService} from './policy/policy.service';
 import {OrganizationModel} from './organization.model';
 import {TaskModel} from './task-list/task.model';
 import {RiskProfileModel} from './risk-profile/risk-profile.model';
@@ -14,13 +15,16 @@ import {CategoryModel} from './risk-categories/category.model';
 import {IssueModel} from './issue-list/issue.model';
 import {Observable, Subject} from 'rxjs';
 import {UsersModel} from './users.model';
+import {TreatmentPlanService} from './treatment-plan/treatment-plan.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrganizationService {
 
-  constructor(public dbService: DbService, public taskService: TaskService, public issueService: IssueService, public categoryService: CategoryService, public profileService: RiskProfileService, public userService: UsersService, public router: Router) {
+  constructor(public dbService: DbService, public taskService: TaskService, public policyService: PolicyService,
+              public issueService: IssueService, public categoryService: CategoryService,
+              public profileService: RiskProfileService, public userService: UsersService, public treatmentService: TreatmentPlanService, public router: Router) {
     this.getAllOrgs();
   }
 
@@ -41,6 +45,10 @@ export class OrganizationService {
     this.dbService.issueRef = this.dbService.organizationRef.doc(this.currentOrganization).collection(`issues`);
     this.dbService.riskProfileRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('riskProfiles');
     this.dbService.categoryRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('categories');
+
+    this.dbService.policyRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('policies');
+    this.dbService.treatmentRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('treatmentPlans');
+
     this.userService.userCurrentOrg = this.currentOrganization;
     this.userService.updateUserArray();
     this.taskService.updateTaskArray();
@@ -48,15 +56,18 @@ export class OrganizationService {
     this.categoryService.updateCategoryArray();
     this.profileService.updateRiskProfileArray();
 
+    this.policyService.updatePolicyArray();
+    this.treatmentService.updatePlanArray();
+
     this.getOrgModelByID(this.currentOrganization).then((org) => {
       this.currentlySelectedOrg = org;
     });
   }
 
   async getUserArrayByOrg(orgName: string): Promise<UsersModel[]> {
-    let orgUsers = [];
+    const orgUsers = [];
 
-    await this.dbService.userRef.where("organizations", 'array-contains-any', [orgName]).get().then((querySnapshot) => {
+    await this.dbService.userRef.where('organizations', 'array-contains-any', [orgName]).get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const newUser = doc.data();
 
@@ -68,7 +79,7 @@ export class OrganizationService {
   }
 
   async getAllUserArray(): Promise<UsersModel[]> {
-    let orgUsers = [];
+    const orgUsers = [];
 
     await this.dbService.userRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -380,12 +391,19 @@ export class OrganizationService {
       this.dbService.issueRef = this.dbService.organizationRef.doc(this.currentOrganization).collection(`issues`);
       this.dbService.riskProfileRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('riskProfiles');
       this.dbService.categoryRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('categories');
+
+      this.dbService.policyRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('policies');
+
+      this.dbService.treatmentRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('treatmentPlans');
+
       this.userService.userCurrentOrg = this.currentOrganization;
       this.userService.updateUserArray();
       this.taskService.updateTaskArray();
       this.issueService.updateIssueArray();
       this.categoryService.updateCategoryArray();
       this.profileService.updateRiskProfileArray();
+      this.policyService.updatePolicyArray();
+      this.treatmentService.updatePlanArray();
 
 
       this.getOrgModelByID(this.currentOrganization).then((org) => {
@@ -393,6 +411,7 @@ export class OrganizationService {
       });
 
       this.triggerToUpdate.next(true);
+
 
       this.router.navigate(['dashboard']);
     });

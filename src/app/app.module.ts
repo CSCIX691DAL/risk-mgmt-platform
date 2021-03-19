@@ -58,10 +58,10 @@ import { RegisterComponent } from './register/register.component';
 import { LandingComponent } from './landing/landing.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { DbService } from './db.service';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {DbService} from './db.service';
 import { TreatmentPlanComponent } from './treatment-plan/treatment-plan.component';
 import { AdminNavComponent } from './admin-dash/admin-nav/admin-nav.component';
 import { UserListComponent } from './admin-dash/user-list/user-list.component';
@@ -73,6 +73,11 @@ import { UserProfileWidgetComponent } from './admin-dash/admin-home/user-profile
 import { AssignedTasksComponent } from './admin-dash/admin-home/assigned-tasks/assigned-tasks.component';
 import {UserAuthService} from './user-auth.service';
 import {AngularFireAuthGuard, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
+import { PolicyComponent } from './policy/policy.component';
+import { PolicyItemComponent } from './policy/policy-item/policy-item.component';
+import { EditPolicyComponent } from './policy/edit-policy/edit-policy.component';
+import { DeletePolicyComponent } from './policy/delete-policy/delete-policy.component';
+import { AddPolicyComponent } from './policy/add-policy/add-policy.component';
 import { NewTasklistComponent } from './new-tasklist/new-tasklist.component';
 import { NewTaskItemComponent } from './newTasklist/new-task-item/new-task-item.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -107,10 +112,11 @@ import { HelpComponent } from './landing/information/help/help.component';
 import { TeamComponent } from './landing/information/team/team.component';
 import { TeamF20Component } from './landing/information/team/team-f20/team-f20.component';
 import { TeamW21Component } from './landing/information/team/team-w21/team-w21.component';
+import {CommonModule} from '@angular/common';
+import {DeletePlanComponent} from './treatment-plan/delete-plan/delete-plan.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
-
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
   {path: 'about' , component : AboutComponent},
@@ -126,9 +132,12 @@ const myroutes: Routes = [
   {path: 'edit-task', component: EditTaskComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'tasks', component: NewTasklistComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'surveys', component: IssueSurvey, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'policy', component: PolicyComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'admin-dashboard', component: AdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin-dashboard', component: AdminDashComponent},
   {path: 'treatment-plan', component: TreatmentPlanComponent},
   {path: 'admin-dashboard', component: AdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'admin-dashboard-users', component: UserListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
@@ -204,8 +213,14 @@ const myroutes: Routes = [
     AdminHomeComponent,
     UserProfileWidgetComponent,
     AssignedTasksComponent,
+    PolicyComponent,
+    PolicyItemComponent,
+    EditPolicyComponent,
+    DeletePolicyComponent,
+    AddPolicyComponent,
     NewTasklistComponent,
     NewTaskItemComponent,
+    TreatmentPlanComponent,
     AddTreatmentPlanComponent,
     TreatmentPlanItemComponent,
     SortTasksComponent,
@@ -236,9 +251,11 @@ const myroutes: Routes = [
     TeamComponent,
     TeamF20Component,
     TeamW21Component,
+    DeletePlanComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule.forRoot(myroutes),
