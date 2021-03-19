@@ -107,6 +107,11 @@ import { OrgAdminUserListComponent } from './org-admin-dash/org-admin-user-list/
 import { OrgAdminOrgViewComponent } from './org-admin-dash/org-admin-org-view/org-admin-org-view.component';
 import { OrgAdminApprovalItemComponent } from './org-admin-dash/org-admin-approval/org-admin-approval-item/org-admin-approval-item.component';
 import { OrgAdminUserListItemComponent } from './org-admin-dash/org-admin-user-list/org-admin-user-list-item/org-admin-user-list-item.component';
+import { AboutComponent } from './landing/information/about/about.component';
+import { HelpComponent } from './landing/information/help/help.component';
+import { TeamComponent } from './landing/information/team/team.component';
+import { TeamF20Component } from './landing/information/team/team-f20/team-f20.component';
+import { TeamW21Component } from './landing/information/team/team-w21/team-w21.component';
 import {CommonModule} from '@angular/common';
 import {DeletePlanComponent} from './treatment-plan/delete-plan/delete-plan.component';
 
@@ -114,6 +119,11 @@ import {DeletePlanComponent} from './treatment-plan/delete-plan/delete-plan.comp
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
+  {path: 'about' , component : AboutComponent},
+  {path: 'team' , component : TeamW21Component},
+  {path: 'team-fall-2020' , component : TeamF20Component},
+  {path: 'team-winter-2021' , component : TeamW21Component},
+  {path: 'help' , component : HelpComponent},
   {path: 'dashboard' , component : DashboardComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'categories' , component : RiskCategoriesComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'issues' , component : IssueListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
@@ -236,7 +246,12 @@ const myroutes: Routes = [
     OrgAdminOrgViewComponent,
     OrgAdminApprovalItemComponent,
     OrgAdminUserListItemComponent,
-      DeletePlanComponent,
+    AboutComponent,
+    HelpComponent,
+    TeamComponent,
+    TeamF20Component,
+    TeamW21Component,
+    DeletePlanComponent,
   ],
   imports: [
     BrowserModule,
