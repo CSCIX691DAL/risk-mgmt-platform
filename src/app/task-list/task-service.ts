@@ -71,6 +71,7 @@ export class TaskService {
     this.taskItemArray = [];
 
     this.dbService.taskRef.get().then((querySnapshot) => {
+      this.taskItemArray = [];
       querySnapshot.forEach((doc) => {
         const newTask = doc.data();
 
