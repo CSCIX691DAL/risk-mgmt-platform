@@ -59,7 +59,11 @@ export class DeletePlanComponent implements OnInit {
   OnDelete(): void {
     console.log(this.plan);
 
-    this.dbService.issueRef.doc(this.plan.title).delete();
+    console.log(this.plan);
+    console.log("TITLE - - -- -")
+    console.log(this.plan.title);
+
+    this.dbService.treatmentRef.doc(this.plan.title).delete();
 
     this.treatmentPlanService.deletePlan(this.plan);
 

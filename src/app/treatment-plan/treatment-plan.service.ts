@@ -80,9 +80,9 @@ export class TreatmentPlanService {
   deletePlan(plan: TreatmentPlanModel): void {
     this.notificationService.success('Plan "' + plan.title + '" has been deleted.', 'Plan Successfully Deleted');
 
-    this.treatmentPlans = this.treatmentPlans.filter(x => x.id !== plan.id);
+    this.treatmentPlans = this.treatmentPlans.filter(x => x.title !== plan.title);
 
-    this.dbService.issueRef.doc(plan.title).delete();
+    this.dbService.treatmentRef.doc(plan.title).delete();
 
     // console.log(this.issues);
     // this.triggerToUpdate.next(true);
