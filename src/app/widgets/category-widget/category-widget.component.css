@@ -17,6 +17,25 @@
   border-bottom-right-radius: 8px;
   background-color: #015EEC;
 }
+.widgetFooter a {
+  color: #FFFFFF;
+}
+/* unvisited link */
+.widgetFooter a:link {
+  color: #FFFFFF;
+}
+/* visited link */
+.widgetFooter a:visited {
+  color: #FFFFFF;
+}
+/* mouse over link */
+.widgetFooter a:hover {
+  color: #FFFFFF;
+}
+/* selected link */
+.widgetFooter a:active {
+  color: #FFFFFF;
+}
 .categoryWidgetDescriptionText {
   font-size: 15px;
   padding: 0px;

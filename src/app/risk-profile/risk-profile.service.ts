@@ -6,6 +6,7 @@ import {CategoryService} from '../risk-categories/category.service';
 import {DbService} from '../db.service';
 import {IssueModel} from '../issue-list/issue.model';
 import {RiskProfileMapComponent} from './risk-report-map/risk-profile-map.component';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({providedIn: 'root'})
 export class RiskProfileService {
@@ -22,7 +23,7 @@ export class RiskProfileService {
     new RiskProfileModel(5, 'Risk Profile 5', 'This is risk profile 5', 5, 5, this.categoryService.categories[4], this.categoryService.categories[4], 'Source Of Risk #5')
   ];
 
-  constructor(public categoryService: CategoryService, public dbService: DbService) {
+  constructor(public categoryService: CategoryService, public dbService: DbService, public notificationService: ToastrService) {
   }
 
   getRiskProfiles(): RiskProfileModel[]{
@@ -31,6 +32,9 @@ export class RiskProfileService {
 
   // Delete Risk Profile function
   deleteRiskProfile(riskProfile: RiskProfileModel): void {
+
+    this.notificationService.success('Risk Profile "' + riskProfile.title + '" has been deleted.', 'Risk Profile Successfully Deleted');
+
     // console.log(issue.id);
     this.riskProfiles = this.riskProfiles.filter(x => x.id !== riskProfile.id);
 
@@ -50,7 +54,7 @@ export class RiskProfileService {
       querySnapshot.forEach((doc) => {
         const newRiskProfile = doc.data();
 
-        this.riskProfiles.push(new RiskProfileModel(newRiskProfile.id, newRiskProfile.title, newRiskProfile.description, newRiskProfile.likelihood, newRiskProfile.impact, this.categoryService.categories[newRiskProfile.category], this.categoryService.categories[newRiskProfile.riskCategory], newRiskProfile.sourceOfRisk));
+        this.riskProfiles.push(new RiskProfileModel(newRiskProfile.id, newRiskProfile.title, newRiskProfile.description, parseInt(newRiskProfile.likelihood, 10), parseInt(newRiskProfile.impact, 10), this.categoryService.categories[newRiskProfile.category], this.categoryService.categories[newRiskProfile.riskCategory], newRiskProfile.sourceOfRisk));
       });
       this.triggerToUpdate.next(true);
     });
@@ -113,6 +117,8 @@ export class RiskProfileService {
       this.triggerToUpdate.next(true);
     }
 
+    this.notificationService.success('Risk Profile "' + riskProfile.title + '" has been added.', 'Risk Profile Successfully Created');
+
   }
 
   // Edit Risk Profile function
@@ -127,6 +133,9 @@ export class RiskProfileService {
     const isInIssueList = ((obj) => Number(obj.id) === Number(riskProfile.id));
     const oldIssueIndex = this.riskProfiles.findIndex(isInIssueList);
     this.riskProfiles[oldIssueIndex] = riskProfile;
+
+    this.notificationService.success('Risk Profile "' + riskProfile.title + '" has been updated.', 'Risk Profile Successfully Edited');
+
     // Update screen
     this.triggerToUpdate.next(true);
   }
