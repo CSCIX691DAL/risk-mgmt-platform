@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PolicyModel} from './policy.model';
+import {PolicyService} from './policy.service';
 
 @Component({
   selector: 'app-policy',
@@ -8,13 +9,11 @@ import {PolicyModel} from './policy.model';
 })
 export class PolicyComponent implements OnInit {
 
-  constructor() { }
+  constructor(public policyService: PolicyService) { }
 
-  policyarray: PolicyModel[];
+  policyArray: PolicyModel[];
 
   ngOnInit(): void {
-    this.policyarray = [];
-    this.policyarray.push(new PolicyModel(2, 'policytest', 'This is a test', []));
   }
 
 

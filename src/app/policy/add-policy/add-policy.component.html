@@ -1,0 +1,52 @@
+<ng-template #addPolicyContent let-modal>
+
+    <form [formGroup]="newPolicyForm" (ngSubmit)="OnAdd()">
+
+        <div class="modal-header justify-content-center">
+            <h2 class="mt-1">Add Policy</h2>
+        </div>
+
+        <div class="modal-body row pl-4 pr-4">
+
+            <!-- Title -->
+            <label for="policyTitle" class="labelAndInput">Title</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="policyTitle" name="policyTitle" formControlName="policyTitle">
+            </div>
+
+            <!-- Description -->
+            <label for="policyDescription" class="labelAndInput">Description</label>
+            <div class="input-group mb-3">
+                <textarea class="form-control" id="policyDescription" name="policyDescription" formControlName="policyDescription"></textarea>
+            </div>
+
+            <!-- Risk Category -->
+            <label for="addRiskCategory" class="labelAndInput">Risk Profiles</label>
+            <div class="input-group mb-3">
+                <select
+                        class="form-control"
+                        id="addRiskCategory"
+                        name="addRiskCategory"
+                        formControlName="riskProfiles"
+                        multiple
+                >
+                    <option *ngFor="let risk of riskService.riskProfiles" [value]=risk.title>
+                        {{ risk.title }}
+                    </option>
+
+                </select>
+            </div>
+
+        </div>
+
+        <!-- Buttons: Cancel & Save -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
+            <button type="submit" class="btn btn-outline-primary">Add Policy</button>
+        </div>
+
+    </form>
+
+</ng-template>
+
+<button type="button" class="btn btn-outline-success mr-3 issuesNavigationBarButton" (click)="open(addPolicyContent)">+ Policy</button>

@@ -1,6 +1,14 @@
 <div class="row px-2 border-bottom">
     <div class="col-md-12 py-3">
-        Title of Risk Profile<br />
-        Title of Treatment Plan
+        <a [routerLink]="null" (click)="treatmentPlanService.currentlySelectedPlan = treatmentPlanItem">{{treatmentPlanItem.title}}</a><br/>
+
     </div>
+    <!-- Delete Column - may be not loading at all (commented out in app-delete-issue) -->
+<!--    <div class="col-md-2">-->
+<!--        <app-delete-plan-->
+<!--        [deletePlan]="treatmentPlanItem"-->
+<!--        >-->
+<!--        </app-delete-plan>-->
+<!--    </div>-->
+    <a class="float-right mr-4" (click)="onDeleteIssue()">Delete</a>
 </div>
