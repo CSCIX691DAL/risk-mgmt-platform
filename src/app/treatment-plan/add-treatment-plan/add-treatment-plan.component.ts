@@ -36,7 +36,7 @@ export class AddTreatmentPlanComponent implements OnInit {
   users: UsersModel = new UsersModel('1', 'bryson', 'sf', '11/08/1999', '07/01/2021', true);
   tasks: TaskModel = new TaskModel('Title', this.users, 'Active', new Date('December 12/2020'), new Date('Jan 15/2020'), false);
   riskProfile: RiskProfileModel;
-  treatmentPlans: TreatmentPlanModel = new TreatmentPlanModel(null, null, 'Title', 0);
+  treatmentPlans: TreatmentPlanModel = new TreatmentPlanModel(null, null, 'Title');
 
   constructor(public taskService: TaskService,
               public categoryService: CategoryService,
@@ -74,7 +74,7 @@ export class AddTreatmentPlanComponent implements OnInit {
   }
   
   onAdd(): void {
-    const newPlan = new TreatmentPlanModel(this.newPlanForm.value.riskProfile, this.newPlanForm.value.addTasks, this.newPlanForm.value.planTitle, 0);
+    const newPlan = new TreatmentPlanModel(this.newPlanForm.value.riskProfile, this.newPlanForm.value.addTasks, this.newPlanForm.value.planTitle);
 
     // console.log(this.newPlanForm.value.riskProfiles);
 

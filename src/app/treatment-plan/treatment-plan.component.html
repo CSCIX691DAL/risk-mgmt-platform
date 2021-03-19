@@ -50,15 +50,28 @@
                 <h2>
                     Treatment Plan: {{treatmentPlanService.currentlySelectedPlan.title}}
                 </h2>
-                ID: {{treatmentPlanService.currentlySelectedPlan.id}}<br/>
                 <!-- Treatment Plan Risk Profile Display -->
 
                 <div class="col-md-6">
-                    Risk Profile: {{treatmentPlanService.currentlySelectedPlan.riskProfile.title}}<br>
-                    Id: {{treatmentPlanService.currentlySelectedPlan.riskProfile.id}} <br>
-                    Description: {{treatmentPlanService.currentlySelectedPlan.riskProfile.description}}<br>
-                    Impact: {{treatmentPlanService.currentlySelectedPlan.riskProfile.impact }}<br>
-                    Likelihood: {{treatmentPlanService.currentlySelectedPlan.riskProfile.impact}}
+
+                        <h3>Risk Profile: {{treatmentPlanService.currentlySelectedPlan.riskProfile.title}}</h3><br>
+
+                        <li>
+                            Id: {{treatmentPlanService.currentlySelectedPlan.riskProfile.id}}
+                        </li>
+                        <li>
+                            Description: {{treatmentPlanService.currentlySelectedPlan.riskProfile.description}}
+                        </li>
+                        <li>
+                            Impact: {{treatmentPlanService.currentlySelectedPlan.riskProfile.impact }}
+                        </li>
+                        <li>
+                            Likelihood: {{treatmentPlanService.currentlySelectedPlan.riskProfile.likelihood}}
+                        </li>
+
+
+
+
                 </div>
                 <!-- Treatment Plan Task Display -->
                 <div class="col-md-6">

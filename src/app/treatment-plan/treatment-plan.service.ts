@@ -55,7 +55,7 @@ export class TreatmentPlanService {
           tasks.push(task);
         });
 
-        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, newPlan.tasks, newPlan.title, newPlan.id ));
+        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, newPlan.tasks, newPlan.title));
       });
       this.triggerToUpdate.next(true);
     });
@@ -105,18 +105,9 @@ export class TreatmentPlanService {
       console.log(task);
     });
 
-// Array is empty, set new ID to 1
-//     if (this.treatmentPlans.length === 0) {
-//       plan.setId(0);
-//     }
-//     // Array has one or more objects
-//     else {
-      // Generates number equal to the length of our issues array + 1
-    const max = Math.max.apply(Math, this.treatmentPlans.map( (x) => +x.id)) + 1;
-    plan.setId(max);
-    // }
 
     this.treatmentPlans.push(plan);
+
     const riskConst = {
       id: riskTitle.id,
       title: riskTitle.title,
@@ -131,7 +122,6 @@ export class TreatmentPlanService {
       riskProfile: riskConst,
       tasks: tasksArr,
       title: plan.title,
-      id: max,
     };
 
 
