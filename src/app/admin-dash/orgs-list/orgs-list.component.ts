@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {OrganizationService} from '../../organization.service';
 
 @Component({
   selector: 'app-orgs-list',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrgsListComponent implements OnInit {
 
-  constructor() { }
+  constructor(public orgService: OrganizationService) { }
 
   ngOnInit(): void {
   }

@@ -10,6 +10,8 @@ import {IssueModel} from '../issue-list/issue.model';
 import {CategoryService} from '../risk-categories/category.service';
 import {CategoryModel} from '../risk-categories/category.model';
 import {ToastrService} from 'ngx-toastr';
+import {PolicyModel} from '../policy/policy.model';
+import {UsersService} from '../users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,36 +21,72 @@ export class TreatmentPlanService {
   tasks: Array<TaskModel>;
   treatmentPlanService: TreatmentPlanService;
   riskProfiles: RiskProfileModel[];
-  treatmentPlans: TreatmentPlanModel[] = [];
+  treatmentPlans: TreatmentPlanModel[];
   categories: CategoryModel[];
 
-  constructor( public riskProfileService: RiskProfileService, taskService: TaskService,
-               categoryService: CategoryService, public dbService: DbService, public notificationService: ToastrService) {
+  currentlySelectedPlan: TreatmentPlanModel;
+
+  constructor( public riskProfileService: RiskProfileService, public taskService: TaskService,
+               public categoryService: CategoryService, public userService: UsersService, public dbService: DbService, public notificationService: ToastrService) {
     this.categories = categoryService.getCategories();
+
     this.riskProfiles = riskProfileService.getRiskProfiles();
     this.tasks = taskService.getTaskItemArray();
   }
   // Updates issue list
   triggerToUpdate = new Subject<boolean>();
-
-  updateTreatmentPlans(): void {
-    // update plans from db + into db
+  public updatePlanArray(): void {
     // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
     this.treatmentPlans = [];
+    this.riskProfileService.updateRiskProfileArray();
+    this.taskService.updateTaskArray();
 
     this.dbService.treatmentRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const newPlan = doc.data();
 
-        this.treatmentPlans.push(new TreatmentPlanModel(new RiskProfileModel(0, 'Placeholder', null, null, null, null, null, null),
-            [new TaskModel('Placeholder', null, null, null, null, null)], newPlan.title, newPlan.id));
+        const tasks = [];
+        const riskArr = [];
 
-        //this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, newPlan.tasks, newPlan.title, newPlan.id));
+        this.riskProfiles.forEach((risk) => {
+          riskArr.push(risk);
+        });
+        this.tasks.forEach((task) => {
+          tasks.push(task);
+        });
+
+        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, newPlan.tasks, newPlan.title));
       });
       this.triggerToUpdate.next(true);
     });
   }
 
+  // updateTreatmentPlans(): void {
+  //   // update plans from db + into db
+  //   // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
+  //   this.treatmentPlans = [];
+  //
+  //   this.dbService.treatmentRef.get().then((querySnapshot) => {
+  //     querySnapshot.forEach((doc) => {
+  //       const newPlan = doc.data();
+  //       this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, [],
+  //       newPlan.title, newPlan.id));
+  //     });
+  //     this.triggerToUpdate.next(true);
+  //   });
+  // }
+
+  // Delete issue function
+  deletePlan(plan: TreatmentPlanModel): void {
+    this.notificationService.success('Plan "' + plan.title + '" has been deleted.', 'Plan Successfully Deleted');
+
+    this.treatmentPlans = this.treatmentPlans.filter(x => x.title !== plan.title);
+
+    this.dbService.treatmentRef.doc(plan.title).delete();
+
+    // console.log(this.issues);
+    // this.triggerToUpdate.next(true);
+  }
   getTreatmentPlans(): TreatmentPlanModel[]{
     return this.treatmentPlans.slice();
   }
@@ -60,30 +98,42 @@ export class TreatmentPlanService {
 // Add plan function
   addPlan(plan: TreatmentPlanModel): void {
 
-    // Array is empty, set new ID to 1
-    if (this.treatmentPlans.length === 0) {
-      // Creates new IssueModel object
-      const newPlan = new TreatmentPlanModel(this.riskProfiles[0], [], plan.title, 0);
-      // Pushes new IssueModel object to issues array
-      this.treatmentPlans.push(newPlan);
-      // Update screen
-      this.triggerToUpdate.next(true);
-    }
-    // Array has one or more objects
-    else {
-      // Generates number equal to the length of our issues array + 1
-      const max = Math.max.apply(Math, this.treatmentPlans.map( (x) => +x.id)) + 1;
-      // Creates new IssueModel object
-      const newPlan = new TreatmentPlanModel(this.riskProfiles[0], [], plan.title, max);
-      // Pushes new IssueModel object to issues array
-      this.treatmentPlans.push(newPlan);
-      // Update screen
-      this.triggerToUpdate.next(true);
-    }
+    const riskTitle = plan.riskProfile;
+    // const riskTitle = [plan.riskProfile];
+    const tasksArr = [];
 
-    console.log(this.treatmentPlans)
+    console.log(plan.tasks);
+    // use below code to retrieve tasks
+    plan.tasks.forEach((task) => {
+      tasksArr.push(task);
+      console.log(task);
+    });
 
-    this.notificationService.success('Issue "' + plan.title + '" has been added.', 'Treatment Plan Successfully Created');
+
+    this.treatmentPlans.push(plan);
+
+    const riskConst = {
+      id: riskTitle.id,
+      title: riskTitle.title,
+      description: riskTitle.description,
+      likelihood: riskTitle.likelihood,
+      impact: riskTitle.impact,
+      category: riskTitle.riskCategory.name,
+      riskCategory: riskTitle.riskCategory.name,
+      sourceOfRisk: riskTitle.sourceOfRisk,
+    };
+    const planConst = {
+      riskProfile: riskConst,
+      tasks: tasksArr,
+      title: plan.title,
+    };
+
+
+    this.dbService.treatmentRef.doc(plan.title).set(planConst);
+    //this.triggerToUpdate.next(true);
+    console.log(this.treatmentPlans);
+
+    this.notificationService.success('Plan "' + plan.title + '" has been added.', 'Treatment Plan Successfully Created');
 
   }
 

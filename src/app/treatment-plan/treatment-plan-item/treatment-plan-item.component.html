@@ -1,12 +1,19 @@
 <div class="row px-2 border-bottom">
     <div class="col-md-12 py-3">
-        {{treatmentPlanItem.riskProfile.title}}<br />
-        {{treatmentPlanItem.title}}<br/>
-        {{treatmentPlanItem.tasks}} <-- Should be an *ngFor on this array probably<br/>
+        <a [routerLink]="null" (click)="treatmentPlanService.currentlySelectedPlan = treatmentPlanItem">{{treatmentPlanItem.title}}</a><br/>
+
     </div>
     <app-edit-treatment-plan
             addTextName="+ Edit Plan"
             [treatmentPlanItem]="treatmentPlanItem"
             class="float-left">
     </app-edit-treatment-plan>
+    <!-- Delete Column - may be not loading at all (commented out in app-delete-issue) -->
+<!--    <div class="col-md-2">-->
+<!--        <app-delete-plan-->
+<!--        [deletePlan]="treatmentPlanItem"-->
+<!--        >-->
+<!--        </app-delete-plan>-->
+<!--    </div>-->
+    <a class="float-right mr-4" (click)="onDeleteIssue()">Delete</a>
 </div>

@@ -1,12 +1,25 @@
+<div class="mt-5">
 
-<div class="mt-md-5" style="position: relative;">
   <!--
   <h2 class="bg-info text-white p-2">Tasks Summary </h2>
-  --><div class="text-center" id="totalTasks">
-  <p>Total Tasks:</p>
-  <p style="font-weight: bold">{{taskService.getTaskItemArray().length}}</p>
-</div>
-  <canvas baseChart id="doughnutChart" #doughnutChart [title]="exampleTitle" [data]="exampleData" [labels]="exampleLabels" [chartType]="exampleChartType" [legend]="true" (chartClick)="getClicked($event)">
+  -->
+
+  <!--  -->
+  <div class="text-center" id="totalTasks">
+    <p>Total Tasks:</p>
+    <p style="font-weight: bold">{{taskService.getTaskItemArray().length}}</p>
+  </div>
+
+  <!-- Chart -->
+  <canvas baseChart
+          id="doughnutChart"
+          #doughnutChart [title]="exampleTitle"
+          [data]="exampleData"
+          [labels]="exampleLabels"
+          [chartType]="exampleChartType"
+          [legend]="true"
+          (chartClick)="getClicked($event)"
+  >
   </canvas>
 
 </div>

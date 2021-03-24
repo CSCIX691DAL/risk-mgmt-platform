@@ -6,14 +6,13 @@ export class TreatmentPlanModel {
     riskProfile: RiskProfileModel;
     tasks: Array<TaskModel>;
     public title: string;
-    public id: number;
 
-    constructor(riskProfile: RiskProfileModel, tasks: Array<TaskModel>, title: string, id: number) {
+    constructor(riskProfile: RiskProfileModel, tasks: Array<TaskModel>, title: string) {
         this.riskProfile = riskProfile;
         this.tasks = tasks;
         this.title = title;
-        this.id = id;
     }
+
     addTaskDetail(td: string): void{
         // this.tasks.push(td);
     }

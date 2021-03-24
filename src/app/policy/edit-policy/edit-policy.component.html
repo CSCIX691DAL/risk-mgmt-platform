@@ -1,0 +1,135 @@
+<!--
+<ng-template #editContent let-modal>
+
+    <form (ngSubmit)="OnEdit()">
+
+        &lt;!&ndash; Modal Header &ndash;&gt;
+        <div class="modal-header justify-content-center">
+            <h2 class="mt-1">Edit Issue</h2>
+        </div>
+
+        &lt;!&ndash; Modal Body &ndash;&gt;
+        <div class="modal-body row pl-4 pr-4">
+
+            &lt;!&ndash; Title &ndash;&gt;
+            <label for="editTitle" class="labelAndInput">Title</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="editTitle" name="editTitle" value="{{ editModalTitle }}" ngModel [(ngModel)]="issue.title">
+            </div>
+
+            &lt;!&ndash; Risk Category &ndash;&gt;
+            <label for="editRiskCategory" class="labelAndInput">Risk Category</label>
+            <div class="input-group mb-3">
+                <select
+                        class="form-control"
+                        id="editRiskCategory"
+                        name="editRiskCategory"
+                        ngModel [(ngModel)]="issue.riskCategory"
+                >
+                    <option selected value="">Category</option>
+
+                    <option *ngFor="let item of categoryService.categories" [value]=item.name>
+                        {{ item.name }}
+                    </option>
+
+                </select>
+            </div>
+
+            &lt;!&ndash; Parent Issue &ndash;&gt;
+            <label for="addParentIssue" class="labelAndInput">Parent Issue</label>
+            <div class="input-group mb-3">
+                <select
+                        class="form-control"
+                        id="addParentIssue"
+                        name="addParentIssue"
+                        ngModel [(ngModel)]="issue.parentIssue"
+                >
+                    <option selected value="0">None</option>
+
+                    <option *ngFor="let item of issueService.issues" [value]=item.id>
+                        {{ item.title }}
+                    </option>
+
+                </select>
+            </div>
+
+            &lt;!&ndash; Add Assignee &ndash;&gt;
+            <label for="editAssignee" class="labelAndInput">Assignee</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="editAssignee" name="editAssignee" ngModel [(ngModel)]="issue.assignee">
+            </div>
+
+            &lt;!&ndash; Description &ndash;&gt;
+            <label for="editDescription" class="labelAndInput">Description</label>
+            <div class="input-group mb-1">
+                <textarea class="form-control" id="editDescription" name="editDescription" ngModel [(ngModel)]="issue.description">{{ editModalDescription }}</textarea>
+            </div>
+
+        </div>
+
+        &lt;!&ndash; Modal Footer &ndash;&gt;
+        <div class="modal-footer">
+            &lt;!&ndash; Buttons: Cancel & Save &ndash;&gt;
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
+            <button type="submit" class="btn btn-outline-primary">Save Changes</button>
+        </div>
+
+    </form>
+
+</ng-template>
+
+<a class="float-right" (click)="open(editContent)">{{ editTextName }}</a>
+-->
+
+<ng-template #editPolicyComponent let-modal>
+
+    <form [formGroup]="newPolicyForm" (ngSubmit)="editPolicy()">
+
+        <div class="modal-header justify-content-center">
+            <h2 class="mt-1">Edit an Existing Policy</h2>
+        </div>
+
+        <div class="modal-body row pl-4 pr-4">
+
+            <!-- Title -->
+            <label class="labelAndInput">Title</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" formControlName="policyTitle">
+            </div>
+
+            <!-- Description -->
+            <label class="labelAndInput">Description</label>
+            <div class="input-group mb-3">
+                <textarea class="form-control" formControlName="policyDescription"></textarea>
+            </div>
+
+            <label for="addRiskCategory" class="labelAndInput">Risk Profiles</label>
+            <div class="input-group mb-3">
+                <select
+                        class="form-control"
+                        id="addRiskCategory"
+                        name="addRiskCategory"
+                        formControlName="riskProfiles"
+                        multiple
+                >
+                    <option *ngFor="let risk of riskService.riskProfiles" [value]=risk.title>
+                        {{ risk.title }}
+                    </option>
+
+                </select>
+            </div>
+
+
+        </div>
+
+        <!-- Buttons: Cancel & Save -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
+            <button type="submit" class="btn btn-outline-primary">Update</button>
+        </div>
+
+    </form>
+
+</ng-template>
+
+<a class="float-right" (click)="open(editPolicyComponent)">Edit</a>

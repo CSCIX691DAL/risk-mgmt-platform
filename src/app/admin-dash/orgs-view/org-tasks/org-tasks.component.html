@@ -1,0 +1,54 @@
+<div class="container-fluid w-100 mw-100 p-0 m-0">
+    <div class="row p-0 m-0">
+        <div class="col-md-12 p-0 m-0">
+
+            <!-- Task Headings -->
+            <div class="row px-0 m-0">
+                <div class="col-md-12">
+                    <div class="row border-bottom mt-4 p-0">
+
+                        <!-- Task ID -->
+<!--                        <div class="col-1">
+                            <h6 class="text-center">ID</h6>
+                        </div>-->
+
+                        <!-- Task Name -->
+                        <div class="col-4">
+                            <h6 class="pl-1">Task Name</h6>
+                        </div>
+
+                        <!-- Task Creator -->
+                        <div class="col-2">
+                            <h6 class="text-center">Assignee</h6>
+                        </div>
+
+                        <!-- Task Assignee -->
+                        <div class="col-2">
+                            <h6 class="text-center">Status</h6>
+                        </div>
+
+                        <!-- Date Task was Created -->
+                        <div class="col-4">
+                            <h6 class="text-center">Deadline</h6>
+                        </div>
+
+                        <!-- Associated Issue of Task -->
+<!--                        <div class="col-2">
+                            <h6 class="text-center">Risk Issue</h6>
+                        </div>-->
+
+                    </div>
+
+                    <!-- Organization Task Items -->
+                    <div class="row mb-3">
+                        <div class="col-md-12 p-0 m-0">
+                            <app-org-tasks-item *ngFor="let task of this.taskList" [task]="task"></app-org-tasks-item>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

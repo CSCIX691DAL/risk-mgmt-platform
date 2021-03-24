@@ -21,12 +21,18 @@ export class DbService {
   public categoryRef: CollectionReference;
   public organizationRef: CollectionReference;
   public userRef: CollectionReference;
+  public policyRef: CollectionReference;
   public treatmentRef: CollectionReference;
 
   constructor(firestore: AngularFirestore, public router: Router) {
     /* Thanks to Quince for the following solution to get a value from firestore documents
      * https://stackoverflow.com/questions/47549001/how-to-use-get-method-to-retrieve-all-collection-in-angularfire2 */
     this.organizationRef = firestore.firestore.collection('organizations');
+
+
+    firestore.collection('organizations').get().subscribe((doc) => {
+      console.log(doc);
+    });
 
     this.userRef = firestore.firestore.collection('users');
   }

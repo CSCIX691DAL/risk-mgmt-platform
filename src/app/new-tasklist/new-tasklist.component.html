@@ -14,6 +14,9 @@
                 <div class="col-md-6">
                     <div class="row justify-content-end">
 
+                        <!-- Sort Tasks Dropdown Toggle -->
+                        <button class="btn btn-outline-primary tasksSortButton mr-3" type="button" data-toggle="collapse" data-target="#tasksSortDropdown" aria-expanded="false" aria-controls="tasksSortDropdown">Sort Tasks</button>
+
                         <!-- Add new Task -->
                         <div>
                             <app-create-new-task class="float-right"></app-create-new-task>
@@ -31,7 +34,19 @@
         </div>
     </div>
 
+
+    <!-- Sort Container -->
+    <app-sort-tasks></app-sort-tasks>
+
+
     <!-- Print out all Task items -->
-    <app-new-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem" [frontPageDisplay]="false"></app-new-task-item>
+    <div class="row px-2 m-0 tasksContentCon justify-content-start">
+        <div class="col-md-4 tasksItemContainer" *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText">
+            <app-new-task-item [taskItem]="taskItem" [frontPageDisplay]="false"></app-new-task-item>
+        </div>
+    </div>
+
+    <!-- Print out all Task items -->
+<!--    <app-new-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem" [frontPageDisplay]="false"></app-new-task-item>-->
 
 </div>

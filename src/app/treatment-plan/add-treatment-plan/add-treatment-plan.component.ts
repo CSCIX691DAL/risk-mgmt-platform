@@ -13,6 +13,10 @@ import {TaskService} from '../../task-list/task-service';
 import {TreatmentPlanService} from '../treatment-plan.service';
 import {DbService} from '../../db.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {fromCollectionRef} from '@angular/fire/firestore';
+import {RiskProfileService} from '../../risk-profile/risk-profile.service';
+import {FormControl, FormGroup} from '@angular/forms';
+import {PolicyModel} from '../../policy/policy.model';
 
 @Component({
   selector: 'app-add-treatment-plan',
@@ -20,15 +24,10 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./add-treatment-plan.component.css']
 })
 export class AddTreatmentPlanComponent implements OnInit {
-  @Input() addTitle: string;
-  @Input() addRisks: RiskProfileModel;
-  @Input() addCategories: CategoryModel;
-  @Input() addTasks: Array<TaskModel>;
-  @Input() addUsers: UsersModel;
 
   closeResult = '';
 
-  // might need to define category modely here aswellthis.id = id;
+  // might need to define category modely here aswell this.id = id;
   //     this.name = name;
   //     this.parentCategory = parentCategory;
   //     this.description = description;
@@ -36,14 +35,21 @@ export class AddTreatmentPlanComponent implements OnInit {
   categories: CategoryModel;
   users: UsersModel = new UsersModel('1', 'bryson', 'sf', '11/08/1999', '07/01/2021', true);
   tasks: TaskModel = new TaskModel('Title', this.users, 'Active', new Date('December 12/2020'), new Date('Jan 15/2020'), false);
-  riskProfiles: RiskProfileModel;
-  treatmentPlans: TreatmentPlanModel = new TreatmentPlanModel(null, null, 'Title', 0);
-  constructor(private taskService: TaskService,
+  riskProfile: RiskProfileModel;
+  treatmentPlans: TreatmentPlanModel = new TreatmentPlanModel(null, null, 'Title');
+
+  constructor(public taskService: TaskService,
               public categoryService: CategoryService,
               private treatmentPlanService: TreatmentPlanService,
-              public dbService: DbService, public modalService: NgbModal,) {
-    this.categories = new CategoryModel(1,  'name', this.addCategories , 'description',  false);
+              public riskProfileService: RiskProfileService,
+              public dbService: DbService, public modalService: NgbModal) {
   }
+
+  newPlanForm = new FormGroup({
+    planTitle: new FormControl(''),
+    riskProfile: new FormControl(''),
+    addTasks: new FormControl(''),
+  });
 
   // tslint:disable-next-line:typedef
   open(content) {
@@ -65,23 +71,17 @@ export class AddTreatmentPlanComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.riskProfiles = new RiskProfileModel(1, 'Title', 'description text', 5, 5, this.categories, this.categories, "risk source");
   }
-// Add issue function
-  OnAdd(): void {
-    if (this.treatmentPlans.title) {
+  
+  onAdd(): void {
+    const newPlan = new TreatmentPlanModel(this.newPlanForm.value.riskProfile, this.newPlanForm.value.addTasks, this.newPlanForm.value.planTitle);
 
-      this.treatmentPlans = new TreatmentPlanModel(this.riskProfiles, [this.tasks], this.treatmentPlans.title, 0);
+    // console.log(this.newPlanForm.value.riskProfiles);
 
-      this.treatmentPlanService.addPlan(this.treatmentPlans);
+    // console.log(newPlan);
 
-      this.dbService.treatmentRef.doc(this.treatmentPlans.title).set({
-        title: this.treatmentPlans.title,
-        //tasks: this.treatmentPlans.tasks,
-        //riskProfile: this.treatmentPlans.riskProfile,
-      });
+    this.treatmentPlanService.addPlan(newPlan);
 
-    }
+    this.modalService.dismissAll();
   }
-
 }

@@ -73,6 +73,11 @@ import { UserProfileWidgetComponent } from './admin-dash/admin-home/user-profile
 import { AssignedTasksComponent } from './admin-dash/admin-home/assigned-tasks/assigned-tasks.component';
 import {UserAuthService} from './user-auth.service';
 import {AngularFireAuthGuard, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
+import { PolicyComponent } from './policy/policy.component';
+import { PolicyItemComponent } from './policy/policy-item/policy-item.component';
+import { EditPolicyComponent } from './policy/edit-policy/edit-policy.component';
+import { DeletePolicyComponent } from './policy/delete-policy/delete-policy.component';
+import { AddPolicyComponent } from './policy/add-policy/add-policy.component';
 import { NewTasklistComponent } from './new-tasklist/new-tasklist.component';
 import { NewTaskItemComponent } from './newTasklist/new-task-item/new-task-item.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -80,11 +85,46 @@ import {ToastrModule} from 'ngx-toastr';
 import { AddTreatmentPlanComponent } from './treatment-plan/add-treatment-plan/add-treatment-plan.component';
 import { TreatmentPlanItemComponent } from './treatment-plan/treatment-plan-item/treatment-plan-item.component';
 import { EditTreatmentPlanComponent } from './treatment-plan/edit-treatment-plan/edit-treatment-plan.component';
+import { SortTasksComponent } from './task-list/sort-tasks/sort-tasks.component';
+import { OrgApprovalComponent } from './admin-dash/org-approval/org-approval.component';
+import { OrgApprovalItemComponent } from './admin-dash/org-approval/org-approval-item/org-approval-item.component';
+import { OrgsViewComponent } from './admin-dash/orgs-view/orgs-view.component';
+import { OrgUsersComponent } from './admin-dash/orgs-list/org-users/org-users.component';
+import { OrgUsersItemComponent } from './admin-dash/orgs-list/org-users/org-users-item/org-users-item.component';
+import { OrgRiskCategoriesComponent } from './admin-dash/orgs-view/org-risk-categories/org-risk-categories.component';
+import { OrgRiskCategoriesItemComponent } from './admin-dash/orgs-view/org-risk-categories/org-risk-categories-item/org-risk-categories-item.component';
+import { OrgRiskProfilesComponent } from './admin-dash/orgs-view/org-risk-profiles/org-risk-profiles.component';
+import { OrgRiskProfilesItemComponent } from './admin-dash/orgs-view/org-risk-profiles/org-risk-profiles-item/org-risk-profiles-item.component';
+import { OrgRiskIssuesComponent } from './admin-dash/orgs-view/org-risk-issues/org-risk-issues.component';
+import { OrgRiskIssuesItemComponent } from './admin-dash/orgs-view/org-risk-issues/org-risk-issues-item/org-risk-issues-item.component';
+import { OrgTasksComponent } from './admin-dash/orgs-view/org-tasks/org-tasks.component';
+import { OrgTasksItemComponent } from './admin-dash/orgs-view/org-tasks/org-tasks-item/org-tasks-item.component';
+import { OrgsAddUserComponent } from './admin-dash/orgs-view/orgs-add-user/orgs-add-user.component';
+import { OrgAdminDashComponent } from './org-admin-dash/org-admin-dash.component';
+import { OrgAdminNavComponent } from './org-admin-dash/org-admin-nav/org-admin-nav.component';
+import { OrgAdminHomeComponent } from './org-admin-dash/org-admin-home/org-admin-home.component';
+import { OrgAdminApprovalComponent } from './org-admin-dash/org-admin-approval/org-admin-approval.component';
+import { OrgAdminUserListComponent } from './org-admin-dash/org-admin-user-list/org-admin-user-list.component';
+import { OrgAdminOrgViewComponent } from './org-admin-dash/org-admin-org-view/org-admin-org-view.component';
+import { OrgAdminApprovalItemComponent } from './org-admin-dash/org-admin-approval/org-admin-approval-item/org-admin-approval-item.component';
+import { OrgAdminUserListItemComponent } from './org-admin-dash/org-admin-user-list/org-admin-user-list-item/org-admin-user-list-item.component';
+import { AboutComponent } from './landing/information/about/about.component';
+import { HelpComponent } from './landing/information/help/help.component';
+import { TeamComponent } from './landing/information/team/team.component';
+import { TeamF20Component } from './landing/information/team/team-f20/team-f20.component';
+import { TeamW21Component } from './landing/information/team/team-w21/team-w21.component';
+import {CommonModule} from '@angular/common';
+import {DeletePlanComponent} from './treatment-plan/delete-plan/delete-plan.component';
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const myroutes: Routes = [
   {path: '' , component : LandingComponent},
+  {path: 'about' , component : AboutComponent},
+  {path: 'team' , component : TeamW21Component},
+  {path: 'team-fall-2020' , component : TeamF20Component},
+  {path: 'team-winter-2021' , component : TeamW21Component},
+  {path: 'help' , component : HelpComponent},
   {path: 'dashboard' , component : DashboardComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'categories' , component : RiskCategoriesComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'issues' , component : IssueListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
@@ -93,12 +133,24 @@ const myroutes: Routes = [
   {path: 'edit-task', component: EditTaskComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'tasks', component: NewTasklistComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'surveys', component: IssueSurvey, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'policy', component: PolicyComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'admin-dashboard', component: AdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'admin-dashboard', component: AdminDashComponent},
   {path: 'treatment-plan', component: TreatmentPlanComponent},
+  {path: 'admin-dashboard', component: AdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin-dashboard-users', component: UserListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin-dashboard-organizations', component: OrgsListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin-dashboard-approval', component: OrgApprovalComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin-organization-view', component: OrgsViewComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'org-admin-dashboard', component: OrgAdminDashComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'org-admin-dashboard-users', component: OrgAdminUserListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'org-admin-dashboard-approval', component: OrgAdminApprovalComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'org-admin-organization-view', component: OrgAdminOrgViewComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'risk-matrix', component: RiskResponseMatrixComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'risk-map', component: RiskProfileMapComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
 ];
 
 @NgModule({
@@ -162,15 +214,50 @@ const myroutes: Routes = [
     AdminHomeComponent,
     UserProfileWidgetComponent,
     AssignedTasksComponent,
+    PolicyComponent,
+    PolicyItemComponent,
+    EditPolicyComponent,
+    DeletePolicyComponent,
+    AddPolicyComponent,
     NewTasklistComponent,
     NewTaskItemComponent,
     TreatmentPlanComponent,
     AddTreatmentPlanComponent,
     TreatmentPlanItemComponent,
     EditTreatmentPlanComponent,
+    SortTasksComponent,
+    OrgApprovalComponent,
+    OrgApprovalItemComponent,
+    OrgsViewComponent,
+    OrgUsersComponent,
+    OrgUsersItemComponent,
+    OrgRiskCategoriesComponent,
+    OrgRiskCategoriesItemComponent,
+    OrgRiskProfilesComponent,
+    OrgRiskProfilesItemComponent,
+    OrgRiskIssuesComponent,
+    OrgRiskIssuesItemComponent,
+    OrgTasksComponent,
+    OrgTasksItemComponent,
+    OrgsAddUserComponent,
+    OrgAdminDashComponent,
+    OrgAdminNavComponent,
+    OrgAdminHomeComponent,
+    OrgAdminApprovalComponent,
+    OrgAdminUserListComponent,
+    OrgAdminOrgViewComponent,
+    OrgAdminApprovalItemComponent,
+    OrgAdminUserListItemComponent,
+    AboutComponent,
+    HelpComponent,
+    TeamComponent,
+    TeamF20Component,
+    TeamW21Component,
+    DeletePlanComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule.forRoot(myroutes),

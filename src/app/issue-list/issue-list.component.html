@@ -14,6 +14,9 @@
         <div class="col-md-6">
           <div class="row justify-content-end">
 
+            <!-- Sort Risk Issues Dropdown Toggle -->
+            <button class="btn btn-outline-primary issuesSortButton mr-3" type="button" data-toggle="collapse" data-target="#issuesSortDropdown" aria-expanded="false" aria-controls="issuesSortDropdown">Sort Issues</button>
+
             <!-- Add issue modal component -->
             <div>
               <app-add-issue
@@ -25,7 +28,7 @@
 
             <!-- Search Issues bar -->
             <div class="pr-3">
-              <input class="form-control" type="text" placeholder="Search" name="issuelist" [(ngModel)]="IssueSearchText" value="Search">
+              <input class="form-control" type="text" placeholder="Search issues" name="issuelist" [(ngModel)]="IssueSearchText" value="Search">
             </div>
 
           </div>
@@ -38,7 +41,14 @@
   <!-- Sort Container -->
   <app-sort-issue (categorySelectedEvent)="setCurrentCategory($event)"></app-sort-issue>
 
+  <!-- Print out all Issue items -->
+  <div class="row px-2 m-0 issuesContentCon justify-content-start">
+    <div class="col-md-4 issuesItemContainer" *ngFor="let item of issues | filter: IssueSearchText">
+      <app-issue-item [issueItem]="item"></app-issue-item>
+    </div>
+  </div>
+
   <!-- Print out all issue items -->
-  <app-issue-item *ngFor="let item of issues | filter: IssueSearchText" [issueItem]="item"></app-issue-item>
+<!--  <app-issue-item *ngFor="let item of issues | filter: IssueSearchText" [issueItem]="item"></app-issue-item>-->
 
 </div>

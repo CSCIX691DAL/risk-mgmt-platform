@@ -1,0 +1,18 @@
+.teamCon {
+    min-height: calc(100vh - 60px);
+    background-color: #FFFFFF;
+}
+.teamCon h1 {
+    font-weight: 700;
+}
+.teamCon h2 {
+    font-weight: 700;
+}
+.teamCon h6 {
+    font-weight: 900;
+}
+.teamCon p {
+    font-size: 17px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
