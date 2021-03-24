@@ -20,13 +20,13 @@
 
         <!-- Category is a Parent Category -->
         <div class="form-check form-check-inline">
-          <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="inlineRadio1" (click)="isParentCategory('')">
+          <input class="form-check-input" [checked]="addParentChecked === true ? true : false" type="radio" name="inlineRadioOptions" id="inlineRadio1" (click)="isParentCategory('')">
           <label class="form-check-label mr-5" for="inlineRadio1">Parent Category</label>
         </div>
 
         <!-- Category is a Child Category -->
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" (click)="this.isParentCategory('disabled')">
+          <input class="form-check-input" [checked]="addChildChecked === true ? true : false" type="radio" name="inlineRadioOptions" id="inlineRadio2" (click)="this.isParentCategory('disabled')">
           <label class="form-check-label" for="inlineRadio1">Child Category</label>
         </div>
 
@@ -35,7 +35,7 @@
       <!-- Select Parent of this Category -->
       <label for="addParentCategory" class="labelAndInput">Parent Category</label>
       <div class="input-group mb-3">
-        <select class="form-control" [disabled]="disableParentSelection === 'disabled' ? true : false" id="addParentCategory" name="addParentCategory" ngModel [(ngModel)]="category.parentCategory">
+        <select class="form-control" [disabled]="addParentChecked === true ? true : false" id="addParentCategory" name="addParentCategory" ngModel [(ngModel)]="category.parentCategory">
           <option *ngFor="let item of categoryService.categories" [ngValue]=item>
             {{item.name}}
           </option>
@@ -50,7 +50,7 @@
     </div>
 
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-danger" (click)="modal.close('')">Cancel</button>
+      <button type="button" class="btn btn-outline-danger" (click)="modal.close(''); resetParentCategories()">Cancel</button>
       <button type="submit" class="btn btn-outline-primary">Add Category</button>
     </div>
 

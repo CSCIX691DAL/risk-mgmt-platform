@@ -20,13 +20,13 @@
 
         <!-- Category is a Parent Category -->
         <div class="form-check form-check-inline">
-          <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="inlineRadio1" (click)="isEditParentCategory('')">
+          <input class="form-check-input" [checked]="parentChecked === true ? true : false" type="radio" name="inlineRadioOptions" id="inlineRadio1" (click)="isEditParentCategory('')">
           <label class="form-check-label mr-5" for="inlineRadio1">Parent Category</label>
         </div>
 
         <!-- Category is a Child Category -->
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" (click)="this.isEditParentCategory('disabled')">
+          <input class="form-check-input" [checked]="childChecked === true ? true : false" type="radio" name="inlineRadioOptions" id="inlineRadio2" (click)="this.isEditParentCategory('disabled')">
           <label class="form-check-label" for="inlineRadio1">Child Category</label>
         </div>
 
@@ -59,4 +59,4 @@
 
 </ng-template>
 
-<a class="float-right" (click)="open(editCategoryContent)">{{ editTextName }}</a>
+<a class="float-right" (click)="open(editCategoryContent); this.initialParentCategory(category.getInitialParentName(category.parentCategory))">{{ editTextName }}</a>

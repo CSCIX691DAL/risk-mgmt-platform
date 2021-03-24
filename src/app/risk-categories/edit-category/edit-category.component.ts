@@ -19,7 +19,8 @@ export class EditCategoryComponent implements OnInit {
 
   closeResult = '';
   disableEditParentSelection = '';
-  initialParentValue = '';
+  parentChecked = false;
+  childChecked = false;
 
   category: CategoryModel = new CategoryModel(0, 'cvb', this.categoryService.categories[0], 'cvbcbcvb', false);
 
@@ -31,8 +32,6 @@ export class EditCategoryComponent implements OnInit {
     this.category.name = this.editModalName;
     this.category.description = this.editModalDescription;
     this.category.parentCategory = this.editCategory.parentCategory;
-
-    this.setInitialParentValue(this.category.parentCategory.getParentName());
   }
 
   // tslint:disable-next-line:typedef
@@ -54,26 +53,25 @@ export class EditCategoryComponent implements OnInit {
     }
   }
 
-  public setInitialParentValue(inputValue: any): void {
-    const categoryParent = inputValue;
-    console.log(categoryParent);
-    // If Risk Category being edited is a child, enable parent selection
-    if (categoryParent === 'none') {
-      this.initialParentValue = '';
-      this.disableEditParentSelection = '';
-      console.log('Child Category, Enable Parent');
+  public initialParentCategory(initialParentValue: any): void {
+    const initialEditParentCategory = initialParentValue;
+
+    if (initialEditParentCategory === 'None') {
+      // Parent equals none, therefore this category is a parent, disable parent options
+      this.isEditParentCategory('disabled');
+      this.parentChecked = true;
+      this.childChecked = false;
     }
-    // Else, Risk Category being edited is a parent, disabled parent selection
+    // Parent has value, therefore this category is a child, enable parent options
     else {
-      this.initialParentValue = 'disable';
-      this.disableEditParentSelection = 'disable';
-      console.log('Parent Category, Disable Parent');
+      this.isEditParentCategory('');
+      this.parentChecked = false;
+      this.childChecked = true;
     }
   }
 
   public isEditParentCategory(isParentInput: any): void {
     const isParent = '';
-
     // If Category is a Parent Category
     if (isParentInput === isParent) {
       this.disableEditParentSelection = '';

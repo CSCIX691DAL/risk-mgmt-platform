@@ -20,6 +20,8 @@ export class AddCategoryComponent implements OnInit {
 
   closeResult = '';
   disableParentSelection = '';
+  addParentChecked = true;
+  addChildChecked = false;
 
   category: CategoryModel = new CategoryModel(0, 'cvb', null, 'cvbcbcvb', false);
 
@@ -57,12 +59,22 @@ export class AddCategoryComponent implements OnInit {
 
     // If Category is a Parent Category
     if (isParentInput === isParent) {
-      this.disableParentSelection = '';
+      this.disableParentSelection = 'disabled';
+      this.addParentChecked = true;
+      this.addChildChecked = false;
     }
     // Else, Category is a Child Category
     else {
-      this.disableParentSelection = 'disabled';
+      this.disableParentSelection = '';
+      this.addParentChecked = false;
+      this.addChildChecked = true;
     }
+  }
+
+  public resetParentCategories(): void {
+    this.disableParentSelection = 'disabled';
+    this.addParentChecked = true;
+    this.addChildChecked = false;
   }
 
   // Add issue function
