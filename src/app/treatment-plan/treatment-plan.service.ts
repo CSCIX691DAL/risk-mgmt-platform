@@ -53,6 +53,10 @@ export class TreatmentPlanService {
     return this.treatmentPlans.slice();
   }
 
+  editPlan(newModel: TreatmentPlanModel, oldTitle: string): void {
+    this.treatmentPlans[this.treatmentPlans.findIndex(plan => plan.title === oldTitle)] = newModel;
+  }
+
 // Add plan function
   addPlan(plan: TreatmentPlanModel): void {
 

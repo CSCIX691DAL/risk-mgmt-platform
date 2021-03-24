@@ -2,6 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup} from '@angular/forms';
 import {TreatmentPlanModel} from '../treatment-plan.model';
+import {TaskModel} from '../../task-list/task.model';
+import {TreatmentPlanService} from '../treatment-plan.service';
+import {UsersService} from '../../users.service';
+import {DbService} from '../../db.service';
 
 @Component({
   selector: 'app-edit-treatment-plan',
@@ -10,7 +14,7 @@ import {TreatmentPlanModel} from '../treatment-plan.model';
 })
 export class EditTreatmentPlanComponent implements OnInit {
 
-  constructor(public modalService: NgbModal) {
+  constructor(public modalService: NgbModal, public treatmentPlanService: TreatmentPlanService, public dbService: DbService) {
   }
   @Input() treatmentPlanItem: TreatmentPlanModel;
   public closeResult = "";
@@ -42,7 +46,26 @@ export class EditTreatmentPlanComponent implements OnInit {
     }
   }
 
-  editTreatmentPlan() {
+  editTreatmentPlan(): void {
+    const newPlan =  new TreatmentPlanModel (
+        this.treatmentPlanItem.riskProfile,
+        this.treatmentPlanItem.tasks,
+        this.newTreatmentPlanForm.value.taskTitle,
+        this.treatmentPlanItem.id
+    );
+
+    this.treatmentPlanService.editPlan(newPlan, this.treatmentPlanItem.title);
+
+    this.dbService.treatmentRef.doc(this.treatmentPlanItem.title).delete();
+
+    // TODO: Note - task's title is being used as ID - not too great
+    this.dbService.treatmentRef.doc(this.treatmentPlanItem.title).set({
+      title: newPlan.title,
+    });
+
+    this.modalService.dismissAll();
+
+    console.log(newPlan.title);
 
   }
 }
