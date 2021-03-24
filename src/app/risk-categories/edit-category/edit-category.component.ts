@@ -18,6 +18,8 @@ export class EditCategoryComponent implements OnInit {
   @Input() editCategory: CategoryModel;
 
   closeResult = '';
+  disableEditParentSelection = '';
+  initialParentValue = '';
 
   category: CategoryModel = new CategoryModel(0, 'cvb', this.categoryService.categories[0], 'cvbcbcvb', false);
 
@@ -29,6 +31,8 @@ export class EditCategoryComponent implements OnInit {
     this.category.name = this.editModalName;
     this.category.description = this.editModalDescription;
     this.category.parentCategory = this.editCategory.parentCategory;
+
+    this.setInitialParentValue(this.category.parentCategory.getParentName());
   }
 
   // tslint:disable-next-line:typedef
@@ -47,6 +51,36 @@ export class EditCategoryComponent implements OnInit {
       return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
+    }
+  }
+
+  public setInitialParentValue(inputValue: any): void {
+    const categoryParent = inputValue;
+    console.log(categoryParent);
+    // If Risk Category being edited is a child, enable parent selection
+    if (categoryParent === 'none') {
+      this.initialParentValue = '';
+      this.disableEditParentSelection = '';
+      console.log('Child Category, Enable Parent');
+    }
+    // Else, Risk Category being edited is a parent, disabled parent selection
+    else {
+      this.initialParentValue = 'disable';
+      this.disableEditParentSelection = 'disable';
+      console.log('Parent Category, Disable Parent');
+    }
+  }
+
+  public isEditParentCategory(isParentInput: any): void {
+    const isParent = '';
+
+    // If Category is a Parent Category
+    if (isParentInput === isParent) {
+      this.disableEditParentSelection = '';
+    }
+    // Else, Category is a Child Category
+    else {
+      this.disableEditParentSelection = 'disabled';
     }
   }
 

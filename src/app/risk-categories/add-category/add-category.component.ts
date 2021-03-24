@@ -19,6 +19,7 @@ export class AddCategoryComponent implements OnInit {
   @Input() addCategory: CategoryModel;
 
   closeResult = '';
+  disableParentSelection = '';
 
   category: CategoryModel = new CategoryModel(0, 'cvb', null, 'cvbcbcvb', false);
 
@@ -48,6 +49,19 @@ export class AddCategoryComponent implements OnInit {
       return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
+    }
+  }
+
+  public isParentCategory(isParentInput: any): void {
+    const isParent = '';
+
+    // If Category is a Parent Category
+    if (isParentInput === isParent) {
+      this.disableParentSelection = '';
+    }
+    // Else, Category is a Child Category
+    else {
+      this.disableParentSelection = 'disabled';
     }
   }
 

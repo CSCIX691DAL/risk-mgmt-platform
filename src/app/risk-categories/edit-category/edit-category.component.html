@@ -8,14 +8,34 @@
 
     <div class="modal-body row pl-4 pr-4">
 
+      <!-- Category Title -->
       <label for="editName" class="labelAndInput">Title</label>
       <div class="input-group mb-3">
         <input type="text" class="form-control" id="editName" name="editName" value="{{ editModalName }}" [(ngModel)]="category.name">
       </div>
 
+      <!-- Is this a Parent or Child category? -->
+      <label for="isParentCategory" class="labelAndInput">Is this Category a Parent Category?</label>
+      <div class="input-group mt-2 mb-4" id="isParentCategory">
+
+        <!-- Category is a Parent Category -->
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="inlineRadio1" (click)="isEditParentCategory('')">
+          <label class="form-check-label mr-5" for="inlineRadio1">Parent Category</label>
+        </div>
+
+        <!-- Category is a Child Category -->
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" (click)="this.isEditParentCategory('disabled')">
+          <label class="form-check-label" for="inlineRadio1">Child Category</label>
+        </div>
+
+      </div>
+
+      <!-- Select Parent of this Category -->
       <label for="editParentCategory" class="labelAndInput">Parent Category</label>
       <div class="input-group mb-3">
-        <select class="form-control" id="editParentCategory" name="editParentCategory" [(ngModel)]="category.parentCategory">
+        <select class="form-control" [disabled]="disableEditParentSelection === 'disabled' ? true : false" id="editParentCategory" name="editParentCategory" [(ngModel)]="category.parentCategory">
           <option>Select a Parent Category</option>
           <option *ngFor="let item of categoryService.categories" [ngValue]=item>
             {{item.name}}
@@ -23,6 +43,7 @@
         </select>
       </div>
 
+      <!-- Category Description -->
       <label for="editDescription" class="labelAndInput">Description</label>
       <div class="input-group mb-1">
         <textarea class="form-control" id="editDescription" name="editDescription" ngModel [(ngModel)]="category.description">{{ editModalDescription }}</textarea>
