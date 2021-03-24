@@ -47,10 +47,10 @@ export class RiskProfileService {
   // Note - this is inefficient, and goes against standard convention in using Observables - please change this at some point
   public updateRiskProfileArray(): void {
 
-    // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
-    this.riskProfiles = [];
 
     this.dbService.riskProfileRef.get().then((querySnapshot) => {
+      // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
+      this.riskProfiles = [];
       querySnapshot.forEach((doc) => {
         const newRiskProfile = doc.data();
 
