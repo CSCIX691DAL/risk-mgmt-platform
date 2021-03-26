@@ -8,6 +8,7 @@ import {UsersService} from '../../users.service';
 import {DbService} from '../../db.service';
 import {RiskProfileService} from '../../risk-profile/risk-profile.service';
 import {TaskService} from '../../task-list/task-service';
+import {RiskProfileModel} from '../../risk-profile/risk-profile.model';
 
 @Component({
   selector: 'app-edit-treatment-plan',
@@ -28,7 +29,7 @@ export class EditTreatmentPlanComponent implements OnInit {
     // see https://angular.io/guide/reactive-forms as a guide to implementing a reactive form, as shown below.
     this.newTreatmentPlanForm = new FormGroup({
       taskTitle: new FormControl(this.treatmentPlanItem.title),
-      riskProfile: new FormControl(this.treatmentPlanItem.riskProfile),
+      riskProfile: new FormControl(this.treatmentPlanItem.riskProfile.title),
       addTasks: new FormControl(this.treatmentPlanItem.tasks),
     });
   }
@@ -51,9 +52,12 @@ export class EditTreatmentPlanComponent implements OnInit {
   }
 
   editTreatmentPlan(): void {
+
+    this.treatmentPlanItem.riskProfile.title = this.newTreatmentPlanForm.value.riskProfile;
+
     const newPlan =  new TreatmentPlanModel (
         this.treatmentPlanItem.riskProfile,
-        this.treatmentPlanItem.tasks,
+        this.newTreatmentPlanForm.value.addTasks,
         this.newTreatmentPlanForm.value.taskTitle,
     );
 
@@ -61,9 +65,26 @@ export class EditTreatmentPlanComponent implements OnInit {
 
     this.dbService.treatmentRef.doc(this.treatmentPlanItem.title).delete();
 
+    let newProfile = this.riskProfileService.getRiskProfileByTitle(this.treatmentPlanItem.riskProfile.title);
+    console.log("NEW PROFILE");
+    console.log(newProfile);
+
+    const riskConst = {
+      id: newProfile.id,
+      title: this.treatmentPlanItem.riskProfile.title,
+      description: newProfile.description,
+      likelihood: newProfile.likelihood,
+      impact: newProfile.impact,
+      category: null,
+      riskCategory: null,
+      sourceOfRisk: newProfile.sourceOfRisk,
+    };
+
     // TODO: Note - task's title is being used as ID - not too great
-    this.dbService.treatmentRef.doc(this.treatmentPlanItem.title).set({
+    this.dbService.treatmentRef.doc(newPlan.title).set({
       title: newPlan.title,
+      tasks: newPlan.tasks,
+      riskProfile: riskConst
     });
 
     this.modalService.dismissAll();
