@@ -28,6 +28,8 @@ export class EditTreatmentPlanComponent implements OnInit {
     // see https://angular.io/guide/reactive-forms as a guide to implementing a reactive form, as shown below.
     this.newTreatmentPlanForm = new FormGroup({
       taskTitle: new FormControl(this.treatmentPlanItem.title),
+      riskProfile: new FormControl(this.treatmentPlanItem.riskProfile),
+      addTasks: new FormControl(this.treatmentPlanItem.tasks),
     });
   }
   open(content) {
