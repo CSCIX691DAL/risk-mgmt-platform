@@ -99,10 +99,7 @@ export class OrganizationService {
       document.forEach(org => {
         const orgData = org.data();
 
-        console.log(orgData);
-        console.log(this.currentOrganization);
-
-        if (orgData.name === this.currentOrganization) {
+        if (orgData.name == orgName) {
           orgModel = new OrganizationModel(orgData.name, 'Active');
         }
       });
@@ -384,6 +381,13 @@ export class OrganizationService {
     this.dbService.userRef.doc(email).get().then((document) => {
       this.currentOrganization = document.data().organizations[0];
 
+      this.getOrgModelByID(this.currentOrganization).then((org) => {
+        this.currentlySelectedOrg = org;
+        console.log("NEW ORG");
+        console.log(this.currentlySelectedOrg);
+        console.log(this.currentOrganization);
+      });
+
       this.userOrganizations = document.data().organizations;
       console.log(this.userOrganizations);
 
@@ -396,6 +400,7 @@ export class OrganizationService {
 
       this.dbService.treatmentRef = this.dbService.organizationRef.doc(this.currentOrganization).collection('treatmentPlans');
 
+
       this.userService.userCurrentOrg = this.currentOrganization;
       this.userService.updateUserArray();
       this.taskService.updateTaskArray();
@@ -406,9 +411,6 @@ export class OrganizationService {
       this.treatmentService.updatePlanArray();
 
 
-      this.getOrgModelByID(this.currentOrganization).then((org) => {
-        this.currentlySelectedOrg = org;
-      });
 
       this.triggerToUpdate.next(true);
 
