@@ -6,6 +6,8 @@ import {TaskModel} from '../../task-list/task.model';
 import {TreatmentPlanService} from '../treatment-plan.service';
 import {UsersService} from '../../users.service';
 import {DbService} from '../../db.service';
+import {RiskProfileService} from '../../risk-profile/risk-profile.service';
+import {TaskService} from '../../task-list/task-service';
 
 @Component({
   selector: 'app-edit-treatment-plan',
@@ -14,7 +16,7 @@ import {DbService} from '../../db.service';
 })
 export class EditTreatmentPlanComponent implements OnInit {
 
-  constructor(public modalService: NgbModal, public treatmentPlanService: TreatmentPlanService, public dbService: DbService) {
+  constructor(public modalService: NgbModal, public treatmentPlanService: TreatmentPlanService, public dbService: DbService, public riskProfileService: RiskProfileService, public taskService: TaskService) {
   }
   @Input() treatmentPlanItem: TreatmentPlanModel;
   public closeResult = "";
@@ -51,7 +53,6 @@ export class EditTreatmentPlanComponent implements OnInit {
         this.treatmentPlanItem.riskProfile,
         this.treatmentPlanItem.tasks,
         this.newTreatmentPlanForm.value.taskTitle,
-        this.treatmentPlanItem.id
     );
 
     this.treatmentPlanService.editPlan(newPlan, this.treatmentPlanItem.title);
