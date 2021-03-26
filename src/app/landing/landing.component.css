@@ -4,8 +4,14 @@
     max-height: 100vh;
     border-bottom: 1px solid #EEEEEE;
 }
+    #aboveFoldLandingContainer svg {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 100;
+    }
     .ATF_LeftCon {
-        margin-top: calc(50vh - 180px);
+        margin-top: calc(45vh - 180px);
     }
         .ATF_LeftCon h1 {
             font-size: 3em;
@@ -39,7 +45,8 @@
             width: 100%;
             height: 44px;
             border: none;
-            margin-top: 6px;
+            margin-top: 4px;
+            border-radius: 20px;
         }
         .ATF_InputContainer button:hover {
             background-color: #409cff;

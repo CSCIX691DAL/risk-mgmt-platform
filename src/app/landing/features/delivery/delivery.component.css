@@ -1,0 +1,18 @@
+.featureCon {
+    min-height: calc(100vh - 60px);
+    background-color: #FFFFFF;
+}
+.featureCon h1 {
+    font-weight: 700;
+}
+.featureCon h2 {
+    font-weight: 700;
+}
+.featureCon h6 {
+    font-weight: 900;
+}
+.featureCon p {
+    font-size: 17px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
