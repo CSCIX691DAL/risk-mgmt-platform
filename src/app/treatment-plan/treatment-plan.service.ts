@@ -45,8 +45,8 @@ export class TreatmentPlanService {
       querySnapshot.forEach((doc) => {
         const newPlan = doc.data();
 
-        const tasks = [];
-        const riskArr = [];
+        const tasks: Array<TaskModel> = [];
+        const riskArr: Array<RiskProfileModel> = [];
 
         this.riskProfiles.forEach((risk) => {
           riskArr.push(risk);
@@ -55,7 +55,17 @@ export class TreatmentPlanService {
           tasks.push(task);
         });
 
-        this.treatmentPlans.push(new TreatmentPlanModel(newPlan.riskProfile, newPlan.tasks, newPlan.title));
+        console.log("Testing Profiles");
+        console.log(newPlan);
+
+        let riskProfileNew = new RiskProfileModel(newPlan.riskProfile.id, newPlan.riskProfile.title,
+            newPlan.riskProfile.description, newPlan.riskProfile.likelihood,
+            newPlan.riskProfile.impact, newPlan.riskProfile.category, newPlan.riskProfile.riskCategory, newPlan.riskProfile.sourceOfRisk);
+
+
+        console.log(riskProfileNew);
+
+        this.treatmentPlans.push(new TreatmentPlanModel(riskProfileNew, newPlan.tasks, newPlan.title));
       });
       this.triggerToUpdate.next(true);
     });
