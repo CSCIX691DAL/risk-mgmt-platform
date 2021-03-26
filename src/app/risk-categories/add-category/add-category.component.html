@@ -8,20 +8,41 @@
 
     <div class="modal-body row pl-4 pr-4">
 
-      <label for="addName" class="labelAndInput">Title</label>
-      <div class="input-group mb-3">
+      <!-- Category Title -->
+      <label for="addName" class="labelAndInput">Categrory Title</label>
+      <div class="input-group mb-4">
         <input type="text" class="form-control" id="addName" name="addName" ngModel [(ngModel)]="category.name">
       </div>
 
+      <!-- Is this a Parent or Child category? -->
+      <label for="isParentCategory" class="labelAndInput">Is this Category a Parent Category?</label>
+      <div class="input-group mt-2 mb-4" id="isParentCategory">
+
+        <!-- Category is a Parent Category -->
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" [checked]="addParentChecked === true ? true : false" type="radio" name="inlineRadioOptions" id="inlineRadio1" (click)="isParentCategory('')">
+          <label class="form-check-label mr-5" for="inlineRadio1">Parent Category</label>
+        </div>
+
+        <!-- Category is a Child Category -->
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" [checked]="addChildChecked === true ? true : false" type="radio" name="inlineRadioOptions" id="inlineRadio2" (click)="this.isParentCategory('disabled')">
+          <label class="form-check-label" for="inlineRadio1">Child Category</label>
+        </div>
+
+      </div>
+
+      <!-- Select Parent of this Category -->
       <label for="addParentCategory" class="labelAndInput">Parent Category</label>
       <div class="input-group mb-3">
-        <select class="form-control" id="addParentCategory" name="addParentCategory" ngModel [(ngModel)]="category.parentCategory">
+        <select class="form-control" [disabled]="addParentChecked === true ? true : false" id="addParentCategory" name="addParentCategory" ngModel [(ngModel)]="category.parentCategory">
           <option *ngFor="let item of categoryService.categories" [ngValue]=item>
             {{item.name}}
           </option>
         </select>
       </div>
 
+      <!-- Category Description -->
       <label for="addDescription" class="labelAndInput">Description</label>
       <div class="input-group mb-1">
         <textarea class="form-control" id="addDescription" name="addDescription" ngModel [(ngModel)]="category.description"></textarea>
@@ -29,7 +50,7 @@
     </div>
 
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-danger" (click)="modal.close('')">Cancel</button>
+      <button type="button" class="btn btn-outline-danger" (click)="modal.close(''); resetParentCategories()">Cancel</button>
       <button type="submit" class="btn btn-outline-primary">Add Category</button>
     </div>
 
