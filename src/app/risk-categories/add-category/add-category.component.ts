@@ -19,7 +19,6 @@ export class AddCategoryComponent implements OnInit {
   @Input() addCategory: CategoryModel;
 
   closeResult = '';
-  disableParentSelection = '';
   addParentChecked = true;
   addChildChecked = false;
 
@@ -55,24 +54,19 @@ export class AddCategoryComponent implements OnInit {
   }
 
   public isParentCategory(isParentInput: any): void {
-    const isParent = '';
-
     // If Category is a Parent Category
-    if (isParentInput === isParent) {
-      this.disableParentSelection = 'disabled';
+    if (isParentInput === true) {
       this.addParentChecked = true;
       this.addChildChecked = false;
     }
     // Else, Category is a Child Category
     else {
-      this.disableParentSelection = '';
       this.addParentChecked = false;
       this.addChildChecked = true;
     }
   }
 
   public resetParentCategories(): void {
-    this.disableParentSelection = 'disabled';
     this.addParentChecked = true;
     this.addChildChecked = false;
   }
