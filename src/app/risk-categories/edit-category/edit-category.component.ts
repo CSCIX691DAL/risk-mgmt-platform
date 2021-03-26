@@ -18,7 +18,6 @@ export class EditCategoryComponent implements OnInit {
   @Input() editCategory: CategoryModel;
 
   closeResult = '';
-  disableEditParentSelection = '';
   parentChecked = false;
   childChecked = false;
 
@@ -58,27 +57,26 @@ export class EditCategoryComponent implements OnInit {
 
     if (initialEditParentCategory === 'None') {
       // Parent equals none, therefore this category is a parent, disable parent options
-      this.isEditParentCategory('disabled');
       this.parentChecked = true;
       this.childChecked = false;
     }
     // Parent has value, therefore this category is a child, enable parent options
     else {
-      this.isEditParentCategory('');
       this.parentChecked = false;
       this.childChecked = true;
     }
   }
 
   public isEditParentCategory(isParentInput: any): void {
-    const isParent = '';
     // If Category is a Parent Category
-    if (isParentInput === isParent) {
-      this.disableEditParentSelection = '';
+    if (isParentInput === true) {
+      this.parentChecked = true;
+      this.childChecked = false;
     }
     // Else, Category is a Child Category
     else {
-      this.disableEditParentSelection = 'disabled';
+      this.parentChecked = false;
+      this.childChecked = true;
     }
   }
 

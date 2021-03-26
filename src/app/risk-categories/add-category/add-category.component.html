@@ -20,14 +20,14 @@
 
         <!-- Category is a Parent Category -->
         <div class="form-check form-check-inline">
-          <input class="form-check-input" [checked]="addParentChecked === true ? true : false" type="radio" name="inlineRadioOptions" id="inlineRadio1" (click)="isParentCategory('')">
-          <label class="form-check-label mr-5" for="inlineRadio1">Parent Category</label>
+          <input class="form-check-input" [checked]="addParentChecked === true ? true : false" type="radio" name="inlineRadioOptions" id="addParentTrue" (click)="isParentCategory(true)">
+          <label class="form-check-label mr-5" for="addParentTrue">Parent Category</label>
         </div>
 
         <!-- Category is a Child Category -->
         <div class="form-check form-check-inline">
-          <input class="form-check-input" [checked]="addChildChecked === true ? true : false" type="radio" name="inlineRadioOptions" id="inlineRadio2" (click)="this.isParentCategory('disabled')">
-          <label class="form-check-label" for="inlineRadio1">Child Category</label>
+          <input class="form-check-input" [checked]="addChildChecked === true ? true : false" type="radio" name="inlineRadioOptions" id="addChildTrue" (click)="this.isParentCategory(false)">
+          <label class="form-check-label" for="addChildTrue">Child Category</label>
         </div>
 
       </div>
@@ -36,6 +36,7 @@
       <label for="addParentCategory" class="labelAndInput">Parent Category</label>
       <div class="input-group mb-3">
         <select class="form-control" [disabled]="addParentChecked === true ? true : false" id="addParentCategory" name="addParentCategory" ngModel [(ngModel)]="category.parentCategory">
+          <option [selected]="addParentChecked === true ? true : false" placeholder="Select a Parent Category">Select a Parent Category</option>
           <option *ngFor="let item of categoryService.categories" [ngValue]=item>
             {{item.name}}
           </option>
