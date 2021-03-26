@@ -30,6 +30,10 @@ export class RiskProfileService {
     return this.riskProfiles.slice();
   }
 
+  public getRiskProfileByTitle(title: string): RiskProfileModel {
+    return this.riskProfiles[this.riskProfiles.findIndex(risk => risk.title === title)];
+  }
+
   // Delete Risk Profile function
   deleteRiskProfile(riskProfile: RiskProfileModel): void {
 

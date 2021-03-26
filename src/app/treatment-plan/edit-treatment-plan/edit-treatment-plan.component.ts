@@ -65,15 +65,19 @@ export class EditTreatmentPlanComponent implements OnInit {
 
     this.dbService.treatmentRef.doc(this.treatmentPlanItem.title).delete();
 
+    let newProfile = this.riskProfileService.getRiskProfileByTitle(this.treatmentPlanItem.riskProfile.title);
+    console.log("NEW PROFILE");
+    console.log(newProfile);
+
     const riskConst = {
-      id: null,
+      id: newProfile.id,
       title: this.treatmentPlanItem.riskProfile.title,
-      description: null,
-      likelihood: null,
-      impact: null,
+      description: newProfile.description,
+      likelihood: newProfile.likelihood,
+      impact: newProfile.impact,
       category: null,
       riskCategory: null,
-      sourceOfRisk: null,
+      sourceOfRisk: newProfile.sourceOfRisk,
     };
 
     // TODO: Note - task's title is being used as ID - not too great
