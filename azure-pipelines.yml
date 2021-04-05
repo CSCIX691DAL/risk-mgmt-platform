@@ -27,5 +27,5 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      firebase use risk-management-platform-a1831 --token $(firebaseDeployToken)
+      firebase use rmp---example --token $(firebaseDeployToken)
       firebase deploy --only hosting --token $(firebaseDeployToken) 
