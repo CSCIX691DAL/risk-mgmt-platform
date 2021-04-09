@@ -1,0 +1,48 @@
+<!-- New Issue Item -->
+<div class="row issueItemContainer">
+    <div class="col-md-12">
+
+        <!-- Issue Item Heading -->
+        <div class="row">
+            <!-- Issue Name -->
+            <div class="col-md-12 pt-2 pb-1 issueItemHeading">
+                <h5>{{policyItem.title}}</h5>
+            </div>
+        </div>
+
+        <!-- Issue Item Body -->
+        <div class="row py-2 issueItemBody">
+
+            <!-- Issue Associated Category -->
+            <div class="col-md-12">
+                Description: {{policyItem.description}}
+            </div>
+
+            <!-- Issue Associated Category -->
+            <div class="col-md-12">
+                Risk Profiles: <br/>
+                <li *ngFor="let risk of policyItem.riskprofile">
+                    {{risk.title || risk}}
+                </li>
+            </div>
+
+        </div>
+
+        <!-- Issue Item Footer -->
+        <div class="row">
+            <div class="col-md-12 pt-2 pb-1 issueItemFooting">
+
+                <!-- Edit Issue modal component -->
+                <app-edit-policy
+                        [inputPolicy]="policyItem"
+                        class="float-right">
+                </app-edit-policy>
+
+                <!-- Delete Policy Link -->
+                <a class="float-right mr-3" (click)="onDeletePolicy()">Delete</a>
+
+            </div>
+        </div>
+
+    </div>
+</div>

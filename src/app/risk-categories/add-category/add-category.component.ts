@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {CategoryService} from '../category.service';
 import {CategoryModel} from '../category.model';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-category',
@@ -18,10 +19,12 @@ export class AddCategoryComponent implements OnInit {
   @Input() addCategory: CategoryModel;
 
   closeResult = '';
+  addParentChecked = true;
+  addChildChecked = false;
 
   category: CategoryModel = new CategoryModel(0, 'cvb', null, 'cvbcbcvb', false);
 
-  constructor( private modalService: NgbModal, private categoryService: CategoryService ) { }
+  constructor( private modalService: NgbModal, private categoryService: CategoryService) { }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -48,6 +51,24 @@ export class AddCategoryComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  public isParentCategory(isParentInput: any): void {
+    // If Category is a Parent Category
+    if (isParentInput === true) {
+      this.addParentChecked = true;
+      this.addChildChecked = false;
+    }
+    // Else, Category is a Child Category
+    else {
+      this.addParentChecked = false;
+      this.addChildChecked = true;
+    }
+  }
+
+  public resetParentCategories(): void {
+    this.addParentChecked = true;
+    this.addChildChecked = false;
   }
 
   // Add issue function

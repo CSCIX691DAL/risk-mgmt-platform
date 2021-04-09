@@ -5,6 +5,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {UsersService} from '../../users.service';
 import {UsersModel} from '../../users.model';
 import {DbService} from '../../db.service';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-new-task',
@@ -13,7 +15,7 @@ import {DbService} from '../../db.service';
 })
 export class CreateNewTaskComponent implements OnInit {
 
-  constructor(taskService: TaskService, public userService: UsersService, private dbService: DbService) {
+  constructor(taskService: TaskService, public userService: UsersService, private dbService: DbService, public modalService: NgbModal, public notificationService: ToastrService) {
     this.taskService = taskService;
   }
 
@@ -31,36 +33,78 @@ export class CreateNewTaskComponent implements OnInit {
 
   private taskService: TaskService;
 
+  providedTitle = true;
+  providedDate = true;
+  closeResult = '';
+
   createNewTask(): void {
+
     if (this.newTaskForm.value.taskStatus === '') {
       this.newTaskForm.value.taskStatus = 'In Progress';
     }
-    console.log(this.newTaskForm.value.taskStatus);
 
-    const newTask =  new TaskModel (
-        this.newTaskForm.value.taskTitle,
-        this.newTaskForm.value.createdBy,
-        this.newTaskForm.value.taskStatus,
-        new Date(this.newTaskForm.value.taskDueDate),
-        new Date(),
-        false
-    );
+    if (this.newTaskForm.value.taskTitle.length < 1) {
+      this.providedTitle = false;
+    }
+    else {
+      this.providedTitle = true;
+    }
 
-    // TODO: Note - task's title is being used as ID - not too great
-    this.dbService.taskRef.doc(newTask.title).set({
-      title: newTask.title,
-      createdByID: newTask.createdBy.id,
-      status: newTask.status,
-      dueDate: newTask.dueDate,
-      createdDate: newTask.createdDate
-    });
+    if (this.newTaskForm.value.taskDueDate.length < 1) {
+      this.providedDate = false;
+    }
+    else {
+      this.providedDate = true;
+    }
 
-    this.taskService.addNewTaskToArray(newTask);
-    this.taskService.routeBackToHomePage();
+    if (this.providedTitle && this.providedDate) {
+      const newTask = new TaskModel(
+          this.newTaskForm.value.taskTitle,
+          this.newTaskForm.value.createdBy,
+          this.newTaskForm.value.taskStatus,
+          new Date(this.newTaskForm.value.taskDueDate),
+          new Date(),
+          false
+      );
+
+      this.notificationService.success('Task "' + newTask.title + '" assigned to ' + newTask.createdBy.firstName, 'Task Successfully Created');
+
+      // TODO: Note - task's title is being used as ID - not too great
+      this.dbService.taskRef.doc(newTask.title).set({
+        title: newTask.title,
+        createdByID: newTask.createdBy.id,
+        status: newTask.status,
+        dueDate: newTask.dueDate,
+        createdDate: newTask.createdDate
+      });
+
+      this.taskService.addNewTaskToArray(newTask);
+      this.modalService.dismissAll();
+      //this.taskService.routeBackToHomePage();
+    }
   }
 
   ngOnInit(): void {
     this.dummyUserModel = this.userService.categories[0];
+  }
+
+  // tslint:disable-next-line:typedef
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 }

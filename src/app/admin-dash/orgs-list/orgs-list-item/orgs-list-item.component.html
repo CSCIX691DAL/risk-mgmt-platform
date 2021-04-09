@@ -1,0 +1,33 @@
+<div class="row text-center border-bottom px-0 py-3 m-0">
+
+    <!-- Organization Name -->
+    <div class="col-2">
+        <p class="p-0 mt-md-1 mb-0"><a routerLink="/admin-organization-view" (click)="this.onClick()">{{org.orgName}}</a></p>
+    </div>
+
+    <!-- # of Employees at this Organization -->
+    <div class="col-2">
+        <p class="p-0 mt-md-1 mb-0">{{this.numberUsers}}</p>
+    </div>
+
+    <!-- Organization Subscription Type -->
+    <div class="col-2">
+        <p class="p-0 mt-md-1 mb-0">Active</p>
+    </div>
+
+    <!-- Organization remaining days of Subscription -->
+    <div class="col-2">
+        <p class="p-0 mt-md-1 mb-0">30 days</p>
+    </div>
+
+    <!-- # of Tasks created by Organization -->
+    <div class="col-2">
+        <p class="p-0 mt-md-1 mb-0">{{this.numberTasks}}</p>
+    </div>
+
+    <!-- # of Tasks completed by Organization -->
+    <div class="col-2 text-center">
+        <p class="p-0 mt-md-1 mb-0">{{this.numberCompletedTasks}}</p>
+    </div>
+
+</div>

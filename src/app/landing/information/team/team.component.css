@@ -1,0 +1,11 @@
+.teamCon {
+    min-height: calc(100vh - 60px);
+    max-height: calc(100vh - 60px);
+    background-color: #FFFFFF;
+}
+.teamCon h1 {
+    font-weight: 700;
+}
+teamCon h5 {
+    font-weight: 900;
+}

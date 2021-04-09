@@ -1,32 +1,37 @@
-<div class="row sortMenuMarginAndBorder" style="padding-bottom: 15px;">
-  <!-- Sort Inner Container -->
-  <div class="container">
+<div class="row p-0 m-0 collapse" id="categoriesSortDropdown">
+  <div class="col-md-12">
+    <div class="row sortMenuMarginAndBorder pt-3 px-2 pb-2 justify-content-center">
 
-    <!-- Title -->
-    <h4>Sort by:</h4>
-
-    <div class="row pl-3 pr-3 mt-3">
-      <!-- Sorting Options 1/4 -->
-      <div class="col-3">
-        <p>Alphabetically: <a (click)="onSortAlphabetically(1)">A-Z</a> / <a (click)="onSortAlphabetically(2)">Z-A</a></p>
+      <div class="col-md-12">
+        <!-- Title -->
+        <h4>Sort by:</h4>
       </div>
 
-      <!-- Sorting Options 2/4 -->
-      <div class="col-3">
-        <p>Date Created: <a href="">Earliest</a> / <a href="">Latest</a></p>
+      <div class="col-md-12">
+        <div class="row pl-3 pr-3 mt-3">
+          <!-- Sorting Options 1/4 -->
+          <div class="col-3">
+            <p>Alphabetically: <a (click)="onSortAlphabetically(1)">A-Z</a> / <a (click)="onSortAlphabetically(2)">Z-A</a></p>
+          </div>
+
+          <!-- Sorting Options 2/4 -->
+          <div class="col-3">
+            <p>Date Created: <a href="">Earliest</a> / <a href="">Latest</a></p>
+          </div>
+
+          <!-- Sorting Options 3/4 -->
+          <div class="col-3">
+            <p>Date Modified: <a href="">Earliest</a> / <a href="">Latest</a></p>
+          </div>
+
+          <!-- Sorting Options 4/4 -->
+          <div class="col-3">
+            <!-- Category Type: Internal / External -->
+            <p>Category Type: <a href="">Internal</a> / <a href="">External</a></p>
+          </div>
+        </div>
       </div>
 
-      <!-- Sorting Options 3/4 -->
-      <div class="col-3">
-        <p>Date Modified: <a href="">Earliest</a> / <a href="">Latest</a></p>
-      </div>
-
-      <!-- Sorting Options 4/4 -->
-      <div class="col-3">
-        <!-- Category Type: Internal / External -->
-        <p>Category Type: <a href="">Internal</a> / <a href="">External</a></p>
-      </div>
     </div>
-
   </div>
 </div>

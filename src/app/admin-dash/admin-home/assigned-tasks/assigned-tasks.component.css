@@ -1,0 +1,58 @@
+.assignedTasks {
+    border: 1px solid #CCCCCC;
+    border-radius: 10px;
+}
+.assignedTasksHeader {
+    background-color: #F4F4F4;
+    border-bottom: 1px solid #CCCCCC;
+    border-radius: 9px 9px 0px 0px;
+}
+.organizationImgCon {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #CCCCCC;
+    border-radius: 30px;
+    font-size: 34px;
+    margin-right: 15px;
+}
+    .organizationImgCon:hover {
+        cursor: pointer;
+        color: lightblue;
+    }
+    .organizationImgCon img {
+        width: 40px;
+    }
+.organizationCon {
+    width: auto;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+}
+    .organizationCon:hover {
+        cursor: pointer;
+    }
+    .organizationCon img {
+        width: 50px;
+        margin-top: 9px;
+        margin-left: 7px;
+        margin-bottom: 9px;
+    }
+    .organizationCon p {
+        color: darkseagreen;
+        font-size: 16px;
+        float: right;
+        margin-bottom: 0px;
+    }
+    .organizationCon h5 {
+        font-size: 22px;
+        float: right;
+        margin-top: 6px;
+        margin-bottom: 0px;
+    }
+.orgLocation {
+    font-size: 18px;
+    margin-top: 14px;
+}
+.orgInfoCon {
+    border-radius: 10px;
+    border: 1px solid #CCCCCC;
+}

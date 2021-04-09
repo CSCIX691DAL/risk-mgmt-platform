@@ -1,0 +1,265 @@
+<div class="container-fluid w-100 mw-100 p-0 m-0 orgViewCon mb-5">
+    <div class="row p-0 m-0">
+        <div class="col-md-12 p-0 m-0">
+
+            <!-- Admin Dashboard Navigation Bar -->
+            <!--<app-admin-nav></app-admin-nav>-->
+
+            <!-- Organization Headings -->
+            <div class="row px-0 m-0">
+                <div class="col-md-12">
+                    <div class="row mt-0 p-0 px-3">
+
+                        <!-- LEFT SIDEBAR -->
+                        <!-- Organization Logo -->
+                        <div class="col-md-3">
+
+                            <div class="row justify-content-center p-0">
+                                <img src="assets/img/admin-dash/blank-org-img.png" title="asd" />
+                            </div>
+
+                            <div class="row p-0 text-center">
+
+                                <!-- Owner -->
+                                <div class="col-md-12">
+                                    <h6>Owner: <span>John Smith</span></h6>
+                                </div>
+
+                                <!-- Created -->
+                                <div class="col-md-12">
+                                    <h6>Created: <span>March 5th 2021</span></h6>
+                                </div>
+
+                                <!-- Status -->
+                                <div class="col-md-12">
+                                    <h6>Status: <span>Active</span></h6>
+                                </div>
+
+                                <!-- Employees -->
+                                <div class="col-md-12">
+                                    <h6>Employees: <span>16</span></h6>
+                                </div>
+
+                                <!-- Tasks Created -->
+                                <div class="col-md-12">
+                                    <h6>Tasks Created: <span>501</span></h6>
+                                </div>
+
+                                <!-- Tasks Completed -->
+                                <div class="col-md-12">
+                                    <h6>Tasks Completed: <span>489</span></h6>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- RIGHT SIDEBAR -->
+                        <div class="col-md-9 pt-5 pr-4">
+                            <div class="row p-0">
+
+                                <!-- Organization Name and Admin Options -->
+                                <div class="col-md-12 orgViewBorder mb-5">
+                                    <div class="row p-0">
+
+                                        <!-- Organization Name -->
+                                        <div class="col-md-9">
+                                            <h1 class="">{{this.organizationService.currentlySelectedOrg.orgName}}</h1>
+                                        </div>
+
+                                        <!-- Admin Options -->
+                                        <div class="col-md-3">
+                                            <div class="row p-0 justify-content-end">
+
+                                                <!-- Edit Organization -->
+<!--                                                <div class="ml-3">
+                                                    <a class="btn btn-outline-secondary" routerLink="/admin-dashboard-organizations">Edit</a>
+                                                </div>-->
+
+                                                <!-- Freeze Organization -->
+<!--                                                <div class="ml-3">
+                                                    <a class="btn btn-outline-warning" routerLink="/admin-dashboard-organizations">Freeze</a>
+                                                </div>
+
+                                                &lt;!&ndash; Delete Organization &ndash;&gt;
+                                                <div class="ml-3">
+                                                    <a class="btn btn-outline-danger" routerLink="/admin-dashboard-organizations">Delete</a>
+                                                </div>-->
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- About -->
+                                <div class="col-md-12 orgViewSubHeading mb-5">
+                                    <div class="row p-0">
+                                        <div class="col-md-12 orgViewSubHeadingBorder">
+                                            <h4>About</h4>
+                                        </div>
+                                        <div class="col-md-12 px-4">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non diam sed diam efficitur convallis a ut eros. In et nulla purus. Cras mattis auctor faucibus. Donec bibendum nisl sem, et vestibulum lorem viverra vitae. Nullam id purus neque. Morbi consequat libero sapien, ut gravida enim iaculis eu. Nulla enim nisi, scelerisque vitae bibendum sit amet, sodales vel odio. Phasellus ac pulvinar orci, vel maximus lacus. Suspendisse a fermentum ligula, sit amet rhoncus turpis. Donec porta mauris enim, non pharetra mi pharetra quis. Morbi non vestibulum dui, non maximus sapien. Nunc aliquam fringilla turpis, eu pretium risus dictum at.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Overview of Risk Categories, Issues and Profiles -->
+<!--                                <div class="col-md-12 orgViewSubHeading mb-5">-->
+<!--                                    <div class="row p-0">-->
+
+<!--                                        &lt;!&ndash; Subheading &ndash;&gt;-->
+<!--                                        <div class="col-md-12 orgViewSubHeadingBorder">-->
+<!--                                            <h4>Overview</h4>-->
+<!--                                        </div>-->
+
+<!--                                        &lt;!&ndash; Risk Category, Issues and Profile widgets &ndash;&gt;-->
+<!--                                        <div class="col-md-12 px-4">-->
+<!--                                            <div class="row p-0">-->
+
+<!--                                                &lt;!&ndash; Organization Risk Categories &ndash;&gt;-->
+<!--                                                <div class="col-md-4">-->
+<!--                                                    <app-category-widget></app-category-widget>-->
+<!--                                                </div>-->
+
+<!--                                                &lt;!&ndash; Organization Risk Issues &ndash;&gt;-->
+<!--                                                <div class="col-md-4">-->
+<!--                                                    <app-issue-widget></app-issue-widget>-->
+<!--                                                </div>-->
+
+<!--                                                &lt;!&ndash; Organization Risk Profiles &ndash;&gt;-->
+<!--                                                <div class="col-md-4">-->
+<!--                                                    <app-profile-widget></app-profile-widget>-->
+<!--                                                </div>-->
+
+
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+
+                                <!-- Organization Associated Users -->
+                                <div class="col-md-12 mb-5">
+                                    <div class="row p-0">
+
+                                        <!-- Subheading -->
+                                        <div class="col-md-12 pt-3 pb-1 orgViewUserSubHeading">
+                                            <div class="row p-0">
+
+                                                <!-- Users -->
+                                                <div class="col-md-6">
+                                                    <h4>Users</h4>
+                                                </div>
+
+                                                <!-- Add User -->
+<!--                                                <div class="col-md-6">
+                                                    <app-orgs-add-user
+                                                        class="float-right">
+                                                    </app-orgs-add-user>
+                                                </div>-->
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Organization Users -->
+                                        <div class="col-md-12">
+                                            <div class="row p-0 rounded orgViewListedInfo">
+                                                <div class="col-md-12">
+                                                    <app-org-users [org] = "this.organizationService.currentlySelectedOrg"></app-org-users>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Organization Associated Risk Categories -->
+                                <div class="col-md-12 mb-5">
+                                    <div class="row p-0">
+
+                                        <!-- Subheading -->
+                                        <div class="col-md-12 pt-3 pb-1 orgViewCategorySubHeading">
+                                            <h4>Risk Categories</h4>
+                                        </div>
+
+                                        <!-- Organization Risk Categories -->
+                                        <div class="col-md-12">
+                                            <div class="row p-0 rounded orgViewListedInfo">
+                                                <div class="col-md-12">
+                                                    <app-org-risk-categories [org]="this.organizationService.currentlySelectedOrg"></app-org-risk-categories>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Organization Associated Risk Profiles -->
+                                <div class="col-md-12 mb-5">
+                                    <div class="row p-0">
+
+                                        <!-- Subheading -->
+                                        <div class="col-md-12 pt-3 pb-1 orgViewProfileSubHeading">
+                                            <h4>Risk Profiles</h4>
+                                        </div>
+
+                                        <!-- Organization Risk Profiles -->
+                                        <div class="col-md-12">
+                                            <div class="row p-0 rounded orgViewListedInfo">
+                                                <div class="col-md-12">
+                                                    <app-org-risk-profiles [org]="this.organizationService.currentlySelectedOrg"></app-org-risk-profiles>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Organization Associated Risk Issues -->
+
+                                <div class="col-md-12 mb-5">
+                                    <div class="row p-0">
+
+                                        <!-- Subheading -->
+                                        <div class="col-md-12 pt-3 pb-1 orgViewIssueSubHeading">
+
+                                            <h4>Risk Issues</h4>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row p-0 rounded orgViewListedInfo">
+                                                <div class="col-md-12">
+                                                    <app-org-risk-issues [org] = "this.organizationService.currentlySelectedOrg"></app-org-risk-issues>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Organization Associated Tasks -->
+                                <div class="col-md-12">
+                                    <div class="row p-0">
+
+                                        <!-- Subheading -->
+                                        <div class="col-md-12 pt-3 pb-1 orgViewTaskSubHeading">
+                                            <h4>Organizations Tasks</h4>
+                                        </div>
+
+                                        <!-- Organization Tasks -->
+                                        <div class="col-md-12">
+                                            <div class="row p-0 rounded orgViewListedInfo">
+                                                <div class="col-md-12">
+                                                    <app-org-tasks [org]="this.organizationService.currentlySelectedOrg"></app-org-tasks>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

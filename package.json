@@ -12,7 +12,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~10.1.4",
+    "@angular/animations": "^10.1.6",
     "@angular/common": "~10.1.4",
     "@angular/compiler": "~10.1.4",
     "@angular/core": "~10.1.4",
@@ -33,6 +33,7 @@
     "jquery": "^3.5.1",
     "ng2-charts": "^2.4.2",
     "ng2-search-filter": "^0.5.1",
+    "ngx-toastr": "^13.2.0",
     "path": "^0.12.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

@@ -4,6 +4,7 @@ import {CategoryModel} from './category.model';
 import {IssueModel} from '../issue-list/issue.model';
 import {RiskProfileModel} from '../risk-profile/risk-profile.model';
 import {DbService} from '../db.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({providedIn: 'root'})
 export class CategoryService {
@@ -18,13 +19,11 @@ export class CategoryService {
     //new CategoryModel(4, 'Operational', null, 'Impacts to systems, procedures, policies, and people', false),
   ];
 
-  constructor(public dbService: DbService) {
+  constructor(public dbService: DbService, public notificationService: ToastrService ) {
     // this.categories.push(    new CategoryModel(5, 'Product failure', this.categories[3], 'Defects in production', false),
     //   new CategoryModel(6, 'IT failure', this.categories[3], 'Ex: website down', false),
     //   new CategoryModel(7, 'Loss of supplier', this.categories[3], 'Vendor does not renew contract', false),
     //   new CategoryModel(6, 'Interest rate', this.categories[0], 'Changes in interest rates', true));
-
-    this.updateCategoryArray();
   }
 
   getCategories(): CategoryModel[]{
@@ -49,6 +48,9 @@ export class CategoryService {
 
   // Delete category function
   deleteCategory(category: CategoryModel): void {
+
+    this.notificationService.success('Risk Category "' + category.name + '" has been deleted.', 'Risk Category Successfully Deleted');
+
     this.categories = this.categories.filter(x => x.id !== category.id);
 
     this.dbService.categoryRef.doc(category.name).delete();
@@ -91,6 +93,9 @@ export class CategoryService {
 
       // Pushes new IssueModel object to issues array
       this.categories.push(newCategory);
+
+      this.notificationService.success('Risk Category "' + newCategory.name + '" has been added.', 'Risk Category Successfully Added');
+
       // Update screen
       this.triggerToUpdate.next(true);
     }
@@ -122,6 +127,8 @@ export class CategoryService {
           isSpeculativeRisk: newCategory.isSpeculativeRisk,
         });
       }
+
+      this.notificationService.success('Risk Category "' + newCategory.name + '" has been added.', 'Risk Category Successfully Added');
 
       // Update screen
       this.triggerToUpdate.next(true);
@@ -165,6 +172,7 @@ export class CategoryService {
 
     this.categories[oldIssueIndex] = category;
 
+    this.notificationService.success('Risk Category "' + category.name + '" has been edited.', 'Risk Category Successfully Edited');
 
     // Update screen
     this.triggerToUpdate.next(true);

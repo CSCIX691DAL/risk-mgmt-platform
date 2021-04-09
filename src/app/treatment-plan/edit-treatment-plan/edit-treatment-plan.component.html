@@ -1,0 +1,51 @@
+<ng-template #editTaskContent let-modal>
+
+    <form [formGroup]="newTreatmentPlanForm" (ngSubmit)="editTreatmentPlan()">
+
+        <div class="modal-header justify-content-center">
+            <h2 class="mt-1">Edit an Existing Plan</h2>
+        </div>
+
+        <div class="modal-body row pl-4 pr-4">
+
+            <!-- Title -->
+            <label class="labelAndInput">Title</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" formControlName="taskTitle" placeholder="Enter Title...">
+            </div>
+            <!-- Risk Profile Dummy still working to get it functional -->
+            <select class="form-control" id="riskProfile" name="riskProfile" formControlName="riskProfile">
+                <option *ngFor="let profile of riskProfileService.riskProfiles" [ngValue]="profile.title">{{profile.title}}</option>
+            </select>
+
+            <!-- Risk Category -->
+            <label for="addTasks" class="labelAndInput">Tasks</label>
+            <div class="input-group mb-3">
+                <select
+                        class="form-control"
+                        id="addTasks"
+                        name="addTasks"
+                        formControlName="addTasks"
+                        multiple
+                >
+                    <option *ngFor="let task of taskService.taskItemArray" [ngValue]="task.title">
+                        {{ task.title }}
+                    </option>
+
+                </select>
+            </div>
+
+        </div>
+
+        <!-- Buttons: Cancel & Save -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
+            <button type="submit" class="btn btn-outline-primary">Update</button>
+        </div>
+
+    </form>
+
+</ng-template>
+
+<!--<button  type="button" class="btn btn-outline-success mr-3" (click)="open(editTaskContent)">Edit</button>-->
+<a class="float-right mr-3" (click)="open(editTaskContent)">Edit</a>

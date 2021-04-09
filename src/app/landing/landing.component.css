@@ -4,34 +4,75 @@
     max-height: 100vh;
     border-bottom: 1px solid #EEEEEE;
 }
-    .aboveFold_Left_TextContainer {
-        margin-top: calc(50vh - 120px);
+    #aboveFoldLandingContainer svg {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 100;
     }
-        .aboveFoldHeading {
+    .ATF_LeftCon {
+        margin-top: calc(45vh - 180px);
+    }
+        .ATF_LeftCon h1 {
             font-size: 3em;
+            font-weight: 400;
         }
-        .aboveFoldSubHeading {
-            font-size: 1.3em;
+        .ATF_LeftCon p {
+            margin-top: 30px;
+            font-size: 1.4em;
         }
-
-    .imageCon {
-        min-width: 400px;
-        max-width: 400px;
-        min-height: 400px;
-        height: 400px;
+        .ATF_LeftCon span {
+            color: #409cff;
+        }
+    .ATF_InputContainer {
+        width: 45vw;
+        padding: 10px 20px 10px 20px;
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        border-radius: 30px;
     }
-        .addRiskImage {
-            width: 70%;
-            margin-left: 15%;
-            margin-top:  20%;
+        .ATF_InputContainer input {
+            width: 100%;
+            height: 46px;
+            margin-top: 5px;
+            font-size: 18px;
+            border: none;
         }
-        .tasksImage {
-            width: 70%;
-            margin-left: 15%;
-            margin-top:  20%;
+            .ATF_InputContainer input:focus {
+                outline: none !important;
+            }
+        .ATF_InputContainer button {
+            width: 100%;
+            height: 44px;
+            border: none;
+            margin-top: 4px;
+            border-radius: 20px;
         }
-        .surveyImage {
-            width: 70%;
-            margin-left: 15%;
-            margin-top:  23%;
+        .ATF_InputContainer button:hover {
+            background-color: #409cff;
+            border: none;
+        }
+    .featureCards {
+        min-height: 400px;
+        max-height: 400px;
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        border-radius: 15px;
+        box-shadow: 3px 3px 6px #EEEEEE;
+    }
+        .featureCards p {
+            font-size: 1.1em;
+        }
+        .featureImageContainer {
+            height: 80px;
+            margin-top: 10px;
+        }
+        .largerFeatureCardImg {
+            width: 25%;
+            filter: invert(55%) sepia(32%) saturate(2817%) hue-rotate(188deg) brightness(98%) contrast(106%);
+        }
+        .smallerFeatureCardImg {
+            width: 16%;
+            padding-top: 14px;
+            filter: invert(55%) sepia(32%) saturate(2817%) hue-rotate(188deg) brightness(98%) contrast(106%);
         }

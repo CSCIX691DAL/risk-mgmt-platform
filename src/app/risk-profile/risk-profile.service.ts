@@ -5,6 +5,8 @@ import {CategoryModel} from '../risk-categories/category.model';
 import {CategoryService} from '../risk-categories/category.service';
 import {DbService} from '../db.service';
 import {IssueModel} from '../issue-list/issue.model';
+import {RiskProfileMapComponent} from './risk-report-map/risk-profile-map.component';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({providedIn: 'root'})
 export class RiskProfileService {
@@ -12,6 +14,7 @@ export class RiskProfileService {
   // Updates issue list
   triggerToUpdate = new Subject<boolean>();
 
+  // Testing
   public riskProfiles: RiskProfileModel[] = [
     new RiskProfileModel(1, 'Risk Profile 1', 'This is risk profile 1', 9, 5, this.categoryService.categories[0], this.categoryService.categories[0], 'Source Of Risk #1'),
     new RiskProfileModel(2, 'Risk Profile 2', 'This is risk profile 2', 10, 1, this.categoryService.categories[1], this.categoryService.categories[1], 'Source Of Risk #2'),
@@ -20,16 +23,22 @@ export class RiskProfileService {
     new RiskProfileModel(5, 'Risk Profile 5', 'This is risk profile 5', 5, 5, this.categoryService.categories[4], this.categoryService.categories[4], 'Source Of Risk #5')
   ];
 
-  constructor(public categoryService: CategoryService, public dbService: DbService) {
-    this.updateRiskProfileArray();
+  constructor(public categoryService: CategoryService, public dbService: DbService, public notificationService: ToastrService) {
   }
 
   getRiskProfiles(): RiskProfileModel[]{
     return this.riskProfiles.slice();
   }
 
+  public getRiskProfileByTitle(title: string): RiskProfileModel {
+    return this.riskProfiles[this.riskProfiles.findIndex(risk => risk.title === title)];
+  }
+
   // Delete Risk Profile function
   deleteRiskProfile(riskProfile: RiskProfileModel): void {
+
+    this.notificationService.success('Risk Profile "' + riskProfile.title + '" has been deleted.', 'Risk Profile Successfully Deleted');
+
     // console.log(issue.id);
     this.riskProfiles = this.riskProfiles.filter(x => x.id !== riskProfile.id);
 
@@ -42,14 +51,14 @@ export class RiskProfileService {
   // Note - this is inefficient, and goes against standard convention in using Observables - please change this at some point
   public updateRiskProfileArray(): void {
 
-    // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
-    this.riskProfiles = [];
 
     this.dbService.riskProfileRef.get().then((querySnapshot) => {
+      // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
+      this.riskProfiles = [];
       querySnapshot.forEach((doc) => {
         const newRiskProfile = doc.data();
 
-        this.riskProfiles.push(new RiskProfileModel(newRiskProfile.id, newRiskProfile.title, newRiskProfile.description, newRiskProfile.likelihood, newRiskProfile.impact, this.categoryService.categories[newRiskProfile.category], this.categoryService.categories[newRiskProfile.riskCategory], newRiskProfile.sourceOfRisk));
+        this.riskProfiles.push(new RiskProfileModel(newRiskProfile.id, newRiskProfile.title, newRiskProfile.description, parseInt(newRiskProfile.likelihood, 10), parseInt(newRiskProfile.impact, 10), this.categoryService.categories[newRiskProfile.category], this.categoryService.categories[newRiskProfile.riskCategory], newRiskProfile.sourceOfRisk));
       });
       this.triggerToUpdate.next(true);
     });
@@ -112,6 +121,8 @@ export class RiskProfileService {
       this.triggerToUpdate.next(true);
     }
 
+    this.notificationService.success('Risk Profile "' + riskProfile.title + '" has been added.', 'Risk Profile Successfully Created');
+
   }
 
   // Edit Risk Profile function
@@ -126,6 +137,9 @@ export class RiskProfileService {
     const isInIssueList = ((obj) => Number(obj.id) === Number(riskProfile.id));
     const oldIssueIndex = this.riskProfiles.findIndex(isInIssueList);
     this.riskProfiles[oldIssueIndex] = riskProfile;
+
+    this.notificationService.success('Risk Profile "' + riskProfile.title + '" has been updated.', 'Risk Profile Successfully Edited');
+
     // Update screen
     this.triggerToUpdate.next(true);
   }

@@ -1,0 +1,37 @@
+.adminDashboardNavigationBar {
+    width: 100%;
+    max-width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #EEEEEE;
+}
+.adminDashboardNavigationBar input {
+    width: 250px;
+    height: 36px;
+    margin-top: 11px;
+}
+.adminDashboardNavigationBar h3 {
+    font-weight: 700;
+}
+.adminDashboardNavigationBar a {
+    margin-top: 11px;
+    height: 36px;
+    color: #000000;
+}
+.adminDashboardNavigationBar a:hover {
+    color: #0062F2;
+    text-decoration: none;
+}
+
+.adminComponentNav div {
+    padding-top: 11px;
+}
+.adminComponentNav div:hover {
+    cursor: pointer;
+    background-color: #F3F3F3;
+}
+.adminComponentNav div:hover img {
+    filter: invert(55%) sepia(32%) saturate(2817%) hue-rotate(188deg) brightness(98%) contrast(106%);
+}
+.adminComponentNav img {
+    width: 30px;
+}

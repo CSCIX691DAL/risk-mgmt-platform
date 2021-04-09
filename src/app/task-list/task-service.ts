@@ -14,7 +14,6 @@ export class TaskService {
 
 
   constructor(private router: Router, private userService: UsersService, public dbService: DbService) {
-    this.updateTaskArray();
   }
 
   public static currentCategoryToSort = '';
@@ -53,6 +52,18 @@ export class TaskService {
     );
   }
 
+  public getIndexOfUserByEmail(email: string): number {
+    let i = 0;
+
+    for (const user of this.userService.categories) {
+      if (user.id === email) {
+        return i;
+      }
+      i++;
+    }
+    return -1;
+  }
+
   // Note - this is inefficient, and goes against standard convention in using Observables - please change this at some point
   public updateTaskArray(): void {
 
@@ -60,6 +71,7 @@ export class TaskService {
     this.taskItemArray = [];
 
     this.dbService.taskRef.get().then((querySnapshot) => {
+      this.taskItemArray = [];
       querySnapshot.forEach((doc) => {
         const newTask = doc.data();
 
@@ -69,7 +81,12 @@ export class TaskService {
         const dueDate = new Date(0);
         dueDate.setUTCSeconds(newTask.dueDate.seconds);
 
-        this.taskItemArray.push(new TaskModel(newTask.title, this.userService.categories[newTask.createdByID], newTask.status, dueDate, createdDate, false));
+        console.log(newTask.createdByID);
+
+        let i = this.getIndexOfUserByEmail(newTask.createdByID);
+        console.log(i);
+
+        this.taskItemArray.push(new TaskModel(newTask.title, this.userService.categories[i], newTask.status, dueDate, createdDate, false));
       });
     });
   }
@@ -128,7 +145,7 @@ export class TaskService {
   public routeBackToHomePage(): void {
     // Quick solution to ensuring that tasks are synced - empty and fetch tasks from db every redirection
     //this.updateTaskArray();
-    this.router.navigate(['']);
+    this.router.navigate(['dashboard']);
   }
 
   // A pretty "brute-force" way of handling this, but to refresh the graph we quickly navigate away and back to the dashboard.
