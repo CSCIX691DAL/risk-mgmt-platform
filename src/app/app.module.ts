@@ -113,12 +113,14 @@ import { HelpComponent } from './landing/information/help/help.component';
 import { TeamComponent } from './landing/information/team/team.component';
 import { TeamF20Component } from './landing/information/team/team-f20/team-f20.component';
 import { TeamW21Component } from './landing/information/team/team-w21/team-w21.component';
+import { TeamS21Component } from './landing/information/team/team-s21/team-s21.component';
 import { CommonModule } from '@angular/common';
 import {DeletePlanComponent} from './treatment-plan/delete-plan/delete-plan.component';
 import { FeaturesComponent } from './landing/features/features.component';
 import { ProgressComponent } from './landing/features/progress/progress.component';
 import { TrackingComponent } from './landing/features/tracking/tracking.component';
 import { DeliveryComponent } from './landing/features/delivery/delivery.component';
+
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -128,6 +130,7 @@ const myroutes: Routes = [
   {path: 'team' , component : TeamW21Component},
   {path: 'team-fall-2020' , component : TeamF20Component},
   {path: 'team-winter-2021' , component : TeamW21Component},
+  {path: 'team-summer-2021' , component : TeamS21Component},
   {path: 'feature-productivity' , component : ProgressComponent},
   {path: 'feature-track-progress' , component : TrackingComponent},
   {path: 'feature-deliver-results' , component : DeliveryComponent},
@@ -265,6 +268,7 @@ const myroutes: Routes = [
     ProgressComponent,
     TrackingComponent,
     DeliveryComponent,
+    TeamS21Component,
   ],
   imports: [
     BrowserModule,
