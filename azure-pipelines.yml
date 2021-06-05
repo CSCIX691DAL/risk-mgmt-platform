@@ -1,7 +1,3 @@
-# Node.js with Angular
-- task: NodeTool@0
-  inputs:
-    versionSpec: '>=12.0.0'
 # Build a Node.js project that uses Angular.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
@@ -16,7 +12,7 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
+    versionSpec: '>=12.0.0'
   displayName: 'Install Node.js'
 
 - script: |

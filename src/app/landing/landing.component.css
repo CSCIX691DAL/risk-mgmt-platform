@@ -76,3 +76,13 @@
             padding-top: 14px;
             filter: invert(55%) sepia(32%) saturate(2817%) hue-rotate(188deg) brightness(98%) contrast(106%);
         }
+
+.imgText{
+    position: relative;
+    text-align: left;
+}
+
+.pg-heading{
+    position: absolute;
+    top: 11px;
+}

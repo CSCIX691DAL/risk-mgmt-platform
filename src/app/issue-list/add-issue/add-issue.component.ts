@@ -4,6 +4,7 @@ import {IssueService} from '../issue.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {CategoryService} from '../../risk-categories/category.service';
 import {DbService} from '../../db.service';
+import {UsersService} from '../../users.service';
 
 @Component({
   selector: 'app-add-issue',
@@ -27,6 +28,7 @@ export class AddIssueComponent implements OnInit {
     private modalService: NgbModal,
     private issueService: IssueService,
     public categoryService: CategoryService,
+    public userService: UsersService,
     public dbService: DbService) {
 
   }

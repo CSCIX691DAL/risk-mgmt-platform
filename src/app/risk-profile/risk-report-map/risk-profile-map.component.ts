@@ -21,6 +21,8 @@ export class RiskProfileMapComponent implements OnInit {
   @ViewChild('profileModal') public profileModal: TemplateRef<any>;
   closeResult = '';
 
+  profileSearchText = '';
+
   public bubbleChartOptions: ChartOptions = {
     responsive: true,
     scales: {
