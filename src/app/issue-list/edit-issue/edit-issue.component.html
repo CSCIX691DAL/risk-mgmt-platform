@@ -57,6 +57,11 @@
       <div class="input-group mb-3">
         <input type="text" class="form-control" id="editAssignee" name="editAssignee" ngModel [(ngModel)]="issue.assignee">
       </div>
+<!--      <div class="input-group mb-3">-->
+<!--        <select class="form-control" id="editAssignee" name="editAssignee" formControlName="editAssignee" [(ngModel)]="issue.assignee">-->
+<!--          <option *ngFor="let assignee of issueService.issues" [ngValue]="assignee.id">{{assignee.assignee}}</option>-->
+<!--        </select>-->
+<!--      </div>-->
 
       <!-- Description -->
       <label for="editDescription" class="labelAndInput">Description</label>

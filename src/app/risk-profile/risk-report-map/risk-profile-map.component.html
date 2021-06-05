@@ -27,7 +27,7 @@
 
             <!-- Search Issues bar -->
             <div class="pr-3">
-              <input class="form-control" type="text" placeholder="Search profiles" name="riskProfileMapList">
+              <input class="form-control" type="text" placeholder="Search profiles" name="riskProfileMapList" [(ngModel)]="profileSearchText">
             </div>
 
           </div>
@@ -50,6 +50,22 @@
                 (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)">
         </canvas>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Risk Profiles on the Risk Map Report -->
+  <div class="row p-0 m-0 justify-content-center">
+    <div class="col-md-10 mb-5">
+
+      <h6 class="text-center mb-4">The Risk Map is a visualization of Risk Profiles, with the x-axis representing the impact <br/>on a scale from 1-10, and the y-axis representing the likelihood on a scale from 1-10.</h6>
+
+      <!-- Print out all Risk Profile items -->
+      <div class="row px-2 m-0 profilesContentCon justify-content-start">
+        <div class="col-md-4 profilesItemContainer" *ngFor="let item of riskProfileService.getRiskProfiles() | filter: profileSearchText">
+          <app-risk-profile-item [riskProfileItem]="item"></app-risk-profile-item>
+        </div>
       </div>
 
     </div>

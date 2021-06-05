@@ -4,6 +4,7 @@ import {IssueService} from '../issue.service';
 import {IssueModel} from '../issue.model';
 import {CategoryService} from '../../risk-categories/category.service';
 import {DbService} from '../../db.service';
+import {UsersService} from '../../users.service';
 
 @Component({
   selector: 'app-edit-issue',
@@ -29,6 +30,7 @@ export class EditIssueComponent implements OnInit {
     private modalService: NgbModal,
     private issueService: IssueService,
     public categoryService: CategoryService,
+    public userService: UsersService,
     public dbService: DbService) {}
 
   // tslint:disable-next-line:use-lifecycle-interface
