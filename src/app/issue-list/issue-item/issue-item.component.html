@@ -1,5 +1,7 @@
 <!-- New Issue Item -->
-<div class="row issueItemContainer" *ngIf="issueItem.parentIssue === 0">
+<!-- Load component IF issue has NO parent issue -->
+<!--<div class="row issueItemContainer" *ngIf="!issueItem.parentIssue">-->
+  <div class="row issueItemContainer">
   <div class="col-md-12">
 
     <!-- Issue Item Heading -->
@@ -15,7 +17,9 @@
 
       <!-- Issue Associated Category -->
       <div class="col-md-12">
-        Category: {{issueItem.riskCategory}}
+        Category: {{issueItem.riskCategory}}<br/>
+        Assignee: {{issueItem.assignee}}<br/>
+        Parent Issue: {{issueItem.parentIssue}}
       </div>
 
       <!-- Issue Description -->

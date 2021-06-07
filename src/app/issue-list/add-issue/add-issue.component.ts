@@ -22,7 +22,7 @@ export class AddIssueComponent implements OnInit {
 
   closeResult = '';
 
-  issue: IssueModel = new IssueModel(0, 'cvb', 'cvbcvb',  12345678, 'asd', 0, 0);
+  issue: IssueModel = new IssueModel(0, 'cvb', 'cvbcvb',  12345678, 'asd', '', '');
 
   constructor(
     private modalService: NgbModal,

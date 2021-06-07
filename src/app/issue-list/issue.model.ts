@@ -7,13 +7,13 @@ export class IssueModel
   // Added Oct 20th
   modifiedBy: number;
   riskCategory: string;
-  assignee: number;
+  assignee: string;
   // Added Nov 19th
-  parentIssue: number;
+  parentIssue: string;
 
   // Constructor
   constructor(id: number, title: string, description: string,
-              modifiedBy: number, riskCategory: string, assignee: number, parentIssue: number) {
+              modifiedBy: number, riskCategory: string, assignee: string, parentIssue: string) {
     this.id = id;
     this.title = title;
     this.description = description;
