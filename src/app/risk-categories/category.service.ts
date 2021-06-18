@@ -39,8 +39,13 @@ export class CategoryService {
     this.dbService.categoryRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const newCategory = doc.data();
-
-        this.categories.push(new CategoryModel(newCategory.id, newCategory.name, this.categories[Number(newCategory.parentCategory - 1)], newCategory.description, newCategory.isSpeculativeRisk));
+        this.categories.push(new CategoryModel(
+            newCategory.id,
+            newCategory.name,
+            this.categories[Number(newCategory.parentCategory - 1)],
+            newCategory.description,
+            newCategory.isSpeculativeRisk
+        ));
       });
       this.triggerToUpdate.next(true);
     });

@@ -69,6 +69,7 @@ export class EditIssueComponent implements OnInit {
     this.issueService.editIssue(this.issue);
 
     this.dbService.issueRef.doc(this.issue.title).set({
+      id: this.issue.id,
       title: this.issue.title,
       description: this.issue.description,
       modifiedBy: this.issue.modifiedBy,

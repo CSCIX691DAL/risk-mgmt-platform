@@ -62,16 +62,18 @@ export class AddIssueComponent implements OnInit {
   // Add issue function
   OnAdd(): void {
     if (this.issue.title) {
-      this.issueService.addIssue(this.issue);
+      // this.issueService.addIssue(this.issue);
 
-      this.dbService.issueRef.doc(this.issue.title).set({
-        title: this.issue.title,
-        description: this.issue.description,
-        modifiedBy: this.issue.modifiedBy,
-        riskCategory: this.issue.riskCategory,
-        assignee: this.issue.assignee,
-        parentIssue: this.issue.parentIssue
-      });
+      // this.dbService.issueRef.doc(this.issue.title).set({
+      //   title: this.issue.title,
+      //   description: this.issue.description,
+      //   modifiedBy: this.issue.modifiedBy,
+      //   riskCategory: this.issue.riskCategory,
+      //   assignee: this.issue.assignee,
+      //   parentIssue: this.issue.parentIssue
+      // });
+
+      this.issueService.addIssue(this.issue);
 
       this.modalService.dismissAll();
     }

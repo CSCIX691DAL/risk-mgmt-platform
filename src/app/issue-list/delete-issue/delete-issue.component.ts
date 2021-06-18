@@ -51,7 +51,7 @@ export class DeleteIssueComponent implements OnInit {
   OnDelete(): void {
     console.log(this.issue);
 
-    this.dbService.issueRef.doc(this.issue.title).delete();
+    // this.dbService.issueRef.doc(this.issue.title).delete();
 
     this.issueService.deleteIssue(this.issue);
 

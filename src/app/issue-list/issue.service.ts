@@ -9,9 +9,6 @@ import {ToastrService} from 'ngx-toastr';
 @Injectable({providedIn: 'root'})
 export class IssueService{
 
-  constructor(public dbService: DbService, public notificationService: ToastrService) {
-  }
-
   // Updates issue list
   triggerToUpdate = new Subject<boolean>();
 
@@ -23,6 +20,10 @@ export class IssueService{
     // new IssueModel(5, 'Issue 5', 'Issue 5 Description', 87654321, 'Strategic', '', ''),
     // new IssueModel(6, 'Issue 6', 'Issue 6 Description', 12345678, 'Interest rate', '', '')
   ];
+
+  constructor(public dbService: DbService, public notificationService: ToastrService ) {
+
+  }
 
   getIssues(): IssueModel[]{
     return this.issues.slice();
@@ -53,11 +54,12 @@ export class IssueService{
 
   // Delete issue function
   deleteIssue(issue: IssueModel): void {
-    this.notificationService.success('Issue "' + issue.title + '" has been deleted.', 'Issue Successfully Deleted');
-
-    // this.issues = this.issues.filter(x => x.id !== issue.id);
 
     this.dbService.issueRef.doc(issue.title).delete();
+
+    this.notificationService.success('Issue "' + issue.title + '" has been deleted.', 'Issue Successfully Deleted');
+
+    this.issues = this.issues.filter(x => x.id !== issue.id);
 
     // console.log(this.issues);
     this.triggerToUpdate.next(true);
@@ -74,31 +76,72 @@ export class IssueService{
     // Array is empty, set new ID to 1
     if (this.issues.length === 0) {
       // Creates new IssueModel object
-      const newIssue = new IssueModel(1, issue.title, issue.description, issue.modifiedBy,
-          issue.riskCategory, issue.assignee, issue.parentIssue);
-      // const newIssue = new IssueModel(1, issue.title, issue.description, issue.modifiedBy,
-      //     issue.riskCategory, issue.assignee, Number(issue.parentIssue));
+      const newIssue = new IssueModel(
+          1,
+          issue.title,
+          issue.description,
+          issue.modifiedBy,
+          issue.riskCategory,
+          issue.assignee,
+          issue.parentIssue
+      );
+
+      this.dbService.issueRef.doc(newIssue.title).set({
+        id: newIssue.id,
+        title: newIssue.title,
+        description: newIssue.description,
+        modifiedBy: newIssue.modifiedBy,
+        riskCategory: newIssue.riskCategory,
+        assignee: newIssue.assignee,
+        parentIssue: newIssue.parentIssue
+      });
+
+      this.notificationService.success('Issue "' + issue.title + '" has been added.', 'Issue Successfully Created');
+
       // Pushes new IssueModel object to issues array
       this.issues.push(newIssue);
+
       // Update screen
       this.triggerToUpdate.next(true);
+
     }
     // Array has one or more objects
     else {
       // Generates number equal to the length of our issues array + 1
       const max = Math.max.apply(Math, this.issues.map( (x) => +x.id)) + 1;
       // Creates new IssueModel object
-      const newIssue = new IssueModel(max, issue.title, issue.description, issue.modifiedBy,
-          issue.riskCategory, issue.assignee, issue.parentIssue);
+      const newIssue = new IssueModel(
+          max,
+          issue.title,
+          issue.description,
+          issue.modifiedBy,
+          issue.riskCategory,
+          issue.assignee,
+          issue.parentIssue
+      );
+
+      this.dbService.issueRef.doc(newIssue.title).set({
+        id: newIssue.id,
+        title: newIssue.title,
+        description: newIssue.description,
+        modifiedBy: newIssue.modifiedBy,
+        riskCategory: newIssue.riskCategory,
+        assignee: newIssue.assignee,
+        parentIssue: newIssue.parentIssue
+      });
+
       // const newIssue = new IssueModel(max, issue.title, issue.description, issue.modifiedBy,
       // issue.riskCategory, issue.assignee, Number(issue.parentIssue));
+
+      this.notificationService.success('Issue "' + issue.title + '" has been added.', 'Issue Successfully Created');
+
       // Pushes new IssueModel object to issues array
       this.issues.push(newIssue);
+
       // Update screen
       this.triggerToUpdate.next(true);
-    }
 
-    this.notificationService.success('Issue "' + issue.title + '" has been added.', 'Issue Successfully Created');
+    }
 
   }
 
@@ -110,8 +153,16 @@ export class IssueService{
     }
 
     // Create new IssueModel object
-    const newIssue = new IssueModel(issue.id, issue.title, issue.description, issue.modifiedBy,
-        issue.riskCategory, issue.assignee, issue.parentIssue);
+    const newIssue = new IssueModel(
+        issue.id,
+        issue.title,
+        issue.description,
+        issue.modifiedBy,
+        issue.riskCategory,
+        issue.assignee,
+        issue.parentIssue
+    );
+
     // const newIssue = new IssueModel(issue.id, issue.title, issue.description, issue.modifiedBy,
     // issue.riskCategory, issue.assignee, Number(issue.parentIssue));
     // Put new object in location of object it's replacing
