@@ -50,11 +50,19 @@
         </select>
       </div>
 
-      <!-- Add Assignee -->
-      <label for="addAssignee" class="labelAndInput">Assignee ID</label>
+      <!-- Add Reviewer (used to be Assignee) -->
+      <label for="addAssignee" class="labelAndInput">Reviewed By</label>
       <div class="input-group mb-3">
         <input type="text" class="form-control" id="addAssignee" name="addAssignee" ngModel [(ngModel)]="issue.assignee">
       </div>
+
+      <!-- Add Reviewer (used to be Assignee) -->
+<!--      <label for="addAssignee" class="labelAndInput">Reviewed By</label>-->
+<!--      <div class="input-group mb-3">-->
+<!--        <select class="form-control" id="addAssignee" name="addAssignee" formControlName="addAssignee" [(ngModel)]="issue.assignee">-->
+<!--          <option *ngFor="let user of userService.categories" [ngValue]="user.id">{{user.firstName}} {{user.lastName}}</option>-->
+<!--        </select>-->
+<!--      </div>-->
 
       <!-- Description -->
       <label for="addDescription" class="labelAndInput">Description</label>
