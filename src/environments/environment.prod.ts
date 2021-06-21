@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   firebaseConfig: {
     apiKey: 'AIzaSyCJd6LltLEd84kAmt00ChFfHUMAYVXGAbw',
     authDomain: 'risk-management-platform-19952.firebaseapp.com',
@@ -9,6 +9,7 @@ export const environment = {
     appId: '1:702095689563:web:5721fc55036daac2927c7e'
   }
 };
+// Winter 2021 - API
 // export const environment = {
 //   production: true,
 //   firebaseConfig: {
