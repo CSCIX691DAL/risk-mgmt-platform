@@ -4,6 +4,7 @@ import {IssueService} from '../issue.service';
 import {IssueModel} from '../issue.model';
 import {CategoryService} from '../../risk-categories/category.service';
 import {DbService} from '../../db.service';
+import {UsersService} from '../../users.service';
 
 @Component({
   selector: 'app-edit-issue',
@@ -16,19 +17,20 @@ export class EditIssueComponent implements OnInit {
   @Input() editTextName: string;
   @Input() editModalTitle: string;
   @Input() editModalRiskCategory: string;
-  @Input() editModalAssignee: number;
+  @Input() editModalAssignee: string;
   @Input() editModalID: number;
   @Input() editModalDescription: string;
   @Input() editIssue: IssueModel;
 
   closeResult = '';
 
-  issue: IssueModel = new IssueModel(0, 'cvbcv', 'cvbcvb', 12345678, 'asd', 0, 0);
+  issue: IssueModel = new IssueModel(0, 'cvbcv', 'cvbcvb', 12345678, 'asd', '', '');
 
   constructor(
     private modalService: NgbModal,
     private issueService: IssueService,
     public categoryService: CategoryService,
+    public userService: UsersService,
     public dbService: DbService) {}
 
   // tslint:disable-next-line:use-lifecycle-interface
@@ -67,6 +69,7 @@ export class EditIssueComponent implements OnInit {
     this.issueService.editIssue(this.issue);
 
     this.dbService.issueRef.doc(this.issue.title).set({
+      id: this.issue.id,
       title: this.issue.title,
       description: this.issue.description,
       modifiedBy: this.issue.modifiedBy,

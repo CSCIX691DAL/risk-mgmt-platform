@@ -2,12 +2,21 @@ import {RiskProfileModel} from 'src/app/risk-profile/risk-profile.model';
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {CategoryService} from '../../risk-categories/category.service';
+import {RiskProfileService} from '../risk-profile.service';
+import {TaskService} from '../../task-list/task-service';
+import {TaskModel} from '../../task-list/task.model';
 
 @Injectable({providedIn: 'root'})
 export class RiskProfileMapService {
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, profileService: RiskProfileService) {
   }
+
+  public profileService: RiskProfileService;
+
+  // public getTaskItemArray(): RiskProfileModel[] {
+  //   return this.profileService.getRiskProfiles();
+  // }
 
   // Updates issue list
   triggerToUpdate = new Subject<boolean>();

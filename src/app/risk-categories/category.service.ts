@@ -13,10 +13,10 @@ export class CategoryService {
   triggerToUpdate = new Subject<boolean>();
 
   public categories: CategoryModel[] = [
-    //new CategoryModel(1, 'Financial', null, 'Risks to money and investments', false),
-    //new CategoryModel(2, 'Strategic', null, 'Affects business strategy and objectives', false),
-    //new CategoryModel(3, 'Hazard', null, 'Harm or health effect to people', false),
-    //new CategoryModel(4, 'Operational', null, 'Impacts to systems, procedures, policies, and people', false),
+    // new CategoryModel(1, 'Financial', null, 'Risks to money and investments', false),
+    // new CategoryModel(2, 'Strategic', null, 'Affects business strategy and objectives', false),
+    // new CategoryModel(3, 'Hazard', null, 'Harm or health effect to people', false),
+    // new CategoryModel(4, 'Operational', null, 'Impacts to systems, procedures, policies, and people', false),
   ];
 
   constructor(public dbService: DbService, public notificationService: ToastrService ) {
@@ -39,8 +39,13 @@ export class CategoryService {
     this.dbService.categoryRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const newCategory = doc.data();
-
-        this.categories.push(new CategoryModel(newCategory.id, newCategory.name, this.categories[Number(newCategory.parentCategory - 1)], newCategory.description, newCategory.isSpeculativeRisk));
+        this.categories.push(new CategoryModel(
+            newCategory.id,
+            newCategory.name,
+            this.categories[Number(newCategory.parentCategory - 1)],
+            newCategory.description,
+            newCategory.isSpeculativeRisk
+        ));
       });
       this.triggerToUpdate.next(true);
     });
