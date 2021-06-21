@@ -50,7 +50,7 @@
           name="addParentIssue"
           ngModel [(ngModel)]="issue.parentIssue"
         >
-          <option selected value="0">None</option>
+          <option selected value="">None</option>
 
           <option *ngFor="let item of issueService.issues" [value]=item.title>
             {{ item.title }}
@@ -70,7 +70,7 @@
                 id="addAssignee"
                 name="addAssignee"
                 ngModel [(ngModel)]="issue.assignee"
-                value="0"
+                value=""
         >
           <option [value]="0">None</option>
 
