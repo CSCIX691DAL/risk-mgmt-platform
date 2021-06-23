@@ -1,0 +1,50 @@
+<!-- Risk Profiles on the Risk Map Report/Risk Matrix Page -->
+<div class="row profileItemContainer newRiskProfileItemContainer">
+    <div class="col-md-12">
+
+        <!-- -->
+        <div class="row py-1 pt-2 profileItemHeading">
+            <!-- -->
+            <div class="col-md-6">
+                <h5>{{riskProfileItem.title}}</h5>
+            </div>
+
+            <!-- -->
+            <div class="col-md-6 pt-1">
+                <!-- Profile Level of Risk Badge -->
+                <span class="badge badge-{{riskProfileItem.getLevelOfRiskBadge().css}} float-right">
+                  {{riskProfileItem.getLevelOfRiskBadge().level}}
+                </span>
+            </div>
+        </div>
+
+        <!-- -->
+        <div class="row py-1 pt-3">
+            <!-- -->
+            <div class="col-md-5">
+                <h6><b>Category:</b> {{riskProfileItem.category.name}}</h6>
+            </div>
+
+            <!-- -->
+            <div class="col-md-5">
+                <h6><b>Description:</b> {{riskProfileItem.description}}</h6>
+            </div>
+
+            <!-- -->
+            <div class="col-md-1">
+                <h6 class="text-center"><b>Impact</b><br/>{{riskProfileItem.impact}}</h6>
+            </div>
+
+            <!-- -->
+            <div class="col-md-1">
+                <h6 class="text-center"><b>Likelihood</b><br/>{{riskProfileItem.likelihood}}</h6>
+            </div>
+        </div>
+
+        <!-- Prints out all Risk Profile items -->
+        <div class="row p-0 m-0 profilesContentCon justify-content-start">
+
+        </div>
+
+    </div>
+</div>

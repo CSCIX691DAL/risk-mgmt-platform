@@ -56,12 +56,15 @@
   <div class="row p-0 m-0 justify-content-center">
     <div class="col-md-10 mb-5">
 
-      <h6 class="text-center mb-4">The Risk Matrix is a visualization of Risk Profiles, with the x-axis representing the impact <br/>on a scale from 1-10, and the y-axis representing the likelihood on a scale from 1-10.</h6>
+      <h6 class="text-center mb-4">
+        What is Risk Matrix?
+        The Risk Matrix is a visualization of Risk Profiles, with the x-axis representing the impact
+        on a scale from 1-10, and the y-axis representing the likelihood on a scale from 1-10.
+      </h6>
 
-      <!-- Print out all Risk Profile items -->
-      <div class="row px-2 m-0 profilesContentCon justify-content-start">
-        <div class="col-md-4 profilesItemContainer" *ngFor="let item of riskProfileService.getRiskProfiles() | filter: profileSearchText">
-          <app-risk-profile-item [riskProfileItem]="item"></app-risk-profile-item>
+      <div class="row p-0 m-0 justify-content-center">
+        <div class="col-md-12 profilesItemContainer" *ngFor="let item of riskProfileService.getRiskProfiles() | filter: profileSearchText">
+          <app-risk-profile-display [riskProfileItem]="item"></app-risk-profile-display>
         </div>
       </div>
 

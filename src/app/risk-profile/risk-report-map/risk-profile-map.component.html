@@ -1,10 +1,9 @@
-<div class="container-fluid w-100 mw-100 px-0 m-0">
+<div class="container-fluid w-100 mw-100 px-0 m-0" xmlns="http://www.w3.org/1999/html">
 
   <!-- Risk Map Report Navigation Bar -->
   <div class="row riskMapNavigationBar px-2 m-0">
     <div class="col-md-12">
       <div class="row p-0">
-
         <!-- Title of page user is currently viewing -->
         <div class="col-md-6">
           <h3 class="mt-2 pt-1">Risk Map Report</h3>
@@ -56,15 +55,37 @@
   </div>
 
   <!-- Risk Profiles on the Risk Map Report -->
+<!--  <div class="row p-0 m-0 justify-content-center">-->
+<!--    <div class="col-md-10 mb-5">-->
+
+<!--      <h6 class="text-center mb-4">The Risk Map is a visualization of Risk Profiles, with the x-axis representing the impact <br/>on a scale from 1-10, and the y-axis representing the likelihood on a scale from 1-10.</h6>-->
+
+<!--      &lt;!&ndash; Print out all Risk Profile items &ndash;&gt;-->
+<!--      <div class="row px-2 m-0 profilesContentCon justify-content-start">-->
+<!--        <div class="col-md-4 profilesItemContainer" *ngFor="let item of riskProfileService.getRiskProfiles() | filter: profileSearchText">-->
+<!--          <app-risk-profile-item [riskProfileItem]="item"></app-risk-profile-item>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+
+  <!-- Risk Profiles on the Risk Map Report -->
   <div class="row p-0 m-0 justify-content-center">
     <div class="col-md-10 mb-5">
 
-      <h6 class="text-center mb-4">The Risk Map is a visualization of Risk Profiles, with the x-axis representing the impact <br/>on a scale from 1-10, and the y-axis representing the likelihood on a scale from 1-10.</h6>
+      <h6 class="text-center mb-4">
+        What is Risk Map Report?
+        The Risk Map Report is a visual representation of the plausible Risk Profiles defined in *ORGANIZATION NAME*.
+        Each points in the report are influenced by the impact (x-axis) and likelihood (y-axis) assigned in each Risk Profiles plotted in the chart above.
+        The impact and likelihood of the Risk Profiles are ranked in a scale of 1-10.<br/>
+        The Map report shown above can be used to better understand the risks involved in the organization
+        and plan strategies to mitigate and avoid the the occurrence of risks.
+      </h6>
 
-      <!-- Print out all Risk Profile items -->
-      <div class="row px-2 m-0 profilesContentCon justify-content-start">
-        <div class="col-md-4 profilesItemContainer" *ngFor="let item of riskProfileService.getRiskProfiles() | filter: profileSearchText">
-          <app-risk-profile-item [riskProfileItem]="item"></app-risk-profile-item>
+      <div class="row p-0 m-0 justify-content-center">
+        <div class="col-md-12 profilesItemContainer" *ngFor="let item of riskProfileService.getRiskProfiles() | filter: profileSearchText">
+          <app-risk-profile-display [riskProfileItem]="item"></app-risk-profile-display>
         </div>
       </div>
 
