@@ -120,6 +120,7 @@ import { FeaturesComponent } from './landing/features/features.component';
 import { ProgressComponent } from './landing/features/progress/progress.component';
 import { TrackingComponent } from './landing/features/tracking/tracking.component';
 import { DeliveryComponent } from './landing/features/delivery/delivery.component';
+import { RiskProfileDisplayComponent } from './risk-profile/risk-profile-display/risk-profile-display.component';
 
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
@@ -269,6 +270,7 @@ const myroutes: Routes = [
     TrackingComponent,
     DeliveryComponent,
     TeamS21Component,
+    RiskProfileDisplayComponent,
   ],
   imports: [
     BrowserModule,
