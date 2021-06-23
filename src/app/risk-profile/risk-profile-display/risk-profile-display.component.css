@@ -1,6 +1,54 @@
-.riskProfileDisplay {
-    border: 1px solid black;
+.paddingSolution {
+    padding-left:15px;
+    padding-right: 15px;
 }
-.displayProfiles {
-    border: 1px solid red;
+
+.profileItemContainer {
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    background-color: #fefefe;
+}
+
+div a {
+    color: #0275DA;
+}
+div a:hover {
+    color: #0275D8;
+    underline: #0275D8;
+    cursor: pointer;
+}
+
+.badge-low {
+    background-color: green;
+}
+.badge-low-med {
+    background-color: limegreen;
+}
+.badge-med {
+    background-color: yellow;
+}
+.badge-med-hi {
+    background-color: orange;
+}
+.badge-hi {
+    background-color: red;
+    color: white;
+}
+.profileItemHeading {
+    background-color: #f9f9f9;
+    border-radius: 6px 6px 0px 0px;
+    border-bottom: 1px solid #DEDEDE;
+}
+.profileItemBody {
+    min-height: 150px;
+}
+.profileItemFooting {
+    background-color: #f9f9f9;
+    border-radius: 0px 0px 6px 6px;
+    border-top: 1px solid #DEDEDE;
+}
+.newRiskProfileItemContainer h6 {
+    font-weight: 400;
 }
