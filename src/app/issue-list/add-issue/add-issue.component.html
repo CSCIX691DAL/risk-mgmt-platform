@@ -11,7 +11,14 @@
       <!-- Title -->
       <label for="addTitle" class="labelAndInput">Title</label>
       <div class="input-group mb-3">
-        <input type="text" class="form-control" id="addTitle" name="addTitle" ngModel [(ngModel)]="issue.title">
+        <input
+          type="text"
+          class="form-control"
+          id="addTitle"
+          name="addTitle"
+          placeholder="Title of Risk Issue"
+          ngModel [(ngModel)]="issue.title"
+        >
       </div>
 
       <!-- Risk Category -->
@@ -21,9 +28,11 @@
           class="form-control"
           id="addRiskCategory"
           name="addRiskCategory"
+          title="Risk Category"
           ngModel [(ngModel)]="issue.riskCategory"
         >
-          <option selected value="">Category</option>
+
+          <option selected value="">Choose a Risk Category</option>
 
           <option *ngFor="let item of categoryService.categories" [value]=item.name>
             {{ item.name }}
@@ -43,7 +52,7 @@
         >
           <option selected value="0">None</option>
 
-          <option *ngFor="let item of issueService.issues" [value]=item.id>
+          <option *ngFor="let item of issueService.issues" [value]=item.title>
             {{ item.title }}
           </option>
 
@@ -52,14 +61,45 @@
 
       <!-- Add Reviewer (used to be Assignee) -->
       <label for="addAssignee" class="labelAndInput">Reviewed By</label>
+<!--      <div class="input-group mb-3">-->
+<!--        <input type="text" class="form-control" id="addAssignee" name="addAssignee" ngModel [(ngModel)]="issue.assignee">-->
+<!--      </div>-->
       <div class="input-group mb-3">
-        <input type="text" class="form-control" id="addAssignee" name="addAssignee" ngModel [(ngModel)]="issue.assignee">
+        <select
+                class="form-control"
+                id="addAssignee"
+                name="addAssignee"
+                ngModel [(ngModel)]="issue.assignee"
+                value="0"
+        >
+          <option [value]="0">None</option>
+
+          <option *ngFor="let user of userService.categories" [value]="user.id">
+            {{ user.firstName + " " + user.lastName }}
+          </option>
+
+        </select>
       </div>
+
+      <!-- Add Reviewer (used to be Assignee) -->
+<!--      <label for="addAssignee" class="labelAndInput">Reviewed By</label>-->
+<!--      <div class="input-group mb-3">-->
+<!--        <select class="form-control" id="addAssignee" name="addAssignee" formControlName="addAssignee" [(ngModel)]="issue.assignee">-->
+<!--          <option *ngFor="let user of userService.categories" [ngValue]="user.id">{{user.firstName}} {{user.lastName}}</option>-->
+<!--        </select>-->
+<!--      </div>-->
 
       <!-- Description -->
       <label for="addDescription" class="labelAndInput">Description</label>
       <div class="input-group mb-1">
-        <textarea class="form-control" id="addDescription" name="addDescription" ngModel [(ngModel)]="issue.description"></textarea>
+        <textarea
+          class="form-control"
+          id="addDescription"
+          name="addDescription"
+          placeholder="Description of Risk Issue."
+          ngModel [(ngModel)]="issue.description"
+        >
+        </textarea>
       </div>
 
     </div>

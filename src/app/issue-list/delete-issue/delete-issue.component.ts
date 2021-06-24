@@ -18,7 +18,7 @@ export class DeleteIssueComponent implements OnInit {
 
   closeResult = '';
 
-  issue: IssueModel = new IssueModel(0, 'cvbcv', 'cvbcvb', 12345678, 'asd', 0, 0);
+  issue: IssueModel = new IssueModel(0, 'cvbcv', 'cvbcvb', 12345678, 'asd', '', '');
 
   constructor( private modalService: NgbModal, private issueService: IssueService, public dbService: DbService ) {}
 
@@ -51,7 +51,7 @@ export class DeleteIssueComponent implements OnInit {
   OnDelete(): void {
     console.log(this.issue);
 
-    this.dbService.issueRef.doc(this.issue.title).delete();
+    // this.dbService.issueRef.doc(this.issue.title).delete();
 
     this.issueService.deleteIssue(this.issue);
 

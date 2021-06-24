@@ -19,6 +19,8 @@ export class RiskResponseMatrixComponent implements OnInit {
 
   public currentModel: RiskProfileModel;
 
+  profileSearchText = '';
+
   constructor(public riskProfileService: RiskProfileService, private modalService: NgbModal) { }
 
   // scatter

@@ -24,7 +24,8 @@ export class EditTaskComponent implements OnInit {
 
   closeResult = '';
 
-  constructor(taskService: TaskService, public userService: UsersService, public dbService: DbService, public modalService: NgbModal, public notificationService: ToastrService) {
+  constructor(taskService: TaskService, public userService: UsersService, public dbService: DbService,
+              public modalService: NgbModal, public notificationService: ToastrService) {
     this.taskService = taskService;
   }
 

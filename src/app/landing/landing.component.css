@@ -22,7 +22,8 @@
             font-size: 1.4em;
         }
         .ATF_LeftCon span {
-            color: #409cff;
+            /*color: #409cff; */
+            color: blue;
         }
     .ATF_InputContainer {
         width: 45vw;
@@ -79,10 +80,15 @@
 
 .imgText{
     position: relative;
-    text-align: left;
 }
 
-.pg-heading{
-    position: absolute;
-    top: 11px;
+#aboveFoldLandingContainer {
+    background: url("./../../assets/Images/dashboard-profile.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.headingText{
+    bottom: 100px;
+    left: 10px;
+    text-align: left;
 }
