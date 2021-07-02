@@ -2,16 +2,16 @@
 
     <!-- Treatment Plans Navigation Bar -->
     <div class="row treatmentPlanNavigationBar px-2 m-0">
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <div class="row p-0">
 
                 <!-- Title of Current Page -->
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <h3 class="mt-2 pt-1">Treatment Plans</h3>
                 </div>
 
                 <!-- Search Bar -->
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <div class="row justify-content-end">
 
                         <!-- Add Treatment Plan modal component -->
@@ -38,7 +38,7 @@
 
     <div class="row m-0">
         <!-- Treatment Plan Display -->
-        <div class="col-md-3 treatmentPlan_LeftSidebar overflow-auto">
+        <div class="col-sm-3 treatmentPlan_LeftSidebar overflow-auto">
                 <!-- Treatment Plan needs to appear below/with each item -->
                 <app-treatment-plan-item *ngFor="let plan of this.treatmentPlanService.treatmentPlans | filter: TreatmentPlanSearchText" [treatmentPlanItem]="plan"></app-treatment-plan-item>
             <!-- basic placeholder - testing functionality -->
@@ -52,7 +52,7 @@
                 </h2>
                 <!-- Treatment Plan Risk Profile Display -->
 
-                <div class="col-md-6">
+                <div class="col-sm-6">
 
                         <h3>Risk Profile: {{treatmentPlanService.currentlySelectedPlan.riskProfile.title}}</h3><br>
 
@@ -74,7 +74,7 @@
 
                 </div>
                 <!-- Treatment Plan Task Display -->
-                <div class="col-md-6">
+                <div class="col-sm-6">
 
                     Tasks: {{
                     treatmentPlanService.currentlySelectedPlan.tasks//.forEach(print)

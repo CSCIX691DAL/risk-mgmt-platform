@@ -20,3 +20,12 @@
     outline: none;
     box-shadow: none;
 }
+.mapDescription {
+ border-bottom: 2px solid #EEEEEE;
+}
+.mapNewRiskProfiles {
+    border-bottom: 2px solid #EEEEEE;
+}
+.mapChart {
+    border-bottom: 2px solid #EEEEEE;
+}

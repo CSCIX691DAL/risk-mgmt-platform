@@ -38,7 +38,7 @@
   </div>
 
   <div class="row p-0 m-0 justify-content-center">
-    <div class="col-md-10 my-5">
+    <div class="col-md-10 my-5 matrixChart">
       <canvas baseChart class="p-2"
               [datasets]="scatterChartData"
               [options]="scatterChartOptions"
@@ -52,16 +52,56 @@
     </div>
   </div>
 
+  <!-- Risk Matrix  Description -->
+  <div class="row p-0 m-0 justify-content-center ">
+    <div class="col-md-10 mb-5 pb-3 matrixDescription accordion">
+      <div class="accordion-item">
+      </div>
+      <h4 class="text-center pb-5"> What is Risk Matrix? </h4>
+
+<!--      Accordion -->
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                How is the graph generated?
+              </button>
+            </h5>
+          </div>
+          <div class="collapse show" data-parent="#accordion">
+            <div class="card-body justify-content-md-center">
+              The Risk Matrix is a visualization of Risk Profiles, with the x-axis representing the impact of the risks on the organization
+              on a scale from 1-10, and the y-axis representing the likelihood that a risk will occur on a scale from 1-10.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                How can I use the information presented in the Risk Matrix?
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse">
+            <div class="card-body">
+              The Risk Matrix assists the organization in decision making to better address the identified risks based on the organization's resources.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Risk Profiles on the Risk Matrix -->
   <div class="row p-0 m-0 justify-content-center">
-    <div class="col-md-10 mb-5">
-
-      <h6 class="text-center mb-4">The Risk Matrix is a visualization of Risk Profiles, with the x-axis representing the impact <br/>on a scale from 1-10, and the y-axis representing the likelihood on a scale from 1-10.</h6>
-
-      <!-- Print out all Risk Profile items -->
-      <div class="row px-2 m-0 profilesContentCon justify-content-start">
-        <div class="col-md-4 profilesItemContainer" *ngFor="let item of riskProfileService.getRiskProfiles() | filter: profileSearchText">
-          <app-risk-profile-item [riskProfileItem]="item"></app-risk-profile-item>
+    <div class="col-md-10 mb-5 matrixNewRiskProfiles">
+      <div class="row p-0 m-0 justify-content-center">
+        <h4 class="text-center mb-4"> Risk Profiles </h4>
+        <div class="col-md-12 profilesItemContainer" *ngFor="let item of riskProfileService.getRiskProfiles() | filter: profileSearchText">
+          <app-risk-profile-display [riskProfileItem]="item"></app-risk-profile-display>
         </div>
       </div>
 

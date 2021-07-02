@@ -42,6 +42,9 @@
     outline: none;
     box-shadow: none;
   }
+.categoryPageContainer {
+  min-height: 100vh;
+}
 .categoriesContentCon {
     height: auto;
     padding-bottom: 80px;
