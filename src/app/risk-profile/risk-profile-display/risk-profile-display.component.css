@@ -37,7 +37,7 @@ div a:hover {
     color: white;
 }
 .profileItemHeading {
-    background-color: #f9f9f9;
+    background-color: #008BFF;
     border-radius: 6px 6px 0px 0px;
     border-bottom: 1px solid #DEDEDE;
 }
@@ -51,4 +51,7 @@ div a:hover {
 }
 .newRiskProfileItemContainer h6 {
     font-weight: 400;
+}
+.newProfileItemBadge {
+    background-color: #EEEEEE;
 }

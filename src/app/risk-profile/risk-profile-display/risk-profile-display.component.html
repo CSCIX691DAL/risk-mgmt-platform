@@ -1,17 +1,15 @@
 <!-- Risk Profiles on the Risk Map Report/Risk Matrix Page -->
+
 <div class="row profileItemContainer newRiskProfileItemContainer">
 
+<!-- New Risk Profile Heading: contains profile title and risk badge -->
     <div class="col-md-12">
-        <!-- -->
         <div class="row py-1 pt-2 profileItemHeading">
-            <!-- -->
-            <div class="col-md-6">
+            <div class="col-6" >
                 <h5>{{riskProfileItem.title}}</h5>
             </div>
 
-            <!-- -->
-            <div class="col-md-6 pt-1">
-                <!-- Profile Level of Risk Badge -->
+            <div class="col-6 pt-1 newProfileItemBadge">
                 <span class="badge badge-{{riskProfileItem.getLevelOfRiskBadge().css}} float-right">
                   {{riskProfileItem.getLevelOfRiskBadge().level}}
                 </span>
@@ -19,9 +17,9 @@
         </div>
 
         <!-- -->
-        <div class="row py-1 pt-3 text-wrap" >
+        <div class="row py-1 pt-3 text-wrap justify-text-center" >
             <!-- -->
-            <div class="col-md-4">
+            <div class="col-md-2 text-wrap">
                 <h6><b>Category:</b> {{riskProfileItem.category.name}}</h6>
             </div>
 
@@ -31,12 +29,12 @@
             </div>
 
             <!-- -->
-            <div class="col-md-2 text-wrap">
+            <div class="col-md-3   text-wrap">
                 <h6 class="text-center"><b>Impact</b><br/>{{riskProfileItem.impact}}</h6>
             </div>
 
             <!-- -->
-            <div class="col-md-2 text-wrap">
+            <div class="col-md-3  text-wrap">
                 <h6 class="text-center"><b>Likelihood</b><br/>{{riskProfileItem.likelihood}}</h6>
             </div>
         </div>
