@@ -40,6 +40,9 @@
     outline: none;
     box-shadow: none;
   }
+.issuePageContainer {
+  min-height: 100vh;
+}
 .issuesContentCon {
   height: auto;
   padding-bottom: 80px;
