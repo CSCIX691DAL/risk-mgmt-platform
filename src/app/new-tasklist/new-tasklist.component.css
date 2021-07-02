@@ -34,6 +34,9 @@
     outline: none;
     box-shadow: none;
 }
+.taskPageContainer {
+    min-height: 100vh;
+}
 .tasksContentCon {
     height: auto;
     padding-bottom: 80px;

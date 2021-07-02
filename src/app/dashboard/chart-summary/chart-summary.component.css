@@ -1,8 +1,8 @@
 #taskGraphContainer {
-  min-height: 500px;
+  min-height: 570px;
 }
 .taskContainerBorderRadius {
-  min-height: 350px;
+  min-height: 420px;
   border: 1px solid #cccccc;
   background-color: #ffffff;
   box-shadow: 3px 3px 5px #DADADA;
@@ -27,8 +27,8 @@
   border-right: 1px solid #cccccc;
 }
 .chartSummaryRightBar {
-  height: 480px;
-  max-height: 480px;
+  height: 550px;
+  max-height: 550px;
   overflow-y: scroll;
   border-bottom-right-radius: 8px;
 }

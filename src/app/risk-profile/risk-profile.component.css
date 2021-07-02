@@ -40,6 +40,9 @@
     outline: none;
     box-shadow: none;
   }
+.profilePageContainer {
+  min-height: 100vh;
+}
 .profilesContentCon {
   height: auto;
   padding-bottom: 80px;
