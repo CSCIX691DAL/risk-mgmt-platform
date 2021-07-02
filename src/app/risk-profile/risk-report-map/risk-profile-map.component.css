@@ -2,7 +2,6 @@
     width: 100%;
     height: 60px;
     border-bottom: 1px solid #EEEEEE;
-    /*border: 1px solid black;*/
 }
 .riskMapNavigationBar input {
     width: 250px;
@@ -20,4 +19,13 @@
 .riskMapSortButton:focus {
     outline: none;
     box-shadow: none;
+}
+.mapDescription {
+ border-bottom: 2px solid #EEEEEE;
+}
+.mapNewRiskProfiles {
+    border-bottom: 2px solid #EEEEEE;
+}
+.mapChart {
+    border-bottom: 2px solid #EEEEEE;
 }
