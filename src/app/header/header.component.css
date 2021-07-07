@@ -44,3 +44,7 @@ nav h1 {
     margin-top: -2px;
     filter: invert(46%) sepia(17%) saturate(227%) hue-rotate(166deg) brightness(94%) contrast(91%);
   }
+.headerZIndex {
+  z-index: 10000;
+  background-color: #F8F9FA;
+}

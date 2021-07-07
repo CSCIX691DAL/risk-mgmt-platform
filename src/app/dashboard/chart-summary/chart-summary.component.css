@@ -1,3 +1,6 @@
+.taskSummaryContainer {
+  margin-bottom: 15px !important;
+}
 #taskGraphContainer {
   min-height: 570px;
 }

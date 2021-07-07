@@ -1,12 +1,16 @@
 .widgetBorderRadius {
   border-radius: 8px;
   background-color: #0062F2;
+  margin-bottom: 15px;
 }
 .widgetHeader {
-  min-height: 35px;
   color: #ffffff;
   border-bottom: 1px solid #eeeeee;
 }
+  .widgetHeader h6 {
+    margin-top: 10px;
+    marin-bottom: 3px;
+  }
 .widgetBody {
   color: #ffffff;
 }
@@ -19,6 +23,10 @@
 }
 .widgetFooter a {
   color: #FFFFFF;
+}
+.widgetCategoryFooterText {
+  margin-top: 10px;
+  marin-bottom: 3px;
 }
 /* unvisited link */
 .widgetFooter a:link {
