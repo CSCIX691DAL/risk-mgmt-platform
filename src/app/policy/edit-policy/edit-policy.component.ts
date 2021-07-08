@@ -31,7 +31,7 @@ export class EditPolicyComponent implements OnInit {
     this.newPolicyForm = new FormGroup({
       policyTitle: new FormControl(this.currentModel.title),
       policyDescription: new FormControl(this.currentModel.description),
-      riskProfiles: new FormControl(this.currentModel.riskprofile)
+      riskProfiles: new FormControl(this.currentModel.riskProfile)
     });
   }
 
@@ -49,7 +49,7 @@ export class EditPolicyComponent implements OnInit {
 
     const riskTitles = [];
 
-    newPolicy.riskprofile.forEach((risk) => {
+    newPolicy.riskProfile.forEach((risk) => {
       riskTitles.push(risk);
     });
 

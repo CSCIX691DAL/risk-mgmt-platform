@@ -21,7 +21,7 @@
             <!-- Issue Associated Category -->
             <div class="col-md-12">
                 Risk Profiles: <br/>
-                <li *ngFor="let risk of policyItem.riskprofile">
+                <li *ngFor="let risk of policyItem.riskProfile">
                     {{risk.title || risk}}
                 </li>
             </div>
@@ -32,25 +32,22 @@
         <div class="row">
             <div class="col-md-12 pt-2 pb-1 issueItemFooting">
 
+
+
+                <app-view-policy
+                        [inputPolicyItem]="policyItem"
+                >
+                </app-view-policy>
+
                 <!-- Edit Issue modal component -->
                 <app-edit-policy
                         [inputPolicy]="policyItem"
-                        class="float-right">
+                        class="float-right mr-3">
                 </app-edit-policy>
 
                 <!-- Delete Policy Link -->
                 <a class="float-right mr-3" (click)="onDeletePolicy()">Delete</a>
-                <div class="btn-group mr-3">
-                    <button type="button" class="btn btn-primary">More info</button>
-                    <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
-                        <button class="btn btn-primary dropdown-toggle-split" ngbDropdownToggle></button>
-                        <div class="dropdown-menu" ngbDropdownMenu>
-                            <h5>{{policyItem.title}}</h5>
-                            <h5>{{policyItem.description}}</h5>
-                            <h5>{{policyItem.riskprofile}}</h5>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
 

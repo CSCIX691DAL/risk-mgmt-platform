@@ -48,7 +48,11 @@
             <app-policy-item [policyItem]="item"></app-policy-item>
         </div>
     </div>
+    <div class="row px-2 m-0 issuesContentCon justify-content-start">
+        <div class="col-md-4 issuesItemContainer" *ngFor="let item of policyService.policies">
 
+        </div>
+    </div>
     <!-- Print out all Policy items -->
 <!--    <app-policy-item *ngFor="let item of policyArray"[policyItem]="item" ></app-policy-item>-->
 
