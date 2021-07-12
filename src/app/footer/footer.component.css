@@ -35,10 +35,12 @@ a:active {
   float: left;
   margin-top: -2px;
 }
-#footerTermsAndPrivacy {
+.footerTermsAndPrivacy {
   font-size: 10px;
   line-height: 10px;
-  text-decoration: underline;
+}
+.footerTermsAndPrivacy:hover {
+  text-decoration: underline !important;
 }
 /* END OF FOOTER LINK STYLING */
 
