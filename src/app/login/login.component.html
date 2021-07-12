@@ -1,18 +1,17 @@
 <!-- Login Container -->
 <div class="container-fluid loginPageCon">
     <div class="container">
-
-        <!--  -->
+        <!-- Login Container -->
         <div class="row justify-content-center">
             <div class="col-sm-10" id="loginContainer">
                 <div class="row h-100">
 
-                    <!-- -->
+                    <!-- Image -->
                     <div class="col-sm-12 col-md-6">
                         <img src="assets/img/login.svg" alt="" class="d-inline-block align-top loginImage" />
                     </div>
 
-                    <!-- -->
+                    <!-- Login Form -->
                     <div class="col-sm-12 col-md-6">
                         <div class="row justify-content-center">
 
@@ -21,38 +20,37 @@
                                 <h1>Log in</h1>
                             </div>
 
+                            <!-- Login Error Message -->
                             <div *ngIf="loginFailed" class="col-md-12 text-center">
-                                <p class="text-danger">Invalid Credentials.</p>
+                                <p class="text-danger">
+                                    Invalid Credentials.
+                                </p>
                             </div>
 
                             <!-- Email -->
                             <div class="col-sm-8 mt-5 pt-2 pb-2">
-
                                 <label for="loginEmail" class="float-left">Email</label>
                                 <div class="input-group mb-3">
                                     <input type="email" class="form-control" id="loginEmail" name="loginEmail" [formControl]="loginEmail">
                                 </div>
-
                             </div>
 
                             <!-- Password -->
                             <div class="col-sm-8 pt-2 pb-2">
-
                                 <label for="loginPassword" class="float-left">Password</label>
                                 <div class="input-group mb-3">
                                     <input type="password" class="form-control" id="loginPassword" name="loginPassword" [formControl]="loginPassword">
                                 </div>
-
                             </div>
 
-                            <!--  -->
+                            <!-- Login Button -->
                             <div class="col-sm-8 pt-2 pb-5 text-center">
-
-                                <button type="submit" class="btn btn-primary px-5 py-2" (click)="onSubmit()">Log in</button>
-
+                                <button type="submit" class="btn btn-primary px-5 py-2" (click)="onSubmit()">
+                                    Log in
+                                </button>
                             </div>
 
-                            <!-- -->
+                            <!-- Link to Forgot Password Page -->
                             <div class="col-sm-12 pt-2 pb-2 text-center">
                                 <a routerLink="/forgot-password">Forgot Password? click here</a>
                             </div>
@@ -63,6 +61,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
