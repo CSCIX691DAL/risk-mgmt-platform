@@ -28,43 +28,50 @@ export class RegisterComponent implements OnInit {
   providedEmail = true;
   providedName = true;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
+  // Called after Sign up form is submitted.
   onSubmit(): void {
     console.log(this.registerPassword.value);
+
+    // Checks if password and confirm password match and that the string is not empty.
     if ((this.registerPassword.value !== this.registerConfirmPassword.value) || this.registerPassword.value === '') {
       this.passwordMatch = false;
-    }
-    else {
+    } else {
       this.passwordMatch = true;
     }
 
-
+    // Checks to see if organization name is undefined or empty.
     if (this.registerVerifyCode.value === undefined || this.registerVerifyCode.value.length < 1) {
       this.providedVerify = false;
-    }
-    else {
+    } else {
       this.providedVerify = true;
     }
 
+    // Checks if email input is undefined or empty.
     if (this.registerEmail.value === undefined || this.registerEmail.value.length < 1) {
       this.providedEmail = false;
-    }
-    else {
+    } else {
       this.providedEmail = true;
     }
 
+    // Checks if username is undefined or empty.
     if (this.userName.value === undefined || this.userName.value.length < 1) {
       this.providedName = false;
-    }
-    else {
+    } else {
       this.providedName = true;
     }
 
+    // If all checks pass, a new account can be created.
     if (this.passwordMatch && this.providedVerify && this.providedEmail && this.providedName) {
       this.passwordMatch = true;
-      this.userAuthService.userSignUp(this.registerEmail.value, this.registerPassword.value, this.registerVerifyCode.value, this.userName.value);
+      // Creates account using email, password, organization name (registerVerifyCode), and username.
+      this.userAuthService.userSignUp(
+          this.registerEmail.value,
+          this.registerPassword.value,
+          this.registerVerifyCode.value,
+          this.userName.value
+      );
       this.router.navigate(['login']);
     }
   }

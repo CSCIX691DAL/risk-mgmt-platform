@@ -1,18 +1,17 @@
-<!-- Login Container -->
+<!-- Login Page -->
 <div class="container-fluid registerPageCon">
     <div class="container">
-
-        <!--  -->
+        <!-- Login Container -->
         <div class="row">
             <div class="col-sm-12" id="registerContainer">
                 <div class="row h-100">
 
-                    <!-- -->
+                    <!-- Image -->
                     <div class="col-sm-12 col-md-6">
                         <img src="assets/img/signup.svg" alt="" class="d-inline-block align-top registerImage" />
                     </div>
 
-                    <!-- -->
+                    <!-- Login Form -->
                     <div class="col-sm-12 col-md-6 pb-sm-4">
                         <div class="row justify-content-center">
 
@@ -38,6 +37,7 @@
                             <!-- User's Name -->
                             <div class="col-sm-8 pt-1 pb-1">
 
+                                <!-- Error message if user does not enter a name -->
                                 <div class="col-sm-12" *ngIf="!providedName">
                                     <p class="text-danger">You must enter your name.</p>
                                 </div>
@@ -52,6 +52,7 @@
                             <!-- Password -->
                             <div class="col-sm-8 pt-1 pb-1">
 
+                                <!-- Error message if user does not enter a password -->
                                 <div class="col-sm-12" *ngIf="!passwordMatch">
                                     <p class="text-danger">Passwords do not match.</p>
                                 </div>
@@ -73,9 +74,10 @@
 
                             </div>
 
-                            <!-- Verification Code -->
+                            <!-- Organization Name -->
                             <div class="col-sm-8 pt-1 pb-1">
 
+                                <!-- Error message if user does not enter an Organization Name -->
                                 <div class="col-md-12" *ngIf="!providedVerify">
                                     <p class="text-danger">You must enter an organization name.</p>
                                 </div>
