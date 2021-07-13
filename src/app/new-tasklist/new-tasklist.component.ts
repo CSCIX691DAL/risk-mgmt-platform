@@ -7,15 +7,18 @@ import {TaskModel} from '../task-list/task.model';
   templateUrl: './new-tasklist.component.html',
   styleUrls: ['./new-tasklist.component.css']
 })
+
 export class NewTasklistComponent implements OnInit {
 
   constructor(public taskService: TaskService) { }
+
+  // Initial search value
   taskSearchText = '';
 
+  // Returns array of Task Items from taskService
   public getTaskItemArray(): Array<TaskModel> {
     return this.taskService.getSortedTaskItemArray();
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 }

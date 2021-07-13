@@ -6,6 +6,7 @@ import { IssueService } from '../../issue-list/issue.service';
   templateUrl: './issue-widget.component.html',
   styleUrls: ['./issue-widget.component.css']
 })
+
 export class IssueWidgetComponent implements OnInit {
 
   constructor(public issueService: IssueService) { }
