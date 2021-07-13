@@ -21,4 +21,5 @@ export class NewTasklistComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+  
 }
