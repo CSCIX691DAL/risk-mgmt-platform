@@ -3,7 +3,13 @@ import {UsersModel} from '../users.model';
 
 export class TaskModel {
 
-  title: string; createdBy: UsersModel; status: string; dueDate: Date; createdDate: Date; isDeleted: boolean;
+  // Contents of Task Objects
+  title: string;
+  createdBy: UsersModel;
+  status: string;
+  dueDate: Date;
+  createdDate: Date;
+  isDeleted: boolean;
 
   constructor(title: string, createdBy: UsersModel, status: string, dueDate: Date, createdDate: Date, isDeleted: boolean) {
     this.title = title;
