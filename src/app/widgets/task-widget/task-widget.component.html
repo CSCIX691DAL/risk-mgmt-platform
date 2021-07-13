@@ -1,29 +1,30 @@
 <!-- Task Widget Container -->
 <div class="container-fluid widgetBorderRadius">
 
-  <!-- Header -->
+  <!-- Widget Header -->
   <div class="row pt-md-2 widgetHeader">
     <div class="col-md-12">
       <h6>Tasks</h6>
     </div>
   </div>
 
-  <!-- Body -->
+  <!-- Widget Body -->
   <div class="row pt-md-3 pb-md-3">
 
-    <!-- Body Column 1 -->
+    <!-- In Progress Tasks -->
     <div class="col-md-6 widgetBody">
       <div class="row">
         <div class="col-md-12">
 
-          <!--  -->
+          <!-- # of In Progress Tasks -->
           <div class="row">
             <div class="col-md-12 text-center">
-              <h3>{{countInProgress(1)}}</h3>
+              <h3>
+                {{countInProgress(1)}}
+              </h3>
             </div>
           </div>
 
-          <!-- -->
           <div class="row">
             <div class="col-md-12 text-center">
               <span class="taskWidgetDescriptionText">In Progress</span>
@@ -34,19 +35,20 @@
       </div>
     </div>
 
-    <!-- Body Column 2 -->
+    <!-- Completed Tasks -->
     <div class="col-md-6 widgetBody">
       <div class="row">
         <div class="col-md-12">
 
-          <!--  -->
+          <!-- # of Completed Tasks -->
           <div class="row">
             <div class="col-md-12 text-center">
-              <h3>{{countCompleted(2)}}</h3>
+              <h3>
+                {{countCompleted(2)}}
+              </h3>
             </div>
           </div>
 
-          <!-- -->
           <div class="row">
             <div class="col-md-12 text-center">
               <span class="taskWidgetDescriptionText">Completed</span>
@@ -59,17 +61,16 @@
 
   </div>
 
-  <!-- Footer -->
+  <!-- Widget Footer -->
   <div class="row pt-xs-2 pt-sm-2 pt-md-2 widgetFooter">
-    <!-- -->
     <div class="col-md-12">
 
-      <!-- -->
       <div class="float-left">
-        <a routerLink="/tasks">View Tasks</a>
+        <a routerLink="/tasks">
+          View Tasks
+        </a>
       </div>
 
-      <!-- -->
       <div class="float-right">
         <p><b>&#62;</b></p>
       </div>
