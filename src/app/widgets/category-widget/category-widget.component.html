@@ -1,7 +1,7 @@
 <!-- Category Widget Container -->
 <div class="container-fluid widgetBorderRadius">
 
-  <!-- Header -->
+  <!-- Widget Header -->
   <div class="row widgetHeader">
     <div class="col-md-12">
       <h6>Categories</h6>
@@ -11,19 +11,20 @@
   <!-- Body -->
   <div class="row pt-md-3 pb-md-3">
 
-    <!-- Body Column 1 -->
+    <!-- Financial Risk Categories -->
     <div class="col-xs-6 col-sm-6 col-md-3 widgetBody">
       <div class="row">
         <div class="col-md-12">
 
-          <!--  -->
+          <!-- # of Financial items -->
           <div class="row">
             <div class="col-md-12 text-center">
-              <h3>{{getFinancialCount(1)}}</h3>
+              <h3>
+                {{getFinancialCount(1)}}
+              </h3>
             </div>
           </div>
 
-          <!-- -->
           <div class="row">
             <div class="col-md-12 text-center">
               <span class="categoryWidgetDescriptionText">Financial</span>
@@ -34,19 +35,20 @@
       </div>
     </div>
 
-    <!-- Body Column 2 -->
+    <!-- Strategic Risk Categories -->
     <div class="col-xs-6 col-sm-6 col-md-3 widgetBody">
       <div class="row">
         <div class="col-md-12">
 
-          <!--  -->
+          <!-- # of Strategic items -->
           <div class="row">
             <div class="col-md-12 text-center">
-              <h3>{{getStrategicCount(2)}}</h3>
+              <h3>
+                {{getStrategicCount(2)}}
+              </h3>
             </div>
           </div>
 
-          <!-- -->
           <div class="row">
             <div class="col-md-12 text-center">
               <span class="categoryWidgetDescriptionText">Strategic</span>
@@ -57,19 +59,20 @@
       </div>
     </div>
 
-    <!-- Body Column 3 -->
+    <!-- Hazard Risk Categories -->
     <div class="col-xs-6 col-sm-6 col-md-3 widgetBody">
       <div class="row justify-content-center">
         <div class="col-md-12">
 
-          <!--  -->
+          <!-- # of Hazard items -->
           <div class="row">
             <div class="col-md-12 text-center">
-              <h3>{{getHazardCount(3)}}</h3>
+              <h3>
+                {{getHazardCount(3)}}
+              </h3>
             </div>
           </div>
 
-          <!-- -->
           <div class="row">
             <div class="col-md-12 text-center">
               <span class="categoryWidgetDescriptionText">Hazard</span>
@@ -80,19 +83,20 @@
       </div>
     </div>
 
-    <!-- Body Column 4 -->
+    <!-- Operational Risk Categories -->
     <div class="col-xs-6 col-sm-6 col-md-3 widgetBody">
       <div class="row">
         <div class="col-md-12">
 
-          <!--  -->
+          <!-- # of Operational items -->
           <div class="row">
             <div class="col-md-12 text-center">
-              <h3>{{getOperationalCount(4)}}</h3>
+              <h3>
+                {{getOperationalCount(4)}}
+              </h3>
             </div>
           </div>
 
-          <!-- -->
           <div class="row">
             <div class="col-md-12 text-center">
               <span class="categoryWidgetDescriptionText">Opertnl.</span>
@@ -105,17 +109,16 @@
 
   </div>
 
-  <!-- Footer -->
+  <!-- Widget Footer -->
   <div class="row pt-xs-2 pt-sm-2 pt-md-2 widgetFooter">
-    <!-- -->
     <div class="col-md-12">
 
-      <!-- -->
       <div class="float-left">
-        <a class="widgetCategoryFooterText" routerLink="/categories">View Categories</a>
+        <a class="widgetCategoryFooterText" routerLink="/categories">
+          View Categories
+        </a>
       </div>
 
-      <!-- -->
       <div class="float-right">
         <p><b>&#62;</b></p>
       </div>
