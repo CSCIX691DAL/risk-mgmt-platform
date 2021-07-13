@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sort-tasks.component.html',
   styleUrls: ['./sort-tasks.component.css']
 })
+
 export class SortTasksComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }
