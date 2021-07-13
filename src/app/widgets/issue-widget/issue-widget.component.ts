@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {IssueService} from '../../issue-list/issue.service';
+import { IssueService } from '../../issue-list/issue.service';
 
 @Component({
   selector: 'app-issue-widget',
