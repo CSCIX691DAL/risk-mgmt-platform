@@ -3,72 +3,88 @@ footer {
   border-top: 1px solid #cccccc;
   background-color: #eeeeee; /* Dark Blue - 2d3246 */
 }
+
 .footerLogo {
   font-weight: 700;
 }
+
 /* FOOTER LINK STYLING */
 footer a {
   color: #6b6969;
   text-decoration: none;
 }
+
 footer a:link {
   color: #6b6969;
   text-decoration: none;
 }
+
 /* visited link */
 a:visited {
   color: #6b6969;
   text-decoration: none;
 }
+
 /* mouse over link */
 a:hover {
   color: #6b6969;
   cursor: pointer;
 }
+
 /* selected link */
 a:active {
   color: #6b6969;
   text-decoration: none;
 }
+
 .smallText {
   font-size: 10px;
   float: left;
   margin-top: -2px;
 }
+
 #footerTermsAndPrivacy {
   font-size: 10px;
   line-height: 10px;
   text-decoration: underline;
 }
+
 /* END OF FOOTER LINK STYLING */
 
 .companySlogan {
   font-size: 16px;
   font-weight: 500;
 }
+
 .copyright-text {
   font-size: 14px;
 }
+
 .categoryHeader {
   font-size: 16px;
   font-weight: 700;
 }
+
 .categoryLink {
   color: #6e6b6b;
   font-size: 13px;
   font-weight: 500;
 }
+
 .footerContactInfo{
   color: #6b6969;
   font-size: 13px;
   font-weight: 500;
 }
+
 .linkSpacing p{
   margin-bottom: 15px;
 }
+
 dl {
   margin-bottom: 10px;
 }
+
 .rightsContainer {
   border-top: 1px solid #cccccc;
 }

@@ -27,12 +27,7 @@
       <!-- About Riski -->
       <li class="nav-item">
         <a class="nav-link" routerLink="/about">About</a>
-        <!-- What Riski is, our values, our goal -->
       </li>
-
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" routerLink="/services">Services</a>-->
-<!--      </li>-->
 
       <!-- Features -->
       <li class="nav-item">
@@ -54,10 +49,6 @@
 
     <ul class="navbar-nav mr-auto">
 
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" routerLink="/dashboard">Dashboard</a>-->
-<!--      </li>-->
-
       <li class="nav-item">
         <a class="nav-link" routerLink="/categories">Categories</a>
       </li>
@@ -67,6 +58,7 @@
       </li>
 
       <li class="nav-item">
+
         <div class="dropdown">
 
           <!-- Profile Dropdown Toggle -->
@@ -82,37 +74,32 @@
           </div>
 
         </div>
+
       </li>
 
+      <!-- link to survey page -->
       <li class="nav-item">
         <a class="nav-link" routerLink="/surveys">Surveys</a>
       </li>
+
+      <!-- link to policy page -->
       <li class="nav-item">
         <a class="nav-link" routerLink="/policy">Policy</a>
       </li>
 
+      <!-- link to task page -->
       <li class="nav-item">
         <a class="nav-link" routerLink="/tasks">Tasks</a>
       </li>
 
+      <!-- link to Treatment Plan -->
       <li class="nav-item">
         <a class="nav-link" routerLink="/treatment-plan">Treatment Plan</a>
       </li>
 
-<!--      <li *ngIf="userAuthService.isSiteAdmin" class="nav-item">-->
-<!--        <a class="nav-link" routerLink="/admin-dashboard">Admin Dashboard</a>-->
-<!--      </li>-->
-
-<!--      <li class="nav-item">
-        <a class="nav-link" routerLink="/admin-organization-view">Organization View</a>
-      </li>-->
-
-<!--      <li *ngIf="userAuthService.isOrgAdmin" class="nav-item">-->
-<!--        <a class="nav-link" routerLink="/org-admin-dashboard">Org Admin</a>-->
-<!--      </li>-->
-
     </ul>
   </div>
+
     <!-- Right side of header -->
     <div class="ml-auto">
 
@@ -121,20 +108,16 @@
       TODO: Hide when user logs in
       -->
       <div *ngIf="!(userAuthService.user$ | async)">
+
         <div class="float-left">
           <a class="nav-link signupLink" routerLink="/register">Sign Up</a>
         </div>
+
         <div class="float-left ml-3">
           <a class="nav-link loginLink" routerLink="/login">Login</a>
         </div>
+        
       </div>
-
-<!--      <div *ngIf="(userAuthService.user$ | async)">
-        <div class="float-left" style="border-right:2px solid lightgray;">
-          <a class="nav-link" style="color: black;"><b>{{this.organizationService.currentOrganization}}</b></a>
-        </div>
-        <button class="btn btn-danger ml-3" (click)="userAuthService.userSignOut()">Sign Out</button>
-      </div>-->
 
       <div *ngIf="(userAuthService.user$ | async)">
 
@@ -161,8 +144,6 @@
           </div>
 
         </div>
-
-<!--        <button class="btn btn-danger ml-3 mr-3" (click)="userAuthService.userSignOut()">Sign Out</button>-->
 
         <!-- Account Dropdown -->
         <div class="btn-group">

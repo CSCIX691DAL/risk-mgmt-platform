@@ -3,14 +3,16 @@
     max-height: calc(100vh - 60px);
     background-color: #FFFFFF;
     /*background-image: ;*/
-    
 }
+
 .aboutCon h1 {
     font-weight: 700;
 }
+
 .aboutCon p {
     font-size: 20px;
 }
+
 .aboutCon svg {
     position: absolute;
     left: 0;
