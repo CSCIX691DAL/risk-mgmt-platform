@@ -1,4 +1,4 @@
-<!-- STAND ALONE TASK PAGE - /tasks -->
+<!-- Tasks page - URL is "/tasks" -->
 <div class="container-fluid taskPageContainer w-100 mw-100 px-0 m-0">
 
     <!-- Tasks Navigation Bar -->
@@ -18,7 +18,7 @@
                         <!-- Sort Tasks Dropdown Toggle -->
                         <button class="btn btn-outline-primary tasksSortButton mr-3" type="button" data-toggle="collapse" data-target="#tasksSortDropdown" aria-expanded="false" aria-controls="tasksSortDropdown">Sort Tasks</button>
 
-                        <!-- Add new Task -->
+                        <!-- Add new Task Component -->
                         <div>
                             <app-create-new-task class="float-right"></app-create-new-task>
                         </div>
@@ -36,9 +36,8 @@
     </div>
 
 
-    <!-- Sort Container -->
+    <!-- Sort Tasks Container -->
     <app-sort-tasks></app-sort-tasks>
-
 
     <!-- Print out all Task items -->
     <div class="row px-2 m-0 tasksContentCon justify-content-start">
@@ -46,8 +45,5 @@
             <app-new-task-item [taskItem]="taskItem" [frontPageDisplay]="false"></app-new-task-item>
         </div>
     </div>
-
-    <!-- Print out all Task items -->
-<!--    <app-new-task-item *ngFor="let taskItem of getTaskItemArray() | filter: taskSearchText" [taskItem]="taskItem" [frontPageDisplay]="false"></app-new-task-item>-->
 
 </div>

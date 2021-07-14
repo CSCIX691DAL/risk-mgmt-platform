@@ -1,9 +1,7 @@
 .aboutCon {
     min-height: calc(100vh - 60px);
-    max-height: calc(80vh - 80px);
+    max-height: auto;
     background-color: #FFFFFF;
-    /*background-image: ;*/
-    
 }
 .aboutCon h1 {
     font-weight: 700;
@@ -15,4 +13,5 @@
     position: absolute;
     left: 0;
     bottom: 0;
+    z-index: 1;
 }
