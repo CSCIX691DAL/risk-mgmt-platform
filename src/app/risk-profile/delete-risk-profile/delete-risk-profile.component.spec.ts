@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteRiskProfileComponent } from './delete-risk-profile.component';
 
+//Delete risk profile component
 describe('DeleteRiskProfileComponent', () => {
   let component: DeleteRiskProfileComponent;
   let fixture: ComponentFixture<DeleteRiskProfileComponent>;
