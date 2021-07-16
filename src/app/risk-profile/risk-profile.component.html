@@ -12,19 +12,20 @@
 
         <!-- Profile options: Sort, Add, Search -->
         <div class="col-md-8">
-          <div class="row justify-content-end">
-
-            <!-- Sort Risk Profiles Dropdown Toggle -->
-            <button class="btn btn-outline-primary profilesSortButton mr-3" type="button" data-toggle="collapse" data-target="#profilesSortDropdown" aria-expanded="false" aria-controls="profilesSortDropdown">Sort Profiles</button>
+          <div class="row justify-content-end pt-1">
 
             <!-- Add Risk Profile modal component -->
             <div>
               <app-add-risk-profile
-                addTextName="+ Risk Profile"
-                [addRiskProfile]="riskProfileItem"
-                class="float-right">
+                      addTextName="+ Risk Profile"
+                      [addRiskProfile]="riskProfileItem"
+                      class="float-right">
               </app-add-risk-profile>
             </div>
+
+            <!-- Sort Risk Profiles Dropdown Toggle -->
+            <button class="btn btn-outline-primary profilesSortButton mr-3" type="button" data-toggle="collapse" data-target="#profilesSortDropdown" aria-expanded="false" aria-controls="profilesSortDropdown">Sort Profiles</button>
+
 
             <!-- Search Issues bar -->
             <div class="pr-3">
