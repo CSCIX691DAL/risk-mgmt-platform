@@ -1,198 +1,308 @@
-<nav id="riskMgmt-Navbar" class="navbar navbar-expand-lg navbar-light bg-light px-4">
+<nav id="riskMgmt-Navbar" class="navbar navbar-expand-lg navbar-light bg-light px-0 py-0">
 
-    <!-- Logo -->
-    <!-- LOGGED OUT -->
-    <a routerLink="" class="navbar-brand" *ngIf="!(userAuthService.user$ | async)">
-        <h1>Riski</h1>
-    </a>
+  <!-- Logo -->
+  <!-- Logged Out -->
+  <a routerLink="" class="navbar-brand pl-4" *ngIf="!(userAuthService.user$ | async)"><h1>Riski</h1></a>
+  <!-- Logged In -->
+  <a routerLink="/dashboard" class="navbar-brand pl-4" *ngIf="(userAuthService.user$ | async)"><h1>Riski</h1></a>
 
-    <!-- Logo -->
-    <!-- LOGGED IN -->
-    <a routerLink="/dashboard" class="navbar-brand" *ngIf="(userAuthService.user$ | async)">
-        <h1>Riski</h1>
-    </a>
+  <!-- Hamburger Menu -->
+  <button class="navbar-toggler mt-0 mr-4" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <!-- Hamburger Menu -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <!--
+    Left Links
+    Logged Out
+    Collapse into Hamburger menu on small screens
+  -->
+  <div class="collapse navbar-collapse headerZIndex" *ngIf="!(userAuthService.user$ | async)">
+    <ul class="navbar-nav mr-auto">
 
-    <!-- LOGGED OUT -->
-    <!-- Left Links - Collapse into Hamburger menu on small screens -->
-    <div class="collapse navbar-collapse" *ngIf="!(userAuthService.user$ | async)">
+      <!-- About Riski -->
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about">About</a>
+      </li>
 
-        <ul class="navbar-nav mr-auto">
+      <!-- Features -->
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/feature-productivity">Features</a>
+      </li>
 
-            <!-- About Riski -->
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/about">About</a>
-            </li>
+      <!-- The Team behind Riski -->
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/team">The Team</a>
+      </li>
 
-            <!-- Features -->
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/feature-productivity">Features</a>
-            </li>
+    </ul>
+  </div>
 
-            <!-- The Team behind Riski -->
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/team">The Team</a>
-            </li>
+  <!--
+    Left Links
+    When logged in
+    Collapses into Hamburger menu on small screens
+  -->
+  <div class="collapse navbar-collapse headerZIndex" *ngIf="(userAuthService.user$ | async)" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
 
-        </ul>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/categories">Categories</a>
+      </li>
 
-    </div>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/issues">Issues</a>
+      </li>
 
-    <!-- LOGGED IN -->
-    <!-- Left Links - Collapse into Hamburger menu on small screens -->
-    <div class="collapse navbar-collapse" *ngIf="(userAuthService.user$ | async)" id="navbarSupportedContent">
+      <li class="nav-item">
+        <div class="dropdown">
 
-        <ul class="navbar-nav mr-auto">
+          <!-- Profile Dropdown Toggle -->
+          <a class="nav-link dropdown-toggle linkDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="pr-1">Profiles</span>
+          </a>
 
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/categories">Categories</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/issues">Issues</a>
-            </li>
-
-            <li class="nav-item">
-
-                <div class="dropdown">
-
-                    <!-- Profile Dropdown Toggle -->
-                    <a class="nav-link dropdown-toggle linkDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="pr-1">Profiles</span>
-                    </a>
-
-                    <!-- Profile Dropdown Items -->
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" routerLink="/profile">Risk Profile</a>
-                        <a class="dropdown-item" routerLink="/risk-matrix">Risk Matrix</a>
-                        <a class="dropdown-item" routerLink="risk-map">Risk Map Report</a>
-                    </div>
-
-                </div>
-
-            </li>
-
-            <!-- link to survey page -->
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/surveys">Surveys</a>
-            </li>
-
-            <!-- link to policy page -->
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/policy">Policy</a>
-            </li>
-
-            <!-- link to task page -->
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/tasks">Tasks</a>
-            </li>
-
-            <!-- link to Treatment Plan -->
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/treatment-plan">Treatment Plan</a>
-            </li>
-
-        </ul>
-    </div>
-
-    <!-- Right side of header -->
-    <div class="ml-auto">
-
-        <!--
-        Login / Register links
-        TODO: Hide when user logs in
-        -->
-        <div *ngIf="!(userAuthService.user$ | async)">
-
-            <div class="float-left">
-                <a class="nav-link signupLink" routerLink="/register">Sign Up</a>
-            </div>
-
-            <div class="float-left ml-3">
-                <a class="nav-link loginLink" routerLink="/login">Login</a>
-            </div>
+          <!-- Profile Dropdown Items -->
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/profile">Risk Profile</a>
+            <a class="dropdown-item" routerLink="/risk-matrix">Risk Matrix</a>
+            <a class="dropdown-item" routerLink="risk-map">Risk Map Report</a>
+          </div>
 
         </div>
+      </li>
 
-        <div *ngIf="(userAuthService.user$ | async)">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/surveys">Surveys</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/policy">Policy</a>
+      </li>
 
-            <!-- Organization Dropdown -->
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/tasks">Tasks</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/treatment-plan">Treatment Plan</a>
+      </li>
+
+      <!--
+        Mobile Test
+      -->
+      <li class="nav-item d-block d-lg-none">
+        <!-- Right side of header -->
+        <div class="d-block d-lg-none mt-1">
+
+          <!-- Login / Register links -->
+          <div *ngIf="!(userAuthService.user$ | async)">
+            <div class="float-left">
+              <a class="nav-link signupLink" routerLink="/register">Sign Up</a>
+            </div>
+            <div class="float-left ml-3">
+              <a class="nav-link loginLink" routerLink="/login">Login</a>
+            </div>
+          </div>
+
+          <div *ngIf="(userAuthService.user$ | async)">
+
+            <!--
+              Dropdown of Organizations Button
+              When logged in, the user (depending on how many organizations they are a part of)
+              will see a list of their organizations.
+             -->
             <div class="btn-group mr-3">
 
-                <!-- Organization Dropdown Action Button -->
-                <button type="button" class="btn dropdown-toggle orgHeaderButton" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  
-              <!-- Organization Icon -->
-              <div class="float-left px-0 mx-0">
-                <img src="assets/img/admin-dash/organization.svg" class="orgHeaderButtonIcon" />
-              </div>
-  
-              <!-- Current Organization Name -->
-              <div class="float-left pl-2 pr-3 mx-0">
-                {{this.organizationService.currentOrganization}}
-              </div>
-  
-            </button>
+              <!-- Organization Dropdown Action Button -->
+              <button type="button" class="btn dropdown-toggle orgHeaderButton" id="dropdownMenuButtonMobile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a *ngFor="let org of this.organizationService.userOrganizations" class="dropdown-item" (click)="this.organizationService.changeCurrentOrg(org)">{{org}}</a>
+                <!-- Organization Icon -->
+                <div class="float-left px-0 mx-0">
+                  <img src="assets/img/admin-dash/organization.svg" class="orgHeaderButtonIcon" />
                 </div>
+
+                <!-- Current Organization Name -->
+                <div class="float-left pl-2 pr-3 mx-0">
+                  {{this.organizationService.currentOrganization}}
+                </div>
+
+              </button>
+
+              <div class="dropdown-menu dropdown-menu-right">
+                <a *ngFor="let org of this.organizationService.userOrganizations" class="dropdown-item" (click)="this.organizationService.changeCurrentOrg(org)">{{org}}</a>
+              </div>
 
             </div>
 
-            <!-- Account Dropdown -->
-            <div class="btn-group">
+            <br/>
 
-                <!-- Account Dropdown Action Button -->
-                <button type="button" class="btn dropdown-toggle accountHeaderButton" data-toggle="dropdown" data-target="#profileHeaderDD" aria-haspopup="true" aria-expanded="false">
-  
-              <!-- Account Icon -->
-              <div class="float-left px-0 mx-0">
-                <img src="assets/img/admin-dash/account.svg" class="accountHeaderButtonIcon" />
-              </div>
-  
-              <div class="float-left pl-2 pr-3 mx-0">
-                Account
-              </div>
-  
-            </button>
+            <!--
+              Dropdown Account Button
+              When logged in, the user (depending on their role) has access to some of the following links:
+              Admin Dashboard, Organization Admin Dashboard, View Organization, and Sign Out
+            -->
+            <div class="btn-group mt-3">
 
-                <!-- Dropdown Content -->
-                <div class="dropdown-menu dropdown-menu-right" id="profileHeaderDD">
+              <!-- Account Dropdown Action Button -->
+              <button type="button" class="btn dropdown-toggle accountHeaderButton" data-toggle="dropdown"data-target="#profileHeaderDDMobile"  aria-haspopup="true" aria-expanded="false">
 
-                    <!-- Link to Profile Page -->
-                    <a class="dropdown-item" routerLink="/user-profile">Profile</a>
-
-                    <!-- Link to Admin Dashboard -->
-                    <a class="dropdown-item" routerLink="/admin-dashboard" *ngIf="userAuthService.isSiteAdmin">Admin Dashboard</a>
-
-                    <!-- Link to Organization Admin Dashboard -->
-                    <a class="dropdown-item" routerLink="/org-admin-dashboard" *ngIf="userAuthService.isOrgAdmin">Org Admin Dashboard</a>
-
-                    <!-- DIVIDER -->
-                    <div class="dropdown-divider"></div>
-
-                    <!-- Link to Organization View Page -->
-                    <a class="dropdown-item" routerLink="/admin-organization-view">View Organization</a>
-
-                    <!-- DIVIDER -->
-                    <div class="dropdown-divider"></div>
-
-                    <!-- Sign Out -->
-                    <div class="py-2 px-4">
-                        <button class="btn btn-danger w-100" (click)="userAuthService.userSignOut()">Sign Out</button>
-                    </div>
-
+                <!-- Account Icon -->
+                <div class="float-left px-0 mx-0">
+                  <img src="assets/img/admin-dash/account.svg" class="accountHeaderButtonIcon" />
                 </div>
 
+                <div class="float-left pl-2 pr-3 mx-0">Account</div>
+
+              </button>
+
+              <!--
+                Dropdown Account Content
+              -->
+              <div class="dropdown-menu dropdown-menu-right" id="profileHeaderDDMobile">
+
+                <!-- Link to Admin Dashboard -->
+                <a class="dropdown-item" routerLink="/admin-dashboard" *ngIf="userAuthService.isSiteAdmin">
+                  Admin Dashboard
+                </a>
+
+                <!-- Link to Organization Admin Dashboard -->
+                <a class="dropdown-item" routerLink="/org-admin-dashboard" *ngIf="userAuthService.isOrgAdmin">
+                  Org Admin Dashboard
+                </a>
+
+                <!-- DIVIDER -->
+                <div class="dropdown-divider"></div>
+
+                <!-- Link to Organization View Page -->
+                <a class="dropdown-item" routerLink="/admin-organization-view">
+                  View Organization
+                </a>
+
+                <!-- DIVIDER -->
+                <div class="dropdown-divider"></div>
+
+                <!-- Sign Out -->
+                <div class="py-2 px-4">
+                  <button class="btn btn-danger w-100" (click)="userAuthService.userSignOut()">
+                    Sign Out
+                  </button>
+                </div>
+
+              </div>
+
             </div>
+
+          </div>
+
+        </div>
+      </li>
+
+
+    </ul>
+  </div>
+
+  <!-- Right side of header -->
+  <div class="ml-auto d-none d-lg-block d-xl-block">
+
+    <!-- Login / Register links -->
+    <div *ngIf="!(userAuthService.user$ | async)">
+      <div class="float-left">
+        <a class="nav-link signupLink" routerLink="/register">Sign Up</a>
+      </div>
+      <div class="float-left ml-3 mr-4">
+        <a class="nav-link loginLink" routerLink="/login">Login</a>
+      </div>
+    </div>
+
+    <div *ngIf="(userAuthService.user$ | async)">
+
+      <!--
+        Dropdown of Organizations Button
+        When logged in, the user (depending on how many organizations they are a part of)
+        will see a list of their organizations.
+       -->
+      <div class="btn-group mr-3">
+
+        <!-- Organization Dropdown Action Button -->
+        <button type="button" class="btn dropdown-toggle orgHeaderButton" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+          <!-- Organization Icon -->
+          <div class="float-left px-0 mx-0">
+            <img src="assets/img/admin-dash/organization.svg" class="orgHeaderButtonIcon" />
+          </div>
+
+          <!-- Current Organization Name -->
+          <div class="float-left pl-2 pr-3 mx-0">
+            {{this.organizationService.currentOrganization}}
+          </div>
+
+        </button>
+
+        <div class="dropdown-menu dropdown-menu-right">
+          <a *ngFor="let org of this.organizationService.userOrganizations" class="dropdown-item" (click)="this.organizationService.changeCurrentOrg(org)">{{org}}</a>
+        </div>
+
+      </div>
+
+      <!--
+        Dropdown Account Button
+        When logged in, the user (depending on their role) has access to some of the following links:
+        Admin Dashboard, Organization Admin Dashboard, View Organization, and Sign Out
+      -->
+      <div class="btn-group mr-4">
+
+        <!-- Account Dropdown Action Button -->
+        <button type="button" class="btn dropdown-toggle accountHeaderButton" data-toggle="dropdown"data-target="#profileHeaderDD"  aria-haspopup="true" aria-expanded="false">
+
+          <!-- Account Icon -->
+          <div class="float-left px-0 mx-0">
+            <img src="assets/img/admin-dash/account.svg" class="accountHeaderButtonIcon" />
+          </div>
+
+          <div class="float-left pl-2 pr-3 mx-0">Account</div>
+
+        </button>
+
+        <!--
+          Dropdown Account Content
+        -->
+        <div class="dropdown-menu dropdown-menu-right" id="profileHeaderDD">
+
+          <!-- Link to Admin Dashboard -->
+          <a class="dropdown-item" routerLink="/admin-dashboard" *ngIf="userAuthService.isSiteAdmin">
+            Admin Dashboard
+          </a>
+
+          <!-- Link to Organization Admin Dashboard -->
+          <a class="dropdown-item" routerLink="/org-admin-dashboard" *ngIf="userAuthService.isOrgAdmin">
+            Org Admin Dashboard
+          </a>
+
+          <!-- DIVIDER -->
+          <div class="dropdown-divider"></div>
+
+          <!-- Link to Organization View Page -->
+          <a class="dropdown-item" routerLink="/admin-organization-view">
+            View Organization
+          </a>
+
+          <!-- DIVIDER -->
+          <div class="dropdown-divider"></div>
+
+          <!-- Sign Out -->
+          <div class="py-2 px-4">
+            <button class="btn btn-danger w-100" (click)="userAuthService.userSignOut()">
+              Sign Out
+            </button>
+          </div>
 
         </div>
 
+      </div>
+
     </div>
+
+  </div>
 
 </nav>
