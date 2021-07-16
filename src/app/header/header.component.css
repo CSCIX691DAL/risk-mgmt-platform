@@ -18,11 +18,11 @@ nav h1 {
   border-radius: 5px;
   border: 1px solid #007BFF;
 }
-  .loginLink:hover {
-    color: #FFFFFF;
-    background-color: #409cff;
-    border: 1px solid #409cff;
-  }
+.loginLink:hover {
+  color: #FFFFFF;
+  background-color: #409cff;
+  border: 1px solid #409cff;
+}
 .linkDropdown:hover {
   cursor: pointer;
 }
@@ -30,17 +30,21 @@ nav h1 {
   color: #008BFF;
   border: 1px solid #008BFF;
 }
-  .accountHeaderButtonIcon {
-    width: 22px;
-    margin-top: -2px;
-    filter: invert(55%) sepia(32%) saturate(2817%) hue-rotate(188deg) brightness(98%) contrast(106%);
-  }
+.accountHeaderButtonIcon {
+  width: 22px;
+  margin-top: -2px;
+  filter: invert(55%) sepia(32%) saturate(2817%) hue-rotate(188deg) brightness(98%) contrast(106%);
+}
 .orgHeaderButton {
   color: #6C757D;
   border: 1px solid #6C757D;
 }
-  .orgHeaderButtonIcon {
-    width: 22px;
-    margin-top: -2px;
-    filter: invert(46%) sepia(17%) saturate(227%) hue-rotate(166deg) brightness(94%) contrast(91%);
-  }
+.orgHeaderButtonIcon {
+  width: 22px;
+  margin-top: -2px;
+  filter: invert(46%) sepia(17%) saturate(227%) hue-rotate(166deg) brightness(94%) contrast(91%);
+}
+.headerZIndex {
+  z-index: 10000;
+  background-color: #F8F9FA;
+}

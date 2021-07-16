@@ -20,6 +20,7 @@ export class RiskProfileComponent implements OnInit {
   RiskProfileSearchText: string;
   currentCategory: string;
 
+  /* Retrieves data from RiskProfile Model */
   ngOnInit(): void {
     this.riskProfiles = this.riskProfileService.getRiskProfiles();
     // Listener : listening to our component
@@ -32,7 +33,8 @@ export class RiskProfileComponent implements OnInit {
     );
   }
 
-  setCurrentCategory(value: string){
+  // Displays issues based on chosen category ( sorting based on categories )
+  setCurrentCategory(value: string): void {
     this.currentCategory = value;
   }
 

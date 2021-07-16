@@ -25,16 +25,18 @@ export class LoginComponent implements OnInit {
 
   loginFailed = false;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
+  // Verifies the users credentials in Firebase.
   onSubmit(): void {
     this.userAuthService.fireAuth.signInWithEmailAndPassword(this.loginEmail.value, this.loginPassword.value).then(result => {
+      // Successful login
       this.loginFailed = false;
-
       // this.organizationService.updateOrg(result.user.email);
       // These are used to sync the user's items with their specific organization.
+
     }).catch(error => {
+      // Failed Login
       this.loginFailed = true;
     });
   }

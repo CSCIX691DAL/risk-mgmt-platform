@@ -1,9 +1,14 @@
+.registerPageCon {
+    min-height: calc(100vh - 60px);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    nackground-color: black;
+}
 #registerContainer {
     width: 100%;
-    min-height: 750px;
-    max-height: 750px;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    min-height: 700px;
+    max-height: auto;
+    margin-top: calc((100vh - 790px) / 2);
     border: 1px solid #CCCCCC;
     border-radius: 15px;
     box-shadow: 3px 3px 6px #EEEEEE;
@@ -11,5 +16,5 @@
 .registerImage {
     width: 70%;
     margin-left: 15%;
-    margin-top: 47%;
+    margin-top: 45%;
 }

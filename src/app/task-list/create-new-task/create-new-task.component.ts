@@ -13,9 +13,10 @@ import {ToastrService} from 'ngx-toastr';
   templateUrl: './create-new-task.component.html',
   styleUrls: ['./create-new-task.component.css']
 })
+
 export class CreateNewTaskComponent implements OnInit {
 
-  constructor(taskService: TaskService, public userService: UsersService, private dbService: DbService, public modalService: NgbModal, public notificationService: ToastrService) {
+  constructor( taskService: TaskService, public userService: UsersService, private dbService: DbService, public modalService: NgbModal, public notificationService: ToastrService ) {
     this.taskService = taskService;
   }
 
@@ -29,6 +30,7 @@ export class CreateNewTaskComponent implements OnInit {
     taskDueDate: new FormControl('')
   });
 
+  // Initialize blank TaskModel object
   taskToCreate: TaskModel;
 
   private taskService: TaskService;
@@ -39,25 +41,33 @@ export class CreateNewTaskComponent implements OnInit {
 
   createNewTask(): void {
 
+    // Error checking for empty Task Status
     if (this.newTaskForm.value.taskStatus === '') {
+      // If Task Status empty, set to In Progress
       this.newTaskForm.value.taskStatus = 'In Progress';
     }
 
+    // Error checking for empty Task Title
     if (this.newTaskForm.value.taskTitle.length < 1) {
+      // Task title is empty
       this.providedTitle = false;
-    }
-    else {
+    } else {
+      // Task title exists
       this.providedTitle = true;
     }
 
+    // Error checking for empty Task Due Date
     if (this.newTaskForm.value.taskDueDate.length < 1) {
+      // Task Due Date is empty
       this.providedDate = false;
-    }
-    else {
+    } else {
+      // Task Due Date exists
       this.providedDate = true;
     }
 
+    // If Title and Due Date exist, create the task
     if (this.providedTitle && this.providedDate) {
+      // Create Task object called newTask with values assigned in the form
       const newTask = new TaskModel(
           this.newTaskForm.value.taskTitle,
           this.newTaskForm.value.createdBy,
@@ -67,8 +77,10 @@ export class CreateNewTaskComponent implements OnInit {
           false
       );
 
+      // Display success popup on screen
       this.notificationService.success('Task "' + newTask.title + '" assigned to ' + newTask.createdBy.firstName, 'Task Successfully Created');
 
+      // Insert task into Database
       // TODO: Note - task's title is being used as ID - not too great
       this.dbService.taskRef.doc(newTask.title).set({
         title: newTask.title,
@@ -78,9 +90,12 @@ export class CreateNewTaskComponent implements OnInit {
         createdDate: newTask.createdDate
       });
 
+      // Adds newly created Task to Array
       this.taskService.addNewTaskToArray(newTask);
+
+      // Closes Create Task Modal
       this.modalService.dismissAll();
-      //this.taskService.routeBackToHomePage();
+
     }
   }
 
@@ -97,6 +112,7 @@ export class CreateNewTaskComponent implements OnInit {
     });
   }
 
+  // Returns how the user closed the Modal
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

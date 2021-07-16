@@ -54,7 +54,7 @@ export class PolicyService {
 
     const riskTitles = [];
 
-    policy.riskprofile.forEach((risk) => {
+    policy.riskProfile.forEach((risk) => {
       riskTitles.push(risk);
       console.log(risk);
     });
