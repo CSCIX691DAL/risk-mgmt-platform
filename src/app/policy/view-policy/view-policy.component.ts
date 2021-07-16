@@ -13,7 +13,7 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ViewPolicyComponent implements OnInit {
 
-  constructor(public dbService: DbService, public riskService: RiskProfileService, public policyService: PolicyService, private modalService: NgbModal) { }
+  constructor( public dbService: DbService, public riskService: RiskProfileService, public policyService: PolicyService, private modalService: NgbModal ) { }
 
   @Input() inputPolicyItem: PolicyModel;
 
