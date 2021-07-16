@@ -2,10 +2,6 @@
     min-height: calc(100vh - 60px);
     max-height: auto;
     background-color: #FFFFFF;
-<<<<<<< HEAD
-    /*background-image: ;*/
-=======
->>>>>>> origin/dev
 }
 
 .aboutCon h1 {
@@ -20,9 +16,5 @@
     position: absolute;
     left: 0;
     bottom: 0;
-<<<<<<< HEAD
-}
-=======
     z-index: 1;
 }
->>>>>>> origin/dev
