@@ -29,8 +29,8 @@ export class EditRiskProfileComponent implements OnInit {
   riskProfile: RiskProfileModel = new RiskProfileModel(0, 'cvbcv', 'cvbcvb', 25, 50, this.categoryService.categories[0], this.categoryService.categories[0], 'Source of Risk');
 
   constructor( private modalService: NgbModal,
-    private riskProfileService: RiskProfileService,
-    public categoryService: CategoryService, public dbService: DbService ) {}
+               private riskProfileService: RiskProfileService,
+               public categoryService: CategoryService, public dbService: DbService ) {}
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -43,6 +43,7 @@ export class EditRiskProfileComponent implements OnInit {
     this.riskProfile.sourceOfRisk = this.editModalRiskProfileSourceOfRisk;
   }
 
+  /* Risk Profile Modal */
   // tslint:disable-next-line:typedef
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -52,6 +53,7 @@ export class EditRiskProfileComponent implements OnInit {
     });
   }
 
+  /* Closes Risk Profile Modal */
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -64,7 +66,7 @@ export class EditRiskProfileComponent implements OnInit {
 
   // Edit issue function
   OnEditRiskProfile(): void {
-    console.log("Saving Risk Profile");
+    console.log('Saving Risk Profile');
     console.log(this.riskProfile);
     console.log(this.editRiskProfile.impact);
     this.riskProfile.category = this.editRiskProfile.category;

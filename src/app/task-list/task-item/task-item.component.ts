@@ -1,22 +1,23 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TaskModel} from '../task.model';
-import {CommonModule} from '@angular/common';
-import {TaskListComponent} from '../task-list.component';
-import {TaskService} from '../task-service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ToastrService} from 'ngx-toastr';
+import { Component, Input, OnInit } from '@angular/core';
+import { TaskModel } from '../task.model';
+import { CommonModule } from '@angular/common';
+import { TaskListComponent } from '../task-list.component';
+import { TaskService } from '../task-service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-task-item',
   templateUrl: './task-item.component.html',
   styleUrls: ['./task-item.component.css']
 })
+
 export class TaskItemComponent implements OnInit {
 
   @Input() taskItem: TaskModel;
   @Input() frontPageDisplay: boolean;
 
-  constructor(taskService: TaskService, public notificationService: ToastrService) {
+  constructor( taskService: TaskService, public notificationService: ToastrService ) {
     this.taskService = taskService;
   }
 
@@ -32,8 +33,6 @@ export class TaskItemComponent implements OnInit {
       this.taskService.dbService.taskRef.doc(this.taskItem.title).delete();
 
       this.notificationService.success('Task "' + this.taskItem.title + '" has been deleted.', 'Task Successfully Deleted');
-
-      //this.taskService.routeBackToHomePage();
     }
   }
 
@@ -42,7 +41,6 @@ export class TaskItemComponent implements OnInit {
     this.taskService.routeToEditPage();
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

@@ -1,46 +1,58 @@
 nav {
-  max-height: 60px;
-  border-bottom: 1px solid #CCCCCC;
+    max-height: 60px;
+    border-bottom: 1px solid #CCCCCC;
 }
 
 nav h1 {
-  color: #403D3D;
-  font-size: 32px;
-  font-weight: 700;
-  margin-top: 5px;
+    color: #403D3D;
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 5px;
 }
 
 .signupLink {
-  color: #7C7C7D;
+    color: #7C7C7D;
 }
+
 .loginLink {
-  color: #007BFF;
-  border-radius: 5px;
-  border: 1px solid #007BFF;
+    color: #007BFF;
+    border-radius: 5px;
+    border: 1px solid #007BFF;
 }
-  .loginLink:hover {
+
+.loginLink:hover {
     color: #FFFFFF;
     background-color: #409cff;
     border: 1px solid #409cff;
-  }
+}
+
 .linkDropdown:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 .accountHeaderButton {
-  color: #008BFF;
-  border: 1px solid #008BFF;
+    color: #008BFF;
+    border: 1px solid #008BFF;
 }
-  .accountHeaderButtonIcon {
+
+.accountHeaderButtonIcon {
     width: 22px;
     margin-top: -2px;
     filter: invert(55%) sepia(32%) saturate(2817%) hue-rotate(188deg) brightness(98%) contrast(106%);
-  }
-.orgHeaderButton {
-  color: #6C757D;
-  border: 1px solid #6C757D;
 }
-  .orgHeaderButtonIcon {
+
+.orgHeaderButton {
+    color: #6C757D;
+    border: 1px solid #6C757D;
+}
+
+.orgHeaderButtonIcon {
     width: 22px;
     margin-top: -2px;
     filter: invert(46%) sepia(17%) saturate(227%) hue-rotate(166deg) brightness(94%) contrast(91%);
-  }
+}
+
+.headerZIndex {
+    z-index: 10000;
+    background-color: #F8F9FA;
+}

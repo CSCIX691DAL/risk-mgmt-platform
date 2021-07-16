@@ -18,16 +18,19 @@ export class DeleteRiskProfileComponent implements OnInit {
 
   closeResult = '';
 
+  // tslint:disable-next-line:max-line-length
   riskProfile: RiskProfileModel = new RiskProfileModel(0, 'cvbcv', 'cvbcvb', 25, 50, this.categoryService.categories[0], this.categoryService.categories[1], 'Source of Risk');
 
-  constructor( private modalService: NgbModal, private riskProfileService: RiskProfileService, private categoryService: CategoryService ) {}
+  constructor( private modalService: NgbModal,
+               private riskProfileService: RiskProfileService,
+               private categoryService: CategoryService ) {}
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
     this.riskProfile.id = this.deleteModalRiskProfileID;
     this.riskProfile.title = this.deleteModalRiskProfileTitle;
   }
-
+  /* Risk Profile Modal */
   // tslint:disable-next-line:typedef
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -37,6 +40,7 @@ export class DeleteRiskProfileComponent implements OnInit {
     });
   }
 
+  /* Closes Risk Profile Modal */
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

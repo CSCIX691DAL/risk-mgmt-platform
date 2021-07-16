@@ -10,8 +10,7 @@ export class ProfileWidgetComponent implements OnInit {
 
   constructor( private riskProfileService: RiskProfileService ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   // Calculate risk levels for all profiles
   public countRiskLevel(whichRiskLevel: number): number {

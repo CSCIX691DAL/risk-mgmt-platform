@@ -22,11 +22,11 @@ export class AddRiskProfileComponent implements OnInit {
 
   closeResult = '';
 
+  // tslint:disable-next-line:max-line-length
   riskProfile: RiskProfileModel = new RiskProfileModel(0, '', '', 0, 0, this.categoryService.categories[0], this.categoryService.categories[0], 'Source of Risk');
 
-  constructor( private modalService: NgbModal,
-    private riskProfileService: RiskProfileService,
-    public categoryService: CategoryService, public dbService: DbService) {}
+  // tslint:disable-next-line:max-line-length
+  constructor( private modalService: NgbModal, private riskProfileService: RiskProfileService, public categoryService: CategoryService, public dbService: DbService) {}
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -35,6 +35,7 @@ export class AddRiskProfileComponent implements OnInit {
     this.riskProfile.description = this.addModalRiskProfileDescription;
   }
 
+  /* Risk Profile Modal */
   // tslint:disable-next-line:typedef
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -44,6 +45,7 @@ export class AddRiskProfileComponent implements OnInit {
     });
   }
 
+  /* Closes Add Risk Profile Modal */
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

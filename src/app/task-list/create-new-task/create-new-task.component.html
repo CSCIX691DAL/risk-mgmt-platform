@@ -1,61 +1,27 @@
-<!--<div class="container p-3 mt-3 mb-3 border">
-  <h2>Create a New Task</h2>
-  <form class="p-3" [formGroup]="newTaskForm" (ngSubmit)="createNewTask()">
-    <div class="form-group">
-
-      <div class="col-md-12" *ngIf="!providedTitle">
-        <p class="text-danger">You must enter a title.</p>
-      </div>
-
-      <label>Title</label>
-      <input type="text" class="form-control" formControlName="taskTitle" placeholder="Enter Title...">
-    </div>
-    <div class="form-group">
-      <label>Assignee</label>
-      <select class="form-control" id="createdBy" name="createdBy" formControlName="createdBy" [ngModel]="dummyUserModel">
-        <option *ngFor="let user of userService.categories" [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Status</label>
-      &lt;!&ndash;<input type="text" class="form-control" formControlName="taskStatus" placeholder="Enter Status...">&ndash;&gt;
-      <select class="form-control" id="taskStatus" name="taskStatus" formControlName="taskStatus">
-        <option value="In Progress" [defaultSelected]="true">In Progress</option>
-        <option value="Completed">Completed</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <div class="col-md-12" *ngIf="!providedDate">
-        <p class="text-danger">You must enter a due date.</p>
-      </div>
-      <label>Due Date</label>
-      <input type="date" class="form-control" formControlName="taskDueDate" placeholder="Enter Due Date...">
-    </div>
-    <button class="btn btn-primary">Create</button>
-  </form>
-</div>-->
-
+<!-- Create New Task Modal -->
 <ng-template #addTaskContent let-modal>
-
   <form [formGroup]="newTaskForm" (ngSubmit)="createNewTask()">
 
+    <!-- Form Header -->
     <div class="modal-header justify-content-center">
       <h2 class="mt-1">Create a New Task</h2>
     </div>
 
+    <!-- Form Body -->
     <div class="modal-body row pl-4 pr-4">
 
+      <!-- Error message if attempting to create Task without a title -->
       <div class="col-md-12" *ngIf="!providedTitle">
         <p class="text-danger">You must enter a title.</p>
       </div>
 
-      <!-- Title -->
+      <!-- Task Title -->
       <label class="labelAndInput">Title</label>
       <div class="input-group mb-3">
         <input type="text" class="form-control" formControlName="taskTitle" placeholder="Enter Title...">
       </div>
 
-      <!-- Risk Category -->
+      <!-- Risk Category associated with Task -->
       <label for="createdBy" class="labelAndInput">Assignee</label>
       <div class="input-group mb-3">
         <select class="form-control" id="createdBy" name="createdBy" formControlName="createdBy" [ngModel]="dummyUserModel">
@@ -63,7 +29,7 @@
         </select>
       </div>
 
-      <!-- Parent Issue -->
+      <!-- Task Parent Issue -->
       <label class="labelAndInput">Status</label>
       <div class="input-group mb-3">
         <select class="form-control" id="taskStatus" name="taskStatus" formControlName="taskStatus">
@@ -72,7 +38,7 @@
         </select>
       </div>
 
-      <!-- Add Assignee -->
+      <!-- Task Assignee -->
       <label class="labelAndInput">Due Date</label>
       <div class="input-group mb-3">
         <input type="date" class="form-control" formControlName="taskDueDate" placeholder="Enter Due Date...">
@@ -80,14 +46,14 @@
 
     </div>
 
-    <!-- Buttons: Cancel & Save -->
+    <!-- Modal Footer: Cancel & Save buttons -->
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
       <button type="submit" class="btn btn-outline-primary">Add Task</button>
     </div>
 
   </form>
-
 </ng-template>
 
+<!-- Display Modal Button -->
 <button type="button" class="btn btn-outline-success mr-3 tasksNavigationBarButton" (click)="open(addTaskContent)">+ New Task</button>

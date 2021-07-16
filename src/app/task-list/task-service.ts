@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {TaskModel} from './task.model';
-import {Router} from '@angular/router';
-import {TasksSummaryComponent} from '../tasks-summary/tasks-summary.component';
-import {CategoryModel} from '../risk-categories/category.model';
-import {UsersService} from '../users.service';
-import {DbService} from '../db.service';
+import { Injectable } from '@angular/core';
+import { TaskModel } from './task.model';
+import { Router } from '@angular/router';
+import { TasksSummaryComponent } from '../tasks-summary/tasks-summary.component';
+import { CategoryModel } from '../risk-categories/category.model';
+import { UsersService } from '../users.service';
+import { DbService } from '../db.service';
 
 // Using a injectable to share the same info between components
 // https://angular.io/guide/dependency-injection & https://angular.io/guide/architecture-services
@@ -13,9 +13,9 @@ export class TaskService {
 
 
 
-  constructor(private router: Router, private userService: UsersService, public dbService: DbService) {
-  }
+  constructor(private router: Router, private userService: UsersService, public dbService: DbService) { }
 
+  // Initialize variables
   public static currentCategoryToSort = '';
   public static reverseSort = false;
   public static currentlySelectedStatus = '';
@@ -160,6 +160,9 @@ export class TaskService {
     this.taskItemArray[this.taskItemArray.findIndex(task => task.title === this.currentlySelectedTask)] = newModel;
   }
 
+  // Counts status of Tasks and returns values for Dashboard Task Widget
+  // whichStatus = 1 will return number of Tasks in progress
+  // whichStatus = 2 will return number of completed Tasks
   public countTaskStatus(whichStatus: number): number {
     // Four types of Generic Risk Categories
     let countInProgress = 0;

@@ -30,6 +30,8 @@ export class RiskProfileModel
   getLevelOfRisk(): number{
     return this.likelihood + this.impact;
   }
+
+  /* Risk Badge Level based on impact and likelihood:*/
   getLevelOfRiskBadge(): any{
     if ( this.impact < 2) {
       if ( this.likelihood < 8) {

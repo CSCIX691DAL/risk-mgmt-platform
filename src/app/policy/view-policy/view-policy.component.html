@@ -1,0 +1,46 @@
+<ng-template #viewPolicyComponent let-modal>
+
+        <div class="modal-header justify-content-center">
+            <h2 class="mt-1">View Policy</h2>
+        </div>
+
+        <div class="modal-body row pl-4 pr-4">
+
+            <!-- Title -->
+            <div class="col">
+            <h5>Title <br>{{inputPolicyItem.title}}</h5><br>
+            </div>
+
+            <div class="col">
+                <h4>Description <br>{{inputPolicyItem.description}}</h4><br>
+            </div>
+
+            <div class="col">
+                <h4>Risk Profile <br>{{inputPolicyItem.riskProfile}}</h4><br>
+            </div>
+
+            <div class="col">
+                <h4>Date Modified <br>{{inputPolicyItem.dateModified}}</h4><br>
+            </div>
+
+            <div class="col">
+                <h4>Date Created <br>{{inputPolicyItem.dateCreated}}</h4><br>
+            </div>
+
+            <div class="col">
+                <h4>ID <br>{{inputPolicyItem.id}}</h4>
+            </div>
+
+
+
+        </div>
+
+        <!-- Buttons: Cancel & Save -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
+            <button type="submit" class="btn btn-outline-primary">Update</button>
+        </div>
+
+</ng-template>
+
+<a class="float-right" (click)="open(viewPolicyComponent)">View</a>

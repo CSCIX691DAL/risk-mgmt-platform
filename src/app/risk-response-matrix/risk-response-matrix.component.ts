@@ -14,6 +14,7 @@ import {RiskProfileModel} from '../risk-profile/risk-profile.model';
 })
 export class RiskResponseMatrixComponent implements OnInit {
 
+  currentCategory: string;
   @ViewChild('profileModal') public profileModal: TemplateRef<any>;
   closeResult = '';
 
@@ -388,6 +389,8 @@ export class RiskResponseMatrixComponent implements OnInit {
     }
   };
   public scatterChartLabels: Label[] = [];
+
+  /* Data represented in the chart: info from risk-profile-service */
   public scatterChartData: ChartDataSets[] = [
     {
       data: [
@@ -457,6 +460,10 @@ export class RiskResponseMatrixComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+  //
+  public setCurrentCategory(value: string): void {
+    this.currentCategory = value;
   }
 
 }

@@ -11,13 +11,14 @@ export class TaskWidgetComponent implements OnInit {
 
   constructor( private taskService: TaskService ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
+  // Returns count of In Progress Tasks from taskService
   public countInProgress(whichStatus: number): number {
     return this.taskService.countTaskStatus(1);
   }
 
+  // Returns count of Completed Tasks from taskService
   public countCompleted(whichStatus: number): number {
     return this.taskService.countTaskStatus(2);
   }

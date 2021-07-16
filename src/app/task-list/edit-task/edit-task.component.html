@@ -1,48 +1,22 @@
-<!--<div class="container p-3 mt-3 mb-3 border">
-  <h2>Edit an Existing Task</h2>
-  <form class="p-3" [formGroup]="newTaskForm" (ngSubmit)="editTask()">
-    <div class="form-group">
-      <label>Title</label>
-      <input type="text" class="form-control" formControlName="taskTitle" placeholder="Enter Title...">
-    </div>
-    <div class="form-group">
-      <label>Source</label>
-      <select class="form-control" id="createdBy" name="createdBy" formControlName="createdBy" [ngModel]="currentModel.createdBy">
-        <option *ngFor="let user of userService.categories" [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Status</label>
-      <select class="form-control" id="taskStatus" name="taskStatus" formControlName="taskStatus">
-        <option selected value="In Progress">In Progress</option>
-        <option value="Completed">Completed</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Due Date</label>
-      <input type="date" class="form-control" formControlName="taskDueDate" placeholder="Enter Due Date...">
-    </div>
-    <button class="btn btn-primary">Update</button>
-  </form>
-</div>-->
-
+<!-- Edit Task Modal -->
 <ng-template #editTaskContent let-modal>
-
   <form [formGroup]="newTaskForm" (ngSubmit)="editTask()">
 
+    <!-- Modal Header -->
     <div class="modal-header justify-content-center">
       <h2 class="mt-1">Edit an Existing Task</h2>
     </div>
 
+    <!-- Modal Body -->
     <div class="modal-body row pl-4 pr-4">
 
-      <!-- Title -->
+      <!-- Edit Task Title -->
       <label class="labelAndInput">Title</label>
       <div class="input-group mb-3">
         <input type="text" class="form-control" formControlName="taskTitle" placeholder="Enter Title...">
       </div>
 
-      <!-- Risk Category -->
+      <!-- Edit Task Risk Category -->
       <label for="createdBy" class="labelAndInput">Assignee</label>
       <div class="input-group mb-3">
         <select class="form-control" id="createdBy" name="createdBy" formControlName="createdBy" [ngModel]="currentModel.createdBy">
@@ -50,7 +24,7 @@
         </select>
       </div>
 
-      <!-- Parent Issue -->
+      <!-- Edit Task Parent Issue -->
       <label class="labelAndInput">Status</label>
       <div class="input-group mb-3">
         <select class="form-control" id="taskStatus" name="taskStatus" formControlName="taskStatus">
@@ -59,7 +33,7 @@
         </select>
       </div>
 
-      <!-- Add Assignee -->
+      <!-- Edit Task Assignee -->
       <label class="labelAndInput">Due Date</label>
       <div class="input-group mb-3">
         <input type="date" class="form-control" formControlName="taskDueDate" placeholder="Enter Due Date...">
@@ -67,15 +41,17 @@
 
     </div>
 
-    <!-- Buttons: Cancel & Save -->
+    <!-- Modal Footer: Cancel & Save -->
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Cancel</button>
       <button type="submit" class="btn btn-outline-primary">Update</button>
     </div>
 
   </form>
-
 </ng-template>
 
+<!-- Link to open Edit Task Modal. Only displays on /dashboard page -->
 <button *ngIf="frontPageDisplay" type="button" class="btn btn-outline-success  py-1 px-2 mr-1" (click)="open(editTaskContent)">Edit</button>
+
+<!-- Link to open Edit Task Modal. Only displays on /Tasks page -->
 <a *ngIf="!frontPageDisplay" class="float-right" (click)="open(editTaskContent)">Edit</a>

@@ -9,14 +9,14 @@ export class PolicyModel
     description: string;
     dateCreated: string;
     dateModified: string;
-    riskprofile: RiskProfileModel[];
+    riskProfile: RiskProfileModel[];
 
 
-    constructor(id: number, title: string, description: string,  riskprofile: RiskProfileModel[] ) {
+    constructor(id: number, title: string, description: string,  riskProfile: RiskProfileModel[] ) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.riskprofile = riskprofile;
+        this.riskProfile = riskProfile;
 
     }
 
