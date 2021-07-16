@@ -15,7 +15,7 @@
           <div class="row justify-content-end">
 
             <!-- Sort Risk Profiles Dropdown Toggle -->
-            <!--            <button class="btn btn-outline-primary riskMatrixSortButton mr-3" type="button" data-toggle="collapse" data-target="#profilesSortDropdown" aria-expanded="false" aria-controls="profilesSortDropdown">Sort Profiles</button>-->
+              <button class="btn btn-outline-primary riskMatrixSortButton mr-3" type="button" data-toggle="collapse" data-target="#profilesSortDropdown" aria-expanded="false" aria-controls="profilesSortDropdown">Sort Profiles</button>
 
             <!-- Add Risk Profile modal component -->
             <div>
@@ -37,6 +37,12 @@
     </div>
   </div>
 
+  <!-- Sort Container when Sort button is clicked -->
+  <app-sort-profile
+          (categorySelectedEvent)="setCurrentCategory($event)">
+  </app-sort-profile>
+
+<!-- Generate Risk Matrix Chart -->
   <div class="row p-0 m-0 justify-content-center">
     <div class="col-md-10 my-5 matrixChart">
       <canvas baseChart class="p-2"
@@ -52,6 +58,19 @@
     </div>
   </div>
 
+  <!-- Risk Profiles on the Risk Matrix -->
+  <div class="row p-0 m-0 justify-content-center">
+    <div class="col-md-10 mb-5 matrixNewRiskProfiles">
+      <div class="row p-0 m-0 justify-content-center">
+        <h4 class="text-center mb-4"> Risk Profiles </h4>
+        <div class="col-md-12 profilesItemContainer" *ngFor="let item of riskProfileService.getRiskProfiles() | filter: profileSearchText">
+          <app-risk-profile-display [riskProfileItem]="item"></app-risk-profile-display>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Risk Matrix  Description -->
   <div class="row p-0 m-0 justify-content-center ">
     <div class="col-md-10 mb-5 pb-3 matrixDescription accordion">
@@ -59,7 +78,7 @@
       </div>
       <h4 class="text-center pb-5"> What is Risk Matrix? </h4>
 
-<!--      Accordion -->
+  <!-- Accordion -->
       <div id="accordion">
         <div class="card">
           <div class="card-header">
@@ -95,70 +114,57 @@
     </div>
   </div>
 
-  <!-- Risk Profiles on the Risk Matrix -->
-  <div class="row p-0 m-0 justify-content-center">
-    <div class="col-md-10 mb-5 matrixNewRiskProfiles">
-      <div class="row p-0 m-0 justify-content-center">
-        <h4 class="text-center mb-4"> Risk Profiles </h4>
-        <div class="col-md-12 profilesItemContainer" *ngFor="let item of riskProfileService.getRiskProfiles() | filter: profileSearchText">
-          <app-risk-profile-display [riskProfileItem]="item"></app-risk-profile-display>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
 </div>
 
-<ng-template #profileModal let-modal>
-  <form class="container">
+<!--<ng-template #profileModal let-modal>-->
+<!--  <form class="container">-->
 
-    <!-- Modal Header -->
-    <div class="modal-header justify-content-center">
-      <h2 class="mt-1">Risk Profile</h2>
-    </div>
+<!--    &lt;!&ndash; Modal Header &ndash;&gt;-->
+<!--    <div class="modal-header justify-content-center">-->
+<!--      <h2 class="mt-1">Risk Profile</h2>-->
+<!--    </div>-->
 
-    <!-- Modal Body -->
-    <div class="modal-body row pl-4 pr-4">
+<!--    &lt;!&ndash; Modal Body &ndash;&gt;-->
+<!--    <div class="modal-body row pl-4 pr-4">-->
 
-      <!-- Title -->
-      <label for="editTitle" class="labelAndInput">Title</label>
-      <div class="input-group mb-3">
-        <input type="text" disabled class="form-control" id="editTitle" name="editTitle" value="{{ currentModel.title }}" ngModel [(ngModel)]="currentModel.title">
-      </div>
+<!--      &lt;!&ndash; Title &ndash;&gt;-->
+<!--      <label for="editTitle" class="labelAndInput">Title</label>-->
+<!--      <div class="input-group mb-3">-->
+<!--        <input type="text" disabled class="form-control" id="editTitle" name="editTitle" value="{{ currentModel.title }}" ngModel [(ngModel)]="currentModel.title">-->
+<!--      </div>-->
 
-      <label for="editTitle" class="labelAndInput">Likelihood</label>
-      <div class="input-group mb-3">
-        <input type="text" disabled class="form-control" name="likelihood" value="{{ currentModel.likelihood }}" ngModel [(ngModel)]="currentModel.likelihood">
-      </div>
+<!--      <label for="editTitle" class="labelAndInput">Likelihood</label>-->
+<!--      <div class="input-group mb-3">-->
+<!--        <input type="text" disabled class="form-control" name="likelihood" value="{{ currentModel.likelihood }}" ngModel [(ngModel)]="currentModel.likelihood">-->
+<!--      </div>-->
 
-      <label for="editTitle" class="labelAndInput">Impact</label>
-      <div class="input-group mb-3">
-        <input type="text" disabled class="form-control" name="impact" value="{{ currentModel.impact }}" ngModel [(ngModel)]="currentModel.impact">
-      </div>
+<!--      <label for="editTitle" class="labelAndInput">Impact</label>-->
+<!--      <div class="input-group mb-3">-->
+<!--        <input type="text" disabled class="form-control" name="impact" value="{{ currentModel.impact }}" ngModel [(ngModel)]="currentModel.impact">-->
+<!--      </div>-->
 
-      <label for="editTitle" class="labelAndInput">Risk Category</label>
-      <div class="input-group mb-3">
-        <input type="text" disabled class="form-control" name="riskCategory" value="{{ currentModel.riskCategory }}" ngModel [(ngModel)]="currentModel.riskCategory">
-      </div>
+<!--      <label for="editTitle" class="labelAndInput">Risk Category</label>-->
+<!--      <div class="input-group mb-3">-->
+<!--        <input type="text" disabled class="form-control" name="riskCategory" value="{{ currentModel.riskCategory }}" ngModel [(ngModel)]="currentModel.riskCategory">-->
+<!--      </div>-->
 
-      <label for="editTitle" class="labelAndInput">Description</label>
-      <div class="input-group mb-3">
-        <textarea type="text" disabled class="form-control" name="description" value="{{ currentModel.description }}" ngModel [(ngModel)]="currentModel.description">{{currentModel.description}}</textarea>
-      </div>
+<!--      <label for="editTitle" class="labelAndInput">Description</label>-->
+<!--      <div class="input-group mb-3">-->
+<!--        <textarea type="text" disabled class="form-control" name="description" value="{{ currentModel.description }}" ngModel [(ngModel)]="currentModel.description">{{currentModel.description}}</textarea>-->
+<!--      </div>-->
 
-      <label for="editTitle" class="labelAndInput">Source of Risk</label>
-      <div class="input-group mb-3">
-        <input type="text" disabled class="form-control" name="sourceOfRisk" value="{{ currentModel.sourceOfRisk }}" ngModel [(ngModel)]="currentModel.sourceOfRisk">
-      </div>
-    </div>
+<!--      <label for="editTitle" class="labelAndInput">Source of Risk</label>-->
+<!--      <div class="input-group mb-3">-->
+<!--        <input type="text" disabled class="form-control" name="sourceOfRisk" value="{{ currentModel.sourceOfRisk }}" ngModel [(ngModel)]="currentModel.sourceOfRisk">-->
+<!--      </div>-->
+<!--    </div>-->
 
-    <!-- Modal Footer -->
-    <div class="modal-footer">
-      <!-- Buttons: Cancel & Save -->
-      <button type="button" class="btn btn-primary" (click)="modal.close('')">Close</button>
-    </div>
+<!--    &lt;!&ndash; Modal Footer &ndash;&gt;-->
+<!--    <div class="modal-footer">-->
+<!--      &lt;!&ndash; Buttons: Cancel & Save &ndash;&gt;-->
+<!--      <button type="button" class="btn btn-primary" (click)="modal.close('')">Close</button>-->
+<!--    </div>-->
 
-  </form>
+<!--  </form>-->
 
-</ng-template>
+<!--</ng-template>-->

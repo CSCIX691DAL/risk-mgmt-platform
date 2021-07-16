@@ -21,6 +21,7 @@ export class IssueListComponent implements OnInit {
 
   IssueSearchText: string;
 
+  // Creates/Initializes recent Issues
   ngOnInit(): void {
     this.issues = this.issueService.getIssues();
     // Listener : listening to our component
@@ -33,7 +34,8 @@ export class IssueListComponent implements OnInit {
     );
   }
 
-  setCurrentCategory(value: string){
+  // Displays issues based on chosen category ( sorts based on categories )
+  setCurrentCategory(value: string): void {
     this.currentCategory = value;
   }
 
