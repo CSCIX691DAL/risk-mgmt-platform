@@ -10,7 +10,7 @@
           <h3 class="mt-2 pt-1">Risk Profiles</h3>
         </div>
 
-        <!-- Search Bar -->
+        <!-- Profile options: Sort, Add, Search -->
         <div class="col-md-8">
           <div class="row justify-content-end">
 
@@ -28,7 +28,7 @@
 
             <!-- Search Issues bar -->
             <div class="pr-3">
-              <input class="form-control" type="text" placeholder="Search profiles" name="riskProfileList" [(ngModel)]="RiskProfileSearchText" value="Search">
+              <input class="form-control searchBar text-wrap" type="text" placeholder="Search profiles" name="riskProfileList" [(ngModel)]="RiskProfileSearchText" value="Search">
             </div>
 
           </div>
@@ -49,12 +49,5 @@
       <app-risk-profile-item [riskProfileItem]="item"></app-risk-profile-item>
     </div>
   </div>
-
-  <!-- Print out all Risk Profile items -->
-<!--  <app-risk-profile-item *ngFor="let item of riskProfiles | filter: RiskProfileSearchText | filterByCategory:this.currentCategory"[riskProfileItem]="item"></app-risk-profile-item>-->
-
-  <!-- Commented out because they have their own pages now -->
-<!--  <app-risk-response-matrix></app-risk-response-matrix>-->
-<!--  <app-risk-profile-map></app-risk-profile-map>-->
 
 </div>

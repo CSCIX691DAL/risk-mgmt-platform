@@ -1,14 +1,16 @@
 <!-- New Profile Item -->
 <div class="row profileItemContainer">
+
+  <!-- Each Issue Profile Items-->
   <div class="col-md-12">
 
     <!-- Issue Profile Heading -->
     <div class="row profileItemHeading">
       <!-- Profile Name -->
-      <div class="col-md-9 pt-2 pb-1">
+      <div class="col-6 pt-2 pb-1">
         <h5>{{riskProfileItem.title}}</h5>
       </div>
-      <div class="col-md-3 text-right pt-2">
+      <div class="col-6 text-right pt-2">
         <!-- Profile Level of Risk Badge -->
         <span class="badge badge-{{riskProfileItem.getLevelOfRiskBadge().css}}">
           {{riskProfileItem.getLevelOfRiskBadge().level}}
@@ -17,7 +19,7 @@
     </div>
 
     <!-- Issue Profile Body -->
-    <div class="row py-2 profileItemBody">
+    <div class="row pt-3 profileItemBody">
 
       <div class="col-md-12">
 
@@ -60,77 +62,3 @@
 
   </div>
 </div>
-
-
-<!--&lt;!&ndash; Listed Risk Profiles &ndash;&gt;-->
-<!--<div id="issueContainer" class="container">-->
-
-<!--  &lt;!&ndash; Top Row &ndash;&gt;-->
-<!--  <div class="row">-->
-
-<!--    &lt;!&ndash; Title Column &ndash;&gt;-->
-<!--    <div class="col-md-9">-->
-<!--      <h4 class="float-left">{{riskProfileItem.title}}</h4>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash; Likelihood Column &ndash;&gt;-->
-<!--    <div class="col-md-3">-->
-<!--      <p class="float-right">Level of Risk:-->
-<!--        <span class="badge badge-{{riskProfileItem.getLevelOfRiskBadge().css}}">-->
-<!--          {{riskProfileItem.getLevelOfRiskBadge().level}}-->
-<!--        </span>-->
-<!--      </p>-->
-<!--      <p class="float-right">Category: {{riskProfileItem.riskCategory.name}}</p>-->
-<!--    </div>-->
-
-<!--  </div>-->
-
-<!--  &lt;!&ndash; Bottom Row &ndash;&gt;-->
-<!--  <div class="row">-->
-
-<!--    &lt;!&ndash; Description Column &ndash;&gt;-->
-<!--    <div class="col-md-10">-->
-<!--      <p class="">Description: {{riskProfileItem.description}}</p>-->
-<!--    </div>-->
-
-<!--    <div class="col-md-10">-->
-<!--      <p class="">Source of Risk: {{riskProfileItem.sourceOfRisk}}</p>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash; Delete / Edit Column &ndash;&gt;-->
-<!--    <div class="col-md-2">-->
-<!--      &lt;!&ndash; Edit issue modal component &ndash;&gt;-->
-<!--      <app-edit-risk-profile-->
-<!--        editTextName="Edit"-->
-<!--        [editRiskProfile]='riskProfileItem'-->
-<!--        editModalRiskProfileID="{{riskProfileItem.id}}"-->
-<!--        editModalRiskProfileTitle="{{ riskProfileItem.title }}"-->
-<!--        editModalRiskProfileLikelihood="{{ riskProfileItem.likelihood }}"-->
-<!--        editModalRiskProfileImpact="{{ riskProfileItem.impact }}"-->
-<!--        editModalRiskProfileDateModified="{{ riskProfileItem.dateModified }}"-->
-<!--        editModalRiskProfileDescription="{{ riskProfileItem.description }}"-->
-<!--        editModalRiskProfileSourceOfRisk="{{ riskProfileItem.sourceOfRisk }}"-->
-<!--        class="float-right">-->
-<!--      </app-edit-risk-profile>-->
-
-<!--      &lt;!&ndash;-->
-<!--      Delete issue modal asking if you really want to delete the issue you have chosen.-->
-<!--      Will only let you delete the item after you edit and save it (you dont have to change anything, just has to save)-->
-<!--      &ndash;&gt;-->
-<!--      &lt;!&ndash; Delete issue modal component-->
-<!--      <app-delete-issue-->
-<!--        deleteTextName="Delete"-->
-<!--        [deleteIssue]='issueItem'-->
-<!--        deleteModalID="{{issueItem.id}}"-->
-<!--        deleteModalTitle="{{ issueItem.title }}"-->
-<!--        class="float-right mr-4">-->
-<!--      </app-delete-issue>-->
-<!--      &ndash;&gt;-->
-<!--      &lt;!&ndash; Delete Link &ndash;&gt;-->
-<!--      <a class="float-right mr-4" (click)="onDeleteRiskProfile()">Delete</a>-->
-
-<!--    </div>-->
-
-<!--  </div>-->
-
-<!--</div>-->

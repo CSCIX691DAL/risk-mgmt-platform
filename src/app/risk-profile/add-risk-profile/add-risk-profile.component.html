@@ -1,5 +1,6 @@
 <ng-template #addRiskProfileContent let-modal>
 
+  <!-- Add Risk Profile Form -->
   <form (ngSubmit)="OnAddRiskProfile()">
 
     <div class="modal-header justify-content-center">
@@ -61,4 +62,5 @@
 
 </ng-template>
 
+<!-- Add Risk Profile Button -->
 <button type="button" class="btn btn-outline-success mr-3 profilesNavigationBarButton" (click)="open(addRiskProfileContent)">{{ addTextName }}</button>

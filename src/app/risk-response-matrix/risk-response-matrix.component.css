@@ -20,12 +20,6 @@
     outline: none;
     box-shadow: none;
 }
-.matrixDescription {
-    border-bottom: 2px solid #EEEEEE;
-}
-.matrixChart {
-    border-bottom: 2px solid #EEEEEE;
-}
-.matrixNewRiskProfiles {
+.matrixDescription, .matrixChart, .matrixNewRiskProfiles {
     border-bottom: 2px solid #EEEEEE;
 }

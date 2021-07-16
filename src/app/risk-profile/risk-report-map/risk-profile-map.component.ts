@@ -22,7 +22,9 @@ export class RiskProfileMapComponent implements OnInit {
   closeResult = '';
 
   profileSearchText = '';
+  currentCategory: string;
 
+  /* Defines the setup/options of the chart */
   public bubbleChartOptions: ChartOptions = {
     responsive: true,
     scales: {
@@ -45,7 +47,11 @@ export class RiskProfileMapComponent implements OnInit {
     }
   };
   public bubbleChartType: ChartType = 'bubble';
+
+  /* Displays legends in the chart */
   public bubbleChartLegend = true;
+
+  /* Data represented in the chart */
   public bubbleChartData: ChartDataSets[] = [
     {
       // data needs to come from risk-profile-service
@@ -57,11 +63,10 @@ export class RiskProfileMapComponent implements OnInit {
       borderColor: 'blue',
       hoverBackgroundColor: 'purple',
       hoverBorderColor: 'red',
-
     },
-
   ];
 
+  /* Colors of categories */
   public bubbleChartColors: Color[] = [
     // need to associate colours with each category
     {
@@ -80,13 +85,16 @@ export class RiskProfileMapComponent implements OnInit {
     }
   ];
 
+// tslint:disable-next-line:max-line-length
   constructor( private riskProfileMapService: RiskProfileMapService, private modalService: NgbModal, public riskProfileService: RiskProfileService ) {
   }
 
-  public updateRiskProfiles() {
+  /* Ensures it gets the most recent Risk Profiles */
+  public updateRiskProfiles(): void {
     this.riskMapProfiles = this.riskProfileService.getRiskProfiles();
   }
 
+  /* Retrieves data from RiskProfile Model */
   @Input() riskProfileItem: RiskProfileModel;
   ngOnInit(): void {
     setTimeout(() => {
@@ -103,6 +111,8 @@ export class RiskProfileMapComponent implements OnInit {
       this.addToChart();
     }, 700);
   }
+
+  /* Uses impact and likelihood in the RisksProfiles as coordinates in the chart*/
   public inputData(riskModel: RiskProfileModel): { x: number; y: number; r: number }{
     const x = riskModel.impact;
     const y = riskModel.likelihood;
@@ -115,10 +125,13 @@ export class RiskProfileMapComponent implements OnInit {
     }
     return { x, y, r };
   }
+
+  /* Plots coordinates in the chart*/
   public addToChart(): void{
     this.bubbleChartData[0].data = this.riskMapProfiles.map(data => this.inputData(data));
   }
-  // events
+
+  // Events
   // Thank you to Asif Karim Bherani of SO for his code on getting a specific value on click
   // https://stackoverflow.com/questions/38378984/chart-js-angular-2-ng2-charts-custom-on-click-event
   public chartClicked(e: any): void {
@@ -133,13 +146,14 @@ export class RiskProfileMapComponent implements OnInit {
         const value = chart.data.datasets[0].data[clickedElementIndex];
         console.log(clickedElementIndex, label, value);
 
-        // this data retireval is not functioning correctly
+        // this data retrieval is not functioning correctly
         this.riskMapProfilesOther = this.riskProfileMapService.getRiskMapProfiles()[clickedElementIndex];
 
         this.open();
       }
     }
   }
+  /* Risk Profile Modal */
   // tslint:disable-next-line:typedef
   open() {
     this.modalService.open(this.profileModal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -148,6 +162,8 @@ export class RiskProfileMapComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
+
+  /* Dismisses Risk Profile Modal */
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -158,10 +174,15 @@ export class RiskProfileMapComponent implements OnInit {
     }
   }
 
+  // Displays risk profile info when hovered in the chart
   public chartHovered({ event, active }: { event, active: {}[] }): void {
     // show tooltip w small info like title
     console.log(event, active);
 
+  }
+  // Displays issues based on chosen category ( sorting based on categories )
+  public setCurrentCategory(value: string): void {
+    this.currentCategory = value;
   }
 
 }

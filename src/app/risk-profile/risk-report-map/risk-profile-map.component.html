@@ -4,23 +4,23 @@
   <div class="row riskMapNavigationBar px-2 m-0 ">
     <div class="col-md-12 ">
       <div class="row p-0 ">
+
         <!-- Title of page user is currently viewing -->
-        <div class="col-md-5 ">
+        <div class="col-md-4 ">
           <h3 class="mt-2 pt-1">Risk Map Report</h3>
         </div>
 
-        <!-- Profile options -->
-        <div class="col-md-7 justify-content-center ">
+        <!-- Profile options: Sort, Add, Search -->
+        <div class="col-md-8">
           <div class="row justify-content-end ">
 
             <!-- Sort Risk Map Items Dropdown Toggle -->
-<!--            <button class="btn btn-outline-primary riskMapSortButton mr-3" type="button" data-toggle="collapse" data-target="#profilesSortDropdown" aria-expanded="false" aria-controls="profilesSortDropdown">Sort Profiles</button>-->
+            <button class="btn btn-outline-primary riskMapSortButton mr-3" type="button" data-toggle="collapse" data-target="#profilesSortDropdown" aria-expanded="false" aria-controls="profilesSortDropdown">Sort Profiles</button>
 
             <!-- Add Risk Profile modal component -->
             <div>
               <app-add-risk-profile
-                      addTextName="+ Risk Profile"
-                      class="float-right">
+                      addTextName="+ Risk Profile" class="float-right">
               </app-add-risk-profile>
             </div>
 
@@ -36,70 +36,64 @@
     </div>
   </div>
 
-  <div class="row p-0 m-0 justify-content-center" >
-    <div class="col-md-10 my-5 mapChart">
+  <!-- Sort Container when Sort button is clicked -->
+  <app-sort-profile
+          (categorySelectedEvent)="setCurrentCategory($event)">
+  </app-sort-profile>
 
-      <div style="display: block;">
-        <canvas baseChart
-                [datasets]="bubbleChartData"
-                [options]="bubbleChartOptions"
-                [colors]="bubbleChartColors"
-                [legend]="bubbleChartLegend"
-                [chartType]="bubbleChartType"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)">
-        </canvas>
-      </div>
+    <!--  Map Report chart-->
+    <div class="row p-0 m-0 justify-content-center" >
+      <div class="col-md-10 my-5 mapChart">
 
-    </div>
-  </div>
-
-  <!-- Risk Profiles on the Risk Map Report -->
-<!--  <div class="row p-0 m-0 justify-content-center">-->
-<!--    <div class="col-md-10 mb-5">-->
-
-<!--      <h6 class="text-center mb-4">The Risk Map is a visualization of Risk Profiles, with the x-axis representing the impact <br/>on a scale from 1-10, and the y-axis representing the likelihood on a scale from 1-10.</h6>-->
-
-<!--      &lt;!&ndash; Print out all Risk Profile items &ndash;&gt;-->
-<!--      <div class="row px-2 m-0 profilesContentCon justify-content-start">-->
-<!--        <div class="col-md-4 profilesItemContainer" *ngFor="let item of riskProfileService.getRiskProfiles() | filter: profileSearchText">-->
-<!--          <app-risk-profile-item [riskProfileItem]="item"></app-risk-profile-item>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--    </div>-->
-<!--  </div>-->
-
-  <!-- Risk Profiles on the Risk Map Report -->
-  <div class="row p-0 m-0 justify-content-center" >
-    <div class="col-md-10 mb-5 mapNewRiskProfiles">
-      <div class="row p-0 m-0 justify-content-center" >
-        <h4 class="text-center mb-4"> Risk Profiles </h4>
-        <div class="col-md-12 profilesItemContainer" *ngFor="let item of riskProfileService.getRiskProfiles() | filter: profileSearchText">
-          <app-risk-profile-display [riskProfileItem]="item"></app-risk-profile-display>
+        <div style="display: block;">
+          <canvas baseChart
+                  [datasets]="bubbleChartData"
+                  [options]="bubbleChartOptions"
+                  [colors]="bubbleChartColors"
+                  [legend]="bubbleChartLegend"
+                  [chartType]="bubbleChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)">
+          </canvas>
         </div>
-      </div>
 
+      </div>
     </div>
-  </div>
+
+    <!-- Risk Profiles on the Risk Map Report -->
+    <div class="row p-0 m-0 justify-content-center" >
+      <div class="col-md-10 mb-5 mapNewRiskProfiles">
+
+        <!-- Risk Profile Items -->
+        <div class="row p-0 m-0 justify-content-center" >
+          <h4 class="text-center mb-4"> Risk Profiles </h4>
+          <div class="col-md-12 profilesItemContainer" *ngFor="let item of riskProfileService.getRiskProfiles() | filter: profileSearchText">
+            <app-risk-profile-display [riskProfileItem]="item"></app-risk-profile-display>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
   <!-- Risk Map Report Description -->
   <div class="row p-0 m-0 justify-content-center " >
     <div class="col-md-10 mb-5 pb-2 mapDescription">
       <h4 class="text-center pb-5"> What is Risk Map Report? </h4>
 
-      <!--      Accordion -->
+      <!-- Accordion -->
       <div id="accordion">
+
         <div class="card">
           <div class="card-header">
             <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <button class="btn btn-link collapse" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 How is the graph generated?
               </button>
             </h5>
           </div>
+
           <div class="collapse show" data-parent="#accordion">
-            <div class="card-body justify-content-md-center">
+            <div class="card-body justify-center">
               The Risk Map Report is a visual representation of the plausible Risk Profiles defined in each organization.
               Each points in the report are influenced by the impact (x-axis) and likelihood (y-axis) assigned in each Risk Profiles plotted in the chart above.
               The impact and likelihood of the Risk Profiles are ranked in a scale of 1-10.
@@ -115,13 +109,15 @@
               </button>
             </h5>
           </div>
-          <div id="collapseTwo" class="collapse">
-            <div class="card-body">
+
+          <div class="collapse">
+            <div class="card-body justify-content-center">
               The Map report shown above can be used to better understand the risks involved in the organization
               and plan strategies to mitigate and avoid the the occurrence of risks.
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
