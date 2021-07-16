@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddRiskProfileComponent } from './add-risk-profile.component';
 
+//Create new risk profile component
 describe('AddRiskProfileComponent', () => {
   let component: AddRiskProfileComponent;
   let fixture: ComponentFixture<AddRiskProfileComponent>;

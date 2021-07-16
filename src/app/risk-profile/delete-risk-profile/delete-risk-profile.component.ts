@@ -56,5 +56,4 @@ export class DeleteRiskProfileComponent implements OnInit {
     this.riskProfileService.deleteRiskProfile(this.riskProfile);
     this.modalService.dismissAll();
   }
-
 }
