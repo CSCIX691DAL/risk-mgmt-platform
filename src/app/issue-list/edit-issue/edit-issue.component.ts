@@ -17,14 +17,14 @@ export class EditIssueComponent implements OnInit {
   @Input() editTextName: string;
   @Input() editModalTitle: string;
   @Input() editModalRiskCategory: string;
-  @Input() editModalAssignee: number;
+  @Input() editModalAssignee: string;
   @Input() editModalID: number;
   @Input() editModalDescription: string;
   @Input() editIssue: IssueModel;
 
   closeResult = '';
 
-  issue: IssueModel = new IssueModel(0, 'cvbcv', 'cvbcvb', 12345678, 'asd', 0, 0);
+  issue: IssueModel = new IssueModel(0, 'cvbcv', 'cvbcvb', 12345678, 'asd', '', '');
 
   constructor(
     private modalService: NgbModal,
@@ -69,6 +69,7 @@ export class EditIssueComponent implements OnInit {
     this.issueService.editIssue(this.issue);
 
     this.dbService.issueRef.doc(this.issue.title).set({
+      id: this.issue.id,
       title: this.issue.title,
       description: this.issue.description,
       modifiedBy: this.issue.modifiedBy,

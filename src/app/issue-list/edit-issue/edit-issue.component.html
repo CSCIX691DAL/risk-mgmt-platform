@@ -35,17 +35,17 @@
       </div>
 
       <!-- Parent Issue -->
-      <label for="addParentIssue" class="labelAndInput">Parent Issue</label>
+      <label for="editParentIssue" class="labelAndInput">Parent Issue</label>
       <div class="input-group mb-3">
         <select
           class="form-control"
-          id="addParentIssue"
-          name="addParentIssue"
+          id="editParentIssue"
+          name="editParentIssue"
           ngModel [(ngModel)]="issue.parentIssue"
         >
-          <option selected value="0">None</option>
+          <option value="">None</option>
 
-          <option *ngFor="let item of issueService.issues" [value]=item.id>
+          <option *ngFor="let item of issueService.issues" [value]=item.title>
             {{ item.title }}
           </option>
 
@@ -54,14 +54,23 @@
 
       <!-- Add Assignee -->
       <label for="editAssignee" class="labelAndInput">Reviewed By</label>
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" id="editAssignee" name="editAssignee" ngModel [(ngModel)]="issue.assignee">
-      </div>
 <!--      <div class="input-group mb-3">-->
-<!--        <select class="form-control" id="editAssignee" name="editAssignee" formControlName="editAssignee" [(ngModel)]="issue.assignee">-->
-<!--          <option *ngFor="let assignee of issueService.issues" [ngValue]="assignee.id">{{assignee.assignee}}</option>-->
-<!--        </select>-->
+<!--        <input type="text" class="form-control" id="editAssignee" name="editAssignee" ngModel [(ngModel)]="issue.assignee">-->
 <!--      </div>-->
+      <div class="input-group mb-3">
+        <select
+          class="form-control"
+          id="editAssignee"
+          name="editAssignee"
+          ngModel [(ngModel)]="issue.assignee"
+        >
+          <option value="">None</option>
+
+          <option *ngFor="let user of userService.categories" [value]=user.id>
+            {{user.firstName + " " + user.lastName}}
+          </option>
+        </select>
+      </div>
 
       <!-- Description -->
       <label for="editDescription" class="labelAndInput">Description</label>

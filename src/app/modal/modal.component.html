@@ -1,17 +1,22 @@
+<!-- Reusable Modal -->
 <ng-template #content let-modal>
 
+  <!-- Modal Header -->
   <div class="modal-header">
   <h2>{{ modalHeader }}</h2>
   </div>
 
+  <!-- Modal Body -->
   <div class="modal-body">
   {{ modalBody }}
   </div>
 
+  <!-- Modal Footer -->
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
   </div>
 
 </ng-template>
 
+<!-- Button to Open Modal -->
 <button class="btn btn-lg btn-outline-primary" (click)="open(content)">{{ buttonName }}</button>

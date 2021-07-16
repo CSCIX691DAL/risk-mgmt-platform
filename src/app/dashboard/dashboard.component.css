@@ -1,3 +1,6 @@
 #dashboardContainer {
+  min-height: calc(100vh - 90px);
+  max-height: auto;
+  padding-top: 15px;
   background-color: #ffffff;
 }

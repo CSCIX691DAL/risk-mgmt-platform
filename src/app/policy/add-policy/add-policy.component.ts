@@ -50,14 +50,11 @@ export class AddPolicyComponent implements OnInit {
 
 
   OnAdd(): void {
-    const newPolicy = new PolicyModel(0, this.newPolicyForm.value.policyTitle, this.newPolicyForm.value.policyDescription, this.newPolicyForm.value.riskProfiles);
-
+    const newPolicy = new PolicyModel(0, this.newPolicyForm.value.policyTitle,
+        this.newPolicyForm.value.policyDescription, this.newPolicyForm.value.riskProfiles);
     console.log(this.newPolicyForm.value.riskProfiles);
-
     console.log(newPolicy);
-
     this.policyService.addNewPolicy(newPolicy);
-
     this.modalService.dismissAll();
   }
 

@@ -1,13 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TaskService} from '../../task-list/task-service';
-import {TaskModel} from '../../task-list/task.model';
-import {ToastrService} from 'ngx-toastr';
+import { Component, Input, OnInit } from '@angular/core';
+import { TaskService } from '../../task-list/task-service';
+import { TaskModel } from '../../task-list/task.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-task-item',
   templateUrl: './new-task-item.component.html',
   styleUrls: ['./new-task-item.component.css']
 })
+
 export class NewTaskItemComponent implements OnInit {
 
   @Input() taskItem: TaskModel;
@@ -26,12 +27,9 @@ export class NewTaskItemComponent implements OnInit {
 
       this.notificationService.success('Task "' + this.taskItem.title + '" has been deleted.', 'Task Successfully Deleted');
 
-
-      //this.taskService.routeBackToHomePage();
     }
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

@@ -1,12 +1,17 @@
 .widgetBorderRadius {
   border-radius: 8px;
   background-color: #F4A100;
+  margin-bottom: 15px;
 }
 .widgetHeader {
   min-height: 35px;
   color: #ffffff;
   border-bottom: 1px solid #eeeeee;
 }
+  .widgetHeader h6 {
+    margin-top: 10px;
+    marin-bottom: 3px;
+  }
 .widgetBody {
   color: #ffffff;
 }

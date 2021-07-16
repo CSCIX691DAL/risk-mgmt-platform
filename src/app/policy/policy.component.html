@@ -1,5 +1,5 @@
 <!-- Content Container -->
-<div class="container-fluid w-100 mw-100 px-0 m-0">
+<div class="container-fluid policyPageContainer w-100 mw-100 px-0 m-0">
 
     <!-- Issues Navigation Bar -->
     <div class="row issuesNavigationBar px-2 m-0">
@@ -7,12 +7,12 @@
             <div class="row p-0">
 
                 <!-- Title of Current Page -->
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <h3 class="mt-2 pt-1">Policy List</h3>
                 </div>
 
                 <!-- Search Bar -->
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="row justify-content-end">
 
                         <!-- Sort Risk Issues Dropdown Toggle -->
@@ -48,7 +48,11 @@
             <app-policy-item [policyItem]="item"></app-policy-item>
         </div>
     </div>
+    <div class="row px-2 m-0 issuesContentCon justify-content-start">
+        <div class="col-md-4 issuesItemContainer" *ngFor="let item of policyService.policies">
 
+        </div>
+    </div>
     <!-- Print out all Policy items -->
 <!--    <app-policy-item *ngFor="let item of policyArray"[policyItem]="item" ></app-policy-item>-->
 

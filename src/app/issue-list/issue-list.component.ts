@@ -33,7 +33,7 @@ export class IssueListComponent implements OnInit {
     );
   }
 
-  setCurrentCategory(value: string){
+  setCurrentCategory(value: string): void {
     this.currentCategory = value;
   }
 

@@ -120,6 +120,8 @@ import { FeaturesComponent } from './landing/features/features.component';
 import { ProgressComponent } from './landing/features/progress/progress.component';
 import { TrackingComponent } from './landing/features/tracking/tracking.component';
 import { DeliveryComponent } from './landing/features/delivery/delivery.component';
+import { RiskProfileDisplayComponent } from './risk-profile/risk-profile-display/risk-profile-display.component';
+import { ViewPolicyComponent } from './policy/view-policy/view-policy.component';
 
 
 // https://github.com/angular/angularfire/blob/master/docs/auth/router-guards.md
@@ -160,7 +162,8 @@ const myroutes: Routes = [
   {path: 'org-admin-dashboard-approval', component: OrgAdminApprovalComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'org-admin-organization-view', component: OrgAdminOrgViewComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'risk-matrix', component: RiskResponseMatrixComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
-  {path: 'risk-map', component: RiskProfileMapComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
+  {path: 'risk-map', component: RiskProfileMapComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'view-policy', component: ViewPolicyComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}}
 ];
 
 @NgModule({
@@ -269,6 +272,8 @@ const myroutes: Routes = [
     TrackingComponent,
     DeliveryComponent,
     TeamS21Component,
+    RiskProfileDisplayComponent,
+    ViewPolicyComponent,
   ],
   imports: [
     BrowserModule,
