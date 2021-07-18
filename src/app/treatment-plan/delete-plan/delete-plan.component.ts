@@ -23,18 +23,13 @@ export class DeletePlanComponent implements OnInit {
 
   closeResult = '';
   plan: TreatmentPlanModel;
-  // plan: TreatmentPlanModel = new TreatmentPlanModel(
-  //     new RiskProfileModel(1, 'title', null, null, null, null, null, null),
-  //     [new TaskModel('Title', null, 'complete', null, null, false)], 'cvbcvb', 12345678);
-
 
   constructor( private modalService: NgbModal, private treatmentPlanService: TreatmentPlanService, public dbService: DbService ) {
     this.plan = this.deletePlan;
   }
 
   // tslint:disable-next-line:use-lifecycle-interface
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   // tslint:disable-next-line:typedef
   open(content) {
@@ -57,16 +52,9 @@ export class DeletePlanComponent implements OnInit {
 
   // Delete plan function
   OnDelete(): void {
-    console.log(this.plan);
-
-    console.log(this.plan);
-    console.log("TITLE - - -- -")
-    console.log(this.plan.title);
-
+    // Using the treatment plan title, delete the treatment plan from the database
     this.dbService.treatmentRef.doc(this.plan.title).delete();
-
     this.treatmentPlanService.deletePlan(this.plan);
-
     this.modalService.dismissAll();
   }
 

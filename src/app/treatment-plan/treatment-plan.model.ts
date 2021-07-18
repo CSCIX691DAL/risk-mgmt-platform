@@ -1,5 +1,5 @@
-import {RiskProfileModel} from '../risk-profile/risk-profile.model';
-import {TaskModel} from '../task-list/task.model';
+import { RiskProfileModel } from '../risk-profile/risk-profile.model';
+import { TaskModel } from '../task-list/task.model';
 
 export class TreatmentPlanModel {
     // variables
@@ -13,10 +13,10 @@ export class TreatmentPlanModel {
         this.title = title;
     }
 
-    addTaskDetail(td: string): void{
+    addTaskDetail(td: string): void {
         // this.tasks.push(td);
     }
-    orderByRisk(): void{
+    orderByRisk(): void {
         // order treatment plans by risk
     }
 }
