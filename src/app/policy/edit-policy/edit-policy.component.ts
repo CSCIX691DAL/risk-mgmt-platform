@@ -24,6 +24,7 @@ export class EditPolicyComponent implements OnInit {
 
   public currentModel: PolicyModel;
 
+  //intinitlize policy form and attributes.
   ngOnInit(): void {
 
     this.currentModel = this.inputPolicy;
@@ -34,7 +35,7 @@ export class EditPolicyComponent implements OnInit {
       riskProfiles: new FormControl(this.currentModel.riskProfile)
     });
   }
-
+  //for editing the policy
   editPolicy(): void {
 
     const newPolicy =  new PolicyModel (
@@ -73,7 +74,7 @@ export class EditPolicyComponent implements OnInit {
 
   }
 
-  // tslint:disable-next-line:typedef
+  //Show content
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -81,7 +82,7 @@ export class EditPolicyComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-
+  //dismissing 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

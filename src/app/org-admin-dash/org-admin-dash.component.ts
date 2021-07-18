@@ -9,23 +9,23 @@ import {OrganizationService} from '../organization.service';
 export class OrgAdminDashComponent implements OnInit {
 
   constructor(public orgService: OrganizationService) {
-
+    //retrieve the users
     this.orgService.getAllOrgUserCount(this.orgService.currentOrganization).then((result) => {
       this.countOrgUsers = result;
     });
-
+    //retrieve the tasks
     this.orgService.getOrgAllTasks(this.orgService.currentOrganization).then((result) => {
       this.countOrgTasks = result;
     });
-
+    //retrieve the profile count
     this.orgService.getAllOrgProfileCount(this.orgService.currentOrganization).then((result) => {
       this.countOrgProfiles = result;
     });
-
+    //retrieve the categories
     this.orgService.getAllOrgCategoryCount(this.orgService.currentOrganization).then((result) => {
       this.countOrgCategories = result;
     });
-
+    //retrieve the issues
     this.orgService.getAllOrgIssueCount(this.orgService.currentOrganization).then((result) => {
       this.countOrgIssues = result;
     });
