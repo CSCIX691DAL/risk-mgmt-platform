@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {TaskModel} from './task.model';
-import {TaskService} from './task-service';
+import { CommonModule } from '@angular/common';
+import { TaskModel } from './task.model';
+import { TaskService } from './task-service';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
 })
+
 export class TaskListComponent implements OnInit {
 
   constructor(taskService: TaskService) {
@@ -22,8 +23,6 @@ export class TaskListComponent implements OnInit {
     return this.taskService.getSortedTaskItemArray();
   }
 
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

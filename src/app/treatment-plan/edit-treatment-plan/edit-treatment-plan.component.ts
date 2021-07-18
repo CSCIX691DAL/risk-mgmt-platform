@@ -1,26 +1,28 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {FormControl, FormGroup} from '@angular/forms';
-import {TreatmentPlanModel} from '../treatment-plan.model';
-import {TaskModel} from '../../task-list/task.model';
-import {TreatmentPlanService} from '../treatment-plan.service';
-import {UsersService} from '../../users.service';
-import {DbService} from '../../db.service';
-import {RiskProfileService} from '../../risk-profile/risk-profile.service';
-import {TaskService} from '../../task-list/task-service';
-import {RiskProfileModel} from '../../risk-profile/risk-profile.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup } from '@angular/forms';
+import { TreatmentPlanModel } from '../treatment-plan.model';
+import { TaskModel } from '../../task-list/task.model';
+import { TreatmentPlanService } from '../treatment-plan.service';
+import { UsersService } from '../../users.service';
+import { DbService } from '../../db.service';
+import { RiskProfileService } from '../../risk-profile/risk-profile.service';
+import { TaskService } from '../../task-list/task-service';
+import { RiskProfileModel } from '../../risk-profile/risk-profile.model';
 
 @Component({
   selector: 'app-edit-treatment-plan',
   templateUrl: './edit-treatment-plan.component.html',
   styleUrls: ['./edit-treatment-plan.component.css']
 })
+
 export class EditTreatmentPlanComponent implements OnInit {
 
-  constructor(public modalService: NgbModal, public treatmentPlanService: TreatmentPlanService, public dbService: DbService, public riskProfileService: RiskProfileService, public taskService: TaskService) {
-  }
+  constructor(public modalService: NgbModal, public treatmentPlanService: TreatmentPlanService, public dbService: DbService, public riskProfileService: RiskProfileService, public taskService: TaskService)
+  { }
+
   @Input() treatmentPlanItem: TreatmentPlanModel;
-  public closeResult = "";
+  public closeResult = '';
 
   // tslint:disable-next-line:typedef
   newTreatmentPlanForm: FormGroup;
@@ -33,6 +35,8 @@ export class EditTreatmentPlanComponent implements OnInit {
       addTasks: new FormControl(this.treatmentPlanItem.tasks),
     });
   }
+
+  // tslint:disable-next-line:typedef
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -63,11 +67,10 @@ export class EditTreatmentPlanComponent implements OnInit {
 
     this.treatmentPlanService.editPlan(newPlan, this.treatmentPlanItem.title);
 
+    // Deletes old treatment plan in the database using the treatment plan title
     this.dbService.treatmentRef.doc(this.treatmentPlanItem.title).delete();
 
     let newProfile = this.riskProfileService.getRiskProfileByTitle(this.treatmentPlanItem.riskProfile.title);
-    console.log("NEW PROFILE");
-    console.log(newProfile);
 
     const riskConst = {
       id: newProfile.id,
@@ -81,6 +84,7 @@ export class EditTreatmentPlanComponent implements OnInit {
     };
 
     // TODO: Note - task's title is being used as ID - not too great
+    // Creates new treatment plan with updated information in the edit treatment plan form
     this.dbService.treatmentRef.doc(newPlan.title).set({
       title: newPlan.title,
       tasks: newPlan.tasks,
@@ -88,8 +92,6 @@ export class EditTreatmentPlanComponent implements OnInit {
     });
 
     this.modalService.dismissAll();
-
-    console.log(newPlan.title);
 
   }
 }

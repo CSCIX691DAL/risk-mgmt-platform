@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {TaskService} from '../task-service';
-import {TaskModel} from '../task.model';
-import {FormControl, FormGroup} from '@angular/forms';
-import {UsersService} from '../../users.service';
-import {UsersModel} from '../../users.model';
-import {DbService} from '../../db.service';
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ToastrService} from 'ngx-toastr';
+import { TaskService } from '../task-service';
+import { TaskModel } from '../task.model';
+import { FormControl, FormGroup } from '@angular/forms';
+import { UsersService } from '../../users.service';
+import { UsersModel } from '../../users.model';
+import { DbService } from '../../db.service';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-new-task',
@@ -81,7 +81,8 @@ export class CreateNewTaskComponent implements OnInit {
       this.notificationService.success('Task "' + newTask.title + '" assigned to ' + newTask.createdBy.firstName, 'Task Successfully Created');
 
       // Insert task into Database
-      // TODO: Note - task's title is being used as ID - not too great
+      // Assign values using newTask values from form
+      // TODO: Note - task's title is being used as ID - not great
       this.dbService.taskRef.doc(newTask.title).set({
         title: newTask.title,
         createdByID: newTask.createdBy.id,

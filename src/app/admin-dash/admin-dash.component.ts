@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {OrganizationService} from '../organization.service';
+import { OrganizationService } from '../organization.service';
 
 @Component({
   selector: 'app-admin-dash',
   templateUrl: './admin-dash.component.html',
   styleUrls: ['./admin-dash.component.css']
 })
+
 export class AdminDashComponent implements OnInit {
 
   constructor(public orgService: OrganizationService) { }

@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './user-profile-widget.component.html',
   styleUrls: ['./user-profile-widget.component.css']
 })
+
 export class UserProfileWidgetComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

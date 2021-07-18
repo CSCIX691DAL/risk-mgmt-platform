@@ -11,8 +11,6 @@ import { DbService } from '../db.service';
 @Injectable()
 export class TaskService {
 
-
-
   constructor(private router: Router, private userService: UsersService, public dbService: DbService) { }
 
   // Initialize variables
@@ -66,7 +64,6 @@ export class TaskService {
 
   // Note - this is inefficient, and goes against standard convention in using Observables - please change this at some point
   public updateTaskArray(): void {
-
     // "Empty" existing task array by recreating it - the problem is that we incur an additional DB call on every display update
     this.taskItemArray = [];
 
@@ -144,7 +141,6 @@ export class TaskService {
 
   public routeBackToHomePage(): void {
     // Quick solution to ensuring that tasks are synced - empty and fetch tasks from db every redirection
-    //this.updateTaskArray();
     this.router.navigate(['dashboard']);
   }
 

@@ -1,13 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TreatmentPlanModel} from './treatment-plan.model';
-import {TreatmentPlanService} from './treatment-plan.service';
-import {TaskModel} from '../task-list/task.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { TreatmentPlanModel } from './treatment-plan.model';
+import { TreatmentPlanService } from './treatment-plan.service';
+import { TaskModel } from '../task-list/task.model';
 
 @Component({
   selector: 'app-treatment-plan',
   templateUrl: './treatment-plan.component.html',
   styleUrls: ['./treatment-plan.component.css']
 })
+
 export class TreatmentPlanComponent implements OnInit {
 
   treatmentPlans: TreatmentPlanModel[];

@@ -8,6 +8,7 @@ import { FormArray } from '@angular/forms';
   templateUrl: './long-answer-editor.component.html',
   styleUrls: ['./long-answer-editor.component.css']
 })
+
 export class LongAnswerEditorComponent {
   longAnswerForm = this.fb.group({
     longqs: this.fb.array([
