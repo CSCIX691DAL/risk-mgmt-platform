@@ -6,6 +6,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './name-editor.component.html',
   styleUrls: ['./name-editor.component.css']
 })
+
 export class NameEditorComponent {
   name = new FormControl('');
 

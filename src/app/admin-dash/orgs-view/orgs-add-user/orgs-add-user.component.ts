@@ -40,27 +40,30 @@ export class OrgsAddUserComponent implements OnInit {
     }
   }
 
+  // Adds user to an Organization
   async OnAdd(): Promise<void> {
-
     let userNameFromEmail = '';
+
     await this.orgService.getUserName(this.userEmail).then((name) => {
       userNameFromEmail = name;
     });
 
+    // Updates organization field for selected user in database, assigning them a new organization
     this.orgService.userService.dbService.userRef.doc(this.userEmail).update({
       organizations: firestore.FieldValue.arrayUnion(this.orgService.currentlySelectedOrg.orgName)
     });
 
+    // Adds user to the organization list in the database using their ID and Name
     this.orgService.dbService.organizationRef.doc(this.orgService.currentlySelectedOrg.orgName).collection('users').doc(this.userEmail).set({
       id: this.userEmail,
       name: userNameFromEmail
     });
 
+    // Closes Modal after submitting Add User form
     this.modalService.dismissAll();
 
+    // Displays a popup after user has been added successfully
     this.notificationService.success(this.userEmail + ' successfully added to ' + this.orgService.currentlySelectedOrg.orgName + '!', 'User Added');
-
-
   }
 
 }
