@@ -17,7 +17,7 @@ export class PolicyItemComponent implements OnInit {
     console.log("Policy");
     console.log(this.policyItem);
   }
-
+  //Deleting a policy
   onDeletePolicy(): void {
     this.policyService.deletePolicy(this.policyItem);
   }

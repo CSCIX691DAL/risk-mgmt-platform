@@ -14,19 +14,23 @@
 div a {
     color: #0275DA;
 }
+
 div a:hover {
     color: #0275D8;
     underline: #0275D8;
     cursor: pointer;
 }
+
 .issueItemHeading {
     background-color: #f9f9f9;
     border-radius: 6px 6px 0px 0px;
     border-bottom: 1px solid #DEDEDE;
 }
+
 .issueItemBody {
     min-height: 150px;
 }
+
 .issueItemFooting {
     background-color: #f9f9f9;
     border-radius: 0px 0px 6px 6px;
