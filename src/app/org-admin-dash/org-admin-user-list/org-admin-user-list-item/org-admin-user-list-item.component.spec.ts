@@ -5,14 +5,14 @@ import { OrgAdminUserListItemComponent } from './org-admin-user-list-item.compon
 describe('OrgAdminUserListItemComponent', () => {
   let component: OrgAdminUserListItemComponent;
   let fixture: ComponentFixture<OrgAdminUserListItemComponent>;
-
+  //Prepare the component for testing
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ OrgAdminUserListItemComponent ]
     })
     .compileComponents();
   });
-
+  //test the component
   beforeEach(() => {
     fixture = TestBed.createComponent(OrgAdminUserListItemComponent);
     component = fixture.componentInstance;
