@@ -13,17 +13,14 @@
       <div class="input-group mb-3">
         <input type="text" class="form-control" id="editName" name="editName" value="{{ editModalName }}" [(ngModel)]="category.name">
       </div>
-
       <!-- Is this a Parent or Child category? -->
       <label for="isParentCategory" class="labelAndInput">Is this Category a Parent Category?</label>
       <div class="input-group mt-2 mb-4" id="isParentCategory">
-
         <!-- Category is a Parent Category -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" [checked]="parentChecked === true ? true : false" type="radio" name="inlineRadioOptions" id="parentTrue" (click)="isEditParentCategory(true)">
           <label class="form-check-label mr-5" for="parentTrue">Parent Category</label>
         </div>
-
         <!-- Category is a Child Category -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" [checked]="childChecked === true ? true : false" type="radio" name="inlineRadioOptions" id="childTrue" (click)="this.isEditParentCategory(false)">

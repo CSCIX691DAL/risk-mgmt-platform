@@ -9,6 +9,6 @@ export class ChartSummaryComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 }
