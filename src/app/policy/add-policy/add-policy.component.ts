@@ -37,7 +37,7 @@ export class AddPolicyComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-
+  //Dismiss the component
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -48,7 +48,7 @@ export class AddPolicyComponent implements OnInit {
     }
   }
 
-
+  //assigning the new attributes
   OnAdd(): void {
     const newPolicy = new PolicyModel(0, this.newPolicyForm.value.policyTitle,
         this.newPolicyForm.value.policyDescription, this.newPolicyForm.value.riskProfiles);

@@ -2,7 +2,6 @@
   padding-left:15px;
   padding-right: 15px;
 }
-
 .profileItemContainer {
   border-radius: 5px;
   margin-top: 20px;
@@ -10,7 +9,6 @@
   border: 1px solid #cccccc;
   background-color: #fefefe;
 }
-
 div a {
   color: #0275DA;
 }
@@ -19,7 +17,6 @@ div a:hover {
   underline: #0275D8;
   cursor: pointer;
 }
-
 .badge-low {
   background-color: green;
 }

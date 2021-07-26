@@ -8,6 +8,7 @@ import { FormArray } from '@angular/forms';
   templateUrl: './short-answer-editor.component.html',
   styleUrls: ['./short-answer-editor.component.css']
 })
+
 export class ShortAnswerEditorComponent {
   shortAnswerForm = this.fb.group({
     shortqs: this.fb.array([
@@ -38,6 +39,6 @@ export class ShortAnswerEditorComponent {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.shortAnswerForm.value);
-
   }
+
 }

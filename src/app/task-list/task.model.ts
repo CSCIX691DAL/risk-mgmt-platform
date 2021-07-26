@@ -1,5 +1,5 @@
-import {CommonModule} from '@angular/common';
-import {UsersModel} from '../users.model';
+import { CommonModule } from '@angular/common';
+import { UsersModel } from '../users.model';
 
 export class TaskModel {
 

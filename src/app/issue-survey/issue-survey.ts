@@ -7,6 +7,7 @@ export type EditorType = 'name' | 'profile' | 'short-answer' | 'form-editor' | '
   templateUrl: './issue-survey.html',
   styleUrls: ['./issue-survey.css']
 })
+
 export class IssueSurvey {
 
   editor: EditorType = 'name';

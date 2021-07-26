@@ -8,6 +8,7 @@ import { FormArray } from '@angular/forms';
   templateUrl: './dropdown-editor.component.html',
   styleUrls: ['./dropdown-editor.component.css']
 })
+
 export class DropdownEditorComponent {
   dropDownForm = this.fb.group({
     longqs: this.fb.array([

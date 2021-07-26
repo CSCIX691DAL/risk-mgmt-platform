@@ -32,7 +32,7 @@ export class PolicyService {
 
         this.policies.push(new PolicyModel(newPolicy.id, newPolicy.title, newPolicy.description,  riskArr));
       });
-      // this.triggerToUpdate.next(true);
+  
     });
   }
 
@@ -46,9 +46,9 @@ export class PolicyService {
 
     this.policies = this.policies.filter(x => x.title !== policy.title);
 
-    // this.triggerToUpdate.next(true);
   }
 
+  //add a new policy
   public addNewPolicy(policy: PolicyModel): void {
     this.policies.push(policy);
 
@@ -69,7 +69,7 @@ export class PolicyService {
     });
   }
 
-
+  //edit an existing policy
   public editPolicy(newModel: PolicyModel, oldModel: PolicyModel): void {
     this.policies[this.policies.findIndex(task => task.title === oldModel.title)] = newModel;
 

@@ -9,7 +9,6 @@ export class AssignedTasksComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }
