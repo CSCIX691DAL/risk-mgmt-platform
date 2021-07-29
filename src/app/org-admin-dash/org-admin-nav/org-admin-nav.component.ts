@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './org-admin-nav.component.html',
   styleUrls: ['./org-admin-nav.component.css']
 })
+
 export class OrgAdminNavComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {OrganizationService} from '../organization.service';
+import { OrganizationService } from '../organization.service';
 
 @Component({
   selector: 'app-org-admin-dash',
   templateUrl: './org-admin-dash.component.html',
   styleUrls: ['./org-admin-dash.component.css']
 })
+
 export class OrgAdminDashComponent implements OnInit {
 
   constructor(public orgService: OrganizationService) {
@@ -36,18 +37,12 @@ export class OrgAdminDashComponent implements OnInit {
   countOrgProfiles = 0;
   countOrgTasks = 0;
   countOrgIssues = 0;
-
   countOrgUsers = 0;
 
-  ngOnInit(): void {
-
-
-    console.log(this.orgService.currentOrganization);
-
-  }
-
+  ngOnInit(): void { }
 
   onSubmit() {
     this.orgService.currentlySelectedOrg = this.orgService.currentOrganization;
   }
+
 }

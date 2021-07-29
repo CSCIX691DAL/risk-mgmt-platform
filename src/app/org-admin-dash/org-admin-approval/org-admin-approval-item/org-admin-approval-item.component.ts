@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './org-admin-approval-item.component.html',
   styleUrls: ['./org-admin-approval-item.component.css']
 })
+
 export class OrgAdminApprovalItemComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

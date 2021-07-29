@@ -1,12 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {UsersModel} from '../../../users.model';
-import {OrganizationService} from '../../../organization.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { UsersModel } from '../../../users.model';
+import { OrganizationService } from '../../../organization.service';
 
 @Component({
   selector: 'app-org-admin-user-list-item',
   templateUrl: './org-admin-user-list-item.component.html',
   styleUrls: ['./org-admin-user-list-item.component.css']
 })
+
 export class OrgAdminUserListItemComponent implements OnInit {
 
   constructor(public orgService: OrganizationService) { }
